@@ -1,0 +1,111 @@
+<tbody>
+
+
+                                    <tr>
+                                        <td>
+                                            <div class="userDatatable-content lalign">
+                                                <input type="checkbox" formControlName="pd_nextPage_checkbox">
+
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="userDatatable-content">
+
+
+
+                                                <input type="text" class="form-control mt-2 mb-2"
+                                                    formControlName="pd_productName_txtbox1"
+                                                    id="pd_productName_txtbox_{{i}}" />
+
+
+                                            </div>
+
+                                        </td>
+                                        
+                                        <td>
+                                            <div class="userDatatable-content">
+                                                <input type="text" class="form-control" style="text-align: right;"
+                                                    formControlName="pd_quantity_txtbox1" id="pd_qty_{{i}}"  (change)="totalCalculate();" />
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="userDatatable-content">
+
+                                                <input type="text" class="form-control" style="text-align: left;"
+                                                    formControlName="pd_unit" id="pd_unit_{{i}}"  (change)="totalCalculate();" />
+
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="userDatatable-content">
+                                                <input type="text" class="form-control" style="text-align: right;"
+                                                    formControlName="pd_sellingPrice" id="pd_SP_{{i}}"  (change)="totalCalculate();" />
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="userDatatable-content">
+                                                <input type="text" class="form-control" formControlName="pd_Total"
+                                                    style="text-align: right;" id="pd_Total_{{i}}"  (change)="totalCalculate();" />
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="userDatatable-content">
+                                                <input type="text" class="form-control" style="text-align: right;"
+                                                    formControlName="pd_netPrice" id="pd_netPrice_{{i}}" />
+
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="userDatatable-content">
+                                                <input type="checkbox" style="text-align: right;"
+                                                    formControlName="pd_OutCall">
+
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="userDatatable-content">
+
+                                                <input type="checkbox" style="text-align: right;"
+                                                    formControlName="pd_CMon">
+
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="userDatatable-content">
+
+                                                <input type="checkbox" style="text-align: right;"
+                                                    formControlName="pd_selectTax">
+
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="userDatatable-content d-inline-block">
+                                                <button type="button" class="btn btn-danger btn-sm"
+                                                    (click)="removeAddress(i)">X</button>
+
+                                            </div>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <div class="userDatatable-content">
+                                                <textarea
+                                                    style="height: 120px;width: 100%;text-align: left;padding-left: 8px"
+                                                    class="form-control mt-2 mb-2" row="2"
+                                                    formControlName="pd_productName_txtArea"
+                                                    id="pd_productName_txtArea_{{i}}"></textarea>
+                                            </div>
+                                        </td>
+                                        <td colspan="3">
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="userDatatable-content">
+                                                <button type="button"
+                                                class="btn btn-primary btn-default btn-squaredbuttoncssDiscount"
+                                                data-toggle="modal" (click)="calculateDiscount(i)"
+                                                data-target="#discountFormId" id="discount_btn_{{i}}" >Discount(-) 
+                                                </button>
+                                                <!-- <button>Discount</button> -->
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>

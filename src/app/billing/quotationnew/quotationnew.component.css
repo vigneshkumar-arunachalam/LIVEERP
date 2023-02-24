@@ -1,0 +1,796 @@
+.btn.btn-primary[disabled] {
+  background-color: #0c08e6f5;
+}
+
+.userDatatable table td {
+  /* padding: 4px 0px 0px !important; */
+  padding: 6px 14px!important;
+}
+
+.userDatatable table tr td span {
+  display: block;
+  white-space: nowrap;
+  /* width: 120px; */
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* .userDatatable  table tr th:first-child, .userDatatable  table tr td:first-child{width: 50px;} */
+.userDatatable__imgWrapper.d-flex.align-items-center {
+  justify-content: center;
+}
+
+.userDatatable .d-flex {
+  justify-content: center;
+  margin-right: 0;
+}
+
+.userDatatable tbody .custom-checkbox input[type="checkbox"]+label {
+  margin-right: 0px !important;
+}
+
+/* .add-contact-table-section  table tr th span{color: black;} */
+
+.userDatatable-title {
+  text-align: left !important;
+  cursor: pointer !important;
+}
+
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown__list {
+  z-index: 2;
+  position: absolute;
+  display: none;
+  padding: 10px;
+  min-width: 100%;
+  background: #fff;
+  cursor: pointer;
+  border: 1px solid;
+  text-align: center;
+}
+
+.dropdown__item {
+  list-style-type: none;
+}
+
+.dropdown__link {
+  display: block;
+  padding: 0.3em 1em;
+  background: white;
+  color: var(--dropdown__link_clr);
+  text-decoration: none;
+}
+
+.dropdown__link:hover {
+  opacity: 0.9;
+}
+
+.dropdown:hover .button {
+  opacity: 0.9;
+}
+
+.dropdown:hover .dropdown__list {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 31px;
+
+}
+
+.view:hover {
+  background: rgba(71, 2, 45, 0.3);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.remove:hover {
+
+  background: rgba(17, 71, 3, 0.3);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.hover1:hover {
+   
+  background: rgba(255, 77, 79, 0.5);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+.hover2:hover {
+
+background: rgba(118, 177, 103, 0.5);
+-webkit-border-radius: 50%;
+border-radius: 50%;
+}
+.hover3:hover {
+
+background: rgba(255, 228, 196, 0.9);
+-webkit-border-radius: 50%;
+border-radius: 50%;
+}
+.hover4:hover {
+
+  background: rgba(243, 215, 247, 0.549);
+-webkit-border-radius: 50%;
+border-radius: 50%;
+}
+.hover5:hover {
+
+background: rgba(12, 1, 39, 0.773);
+-webkit-border-radius: 50%;
+border-radius: 50%;
+}
+.hover6:hover {
+  background: rgba(234, 238, 33, 0.5);
+ 
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+.hover7:hover {
+
+/* background: rgba(121, 141, 117, 0.5); */
+background: rgba(54, 174, 204, 0.219);
+-webkit-border-radius: 50%;
+border-radius: 50%;
+}
+.hover8:hover {
+
+
+background: rgb(247, 36, 36,0.75);
+-webkit-border-radius: 50%;
+border-radius: 50%;
+}
+.hover9:hover {
+
+  background: rgba(20, 175, 66, 0.549);
+-webkit-border-radius: 50%;
+border-radius: 50%;
+}
+.hover10:hover {
+
+background: rgb(245, 152, 31,0.6);
+-webkit-border-radius: 50%;
+border-radius: 50%;
+}
+.hover11:hover {
+  background: rgba(95, 158, 160, 0.5);
+ 
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+.hover12:hover {
+
+background: rgba(184, 167, 15, 0.9);
+-webkit-border-radius: 50%;
+border-radius: 50%;
+}
+.hover13:hover {
+
+  background: rgba(14, 21, 26, 0.736);
+-webkit-border-radius: 50%;
+border-radius: 50%;
+}
+
+
+.dropdown a {
+  font-size: 14px;
+  /* margin: 5px 8px!important; */
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 37px;
+  width: 37px;
+}
+
+/* .dropdown:hover .dropdown__list {
+    display: block;
+  }
+  .view:hover{background-color: rgb(52, 74, 172);} */
+
+.button {
+  padding: 0.6em 1.5em;
+
+}
+
+.btn1 {
+  background-color: #20c997;
+  border: none;
+  color: white;
+  padding: 0;
+  font-size: 16px;
+  width: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.btn1:hover {
+  background-color: rgb(221, 109, 152);
+}
+
+i.fa.fa-bars {
+  color: #fff !important;
+}
+
+tr:nth-child(even) {
+  background: rgb(239, 241, 238)
+}
+
+tr:nth-child(odd) {
+  background: #FFF
+}
+
+.addcontractmastercss {
+  font-weight: 500;
+}
+/* .addcontractmastercss .form-control {
+  border: 1px solid   #beeaca!important;
+}
+.addcontractmastercss .form-control:focus {
+  color: #495057;
+  background-color: #fff;
+    border-color:   #3d0096!important;
+  outline: 0;
+  box-shadow: 0 0, 0 5px 20px #5f63f21a;
+  padding-left: 4px !important;
+} */
+.addcontractmastercss select{
+  /* padding: 0 !important; */
+  padding-left: 4px !important;
+}
+.alertdangerCustomCSS {
+  /* color: #ff4d4f; */
+  color: white!important;
+  background-color: #ffe5e5;
+  border-color: #ffe5e5;
+  width: 100% !important;
+  margin: 10px 15px !important;
+ 
+  outline: none;
+  border: 2px solid transparent;
+  background-image: linear-gradient(rgb(226, 19, 19), rgb(223, 11, 11)), linear-gradient(315deg, rgb(235, 10, 10), rgb(228, 15, 26), rgb(211, 27, 27));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  animation: bg-hue 2s linear infinite;
+}
+
+
+.alertdangerCustomCSS1 {
+  /* color: #ff4d4f; */
+  color: white!important;
+  background-color: #ffe5e5;
+  border-color: #ffe5e5;
+  width: 100% !important;
+
+  outline: none;
+  border: 2px solid transparent;
+  background-image: linear-gradient(rgb(226, 19, 19), rgb(223, 11, 11)), linear-gradient(315deg, rgb(235, 10, 10), rgb(228, 15, 26), rgb(211, 27, 27));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  animation: bg-hue 2s linear infinite;
+}
+
+
+
+#AddQuotationPopUpFormId {
+  padding-right: 0px !important;
+}
+
+#AddQuotationPopUpFormId .modal-dialog {
+  max-width: 95%;
+}
+
+#AddQuotationPopUpFormId label {
+  font-weight: 500;
+
+  color: black;
+
+}
+
+#AddQuotationPopUpFormId tr th {
+  width: 200px;
+  margin: 0px 10px;
+}
+
+.alignFormArray {
+  display: flex;
+  /* margin-left: 2px !important; */
+}
+
+.yettocode {
+  padding-top: 10px;
+  align-items: center;
+  display: inline-flex;
+
+}
+
+.left_section {
+  border: 1px solid white;
+  width: 30%;
+
+}
+
+.right_section {
+  border: 1px solid #20c997;
+  width: 70%;
+}
+
+
+.overall {
+  display: flex;
+  width: 100%;
+}
+
+
+table.add-contact-table-section {
+  width: 100%;
+}
+
+#AddQuotationPopUpFormId tr th {
+  border-right: 1px solid #ddd;
+}
+
+.userDatatable-content .form-control {
+  width: 100%;
+}
+
+.userDatatable-content,
+.userDatatable-inline-title h6 {
+  padding: 5px 10px;
+}
+
+.userDatatable-title {
+  text-align: right;
+  display: block;
+  padding-right: 10px;
+}
+
+.add-contact-table-section tr {
+  height: 50px;
+  border: 1px solid #ddd;
+}
+
+label.col-form-label {
+  padding-right: 10px;
+}
+
+.col-form-label {
+  width: 120px;
+}
+
+section.right_section {
+  padding: 20px;
+}
+
+.add-contact-table-section tr th {
+  padding: 0px 15px;
+}
+
+table.add-contact-table-section {
+  margin-bottom: 25px;
+}
+
+input.form-control {
+  padding: 4px 8px;
+}
+
+#AddQuotationPopUpFormId .modal-content.addcontractmastercss {
+  overflow-y: scroll;
+  height: 500px;
+}
+
+#setActualCostId .modal-dialog {
+  max-width: 95%;
+}
+
+#setActualCostId tr th {
+  border-right: 1px solid #ddd;
+}
+
+.userDatatable-content .form-control {
+  width: 100%;
+}
+
+.userDatatable-content,
+.userDatatable-inline-title h6 {
+  padding: 5px 10px;
+}
+
+.userDatatable-title {
+  text-align: right;
+  display: block;
+  padding-right: 10px;
+}
+
+.add-contact-table-section tr {
+  height: 50px;
+  border: 1px solid #ddd;
+}
+
+
+#searchQuotationFormId .modal-dialog {
+  max-width: 55%;
+  
+}
+
+#searchQuotationFormId label {
+  font-weight: 500;
+
+  color: black;
+
+}
+
+.searchQuotationCSS .modal-header .modal-title {
+  color: #ffff;
+}
+
+.searchQuotationCSS .modal-header {
+
+  background-color: rgb(29, 78, 97);
+}
+
+.searchQuotationCSS .modal-header h2 {
+
+  color: #ffff;
+}
+
+.searchQuotationCSS .modal-body label {
+  color: #131212;
+
+}
+
+.searchQuotationCSS .modal-header .modal-title {
+  color: #ffff;
+}
+
+.searchQuotationCSS .modal-header {
+
+  background-color: rgb(29, 78, 97);
+}
+
+.searchQuotationCSS .modal-header h2 {
+
+  color: #ffff;
+}
+
+.searchQuotationCSS .modal-body label {
+  color: #131212;
+
+}
+.searchScrollCss{
+  overflow: scroll;
+  height: 100px;
+  overflow-y: scroll;
+  
+}
+
+.buttonClass {
+  width: 80%;
+}
+
+#TextEditorId .modal-dialog {
+  max-width: 65%;
+}
+
+#TextEditorId label {
+  font-weight: 500;
+}
+.card.quotation .card-header {
+  display: flex;
+}
+.userDatatable button {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+#quotationSharedPersonId .modal-dialog {
+  max-width: 50%;
+}
+.quotationsharedCSS{
+  height: 300px;
+ 
+  overflow-y: scroll;
+}
+.checkbox {
+  margin-right: 10px;
+}
+.email-cc-template{
+  height: 150px;
+  overflow-y: scroll;
+}
+
+.email-cc-template::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+.email-cc-template::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+.email-cc-template::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+.email-cc-template::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+/* #TextEditorId span{width: 138px;    display: inline-block;} */
+label.col-lg-2.col-form-label{text-align: right;}
+
+#quotationApprovalId tr:nth-child(even) {
+  background: rgb(254, 255, 254)
+}
+/* .userDatatable .table-responsive .table thead, .userDatatable  .table-responsive .table tbody {
+  display: block;
+} */
+.userDatatable .table-responsive .table thead tr th:first-child,
+.userDatatable  .table-responsive .table tbody tr td:first-child
+{
+  width: 15%;
+}
+.userDatatable table td,
+.userDatatable table tr td span{white-space: normal!important;}
+.userDatatable .table-responsive .table thead tr th:nth-child(2),
+.userDatatable  .table-responsive .table tbody tr td:nth-child(2)
+{
+  width: 10%;
+}
+.userDatatable .table-responsive .table thead tr th:nth-child(3),
+.userDatatable  .table-responsive .table tbody tr td:nth-child(3)
+{
+  width: 15%;
+}
+.userDatatable .table-responsive .table thead tr th:nth-child(4),
+.userDatatable  .table-responsive .table tbody tr td:nth-child(4),
+.userDatatable .table-responsive .table thead tr th:nth-child(5),
+.userDatatable  .table-responsive .table tbody tr td:nth-child(5)
+{
+  width: 15%;
+}
+.userDatatable .table-responsive .table thead tr th:nth-child(6),
+.userDatatable  .table-responsive .table tbody tr td:nth-child(6)
+{
+  width: 10%;
+}
+.userDatatable .table-responsive .table thead tr th:nth-child(7),
+.userDatatable  .table-responsive .table tbody tr td:nth-child(7)
+{
+  width: 10%;
+}
+.userDatatable .table-responsive .table thead tr th:last-child,
+.userDatatable  .table-responsive .table tbody tr td:last-child
+{
+  width: 10%;
+}
+.userDatatable  .table-responsive .table tbody tr td:nth-child(5) span{
+  white-space: nowrap!important;
+  width: 120px;
+
+}
+
+
+/* Contract File Attachment modal css */
+.quotApprovalcss .modal-header .modal-title {
+  color:#ffff;
+}
+.quotApprovalcss .modal-header  {
+
+  background-color: rgb(91, 148, 84);
+}
+ .quotApprovalcss .modal-body label{
+  color:#a71313;
+
+ }
+ /* .textareaformcontrol{
+  border: 1px solid   #0c7027!important;
+ } */
+
+ .ng-autocomplete 
+ ::ng-deep .autocomplete-container .input-container input{
+   background: transparent;
+ }
+ .ng-autocomplete 
+ ::ng-deep .autocomplete-container .input-container input:focus {
+   outline: none;
+   border: 2px solid transparent!important;
+   background-image: linear-gradient(white, white), linear-gradient(315deg, rgb(236, 160, 255), rgb(170, 178, 255), rgb(132, 255, 201));
+   background-origin: border-box;
+   background-clip: padding-box, border-box;
+   animation: bg-hue 2s linear infinite;
+ }
+
+ .form-control{
+  border: 1px solid #e1e1e1;
+  background: transparent;}
+ .form-control:focus {
+  outline: none;
+  border: 2px solid transparent;
+  background-image: linear-gradient(white, white), linear-gradient(315deg, rgb(236, 160, 255), rgb(170, 178, 255), rgb(132, 255, 201));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  animation: bg-hue 2s linear infinite;
+}
+
+/* @keyframes for the gradient animation */
+@keyframes bg-hue {
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+
+label {
+    font-weight: 600;
+    color: #009688!important;
+}
+.head-depart-per-section{display:flex;}
+.head-depart-per{
+  background: linear-gradient(315deg, rgb(236, 160, 255), rgb(170, 178, 255), rgb(132, 255, 201));
+  width: 100px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  margin-right:20px;
+}
+#setActualCostId .form-control{
+  height: auto;
+}
+
+
+.form-control:disabled,
+.form-control[readonly] {
+    background-color: #f3d2f0 !important;
+    opacity: 0.6;
+    color: black!important;
+}
+
+/* .tox-statusbar__branding a{
+  display:none ;
+} */
+
+.nameCSS{
+  font-weight: 400;
+  color: #020096!important;
+
+
+}
+.heightCSS{
+  line-height: 35px;
+}
+
+
+
+
+
+/** BEGIN CSS NEEDED FOR SWITCH **/
+.on-off-toggle {
+  width: 56px;
+  height: 24px;
+  position: relative;
+  display: inline-block;
+}
+
+.on-off-toggle__slider {
+  width: 60px;
+  height: 24px;
+  display: block;
+  border-radius: 34px;
+  background-color: #d8d8d8;
+  transition: background-color 0.4s
+  
+}
+
+.on-off-toggle__slider:before {
+    content: '';
+    display: block;
+    background-color: #fff;
+    box-shadow: 0 0 0 1px #949494;
+    bottom: 3px;
+    height: 18px;
+    left: 3px;
+    position: absolute;
+    transition: .4s;
+    width: 18px;
+    z-index: 5;
+    border-radius: 100%;
+  }
+
+.on-off-toggle__slider:after {
+    display: block;
+    line-height: 24px;
+    /* text-transform: uppercase; */
+    font-size: 12px;
+    font-weight: bold;
+    content: 'No';
+    color: #484848;
+    padding-left: 26px;
+    transition: all 0.4s;
+  }
+
+.on-off-toggle__input {
+  /*
+    This way of hiding the default input is better 
+    for accessibility than using display: none;
+  */
+  position: absolute;
+  opacity: 0;
+}
+
+.on-off-toggle__input:checked + 
+.on-off-toggle__slider {
+  background-color: #009688
+}
+
+.on-off-toggle__input:checked + 
+.on-off-toggle__slider:before {
+    transform: translateX(37px);
+  }
+
+.on-off-toggle__input:checked + 
+.on-off-toggle__slider:after {
+    content: 'Yes';
+    color: #FFFFFF;
+    padding-left: 8px;
+  }
+
+/*** END CSS NEEDED FOR SWITCH **/
+
+
+/*** CSS FOR SEARCH IN SHARED QUOTATION-START **/
+.search{
+  position: relative;
+  box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+    
+  }
+
+  .search input{
+
+   height: 60px;
+   text-indent: 25px;
+   border: 2px solid #d6d4d4;
+
+
+  }
+
+
+  .search input:focus{
+
+   box-shadow: none;
+   border: 2px solid blue;
+
+
+  }
+
+  .search .fa-search{
+
+   position: absolute;
+   top: 20px;
+   left: 16px;
+
+  }
+
+  .search button{
+
+   position: absolute;
+   top: 5px;
+   right: 5px;
+   height: 50px;
+   width: 110px;
+   /* background: rgb(33, 33, 80); */
+   background: #009688;
+  }
+  /*** CSS FOR SEARCH IN SHARED QUOTATION-END **/

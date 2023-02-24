@@ -1,0 +1,620 @@
+#viewCustomerFormId{
+  padding-right: 0px !important;
+}
+#viewCustomerFormId .modal-dialog{
+  max-width: 45%;
+}
+.modal-content label{
+  font-weight:500;
+  color: black;
+}
+#viewCustomerFormId .modal-body label{
+  font-weight:500;
+  color: black;
+}
+#viewCustomerFormId .modal-header  {
+
+  background-color: rgb(29, 78, 97);
+}
+#viewCustomerFormId .modal-header h2 {
+
+  color:#ffff;
+}
+#editCustomerFormId .modal-header h2 {
+
+  color:#ffff;
+}
+.modal-title{
+  color:#ffff!important
+}
+
+#addCustomerFormId{
+    padding-right: 0px !important;
+}
+#addCustomerFormId .modal-header  {
+
+  background-color: rgb(29, 78, 97);
+}
+#addCustomerFormId .modal-header h1 {
+
+  color:#ffff;
+}
+#addCustomerFormId .modal-header .close{
+  color:#ffff;
+}
+#addCustomerFormId .modal-dialog{
+    max-width: 80%;
+}
+
+#addCustomerFormId .td .th{
+    width: 200px;
+    margin: 0px 10px;
+}
+.addcustomernewallcss .modal-body label{
+  font-weight:500;
+  color: black;
+}
+.alertdangerddcustomernewallcss{
+  color: #ff4d4f;
+  background-color: #ffe5e5;
+  border-color: #ffe5e5;
+  width: 100% !important;
+  margin: 10px 15px !important;
+  }
+#editCustomerFormId  .modal-body label{
+  font-weight:500;
+  color: black;
+}
+#specialEditCustomerFormId .modal-body label{
+  font-weight:500;
+  color: black;
+}
+#mconnectPartnerDetailsFormId .modal-body label{
+  font-weight:500;
+  color: black;
+}
+#MrvoipPartnerDetailsFormId .modal-body label{
+  font-weight:500;
+  color: black;
+}
+#call4tellPartnerDetailsFormId .modal-body label{
+  font-weight:500;
+  color: black;
+}
+
+.ckboxclass{
+  margin-left: 10px;
+}
+#invoiceSharedCustomerFormId .modal-body label{
+  font-weight:500;
+  color: black;
+}
+
+/* .addcustomernewallcss .ng-autocomplete input {
+  color: rgb(153, 54, 54);
+}
+.ng-autocomplete 
+  ::ng-deep .autocomplete-container {
+    margin-left: 15px;
+    padding-left: 5px;
+    width: 428px;
+    color: blue;
+    border-radius: 2px solid grey;
+    border-color: grey;
+    border-bottom: 0px !important;
+    box-shadow: none;
+   
+  }
+
+
+  .ng-autocomplete 
+  ::ng-deep .autocomplete-container .input-container input {
+    font-size: 14px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    box-shadow: none;
+  
+    background-color: #fff;
+    color: #000000de;
+    width: 100%;
+    padding: 0 15px;
+    line-height: 40px;
+    height: 40px;
+}
+
+.ng-autocomplete 
+::ng-deep .autocomplete-container .input-container input:focus {
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 10px #ededed
+}
+
+
+  .ng-autocomplete 
+  ::ng-deep .autocomplete-container  .input-container input{
+      color: rgb(17, 17, 17);
+  }
+  .ng-autocomplete 
+  ::ng-deep .autocomplete-container  .input-container {
+    border-width: 0px;
+  }
+  */
+ 
+
+  .ng-autocomplete 
+  ::ng-deep .autocomplete-container .input-container input {
+ 
+    text-align: left;
+    display: block;
+    width: 100%;
+    height: 2.625rem;
+    padding: 0.375rem 1.2rem;
+    padding-left: 4px!important;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: #fff;
+    background-clip: padding-box;
+    /* border: 1px solid #f1f2f6; */
+    border: 1px solid #beeaca;
+    border-radius: 5px;
+    box-shadow: 0 0;
+    color: #495057;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    
+}
+
+
+
+.ng-autocomplete 
+::ng-deep .autocomplete-container .input-container input:focus {
+   border: 1px solid  #3d0096;
+
+  box-shadow: 1px 1px 10px #ededed
+}
+
+
+  .ng-autocomplete 
+  ::ng-deep .autocomplete-container  .input-container input{
+    color: #495057;
+      
+  }
+  .ng-autocomplete 
+  ::ng-deep .autocomplete-container  .input-container {
+    border-width: 0px;
+  }
+
+
+/* .addcustomernewallcss .modal-body input[type=text]{
+  font-weight:500;
+  color: black;
+  border-color: rgb(14, 13, 13);
+}
+.addcustomernewallcss .modal-body select{
+  font-weight:500;
+  color: black;
+  border-color: rgb(14, 13, 13);
+}
+.addcustomernewallcss .modal-body .ng-autocomplete{
+  font-weight:500;
+  color: black;
+  border-color: rgb(14, 13, 13);
+} */
+
+#editCustomerFormId .modal-dialog{
+    max-width: 80%;
+}
+#billCodeFormId .modal-dialog{
+  max-width: 60%;
+}
+#landscapeEmailFormId .modal-dialog{
+  max-width: 60%;
+ 
+}
+#tinyLandscapeEmailID{
+  width: 100% !important;
+  
+}
+
+/* table {
+ 
+    table-layout: fixed;
+
+    width: 100%
+  }
+  
+  th,tr
+  td {
+   
+    width: 80px;
+    overflow: hidden;
+  } */
+  .userDatatable table td{padding:4px 0px 4px!important;}
+  .userDatatable  table tr td span{display: block;  white-space: nowrap; width: 120px; overflow: hidden;text-overflow: ellipsis; }
+  /* .userDatatable  table tr th:first-child, .userDatatable  table tr td:first-child{width: 50px;} */
+  .userDatatable__imgWrapper.d-flex.align-items-center{justify-content: center;}
+  .userDatatable .d-flex{justify-content: center;margin-right: 0;}
+  .userDatatable tbody .custom-checkbox input[type="checkbox"] + label{margin-right: 0px!important;}
+  
+
+
+
+  
+
+  .dropdown {
+    position: relative;
+  }
+ 
+  .dropdown__list {
+    z-index:2;
+    position: absolute;
+    display: none;
+    padding: 10px;
+    min-width: 100%;
+    background: #fff;
+    border: 1px solid;
+    text-align: center;
+    cursor: pointer;
+  }
+  .dropdown__item {
+    list-style-type: none;
+  }
+  .dropdown__link {
+    display: block;
+    padding: 0.3em 1em;
+    background: white;
+    color: var(--dropdown__link_clr);
+    text-decoration: none;
+  }
+  .dropdown__link:hover {
+    opacity: 0.9;
+  }
+  .dropdown:hover .button {
+    opacity: 0.9;
+  }
+  /* changes made by aashiq starts */
+  .dropdown:hover .dropdown__list {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 31px;
+  }
+  .view:hover {
+   
+      background: rgba(207, 20, 23, 0.5);
+      -webkit-border-radius: 50%;
+      border-radius: 50%;
+  }
+  .remove:hover {
+   
+    background: rgba(66, 124, 52, 0.5);
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+  .close:hover {
+   
+  background: rgba(180, 12, 124, 0.4);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+  .dropdown a {
+    font-size: 14px;
+    /* margin: 5px 8px!important; */
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 37px;
+    width: 37px;
+  }
+    
+    /* changes made by aashiq ends */
+
+ 
+  .button {
+    padding: 0.6em 1.5em;
+  
+  }
+  .btn1 {
+    background-color: 	 #20c997;
+    border: none;
+    color: white;
+    padding: 0;
+    font-size: 16px;
+    width: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    border-radius: 50%;
+  }
+  .btn1:hover {
+    background-color: rgb(221, 109, 152);
+  }
+  i.fa.fa-bars {
+    color: #fff!important;
+}
+
+tr:nth-child(even) {background:#FFF}
+tr:nth-child(odd) {background: #FFF}
+
+
+/* aasiq autocomplete code below */
+/* 
+.addcustomernewallcss .modal-body ::ng-deep ng-autocomplete .autocomplete-container input:focus  
+{
+    color: #495057;
+    background-color: #fff;
+    border-color: #5f63f2;
+    outline: 0;
+    box-shadow: 0 0, 0 5px 20px #5f63f21a;
+}
+
+.addcustomernewallcss .modal-body ::ng-deep ng-autocomplete .autocomplete-container input {
+display: block;
+width: 75%;
+height: 2.625rem;
+padding: 0.375rem 1.2rem;
+font-size: 14px;
+font-weight: 400;
+line-height: 1.5;
+color: #495057;
+background-color: #fff;
+-webkit-background-clip: padding-box;
+background-clip: padding-box;
+border: 1px solid #f1f2f6;
+border-radius: 5px;
+box-shadow: 0 0;
+transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.addcustomernewallcss .modal-body ::ng-deep ng-multiselect-dropdown .multiselect-dropdown .dropdown-btn{
+  display: block;
+width: 100%;
+height: 2.625rem;
+padding: 0.375rem 1.2rem;
+font-size: 14px;
+font-weight: 400;
+line-height: 1.5;
+color: #495057;
+background-color: #fff;
+-webkit-background-clip: padding-box;
+background-clip: padding-box;
+border: 1px solid #f1f2f6;
+border-radius: 5px;
+box-shadow: 0 0;
+transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; 
+}
+.addcustomernewallcss .modal-body ::ng-deep ng-multiselect-dropdown .multiselect-dropdown .dropdown-btn:focus{
+  
+  color: #495057;
+  background-color: #fff;
+  border-color: #5f63f2;
+  outline: 0;
+  box-shadow: 0 0, 0 5px 20px #5f63f21a;
+}
+.addcustomernewallcss .modal-body ::ng-deep .mat-form-field{
+  width: 100%!important;
+  padding: 2px 15px 2px 15px!important;
+} */
+
+
+
+
+/* ::-webkit-input-placeholder { 
+  color: #495057 !important;
+} */
+
+
+
+
+
+
+.ng-autocomplete 
+ ::ng-deep .autocomplete-container .input-container input{
+   background: transparent;
+ }
+ .ng-autocomplete 
+ ::ng-deep .autocomplete-container .input-container input:focus,
+ ::ng-deep .multiselect-dropdown .dropdown-btn:focus  {
+   outline: none;
+   border: 2px solid transparent!important;
+   background-image: linear-gradient(white, white), linear-gradient(315deg, rgb(236, 160, 255), rgb(170, 178, 255), rgb(132, 255, 201))!important;
+   background-origin: border-box;
+   background-clip: padding-box, border-box;
+   animation: bg-hue 2s linear infinite;
+ }
+
+ .form-control{
+  border: 1px solid #e1e1e1;
+  background: transparent;}
+ .form-control:focus {
+  outline: none;
+  border: 2px solid transparent;
+  background-image: linear-gradient(white, white), linear-gradient(315deg, rgb(236, 160, 255), rgb(170, 178, 255), rgb(132, 255, 201));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  animation: bg-hue 2s linear infinite;
+}
+
+/* @keyframes for the gradient animation */
+@keyframes bg-hue {
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+
+label {
+    font-weight: 600;
+    color: #051b5a!important;
+}
+
+
+
+.alertdangerCustomCSS1 {
+
+  color: white!important;
+  background-color: #ffe5e5;
+  border-color: #ffe5e5;
+
+  outline: none;
+  border: 2px solid transparent;
+  background-image: linear-gradient(rgb(226, 19, 19), rgb(223, 11, 11)), linear-gradient(315deg, rgb(235, 10, 10), rgb(228, 15, 26), rgb(211, 27, 27));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  animation: bg-hue 2s linear infinite;
+}
+
+.alertdangerCustomCSS {
+  /* color: #ff4d4f; */
+  color: white!important;
+  background-color: #ffe5e5;
+  border-color: #ffe5e5;
+  width: 100% !important;
+  margin: 10px 15px !important;
+ 
+  outline: none;
+  border: 2px solid transparent;
+  background-image: linear-gradient(rgb(226, 19, 19), rgb(223, 11, 11)), linear-gradient(315deg, rgb(235, 10, 10), rgb(228, 15, 26), rgb(211, 27, 27));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  animation: bg-hue 2s linear infinite;
+}
+
+
+::ng-deep  .mat-form-field-infix {
+ 
+  width: 480px !important;
+}
+
+::ng-deep .multiselect-dropdown .dropdown-btn{
+  border: 1px solid #e1e1e1!important;
+  background: transparent;
+  height: 42px;
+  display: flex!important;
+  align-items: center;
+}
+
+::ng-deep .multiselect-dropdown .dropdown-btn .selected-item-container .selected-item{
+  max-width: 100%!important;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+    background-color: #f3d2f0 !important;
+    opacity: 0.6;
+    color: black!important;
+}
+
+.mandatoryField{
+  color: red;
+}
+
+.mousepoint{
+  cursor: pointer !important;
+}
+.CheckboxScroll{
+  height: 140px;
+  overflow-y: scroll;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+.modal-header{
+  background-color: #17707B!important;
+  color: white !important;
+}
+.modal-header h2{margin-bottom: 0}
+.modal-footer{
+  background-color: #e9e3e525!important;
+}
+.close{
+  background: none;
+  opacity: 1;
+}
+.close:not(:disabled):not(.disabled):focus, .close:not(:disabled):not(.disabled):hover{
+  opacity: 1;
+  background: none;
+}
+.close:focus{outline: 0;}
+.close span{color: #fff;}
+.searchTop{
+  border: 1px solid #520505!important;
+}
+.searchTop:focus {
+  outline: none;
+  border: 2px solid transparent;
+  background-image: linear-gradient(white, white), linear-gradient(315deg, rgb(236, 160, 255), rgb(170, 178, 255), rgb(132, 255, 201));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  animation: bg-hue 2s linear infinite;
+}
+
+
+
+.search-bar-section {
+  width: 250px;
+  height: 40px;
+  background-color: #313949;
+  border-radius: 4rem;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.search__box {
+  float: left;
+  width: 0;
+  /* height: 4rem; */
+  background: none;
+  color: #f7f7f7;
+  
+  font-size: 14px;
+  border-radius: 2rem;
+  outline: none;
+  border: none;
+  position: relative;
+  opacity: 1;
+  transition: all .75s ease-in;
+  cursor: pointer;
+
+}
+
+.search__icon {
+  box-sizing: border-box;
+  float: left;
+  display: inline-block;
+  margin-top: 0;
+  cursor: pointer;
+  /* position: absolute; */
+  top: 23px;
+  /* color: #fa983a; */
+  /* color: #5f63f2; */
+  color:#009688;
+  transition: all .25s ease-in;
+  border-radius: 50%;
+}
+
+.search-bar-section:hover > .search__box {
+  width: 85%;
+  padding: 0 1rem;
+}
+
+.search-bar-section:hover > .search__icon {
+  background-color: #eee;
+  
+  padding: 8px;
+  /* position: absolute;
+  top: 13px; */
+  margin-left: .8rem;
+}
+
+.quotation-btn-section{
+  display: flex;
+  align-items: center;
+}
+th{
+  padding: 10px 0px;
+}

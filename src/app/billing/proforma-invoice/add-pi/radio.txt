@@ -1,0 +1,34 @@
+    <div class="col-lg-6">
+                <div class="form-group row">
+                    <div class="form-check form-check-inline"  *ngFor="let display of dynamicCheckboxwithKey;let i=index">
+                        <input class="form-check-input" type="checkbox"  formControlName="mile_Discount" 
+                        id="inlineCheckbox{{i}}" value="{{display.id}}" (change)="mile($event)" >
+                        <label class="form-check-label" for="inlineCheckbox{{i}}">{{display.name}} </label>
+                      </div>
+                      <!-- <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" formControlName="mile_MileStone" 
+                        id="inlineCheckbox2" value="Mile Stone" (change)="mile($event)">
+                        <label class="form-check-label" for="inlineCheckbox2"> Mile Stone</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" formControlName="mile_MSDisplay" 
+                        value="M S Display" (change)="mile($event)">
+                        <label class="form-check-label" for="inlineCheckbox3">M S Display </label>
+                      </div> -->
+                </div>
+            </div>
+
+
+(change)="handleChange($event)"
+
+            
+            <!-- <div class="col-lg-6">
+                <div class="form-group row">
+                    <div class="form-check form-check-inline"  *ngFor="let logo of SelectExtraLogoCheckboxwithKey;let i=index">
+                        <input class="form-check-input" type="checkbox"  formControlName="ExtraLogo" 
+                        id="inlineCheckbox{{i}}" value="{{logo.id}}" (change)="mile($event)" >
+                        <label class="form-check-label" for="inlineCheckbox{{i}}">{{logo.name}} </label>
+                      </div>
+                  
+                </div>
+            </div> -->

@@ -1,0 +1,463 @@
+#addCustomerContractId{
+    padding-right: 0px !important;
+}
+#addCustomerContractId .modal-dialog{
+    max-width: 97%;
+}
+#addCustomerContractId tr th{
+    width: 200px;
+    margin: 0px 10px;
+}
+
+#editCustomerContractId{
+    padding-right: 0px !important;
+}
+#editCustomerContractId .modal-dialog{
+    max-width: 57%;
+}
+#editCustomerContractId .tr .th{
+    width: 200px;
+    margin: 0px 10px;
+}
+/* #fileAttachmentCustomerContractId{
+    padding-right: 0px !important;
+    max-width: 85%;
+} */
+.contractFileAttachmentCSS{
+  width: 80%;
+}
+
+
+/* #fileAttachmentCustomerContractId .tr .th{
+    width: 200px;
+    margin: 0px 10px;
+} */
+/* #fileContractGenerateId .tr .th{
+    width: 200px;
+    margin: 0px 10px;
+} */
+/* #fileContractGenerateId.td .th{
+    padding-right: 0px !important;
+} */
+#fileContractTemporaryId{
+    padding-right: 0px !important;
+}
+#fileContractTemporaryId .modal-dialog{
+    max-width: 97%;
+    max-height: 95%;
+    
+}
+.temporaryFileGenerateCSS {
+  height: 550px;
+  max-width: 97%;
+  max-height: 95%;
+  
+}
+.demoTable{
+    /* border: 1px solid black; */
+    width: 100%;
+   
+  
+}
+.userDatatable table td{padding:4px 0px 0px!important;}
+  .userDatatable  table tr td span{display: block;  white-space: nowrap; width: 120px; overflow: hidden;text-overflow: ellipsis; }
+  /* .userDatatable  table tr th:first-child, .userDatatable  table tr td:first-child{width: 50px;} */
+  .userDatatable__imgWrapper.d-flex.align-items-center{justify-content: center;}
+  .userDatatable .d-flex{justify-content: center;margin-right: 0;}
+  .userDatatable tbody .custom-checkbox input[type="checkbox"] + label{margin-right: 0px!important;}
+  
+  /* .add-contact-table-section  table tr th span{color: black;} */
+
+
+  
+
+  .dropdown {
+    position: relative;
+  }
+  .dropdown__list {
+    z-index:2;
+    position: absolute;
+    display: none;
+    padding: 10px;
+    min-width: 100%;
+    background: #fff;
+    border: 1px solid;
+    text-align: center;
+    cursor: pointer;
+  }
+  .dropdown__item {
+    list-style-type: none;
+  }
+  .dropdown__link {
+    display: block;
+    padding: 0.3em 1em;
+    background: white;
+    color: var(--dropdown__link_clr);
+    text-decoration: none;
+  }
+  .dropdown__link:hover {
+    opacity: 0.9;
+  }
+  .dropdown:hover .button {
+    opacity: 0.9;
+  }
+  .dropdown:hover .dropdown__list {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 31px;
+   
+  }
+  .view:hover {
+    background: rgba(224, 71, 166, 0.1);
+      -webkit-border-radius: 50%;
+      border-radius: 50%;
+  }
+  .remove:hover {
+   
+    background: rgba(10, 41, 2, 0.1);
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+
+.hover1:hover {
+   
+  background: rgba(255, 77, 79, 0.5);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+.hover2:hover {
+
+background: rgba(118, 177, 103, 0.5);
+-webkit-border-radius: 50%;
+border-radius: 50%;
+}
+.hover3:hover {
+
+background: rgba(5, 58, 71, 0.5);
+-webkit-border-radius: 50%;
+border-radius: 50%;
+}
+.hover4:hover {
+
+background: rgba(91, 114, 7, 0.5);
+-webkit-border-radius: 50%;
+border-radius: 50%;
+}
+.hover5:hover {
+
+background: rgba(12, 1, 39, 0.973);
+-webkit-border-radius: 50%;
+border-radius: 50%;
+}
+.hover6:hover {
+   
+  background: rgba(228, 231, 14, 0.973);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+.hover7:hover {
+
+background: rgb(34, 46, 32);
+-webkit-border-radius: 50%;
+border-radius: 50%;
+}
+.hover8:hover {
+
+background: rgba(23, 198, 241, 0.973);
+-webkit-border-radius: 50%;
+border-radius: 50%;
+}
+.hover9:hover {
+
+background: rgba(212, 157, 219, 0.849);
+-webkit-border-radius: 50%;
+border-radius: 50%;
+}
+.hover10:hover {
+
+background: rgba(36, 22, 153, 0.555);
+-webkit-border-radius: 50%;
+border-radius: 50%;
+}
+.hover11:hover {
+   
+  background: rgba(219, 136, 138, 0.5);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+.hover12:hover {
+
+background: rgba(151, 179, 144, 0.5);
+-webkit-border-radius: 50%;
+border-radius: 50%;
+}
+.hover13:hover {
+
+background: rgba(59, 79, 83, 0.5);
+-webkit-border-radius: 50%;
+border-radius: 50%;
+}
+
+
+  
+  .dropdown a {
+    font-size: 14px;
+    /* margin: 5px 8px!important; */
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 37px;
+    width: 37px;
+  }
+  /* .dropdown:hover .dropdown__list {
+    display: block;
+  }
+  .view:hover{background-color: rgb(52, 74, 172);} */
+  
+  .button {
+    padding: 0.6em 1.5em;
+  
+  }
+  .btn1 {
+    background-color: 	 #20c997;
+    border: none;
+    color: white;
+    padding: 0;
+    font-size: 16px;
+    width: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    border-radius: 50%;
+  }
+  .btn1:hover {
+    background-color: rgb(221, 109, 152);
+  }
+  i.fa.fa-bars {
+    color: #fff!important;
+}
+
+tr:nth-child(even) {background: rgb(239, 241, 238)}
+tr:nth-child(odd) {background: #FFF}
+
+
+
+
+
+
+
+
+
+
+
+/* Contract File Attachment modal css */
+.contractcss .modal-header .modal-title {
+  color:#ffff;
+}
+.contractcss .modal-header  {
+
+  background-color: rgb(91, 148, 84);
+}
+ .contractcss .modal-body label{
+  color:#131212;
+
+ }
+ #fileAttachmentCustomerContractId .modal-dialog{
+  max-width: 47%;
+}
+ .contractcss .modal-body select{
+  color:#beb8b8;
+  
+ }
+ .contractcss .modal-body select option{
+  margin: 40px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+
+  
+ }
+ 
+ 
+
+
+/* Contract File Attachment modal css */
+.contractgeneratecss .modal-header .modal-title {
+  color:#ffff;
+}
+.contractgeneratecss .modal-header  {
+
+  background-color: rgb(29, 78, 97);
+}
+.contractgeneratecss .modal-header h2 {
+
+  color:#ffff;
+}
+ .contractgeneratecss .modal-body label{
+  color:#131212;
+
+ }
+ #fileAttachmentCustomerContractId .modal-dialog{
+  max-width: 67%;
+}
+ .contractgeneratecss .modal-body select{
+  color:#161515;
+  
+ }
+ .contractgeneratecss .modal-body select option{
+  margin: 40px;
+  background: rgba(59, 54, 53, 0.966);
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.651);
+
+  
+ }
+ .headingLabel{
+  font-weight:540;
+  font-size:medium;
+ }
+
+ .remarkcss{
+  
+  font-size: medium;
+  font-weight:normal;
+ }
+
+
+ .invoicecss  .modal-header .modal-title {
+  color:#ffff;
+}
+.invoicecss .modal-header  {
+
+  background-color: rgb(29, 78, 97);
+}
+.invoicecss .modal-header h2 {
+
+  color:#ffff;
+}
+.invoicecss .modal-body label{
+  color:#131212;
+
+ }
+ .invoicecss  .modal-header .modal-title {
+  color:#ffff;
+}
+.invoicecss .modal-header  {
+
+  background-color: rgb(29, 78, 97);
+}
+.invoicecss .modal-header h2 {
+
+  color:#ffff;
+}
+.invoicecss .modal-body label{
+  color:#131212;
+
+ }
+
+ .add-contact-table-section tr{
+  border: 1px solid #ddd;
+ }
+ .add-contact-table-section tr th,  .add-contact-table-section tr td{
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+ }
+ #addCustomerContractId .modal-dialog{
+  width: 60%;
+ }
+ .add-contact-table-section tr:nth-child(even) {background: #fff}
+ .add-contact-table-section tr:nth-child(odd) {background:#fff}
+
+
+ .abc input {
+ height: 200px !important;
+ width: 20% !important;
+}
+
+#TextEditorId  label{
+  color:#131212;
+  font-weight:600;
+ }
+
+ #ApproveStatusId .modal-dialog{
+  width: 30%;
+  max-height: 30%;
+ }
+ #ApproveStatusId  label{
+  color:#131212;
+  font-weight:500;
+ }
+ #BizzFileTextEditorId label{
+  color:#131212;
+  font-weight:600;
+ }
+ .swal2-container{
+  z-index: 9999 !important;
+ }
+
+
+
+
+
+ .ng-autocomplete 
+ ::ng-deep .autocomplete-container .input-container input{
+   background: transparent;
+ }
+ .ng-autocomplete 
+ ::ng-deep .autocomplete-container .input-container input:focus {
+   outline: none;
+   border: 2px solid transparent!important;
+   background-image: linear-gradient(white, white), linear-gradient(315deg, rgb(236, 160, 255), rgb(170, 178, 255), rgb(132, 255, 201));
+   background-origin: border-box;
+   background-clip: padding-box, border-box;
+   animation: bg-hue 2s linear infinite;
+ }
+
+ .form-control{
+  border: 1px solid #e1e1e1;
+  background: transparent;}
+ .form-control:focus {
+  outline: none;
+  border: 2px solid transparent;
+  background-image: linear-gradient(white, white), linear-gradient(315deg, rgb(236, 160, 255), rgb(170, 178, 255), rgb(132, 255, 201));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  animation: bg-hue 2s linear infinite;
+}
+
+/* @keyframes for the gradient animation */
+@keyframes bg-hue {
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+
+label {
+    font-weight: 600;
+    color: #009688!important;
+}
+
+ng-autocomplete.ng-autocomplete.ng-untouched.ng-pristine.ng-valid, ng-autocomplete.ng-autocomplete.ng-pristine.ng-valid.ng-touched{
+  padding: 0px;
+}
+
+.alertdangerCustomCSS1 {
+  /* color: #ff4d4f; */
+  color: white!important;
+  background-color: #ffe5e5;
+  border-color: #ffe5e5;
+  width: 100% !important;
+
+  outline: none;
+  border: 2px solid transparent;
+  background-image: linear-gradient(rgb(226, 19, 19), rgb(223, 11, 11)), linear-gradient(315deg, rgb(235, 10, 10), rgb(228, 15, 26), rgb(211, 27, 27));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  animation: bg-hue 2s linear infinite;
+}

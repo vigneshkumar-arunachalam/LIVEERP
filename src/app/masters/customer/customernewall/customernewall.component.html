@@ -1,0 +1,3794 @@
+<div class="contents-section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 mb-30">
+        <div class="card">
+          <div class="card-header color-dark fw-500">
+            <h3 style="margin-bottom: 0;"> Customer Details</h3>
+
+
+            <!-- <input type="search" class="form-control searchTop" placeholder="Quick Search"
+              (keyup)="CustomerListQuickSearch($event)" style="height: 40px;width: 160px;" /> -->
+
+            <!-- <input type="text" placeholder="Search Shared Person"  class="form-control" (keyup)="quotationSharedPersonNameSearch($event)">
+            <p>{{values}}</p> -->
+            <div class="quotation-btn-section">
+
+              <div class="search-bar-section">
+                <input type="search" id="box" placeholder="Quick Search anything..." title="Quick Search"
+                  (mouseleave)="CustomerListQuickSearch($event)" (keyup)="CustomerListQuickSearch($event)"
+                  class="search__box">
+                <i class="fas fa-search search__icon" id="icon" onclick="toggleShow()"></i>
+              </div>
+
+              <button type="button" title="Add New Customer" class="btn btn-primary btn-default btn-squared"
+                data-toggle="modal" data-target="#addCustomerFormId" (click)="clearCustomerAdd()" (click)="pageLoad()"
+                style="margin-right: 10px;"><i class="fas fa-plus" style="margin-right:0;"></i>
+              </button>
+
+              <button type="button" class="btn btn-primary" data-toggle="modal" title="Advanced Search"
+                data-target="#searchCustomerFormId">
+                <i class="fas fa-search" style="margin-right:0;"></i>
+              </button>
+            </div>
+            <!-- <button type="button" class="btn btn-primary btn-default btn-squared" data-toggle="modal"
+              data-target="#addCustomerFormId" (click)="clearCustomerAdd()" (click)="pageLoad()">
+              Add Customer
+            </button> -->
+
+          </div>
+          <div class="card-body">
+
+
+            <div class="userDatatable global-shadow border-0 bg-white w-100">
+              <div class="table-responsive">
+                <table class="table mb-0 table-borderless">
+                  <thead>
+                    <tr class="userDatatable-header">
+                      <th>
+                        <!-- <div class="d-flex align-items-center">
+                            <div class="custom-checkbox  check-all">
+                                <input class="checkbox" type="checkbox" id="check-3"
+                                    (change)="selectAll($event)">
+                                <label for="check-3">
+
+                                </label>
+                            </div>
+                        </div> -->
+                      </th>
+                      <th style="display:none;">
+                        <span class="userDatatable-title">Customer Id</span>
+                      </th>
+
+                      <th>
+                        <span class="userDatatable-title">Customer Name</span>
+                      </th>
+                      <th>
+                        <span class="userDatatable-title">Customer Address</span>
+                      </th>
+                      <!-- <th>
+                        <span class="userDatatable-title">Customer Address1</span>
+                      </th>
+                      <th>
+                        <span class="userDatatable-title">Customer Address2</span>
+                      </th> -->
+                      <th>
+                        <span class="userDatatable-title">Customer Phone</span>
+                      </th>
+                      <th>
+                        <span class="userDatatable-title">Biller Name</span>
+                      </th>
+                      <th>
+                        <span class="userDatatable-title">Contact Person</span>
+                      </th>
+                      <th>
+                        <span class="userDatatable-title"> Email</span>
+                      </th>
+                      <th>
+                        <span class="userDatatable-title">Finance Email</span>
+                      </th>
+                      <th style="display:none;">
+                        <span class="userDatatable-title">Customer Type</span>
+                      </th>
+                      <th>
+                        <span class="userDatatable-title">User Name</span>
+                      </th>
+                      <th>
+                        <span class="userDatatable-title">action</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let list of customer_list; let i = index">
+                      <td>
+                        <div class="d-flex">
+                          <div class="userDatatable__imgWrapper d-flex align-items-center">
+                            <div class="checkbox-group-wrapper">
+                              <div class="checkbox-group d-flex">
+                                <div class="checkbox-theme-default custom-checkbox checkbox-group__single d-flex">
+                                  <input class="checkbox" type="checkbox" id="check-grp-{{i}}"
+                                    (change)="EditCHK(list.customerId,$event)">
+                                  <label for="check-grp-{{i}}"></label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </td>
+                      <td style="display:none;">
+                        {{ list.customerId }}
+                      </td>
+
+                      <td>
+                        <span>{{ list.customerName }}</span>
+                      </td>
+                      <td>
+                        <span>{{ list.address}}</span>
+                      </td>
+                      <!-- <td>
+                        <span>{{ list.customerAddress1 }}</span>
+                      </td>
+                      <td>
+                        <span>{{ list.customerAddress2 }}</span> 
+                      </td> -->
+                      <td>
+                        <span>{{ list.customerPhone }}</span>
+                      </td>
+                      <td>
+                        <span>{{ list.billerName }}</span>
+                      </td>
+                      <td>
+                        <span>{{ list.companyName}}</span>
+                      </td>
+                      <td>
+                        <span> {{ list.email }}</span>
+                      </td>
+                      <td>
+                        <span>{{ list.finance_email }}</span>
+                      </td>
+                      <td style="display:none;">
+                        <span>{{ list.cus_type }}</span>
+                      </td>
+                      <td>
+                        <span>{{ list.userName }}</span>
+                      </td>
+
+                      <td>
+
+                        <div class="page">
+
+                          <div class="dropdown">
+                            <button class="btn1"><i class="fa fa-bars"></i></button>
+                            <ul class="dropdown__list">
+                              <li class="dropdown__item">
+                                <a class="remove" title="View" data-toggle="modal" data-target="#viewCustomerFormId"
+                                  (click)="viewCustomer(list.customerId)">
+
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-alert-circle">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                                  </svg>
+                                </a>
+                              </li>
+                              <li class="dropdown__item">
+                                <a class="view" title="Edit" data-toggle="modal" data-target="#editCustomerFormId"
+                                  (click)="editCustomer(list.customerId)">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-edit">
+                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                  </svg>
+                                </a>
+                              </li>
+
+
+                              <li class="dropdown__item">
+                                <a class="remove" title="Delete" (click)="deleteCustomer(list.customerId)">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-trash-2">
+                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                    <path
+                                      d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                    </path>
+                                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                                  </svg>
+                                </a>
+                              </li>
+                              <li class="dropdown__item">
+                                <a class="view" title="Landscape Email" data-toggle="modal"
+                                  data-target="#landscapeEmailFormId" (click)="landscapeEmailEdit(list.customerId)">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-mail">
+                                    <path
+                                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                    </path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                  </svg>
+                                </a>
+                              </li>
+                              <li class="dropdown__item">
+                                <a class="remove" title="Customer Status" data-toggle="modal"
+                                  (click)="customer_status(list.customerId,list.cust_status)"
+                                  *ngIf="list.cust_status =='P'">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-user-plus">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="8.5" cy="7" r="4"></circle>
+                                    <line x1="20" y1="8" x2="20" y2="14"></line>
+                                    <line x1="23" y1="11" x2="17" y2="11"></line>
+                                  </svg>
+                                </a>
+                              </li>
+                              <li class="dropdown__item">
+                                <a class="remove" title="Customer Status" data-toggle="modal"
+                                  (click)="customer_status(list.customerId,list.cust_status)"
+                                  *ngIf="list.cust_status == 'N'">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="red" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-user-x">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="8.5" cy="7" r="4"></circle>
+                                    <line x1="18" y1="8" x2="23" y2="13"></line>
+                                    <line x1="23" y1="8" x2="18" y2="13"></line>
+                                  </svg>
+                                </a>
+                              </li>
+
+
+
+                              <li class="dropdown__item">
+                                <a class="view" title="Reseller Status" data-toggle="modal"
+                                  (click)="reseller_statusMethod(list.customerId)" *ngIf="this.isResllerStatus==false">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="red" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-minus-circle">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="8" y1="12" x2="16" y2="12"></line>
+                                  </svg>
+                                </a>
+                              </li>
+                              <li class="dropdown__item">
+                                <a class="view" title="Reseler Status" data-toggle="modal"
+                                  (click)="reseller_statusMethod(list.customerId)" *ngIf="this.isResllerStatus==true">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-plus-circle">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="8" x2="12" y2="16"></line>
+                                    <line x1="8" y1="12" x2="16" y2="12"></line>
+                                  </svg>
+
+                                </a>
+                              </li>
+                              <li class="dropdown__item">
+                                <a class="remove" title="Employee Status" data-toggle="modal"
+                                  (click)="employee_status(list.customerId)" *ngIf="this.isEmployeeStatus==true">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-eye">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                  </svg>
+
+                                </a>
+                              </li>
+                              <li class="dropdown__item">
+                                <a class="remove" title="Employee Status" data-toggle="modal"
+                                  (click)="employee_status(list.customerId)" *ngIf="this.isEmployeeStatus==false">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="red" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-eye-off">
+                                    <path
+                                      d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24">
+                                    </path>
+                                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                                  </svg>
+                                </a>
+                              </li>
+                              <li class="dropdown__item">
+                                <a class="view" title="Share Customer Permission" data-toggle="modal"
+                                  data-target="#SharedCustomerPermissionFormId"
+                                  (click)="shareCustomerPermission_edit(list.customerId)">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-check-circle">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                  </svg>
+                                </a>
+                              </li>
+                              <li class="dropdown__item">
+                                <a class="remove" title="Assign Account Manager" data-toggle="modal"
+                                  data-target="#AssignAccountManager"
+                                  (click)="AssignAccountManager_edit(list.customerId)">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-crosshair">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="22" y1="12" x2="18" y2="12"></line>
+                                    <line x1="6" y1="12" x2="2" y2="12"></line>
+                                    <line x1="12" y1="6" x2="12" y2="2"></line>
+                                    <line x1="12" y1="22" x2="12" y2="18"></line>
+                                  </svg>
+                                </a>
+                              </li>
+                              <li class="dropdown__item">
+                                <a class="view" title="Quick Mail" (click)="quickMail(list.customerId)">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-at-sign">
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                    <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"></path>
+                                  </svg>
+                                </a>
+                              </li>
+
+                              <li class="dropdown__item">
+                                <a class="remove" title="Google Authentication" data-toggle="modal"
+                                  data-target="#GoogleAuthentication" (click)="GoogleAuthenticationId(list.customerId)">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-airplay">
+                                    <path
+                                      d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1">
+                                    </path>
+                                    <polygon points="12 15 17 21 7 21 12 15"></polygon>
+                                  </svg>
+                                </a>
+                              </li>
+
+                              <li class="dropdown__item">
+                                <a class="view" title="File Attachment" data-toggle="modal"
+                                  data-target="#fileAttachmentFormId" (click)="fileAttachmentEdit(list.customerId)">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-file-plus">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="12" y1="18" x2="12" y2="12"></line>
+                                    <line x1="9" y1="15" x2="15" y2="15"></line>
+                                  </svg>
+                                </a>
+                              </li>
+
+                              <li class="dropdown__item">
+                                <a class="remove" title="Create a Call4Tel Customer"
+                                  (click)="nx32CustomerCreate(list.customerId)">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-box">
+                                    <path
+                                      d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                    </path>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                  </svg>
+                                </a>
+                              </li>
+
+                              <li class="dropdown__item" *ngIf="list.nx32_state==1">
+                                <a class="view" title="NX32 Permission Status" data-toggle="modal"
+                                  data-target="#customer_NX32PermissionFormId"
+                                  (click)="customer_NX32PermissionDisplay(list.customerId,list.nx32_state)">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-plus">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                  </svg>
+
+                                </a>
+                              </li>
+                              <li class="dropdown__item" *ngIf="list.nx32_state==0">
+                                <a class="view" title="NX32 Permission Status" data-toggle="modal"
+                                  data-target="#customer_NX32PermissionFormId"
+                                  (click)="customer_NX32PermissionDisplay(list.customerId,list.nx32_state)">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="red" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-x">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                  </svg>
+                                </a>
+                              </li>
+                              <li class="dropdown__item">
+                                <a class="remove" title="Special Edit" data-toggle="modal"
+                                  data-target="#specialEditCustomerFormId"
+                                  (click)="specialEditCustomer(list.customerId)">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-edit-3">
+                                    <path d="M12 20h9"></path>
+                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                                  </svg>
+                                </a>
+                              </li>
+                              <li class="dropdown__item">
+                                <a class="view" title="Invoice Share" data-toggle="modal"
+                                  data-target="#invoiceSharedCustomerFormId"
+                                  (click)="invoiceShare_edit(list.customerId)">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-share-2">
+                                    <circle cx="18" cy="5" r="3"></circle>
+                                    <circle cx="6" cy="12" r="3"></circle>
+                                    <circle cx="18" cy="19" r="3"></circle>
+                                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                                  </svg>
+                                </a>
+                              </li>
+                              <li class="dropdown__item">
+                                <a class="remove" title="Bill Code" data-toggle="modal" data-target="#billCodeFormId"
+                                  (click)="billCodeAttachmentEdit(list.customerId)">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-book-open">
+                                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                                  </svg>
+                                </a>
+                              </li>
+                              <li class="dropdown__item">
+                                <a class="view" title="C4T Partner Details" data-toggle="modal"
+                                  data-target="#call4tellPartnerDetailsFormId"
+                                  (click)="call4tel_address_getList(list.customerId)">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-move">
+                                    <polyline points="5 9 2 12 5 15"></polyline>
+                                    <polyline points="9 5 12 2 15 5"></polyline>
+                                    <polyline points="15 19 12 22 9 19"></polyline>
+                                    <polyline points="19 9 22 12 19 15"></polyline>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <line x1="12" y1="2" x2="12" y2="22"></line>
+                                  </svg>
+                                </a>
+                              </li>
+                              <li class="dropdown__item">
+                                <a class="remove" title="MrVoip" data-toggle="modal"
+                                  data-target="#MrvoipPartnerDetailsFormId"
+                                  (click)="mrvoip_address_getList(list.customerId)">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-chrome">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                    <line x1="21.17" y1="8" x2="12" y2="8"></line>
+                                    <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
+                                    <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
+                                  </svg>
+                                </a>
+                              </li>
+                              <li class="dropdown__item">
+                                <a class="view" title="MConnect" data-toggle="modal"
+                                  data-target="#mconnectPartnerDetailsFormId"
+                                  (click)="mconnect_address_getList(list.customerId)">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-cpu">
+                                    <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                                    <rect x="9" y="9" width="6" height="6"></rect>
+                                    <line x1="9" y1="1" x2="9" y2="4"></line>
+                                    <line x1="15" y1="1" x2="15" y2="4"></line>
+                                    <line x1="9" y1="20" x2="9" y2="23"></line>
+                                    <line x1="15" y1="20" x2="15" y2="23"></line>
+                                    <line x1="20" y1="9" x2="23" y2="9"></line>
+                                    <line x1="20" y1="14" x2="23" y2="14"></line>
+                                    <line x1="1" y1="9" x2="4" y2="9"></line>
+                                    <line x1="1" y1="14" x2="4" y2="14"></line>
+                                  </svg>
+                                </a>
+                              </li>
+                          
+
+                            </ul>
+                          </div>
+
+                        </div>
+
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <br>
+            <nav class="atbd-page">
+              <ul class="pagination mb-0" *ngIf="paginationData.info == 'show'">
+
+                <li class="page-item">
+                  <a [class]="paginationData.backtab=='show' ? 'page-link' :'page-link disabled'"
+                    href="javascript:void(0)"
+                    (click)="paginationData.backtab=='show' ? customerslist({'offset':paginationData.start}) : false"><i
+                      class="fas fa-angle-left"></i></a>
+                </li>
+                <li class="page-item" *ngIf="paginationData.backtab =='show'">
+                  <a class="page-link" href="javascript:void(0)"
+                    (click)="customerslist({'offset':paginationData.back})"><i class="fas fa-angle-double-left"></i></a>
+                </li>
+                <li [class]="pagination.load ==false ? 'page-item active' :'page-item'"
+                  *ngFor="let pagination of paginationData.data;let i=index">
+                  <a class="page-link" href="javascript:void(0)"
+                    (click)=" pagination.load ==true ? customerslist({'offset':pagination.offset_count}) : false">{{pagination.btn_length}}
+                    <span class="sr-only" *ngIf="pagination.load ==false">(current)</span></a>
+                </li>
+
+                <li class="page-item" *ngIf="paginationData.nexttab =='show'">
+                  <a class="page-link" href="javascript:void(0)"
+                    (click)="customerslist({'offset':paginationData.next})"><i
+                      class="fas fa-angle-double-right"></i></a>
+                </li>
+
+                <li class="page-item">
+                  <a [class]="paginationData.nexttab =='show' ? 'page-link' : 'page-link disabled'"
+                    href="javascript:void(0)"
+                    (click)="paginationData.nexttab =='show' ? customerslist({'offset':paginationData.end}) : false"><i
+                      class="fas fa-angle-right"></i></a>
+                </li>
+              </ul>
+
+            </nav>
+
+            <!-- <nav class="atbd-page">
+              <ul class="atbd-pagination d-flex">
+                <li class="atbd-pagination__item">
+                  <a href="#" class="atbd-pagination__link pagination-control"><span
+                      class="la la-angle-left"></span></a>
+                  <a href="#" class="atbd-pagination__link"><span class="page-number">1</span></a>
+                  <a href="#" class="atbd-pagination__link active"><span class="page-number">2</span></a>
+                  <a href="#" class="atbd-pagination__link"><span class="page-number">3</span></a>
+                  <a href="#" class="atbd-pagination__link pagination-control"><span class="page-number">...</span></a>
+                  <a href="#" class="atbd-pagination__link"><span class="page-number">12</span></a>
+                  <a href="#" class="atbd-pagination__link pagination-control"><span
+                      class="la la-angle-right"></span></a>
+                  <a href="#" class="atbd-pagination__option"> </a>
+                </li>
+                <li class="atbd-pagination__item">
+                  <div class="paging-option">
+                    <select name="page-number" class="page-selection">
+                      <option value="20">20/page</option>
+                      <option value="40">40/page</option>
+                      <option value="60">60/page</option>
+                    </select>
+                  </div>
+                </li>
+              </ul>
+            </nav> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- -----------------------Modal-View Customer begins-------------------------------- -->
+<div class="modal fade" id="viewCustomerFormId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLongTitle">Customer Details </h2>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h2 style="text-align:center;color:rgb(97, 72, 9)">View Customer Details</h2>
+        <form [formGroup]="viewCustomerForm">
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="companyName" class="col-lg-12  col-form-label">Company Name</label>
+                <div class="col-lg-12">
+                  <input type="text" [readonly]="isReadOnly" class="form-control" formControlName="view_company_Name"
+                    id="companyName" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="address1" class="col-lg-12 col-form-label">Address-1</label>
+                <div class="col-lg-12">
+                  <input type="text" [readonly]="isReadOnly" class="form-control"
+                    formControlName="v_billingAddress_address1" id="address1" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="address2" class="col-lg-12 col-form-label">Address-2</label>
+                <div class="col-lg-12">
+                  <input type="text" [readonly]="isReadOnly" class="form-control"
+                    formControlName="v_billingAddress_address2" id="address2" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="city" class="col-lg-12 col-form-label">City</label>
+                <div class="col-lg-12">
+                  <input type="text" [readonly]="isReadOnly" class="form-control"
+                    formControlName="v_billingAddress_city" id="city" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="state" class="col-lg-12 col-form-label">State</label>
+                <div class="col-lg-12">
+                  <input type="text" [readonly]="isReadOnly" class="form-control"
+                    formControlName="v_billingAddress_state" id="state" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="countryname" class="col-lg-12 col-form-label">Country</label>
+                <div class="col-lg-12">
+                  <input type="text" [readonly]="isReadOnly" class="form-control" formControlName="view_BA_countryname"
+                    id="countryname" />
+
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="phone" class="col-lg-12 col-form-label">Phone</label>
+                <div class="col-lg-12">
+                  <input type="text" [readonly]="isReadOnly" class="form-control" formControlName="v_ESA_phone"
+                    id="phone" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="mobile_phone" class="col-lg-12 col-form-label">Mobile Phone</label>
+                <div class="col-lg-12">
+                  <input type="text" [readonly]="isReadOnly" class="form-control" formControlName="v_ESA_MobilePhone"
+                    id="mobile_phone" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="gstin_no " class="col-lg-12 col-form-label">GSTIN No</label>
+                <div class="col-lg-12">
+                  <input type="text" [readonly]="isReadOnly" class="form-control" formControlName="v_ESA_GSTNO"
+                    id="gstin_no" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="fax" class="col-lg-12 col-form-label">FAX</label>
+                <div class="col-lg-12">
+                  <input type="text" [readonly]="isReadOnly" class="form-control" formControlName="v_ESA_FAX"
+                    id="fax" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="ESA_Email" class="col-lg-12 col-form-label">Email</label>
+                <div class="col-lg-12">
+                  <input type="text" [readonly]="isReadOnly" class="form-control" formControlName="v_ESA_Email"
+                    id="ESA_Email" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="contact_person" class="col-lg-12 col-form-label">Contact Person</label>
+                <div class="col-lg-12">
+                  <input type="text" [readonly]="isReadOnly" class="form-control" formControlName="v_contact_person_CP"
+                    id="contact_person" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="bank_acc_name" class="col-lg-12 col-form-label">Bank Account Name</label>
+                <div class="col-lg-12">
+                  <input type="text" [readonly]="isReadOnly" class="form-control" formControlName="v_bank_acc_name"
+                    id="bank_acc_name" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="bank_acc_number" class="col-lg-12 col-form-label">Bank Account Number</label>
+                <div class="col-lg-12">
+                  <input type="text" [readonly]="isReadOnly" class="form-control" formControlName="v_bank_acc_number"
+                    id="bank_acc_number" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="resell_status" class="col-lg-12 col-form-label">Reseller Status
+                  <input type="text" [readonly]="isReadOnly" class="form-control" formControlName="v_reseller_status"
+                    id="resell_status" />
+
+                </label>
+              </div>
+            </div>
+          </div>
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal">
+          Cancel
+        </button>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-------------------------- ------Modal-View Customer ends-------------------------------------- -->
+
+
+<!--------------------------- -------------------------  Modal-Add New Customer-begins-------------------------  -->
+
+
+<div class="modal fade" id="addCustomerFormId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content addcustomernewallcss">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLongTitle">Add Customer Details</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" (click)="clearcustomer()">&times;</span>
+        </button>
+
+      </div>
+      <div class="modal-body mousepoint">
+        <form [formGroup]="addCustomer" (ngSubmit)="addCustomerown()">
+          <h3 style="font-size:large;text-align: center;">Enter Customer Details</h3>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="companyCode " class="col-lg-12 col-form-label">Company Code<span class="mandatoryField">
+                    *</span></label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" [(ngModel)]="companyCodeAddCustomer" [readonly]="isReadOnly"
+                    formControlName="company_Code" id="companyCode" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <div class="ng-autocomplete">
+                  <label for="companyName" class="col-lg-12 col-form-label">Company Name<span class="mandatoryField">
+                      *</span></label>
+                  <ng-autocomplete [data]="searchResult" [searchKeyword]="keywordCompanyName"
+                    formControlName="company_Name" (selected)='selectEventCustomer($event)'
+                    (inputChanged)='searchCustomerData($event)' (inputFocused)='onFocusedCustomer($event)'
+                    [itemTemplate]="itemTemplateCustomer" [notFoundTemplate]="notFoundTemplate">
+                  </ng-autocomplete>
+
+                  <ng-template #itemTemplateCustomer let-item>
+                    <a [innerHTML]="item.customerName"></a>
+                  </ng-template>
+
+                  <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                  </ng-template>
+
+                </div>
+                <div
+                  *ngIf="addCustomer.controls['company_Name'].invalid && (addCustomer.controls['company_Name'].dirty || addCustomer.controls['company_Name'].touched)"
+                  class="alert alert-danger alertdangerCustomCSS mt-2">
+                  Company Name is Required
+                </div>
+
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="biller_name_1" class="col-lg-12 col-form-label">Default Biller Name</label>
+                <div class="col-lg-12">
+                  <select name="biller_name_1" id="biller_name_1" class="form-control"
+                    aria-label="Default select example" formControlName="defaultBillerName">
+                    <option [ngValue]="null" selected disabled>Select Default Biller</option>
+                    <option *ngFor="let e_billname of billList" value="{{ e_billname.billerId }}">
+                      {{ e_billname.billerName }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="defaultBillerName" class="col-lg-12 col-form-label">
+                  Biller Name</label>
+                <div class="col-lg-12 custom-selected-box">
+
+                  <ng-multiselect-dropdown class="abc" [placeholder]="'Select Biller name'"
+                    [settings]="dropdownSettings_billerName" [data]="dropdownList_billerName" formControlName="update"
+                    (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                  </ng-multiselect-dropdown>
+                </div>
+
+              </div>
+
+            </div> -->
+
+            <!-- <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="customerClassificationn" class="col-lg-12 col-form-label">
+                  Customer Classification<span class="mandatoryField"> *</span></label>
+                <div class="col-lg-12 custom-selected-box">
+                  <ng-multiselect-dropdown [placeholder]="'Select  Customer Classification'"
+                    [settings]="dropdownSettings_customerClassification" [data]="dropdownList_customerClassification"
+                    formControlName="customerClassification_vignesh" (onSelect)="onItemSelectCC($event)"
+                    (onSelectAll)="onSelectAllCC($event)">
+                  </ng-multiselect-dropdown>
+
+                </div>
+                <div
+                  *ngIf="addCustomer.controls['customerClassification_vignesh'].invalid && (addCustomer.controls['customerClassification_vignesh'].dirty || addCustomer.controls['customerClassification_vignesh'].touched)"
+                  class="alert alert-danger alertdangerCustomCSS mt-2">
+                  Company Name is Required
+                </div>
+             
+
+              </div>
+            </div> -->
+
+            <div class="col-lg-6">
+              <label> Biller Name</label>
+              <input class="checkbox" style="margin-left:5px ;" type="checkbox" id="check-3"
+                (change)="CHKAll_BillerNameSelectAll($event)">
+              <div class="CheckboxScroll">
+                <div *ngFor="let display of billerNameList;let i =index;" style="padding-left: 30px;">
+
+                  <input class="checkbox" style="margin-right:5px ;" type="checkbox" id="check-grp-{{i}}"
+                    formControlName="add_billerName" (change)="addBillerNameCHK(display.billerId,$event)">
+                  {{display.billerName}}
+
+                </div>
+
+              </div>
+            </div>
+
+            <div class="col-lg-12" style="display: flex;margin: 15px 0px;">
+              <div>
+                <label style="margin-bottom: 0px;"> Customer Classification</label>
+              </div>
+
+              <!-- <div class="ml-4">
+                <input class="checkbox" type="checkbox" id="check-5" (change)="CHKAll_CustomerClassifSelectAll($event)">
+                <label>All</label>
+              </div> -->
+
+              <div *ngFor="let cust of customerType_list;let j =index;"
+                style="display: flex;padding-left: 30px;align-items: center;">
+
+                <input class="checkbox" style="margin-right:5px ;" type="checkbox" id="check1-grp1-{{j}}"
+                  formControlName="add_customerClassification" (change)="addCustomerClassificationCHK(cust,$event)">
+                {{cust}}
+
+              </div>
+
+
+            </div>
+
+
+            <div class="col-lg-6 mt-2">
+
+              <label style="color: rgb(233, 13, 24)!important;">Billing Address*</label>
+
+            </div>
+            <div class="col-lg-6">
+
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="contactPerson" class="col-lg-12 col-form-label">Contact Person<span class="mandatoryField">
+                    *</span></label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="billingAddress_contactPerson"
+                    id="contactPerson" />
+                  <div
+                    *ngIf="addCustomer.controls['billingAddress_contactPerson'].invalid && (addCustomer.controls['billingAddress_contactPerson'].dirty || addCustomer.controls['billingAddress_contactPerson'].touched)"
+                    class="alert alert-danger alertdangerCustomCSS1 mt-2">
+                    Contact Person is Required
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="address1" class="col-lg-12 col-form-label">Address-1</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="billingAddress_address1" id="address1" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="address2" class="col-lg-12 col-form-label">Address-2</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="billingAddress_address2" id="address2" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="city" class="col-lg-12 col-form-label">City</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="billingAddress_city" id="city" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="state" class="col-lg-12 col-form-label">State</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="billingAddress_state" id="state" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 mousepoint">
+              <div class="form-group row">
+                <label for="zipcode" class="col-lg-12 col-form-label">ZIP Code</label>
+                <div class="col-lg-12">
+                  <input type="number" title="Enter Numbers only" min="0" max="10" class="form-control"
+                    formControlName="billingAddress_zipcode" id="zipcode" />
+
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="countryname" class="col-lg-12 col-form-label">Country</label>
+                <div class="col-lg-12">
+                  <select name="countryname" id="country_name" class="form-control" formControlName="BA_countryname">
+                    <option [ngValue]="null" selected disabled>Select Country</option>
+                    <option *ngFor="let country of countryList" value="{{ country }}">
+                      {{ country }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row" style="display: flex;align-items: center;">
+                <label class="ml-3" style="color: rgb(233, 13, 24)!important;">Edit Shipping Address
+
+
+                  <input type="checkbox" [(ngModel)]=" checkbox_EditShippingAddress" style="margin-left:30px;"
+                    formControlName="edit_ship_address" (change)="eventCheck($event)" />
+                </label>
+              </div>
+            </div>
+            <div class="col-lg-6">
+
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="cntPerson" class="col-lg-12 col-form-label">Contact Person<span class="mandatoryField">
+                    *</span></label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="ESA_cntPerson" id="cntPerson " />
+                  <div *ngIf="
+                      addCustomer.controls['ESA_cntPerson'].invalid &&
+                      (addCustomer.controls['ESA_cntPerson'].dirty ||
+                        addCustomer.controls['ESA_cntPerson'].touched)
+                    " class="alert alert-danger alertdangerCustomCSS1 mt-2">
+                    Contact Person is Required
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="shipto" class="col-lg-12 col-form-label">Ship To</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="ESA_shipto" id="shipto" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="address1 " class="col-lg-12 col-form-label">Address-1</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="ESA_address1" id="address1 " />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="address2 " class="col-lg-12 col-form-label">Address-2</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="ESA_address2" id="address2 " />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="city" class="col-lg-12 col-form-label">City</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="ESA_city" id="city" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="state " class="col-lg-12 col-form-label">State</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="ESA_state" id="state " />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="zipcode " class="col-lg-12 col-form-label">ZIP Code</label>
+                <div class="col-lg-12">
+                  <input type="number" title="Enter Numbers only" min="0" max="10" class="form-control"
+                    formControlName="ESA_zipcode" id="zipcode " />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="countryname " class="col-lg-12 col-form-label">Country</label>
+                <div class="col-lg-12">
+                  <select name="countryname " id="country_name" class="form-control" formControlName="ESA_countryname">
+                    <option [ngValue]="null" selected disabled>Select Country</option>
+                    <option *ngFor="let country of countryList" value="{{ country }} ">
+                      {{ country }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="zipcode " class="col-lg-12 col-form-label">Premium</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="ESA_premium" id="zipcode " />
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-lg-6">
+              <div class="form-group row" style="display: flex;align-items: center;">
+                <label class="col-lg-12 col-form-label">Premium Status
+                  <input type="checkbox" formControlName="ESA_premiumStatus" (change)="eventCheckPremiumStatus($event)"
+                    style="margin-left: 30px;" />
+                </label>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="phone " class="col-lg-12 col-form-label">Phone</label>
+                <div class="col-lg-12">
+                  <input type="text" title="Enter Numbers only" class="form-control" formControlName="ESA_phone"
+                    id="phone " />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="mobile_phone " class="col-lg-12 col-form-label">Mobile Phone</label>
+                <div class="col-lg-12">
+                  <input type="text" title="Enter Numbers only" class="form-control" formControlName="ESA_MobilePhone"
+                    id="mobile_phone " />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="fax " class="col-lg-12 col-form-label">FAX</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="ESA_FAX" id="fax " />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="gstin_no " class="col-lg-12 col-form-label">GSTIN No</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="ESA_GSTNO" id="gstin_no " />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="Email" class="col-lg-12 col-form-label">
+                  Email</label>
+                <mat-form-field class="example-chip-list ml-2" appearance="outline">
+                  <mat-label>Email</mat-label>
+                  <mat-chip-list #chipListEmail aria-label="Email selection">
+                    <mat-chip *ngFor="let emailDisplay of emailList" (removed)="removeEmail(emailDisplay)">
+                      {{emailDisplay.emailParameterName}}
+                      <button matChipRemove>
+                        <mat-icon>cancel</mat-icon>
+                      </button>
+                    </mat-chip>
+                    <input placeholder="Type New Email to add Dynamically..." [matChipInputFor]="chipListEmail"
+                      [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                      (matChipInputTokenEnd)="addEmail($event)">
+                  </mat-chip-list>
+                  <br>
+                  <p *ngIf="this.emailErrMsg==false" style="color: red !important;">Enter Email in valid mail Format</p>
+
+                </mat-form-field>
+
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="finEmail" class="col-lg-12 col-form-label">
+                  Finance Email</label>
+                <mat-form-field class="example-chip-list ml-2" appearance="outline">
+                  <mat-label>Finance Email</mat-label>
+                  <mat-chip-list #chipListFinance aria-label="Finance Email selection">
+                    <mat-chip *ngFor="let financeemailDisplay of financeemailList"
+                      (removed)="removeFinanceEmail(financeemailDisplay)">
+                      {{financeemailDisplay.financeemailParameterName}}
+                      <button matChipRemove>
+                        <mat-icon>cancel</mat-icon>
+                      </button>
+                    </mat-chip>
+                    <input placeholder="Type New Finance Email to add Dynamically..."
+                      [matChipInputFor]="chipListFinance" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                      [matChipInputAddOnBlur]="addOnBlur" id="finEmail"
+                      (matChipInputTokenEnd)="addFinanceEmail($event)">
+                  </mat-chip-list>
+                  <br>
+                  <p *ngIf="this.errMsg==false" style="color: red !important;">Enter Finance Email in valid mail Format
+                  </p>
+                </mat-form-field>
+              </div>
+            </div>
+
+
+            <!-- <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="permissionFCAdd" class="col-lg-12 col-form-label">
+                  Permission</label>
+                <div class="col-lg-12">
+
+                  <ng-multiselect-dropdown [placeholder]="'Select Permission'"
+                    [settings]="dropdownSettings_permissionAdd" [data]="dropdownList_permissionAdd"
+                    [(ngModel)]="permissionDefaultSelect" formControlName="permissionFCAdd"
+                    (onSelect)="onItemSelectPA($event)" (onSelectAll)="onSelectAllPA($event)">
+                  </ng-multiselect-dropdown>
+                </div>
+              </div>
+            </div> -->
+
+
+
+            <div class="col-lg-6">
+              <label>Permission</label>
+              <!-- <input class="checkbox" style="margin-left:5px ;" type="checkbox" id="check-7"
+                (change)="CHKAll_PermissionSelectAll($event)"> -->
+              <div class="CheckboxScroll">
+                <div *ngFor="let cu of customerPermissionList;let k =index;" style="padding-left: 30px;">
+
+                  <input class="checkbox" style="margin-right:5px ;" type="checkbox" id="check-grpPerm-{{k}}"
+                    checked="{{cu.select_state =='true'? 'checked' : ''}}" (change)="addPermissionCHK(cu.id,$event)">
+                  {{cu.name}}
+
+                </div>
+
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="website_name " class="col-lg-12 col-form-label">Website Name</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="ESA_websiteName" id="website_name " />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="cmsdepartment" class="col-lg-12 col-form-label">CMS Default Department</label>
+                <div class="col-lg-12">
+                  <select name="cmsdepartment" id="cmsdepartment_name " class="form-control"
+                    formControlName="cmsdepartment">
+                    <option [ngValue]="null" selected disabled>Select Department</option>
+                    <option *ngFor="let cmsdept of cmsDepartmentList" value="{{ cmsdept.dept_id }} ">
+                      {{ cmsdept.department_name }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="ESA_customerLimit" class="col-lg-12 col-form-label">
+                  Credit Limit</label>
+                <div class="col-lg-12">
+                  <input type="number" title="Enter Numbers only" min="0" max="15" class="form-control"
+                    formControlName="ESA_customerLimit_add" id="ESA_customerLimit" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="ESA_c3cxResellerId" class="col-lg-12 col-form-label">3CX Reseller Id</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="ESA_c3cxResellerId_add"
+                    id="ESA_c3cxResellerId" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="currencyname " class="col-lg-12 col-form-label">Default Currency</label>
+                <div class="col-lg-12">
+                  <select name="currencyname" class="form-control" formControlName="currencyname">
+                    <option [ngValue]="null" selected disabled>Select Currency</option>
+                    <option *ngFor="let currency of currencyList" value="{{ currency.currencyId }} ">
+                      {{ currency.currency_name }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="discount_percentage " class="col-lg-12 col-form-label">Discount Percentage</label>
+                <div class="col-lg-12">
+                  <input type="number" title="Enter Numbers only" min="0" max="10" class="form-control"
+                    formControlName="discount_percentage" id="discount_percentage " />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="banking_charge " class="col-lg-12 col-form-label">Banking Charge</label>
+                <div class="col-lg-12">
+                  <input type="number" title="Enter Numbers only" min="0" max="14" class="form-control"
+                    formControlName="banking_charge" id="banking_charge " />
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="stripe_customer_id" class="col-lg-12 col-form-label">Stripe Customer-Id</label>
+                <div class="col-lg-12">
+                  <input type="text" id="stripe_customer_id" class="form-control"
+                    formControlName="stripe_customer_id" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="contact_person " class="col-lg-12 col-form-label">Contact Person</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="contact_person_CP" id="contact_person " />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row" style="display:flex;align-items: center;">
+                <label class="col-lg-12 col-form-label">Stripe recurring payment
+
+                  <input type="checkbox" formControlName="stripe_recurr_payment" style="margin-left:30px;"
+                    (change)="eventCheckSRP($event)" />
+                </label>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row" style="display:flex;align-items: center;">
+                <label class="col-lg-12 col-form-label">3CX System Discount
+
+                  <input type="checkbox" formControlName="c3cx_system_discount" style="margin-left:30px;"
+                    (change)="eventCheck3CXSD($event)" />
+                </label>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row" style="display:flex;align-items: center;">
+                <label class="col-lg-12 col-form-label">Select Shopping GST
+
+                  <input type="checkbox" formControlName="shopping_gst" style="margin-left:30px;"
+                    (change)="eventCheckshoppingGST($event)" />
+                </label>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row" style="display:flex;align-items: center;">
+                <label class="col-lg-12 col-form-label">Send invoice to customer
+
+                  <input type="checkbox" [(ngModel)]="checked" style="margin-left:30px;" formControlName="send_invoice"
+                    (change)="eventCheckIncoice($event)" />
+                </label>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="bank_acc_no " class="col-lg-12 col-form-label">Bank Account Name</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="bank_acc_no" id="bank_acc_no " />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="bank_acc_number " class="col-lg-12 col-form-label">Bank Account Number</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="bank_account_number" id="bank_acc_number " />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row" style="display:flex;align-items: center;">
+                <label class="col-lg-12 col-form-label">Reseller Status
+
+                  <input type="checkbox" formControlName="reseller_status" style="margin-left:30px;"
+                    (change)="eventCheckRS($event)" />
+                </label>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row" style="display:flex;align-items: center;">
+                <label class="col-lg-12 col-form-label">Voip switch credit
+
+                  <input type="checkbox" [attr.disabled]="isDisabled ? true : null" formControlName="voip_switch_credit"
+                    title="Disabled" (change)="eventCheckVSC($event)" style="margin-left:30px;" />
+                </label>
+              </div>
+            </div>
+            <!-- <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="customer_status" class="col-lg-12 col-form-label">Customer Status</label>
+                <div class="col-lg-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" [checked]="true"  formControlName="addCustomerStatus" id="new"
+                      value="new" (change)="handleChange($event)" />
+                    <label class="form-check-label" for="new">
+                      New
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" formControlName="addCustomerStatus" id="permanent"
+                      value="permanent" (change)="handleChange($event)" />
+                    <label class="form-check-label" for="permanent">
+                      Permanent
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+            <div class="col-lg-6">
+              <div class="form-group row" style="display: flex;align-items: center;">
+                <label for="customerstatus" class="col-lg-4 col-form-label">Customer Status</label>
+                <div style="display: flex;align-items: center;">
+                  <div class="form-check" style="margin-right:30px;">
+                    <input mdbRadio class="form-check-input" type="radio" name="addCustomerStatus" id="New"
+                      [checked]="true" (change)="CustomerStatus_RadioEvent($event)" />
+
+                    <label class="form-check-label" for="New"> New
+                    </label>
+                  </div>
+
+                  <div class="form-check" style="margin-right:30px;">
+                    <input mdbRadio class="form-check-input" type="radio" name="addCustomerStatus" id="Permanent"
+                      (change)="CustomerStatus_RadioEvent($event)" />
+                    <label class="form-check-label" for="Permanent">Permanent
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="payment_way" class="col-lg-12 col-form-label">Default Payment Via</label>
+                <div class="col-lg-12">
+                  <select name="payment_way" id="auxcode_name " class="form-control" formControlName="payment_way">
+                    <option [ngValue]="null" selected disabled>Select Payment Via</option>
+                    <option *ngFor="let payment of paymentList " value="{{ payment.paymentvia_id }} ">
+                      {{ payment.paymentvia_name }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="addCustomerSave" (click)="addCustomerown()">
+          Save
+        </button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">
+          Cancel
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!------------------------ Modal-Add New Customer-ends --------------------------------->
+<!--------------------- Modal- edit -customer starts------------------------------------>
+<div class="modal fade" id="editCustomerFormId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myLargeModalLabel ">
+          Update Customer Details
+        </h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editCustomerForm">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="companyName " class="col-lg-12 col-form-label">Company Name*</label>
+                <div class="col-lg-12">
+                  <input type="text" [readonly]="isReadOnly" class="form-control" formControlName="edit_company_Name"
+                    id="companyName " />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="defaultBillerName " class="col-lg-12 col-form-label">Default Biller Name</label>
+                <div class="col-lg-12">
+                  <select id="biller_name" class="form-control" formControlName="edit_defaultBillerName">
+                    <option value="0">Select Default Biller</option>
+                    <option *ngFor="let billname of billList" value="{{billname.billerId}}">
+                      {{billname.billerName}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <!-- vignesh hidden previous working code below-multiselect angular material -->
+            <!-- <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="multiselectBillerName" class="col-lg-12">
+                  Biller Name</label>
+                <div class="col-lg-12 custom-selected-box">
+                  <ng-multiselect-dropdown [placeholder]="'Select Biller name'" [settings]="dropdownSettings_billerName"
+                    [data]="dropdownList_billerName" [(ngModel)]="geting_biller" formControlName="edit_billernamelist"
+                    (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+                  </ng-multiselect-dropdown>
+                </div>
+              </div>
+            </div> -->
+            <!-- vignesh hidden previous working code above -->
+
+            <div class="col-lg-6">
+              <label> Biller Name</label>
+              <input class="checkbox" style="margin-left:5px ;" type="checkbox" id="check-4"
+                (change)="  CHKAll_BillerNameSelectAll_Edit($event)">
+              <div class="CheckboxScroll">
+
+                <div *ngFor="let display of geting_biller;let i =index;" style="padding-left: 30px;">
+
+                  <input class="checkbox" style="margin-right:5px ;" type="checkbox" value="{{display.billerId}}"
+                    checked="{{display.chk_val == true? 'checked' : ''}}"
+                    (change)="editBillerNameCHK(display.billerId,$event)">
+                  {{display.billerName}}{{this.geting_biller_edit}}{{display.billerId}}
+
+                </div>
+              </div>
+            </div>
+            <!-- <input type="checkbox" value="{{quot.chk_val}}"
+            checked="{{quot.chk_val == 'true' ? 'checked' : ''}}"
+            (change)="QuotationSharedCHK(quot.user_id,$event)"> -->
+
+
+
+            <!-- <div class="col-lg-6">
+                <div class="form-group row">
+                    <label for="customerClassificationn" class="col-lg-12">
+                        Customer Classification</label>
+                    <div class="col-lg-12 custom-selected-box">
+                        <ng-multiselect-dropdown [placeholder]="'Select  Customer Classification'"
+                            [settings]="dropdownSettings_customerClassification"
+                            [data]="dropdownList_customerClassification"
+                            [(ngModel)]=" CustClassifToBeDisplayed" 
+                            formControlName="editCustomerClassification"
+                            (onSelect)="onItemSelectCC($event)" 
+                            (onSelectAll)="onSelectAllCC($event)">
+                        </ng-multiselect-dropdown>
+                    </div>
+                </div>
+            </div> -->
+
+
+            <div class="col-lg-12" style="display: flex;margin: 15px 0px;">
+              <div>
+                <label style="margin-bottom: 0px;"> Customer Classification</label>
+              </div>
+
+              <div *ngFor="let cust of customerType_listEdit;let m =index;"
+                style="display: flex;padding-left: 30px;align-items: center;">
+
+                <input class="checkbox" style="margin-right:5px ;" type="checkbox" id="checke-grpe-{{m}}"
+                  checked="{{cust.chk_val == true? 'checked' : ''}}"
+                  (change)="editCustomerClassificationCHK(cust.name,$event)">
+                {{cust.name}}
+                <!-- <input class="checkbox" style="margin-right:5px ;" type="checkbox" id="checke-grpe-{{m}}"
+                checked="{{this.cus_type_edit.indexOf(''+cust+'') !=-1? 'checked' : ''}}"
+                 (change)="editCustomerClassificationCHK(cust,$event)">
+                {{cust}} -->
+
+              </div>
+
+
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label class="ml-3" style="color: rgb(233, 13, 24)!important;">Billing Address*</label>
+              </div>
+            </div>
+            <div class="col-lg-6">
+
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="contactPerson" class="col-lg-12 col-form-label">Contact Person*</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_billingAddress_contactPerson"
+                    id="contactPerson " />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="address1" class="col-lg-12 col-form-label">Address-1</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_billingAddress_address1" id="address1" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="address2" class="col-lg-12 col-form-label">Address-2</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_billingAddress_address2" id="address2" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="city" class="col-lg-12 col-form-label">City</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_billingAddress_city" id="city" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="state" class="col-lg-12 col-form-label">State</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_billingAddress_state" id="state" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="zipcode" class="col-lg-12 col-form-label">ZIP Code</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_billingAddress_zipcode" id="zipcode" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="countryname" class="col-lg-12 col-form-label">Country</label>
+                <div class="col-lg-12">
+                  <select name="countryname" id="country_name " class="form-control"
+                    formControlName="Edit_BA_countryname">
+                    <option value="0">Select Country</option>
+                    <option *ngFor="let country of countryList" value="{{country}}">
+                      {{country}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+
+            </div>
+          
+            <div class="col-lg-6">
+              <div class="form-group row" style="display: flex;align-items: center;">
+              <label class="ml-3" style="color: rgb(233, 13, 24)!important;">Edit Shipping Address
+              <input type="checkbox" [readonly]="isReadOnly" style="margin-left:30px;"
+                (change)="edit_eventCheck($event)" />
+              </label>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="cntPerson" class="col-lg-12 col-form-label">Contact Person*</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_ESA_cntPerson" id="cntPerson" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="shipto" class="col-lg-12 col-form-label">Ship To</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_ESA_shipto" id="shipto" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="address1" class="col-lg-12 col-form-label">Address-1</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_ESA_address1" id="address1" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="address2" class="col-lg-12 col-form-label">Address-2</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_ESA_address2" id="address2" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="city" class="col-lg-12 col-form-label">City</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_ESA_city" id="city " />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="state " class="col-lg-12 col-form-label">State</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_ESA_state" id="state" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="zipcode" class="col-lg-12 col-form-label">ZIP Code</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_ESA_zipcode" id="zipcode" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="countryname " class="col-lg-12 col-form-label">Country</label>
+                <div class="col-lg-12">
+                  <select name="countryname" id="country_name" class="form-control" formControlName="e_ESA_countryname">
+                    <option value="0">Select Country</option>
+                    <option *ngFor="let country of countryList" value="{{country}}">
+                      {{country}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="zipcode" class="col-lg-12 col-form-label">Premium</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_ESA_premium" id="zipcode" />
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row" style="display:flex;align-items: center;">
+                <label class="col-lg-12 col-form-label">Premium Status
+                  <input type="checkbox" formControlName="e_ESA_premiumStatus"
+                    (change)="eventCheckPremiumStatus($event)" style="margin-left:30px;" />
+                </label>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="phone" class="col-lg-12 col-form-label">Phone</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_ESA_phone" id="phone" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="mobile_phone" class="col-lg-12 col-form-label">Mobile Phone</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_ESA_MobilePhone" id="mobile_phone" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="fax" class="col-lg-12 col-form-label">FAX</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_ESA_FAX" id="fax" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="gstin_no " class="col-lg-12 col-form-label">GSTIN No</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_ESA_GSTNO" id="gstin_no" />
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="Email" class="col-lg-12 col-form-label">
+                  Email</label>
+                <mat-form-field class="example-chip-list ml-2" appearance="outline">
+                  <!-- <mat-label>Email</mat-label> -->
+                  <mat-chip-list #chipListeditEmail aria-label="Email selection">
+                    <mat-chip *ngFor="let emailDisplay of emailList" (removed)="removeEmail(emailDisplay)">
+                      {{emailDisplay.emailParameterName}}
+                      <button matChipRemove>
+                        <mat-icon>cancel</mat-icon>
+                      </button>
+                    </mat-chip>
+                    <input placeholder="Type New Email to add Dynamically..." formControlName="e_ESA_Email"
+                      [matChipInputFor]="chipListeditEmail" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                      [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="editEmail($event)">
+                  </mat-chip-list>
+                  <br>
+                  <p *ngIf="this.emailErrMsg==false" style="color: red !important;">Enter Email in valid mail Format</p>
+
+                </mat-form-field>
+
+              </div>
+            </div>
+
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="finEmail" class="col-lg-12 col-form-label">
+                  Finance Email</label>
+                <mat-form-field class="example-chip-list ml-2" appearance="outline">
+                  <!-- <mat-label>Finance Email</mat-label> -->
+                  <mat-chip-list #chipListFinance aria-label="Finance Email selection">
+                    <mat-chip *ngFor="let financeemailDisplay of financeemailList"
+                      (removed)="removeFinanceEmail(financeemailDisplay)">
+                      {{financeemailDisplay.financeemailParameterName}}
+                      <button matChipRemove>
+                        <mat-icon>cancel</mat-icon>
+                      </button>
+                    </mat-chip>
+                    <input placeholder="Type New Finance Email to add Dynamically..."
+                      formControlName="e_ESA_FinanceEmail" [matChipInputFor]="chipListFinance"
+                      [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                      id="finEmail" (matChipInputTokenEnd)="editFinanceEmail($event)">
+                  </mat-chip-list>
+                  <br>
+                  <p *ngIf="this.errMsg==false" style="color: red !important;">Enter Finance Email in valid mail Format
+                  </p>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="website_name " class="col-lg-12 col-form-label">Website Name</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_ESA_websiteName" id="website_name" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <label>Permission</label>
+              <!-- <input class="checkbox" style="margin-left:5px ;" type="checkbox" id="check-12"
+                (change)="CHKAll_PermissionSelectAll($event)"> -->
+              <div class="CheckboxScroll">
+                <div *ngFor="let cu of get_PermissionallList;let k =index;" style="padding-left: 30px;">
+                  <input class="checkbox" style="margin-right:5px ;" type="checkbox" value="{{cu.id}}"
+                    checked="{{cu.chk_val == true? 'checked' : ''}}" (change)="editPermissionCHK(cu.id,$event)">
+                  {{cu.name}}
+                  <!-- <input class="checkbox" style="margin-right:5px ;" type="checkbox" value="{{cu.id}}"
+                    checked="{{this.get_PermissionEdit.indexOf(''+cu.id+'') !=-1? 'checked' : ''}}"
+                    (change)="editPermissionCHK(cu.id,$event)">
+                  {{cu.name}} -->
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="cmsdepartment" class="col-lg-12 col-form-label">CMS Default
+                  Department</label>
+                <div class="col-lg-12">
+                  <select name="cmsdepartment" id="cmsdepartment_name " class="form-control"
+                    formControlName="edit_cmsdepartment">
+                    <option value="0">Select Department</option>
+                    <option *ngFor="let cmsdept of cmsDepartmentList" value="{{ cmsdept.dept_id }} ">
+                      {{ cmsdept.department_name }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="ESA_customerLimit" class="col-lg-12 col-form-label">
+                  Credit Limit</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_ESA_customerLimit"
+                    id="ESA_customerLimit123" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="ESA_c3cxResellerId" class="col-lg-12 col-form-label">3CX Reseller Id</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_ESA_c3cxResellerId"
+                    id="ESA_c3cxResellerId1" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="currencyname" class="col-lg-12 col-form-label">Default Currency</label>
+                <div class="col-lg-12">
+                  <select name="currencyname" class="form-control" formControlName="edit_currencyname">
+
+                    <option *ngFor="let currency of currencyList" value="{{currency.currencyId}}">
+                      {{currency.currency_name}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="stripe_customer_id" class="col-lg-12 col-form-label">Stripe
+                  Customer-Id</label>
+                <div class="col-lg-12">
+                  <input type="text" id="stripe_customer_id" class="form-control"
+                    formControlName="e_stripe_customer_id" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label class="col-lg-12 col-form-label">Stripe recurring payment
+
+                  <input type="checkbox" formControlName="e_stripe_recurr_payment" (change)="eventCheckSRP($event)" />
+                </label>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label class="col-lg-12 col-form-label">3CX System Discount
+
+                  <input type="checkbox" formControlName="e_c3cx_system_discount" (change)="eventCheck3CXSD($event)" />
+                </label>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="discount_percentage " class="col-lg-12 col-form-label">Discount
+                  Percentage</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_discount_percentage"
+                    id="discount_percentage " />
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="banking_charge" class="col-lg-12 col-form-label">Banking Charge</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_banking_charge" id="banking_charge " />
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label class="col-lg-12 col-form-label">Select Shopping GST
+
+                  <input type="checkbox" formControlName="e_shopping_gst" (change)="eventCheckshoppingGST($event)" />
+                </label>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label class="col-lg-12 col-form-label">Send invoice to customer
+
+                  <input type="checkbox" formControlName="e_send_invoice" (change)="eventCheckIncoice($event)" />
+                </label>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="contact_person" class="col-lg-12 col-form-label">Contact Person</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_contact_person_CP" id="contact_person" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="bank_acc_name" class="col-lg-12 col-form-label">Bank Account Name</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_bank_acc_name" id="bank_acc_name" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="bank_acc_no" class="col-lg-12 col-form-label">Bank Account Number</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_bank_acc_no" id="bank_acc_no" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="e_customer_status" class="col-lg-12 col-form-label">Customer Status</label>
+                <div class="col-lg-12" *ngFor="let display1 of radio;let k=index">
+                  <input type="radio" id="new_id2{{k}}" formControlName="e_editCustomerStatus"
+                    value="{{display1.values}}" (change)="handleChange($event)" />
+                  <label for="new_id2{{k}}" class="col-lg-6 col-form-label">{{display1.name}}</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label class="col-lg-12 col-form-label">Reseller Status
+
+                  <input type="checkbox" formControlName="e_reseller_status" (change)="eventCheckRS($event)" />
+                </label>
+              </div>
+            </div>
+
+
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label class="col-lg-12 col-form-label">Customer Banking Charge
+
+                  <input type="checkbox" formControlName="e_custBankingCharge"
+                    (change)="eventCheck_CustBankingCharge($event)" />
+                </label>
+              </div>
+            </div>
+
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label class="col-lg-12 col-form-label">Voip switch credit
+
+                  <input type="checkbox" formControlName="e_voip_switch_credit" (change)="eventCheckVSC($event)" />
+                </label>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label class="col-lg-12 col-form-label">Customer Address Update State
+
+                  <input type="checkbox" formControlName="e_custAddressUpdateState" (change)="eventCheckCAUS($event)" />
+                </label>
+              </div>
+            </div>
+
+
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="payment_way" class="col-lg-12 col-form-label">Default Payment Via</label>
+                <div class="col-lg-12">
+                  <select name="payment_way" id="auxcode_name " class="form-control" formControlName="edit_payment_way">
+                    <option value="0">Select Payment Via</option>
+                    <option *ngFor="let payment1 of paymentList" value="{{payment1.paymentvia_id}}">
+                      {{payment1.paymentvia_name}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="vsProvisionAttachment" class="col-lg-12 col-form-label">VS Provision
+                  Attachment</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="e_vsProvisionAttachment" unchecked />
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="row">
+
+            <!-- <div class="col-lg-12"> -->
+            <form [formGroup]="billCodeEditForm3">
+              <label for="companyCode" class="col-lg-12 col-form-label">Bill Code*</label>
+
+              <div class="userDatatable global-shadow border-0 bg-white w-100">
+                <div class="table-responsive">
+                  <table class="table mb-0 table-borderless">
+                    <thead>
+                      <tr class="userDatatable-header">
+                        <th>Bill Code Name</th>
+                        <th>Server-VS1</th>
+                        <th>Server-VSKL</th>
+                        <th>Server-VS2(32)(TH,JP)</th>
+                        <th>Server-VS2(8)(Special Account)</th>
+                        <th> Action</th>
+                      </tr>
+                    </thead>
+                    <tbody formArrayName="addresses" *ngFor="let address of addressControls.controls; let i = index;">
+                      <tr class="userDatatable-header" [formGroupName]="i">
+                        <td style="padding-right: 10px!important">
+                          <input type="text" class="form-control" formControlName="billCodeName"
+                            id="billCodeName{{i}}" />
+                        </td>
+                        <td style="padding-right: 10px!important">
+                          <input type="text" class="form-control" formControlName="bill_code_740"
+                            id="bill_code_740_{{i}}" />
+                        </td>
+                        <td style="padding-right: 10px!important">
+                          <input type="text" class="form-control" formControlName="bill_code_kl"
+                            id="bill_code_kl_{{i}}" />
+                        </td>
+                        <td style="padding-right: 10px!important">
+                          <input type="text" class="form-control" formControlName="bill_code_750"
+                            id="bill_code_750_{{i}}" />
+                        </td>
+                        <td style="padding-right: 10px!important">
+                          <input type="text" class="form-control" formControlName="bill_code_750_8"
+                            id="bill_code_750_8_{{i}}" />
+                        </td>
+                        <td>
+                          <div class="userDatatable-content d-inline-block">
+                            <button type="button" class="btn btn-danger btn-sm" (click)="removeAddress1(i)">X</button>
+
+                          </div>
+                        </td>
+                        <td style="padding-right: 10px!important">
+
+                          <input type="hidden" class="form-control" formControlName="customer_bill_code_id"
+                            id="customer_bill_code_id{{i}}" />
+
+                        </td>
+                        <td style="padding-right: 10px!important">
+                          <input type="hidden" class="form-control" formControlName="customer_id"
+                            id="customer_id{{i}}" />
+                        </td>
+
+                        <td style="padding-right: 10px!important">
+                          <input type="hidden" class="form-control" formControlName="conn_state" id="conn_state{{i}}" />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+
+              <div class="text-left">
+                <button type="button" class="btn btn-dark btn-default btn-squared mt-2 mb-2" (click)="editBillCode()"
+                  style="margin-right: 10px;"><i class="fas fa-plus" style="margin-right:0;"> Add More</i>
+                </button>
+              </div>
+            </form>
+
+          </div>
+
+
+
+
+
+          <div class="row">
+            <!-- formArrayName="TestPrimary" -->
+            <div class="col-lg-12">
+              <form [formGroup]="billCodeEditForm2">
+                <label for="companyCode" class="col-lg-12 col-form-label">Primary Code*</label>
+                <div class="userDatatable global-shadow border-0 bg-white w-100">
+
+                  <div class="table-responsive">
+                    <table class="table mb-0 table-borderless">
+                      <thead>
+                        <tr class="userDatatable-header">
+                          <th>Servers</th>
+                          <th>Pbx Code</th>
+                          <th>Retail Code</th>
+                          <th>PBX Low</th>
+                          <th>PBX High</th>
+                          <th>Retail Low</th>
+                          <th>Retail High</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="userDatatable-header">
+                          <td>
+                            <span><strong>VS 740 server</strong></span>
+                          </td>
+                          <td>
+                            <input type="hidden" class="form-control"  formControlName="primary_customer_bill_code_id"
+                              id="primary_customer_bill_code_id" />
+                            <input type="text" class="form-control"  formControlName="primary_code_740"
+                              id="primary_code_740" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" 
+                              formControlName="primary_code_retail_740" id="primary_code_retail_740" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="low_credit_740"
+                              id="low_credit_740" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="high_credit_740"
+                              id="high_credit_740" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="retail_low_credit_740"
+                              id="retail_low_credit_740" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="retail_high_credit_740"
+                              id="retail_high_credit_740" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span><strong>VS 750 server</strong></span>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control"  formControlName="primary_code_750"
+                              id="primary_code_750" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" 
+                              formControlName="primary_code_retail_750" id="primary_code_retail_750" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="low_credit_750"
+                              id="low_credit_750" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="high_credit_750"
+                              id="high_credit_750" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="retail_low_credit_750"
+                              id="retail_low_credit_750" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="retail_high_credit_750"
+                              id="retail_high_credit_750" />
+                          </td>
+
+                        </tr>
+
+
+                        <tr class="userDatatable-header">
+                          <td>
+                            <span><strong>VS KL server</strong></span>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control"  formControlName="primary_code_kl"
+                              id="primary_code_kl" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control"  formControlName="primary_code_retail_kl" id="primary_code_retail_kl" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="low_credit_kl"
+                              id="low_credit_kl" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="high_credit_kl"
+                              id="high_credit_kl" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="retail_low_credit_kl"
+                              id="retail_low_credit_kl" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="retail_high_credit_kl"
+                              id="retail_high_credit_kl" />
+                          </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                  <label class=" col-form-label">Auto Credit
+                    <input type="checkbox" formControlName="primary_code_auto_credit"
+                      (change)="autoCreditPermission($event)" id="primary_code_auto_credit">
+                  </label>
+                </div>
+                <div class="userDatatable global-shadow border-0 bg-white w-100">
+
+                  <div class="table-responsive ">
+                    <table class="table mb-0 table-borderless">
+                      <thead>
+                        <tr class="userDatatable-header">
+                          <th>Servers</th>
+                          <th>Servers Name for Customer</th>
+                          <th>Pbx Threshold Low</th>
+                          <th>Retail Pbx Threshold Low</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="userDatatable-header">
+                          <td>
+                            <span><strong>VS 740 server</strong></span>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="server_name_740"
+                              id="server_name_740" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="pbx_threshold_limit_740"
+                              id="pbx_threshold_limit_740" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="retail_threshold_limit_740"
+                              id="retail_threshold_limit_740" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span><strong>VS 750 server</strong></span>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="server_name_750"
+                              id="server_name_750" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="pbx_threshold_limit_750"
+                              id="pbx_threshold_limit_750" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="retail_threshold_limit_750"
+                              id="retail_threshold_limit_750" />
+                          </td>
+
+                        </tr>
+                        <tr class="userDatatable-header">
+                          <td>
+                            <span><strong>VS KL server</strong></span>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="server_name_kl"
+                              id="server_name_kl" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="pbx_threshold_limit_kl"
+                              id="pbx_threshold_limit_kl" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="retail_threshold_limit_kl"
+                              id="retail_threshold_limit_kl" />
+                          </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                  <label class="col-lg-12 col-form-label">Manual Credit
+                    <input type="checkbox" formControlName="manual_credit" (change)="manualCreditPermission($event)"
+                      id="manual_credit">
+                  </label>
+                 
+                  <div class="row">
+                    <div class="col-lg-12">
+                      
+                      <form [formGroup]="billCodeEditForm4">
+                        <label class="col-lg-12 col-form-label">Add Credit Amount
+                          <input type="checkbox"  (click)="autoCreditCheckList()">
+                        </label>
+                        <div class="table-responsive" *ngIf="auto_credit_checkbox_list">
+                          <table class="table mb-0 table-borderless">
+                            <thead>
+                              <tr>
+                              <th>Pbx or Retail </th>
+                              <th>VS 740 server</th>
+                              <th>VS 750 server</th>
+                              <th>VS KL server</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                              <tr class="userDatatable-header">
+                                <td>
+                                  <select formControlName="add_pbx_or_retail" id="add_pbx_or_retail">
+                                    <option value="">PBX</option>
+                                    <option value="retail">Retail</option>
+                                  </select>
+                                </td>
+                                <td>
+                                  <input type="text" class="form-control" formControlName="add_credit_value_for_740"  id="add_credit_value_for_740"/>
+                                </td>
+                                <td>
+                                  <input type="text" class="form-control" formControlName="add_credit_value_for_750"  id="add_credit_value_for_750"/>
+                                </td>
+                                <td>
+                                  <input type="text" class="form-control" formControlName="add_credit_value_for_KL"  id="add_credit_value_for_KL"/>
+                                </td>
+                              </tr>
+                             
+                          </table>
+                          <table class="table mb-0 table-borderless">
+                            <thead>
+                              <tr>
+                              <th> Type </th>
+                              <th>	Server </th>
+                              <th> Amount </th>
+                              <th> Date & Time </th>
+                              <th> Update By </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+        
+                              </tr>
+                            </tbody>
+                          </table>
+                          <label class="col-lg-12 col-form-label"> Current Balance:  Pbx:-  740</label>
+                          <label class="col-lg-12 col-form-label">Current Balance:  Pbx:-  750</label>
+                          <label class="col-lg-12 col-form-label">Current Balance:  Pbx:-  KL</label>
+                          <label class="col-lg-12 col-form-label">Current Balance:  Retail:-  740</label>
+                         
+                        <div class="text-left">
+                          <button type="button" class="btn btn-dark btn-default btn-squared mt-2 mb-2" 
+                            style="margin-right: 10px;"><i class="fas fa-plus" style="margin-right:0;" (click)="addCreditAmount(this.editId)"> Add Credit</i>
+                          </button>
+                        </div>
+                      </div>
+                      </form>
+        
+                    </div>
+                  </div>
+                 
+                  <div class="form-group row" style="display: flex; align-items: center;">
+                    <label for="customerstatus" class="col-lg-3 col-form-label">DC IP Allow Countries</label>
+                    <div style="display: flex; align-items: center;">
+                      <div class="form-check" style="margin-right: 30px;">
+                        <input type="checkbox" name="addCustomerStatus" id="japan " class="form-check-input">
+                        <label for="japan " class="form-check-label"> Japan </label>
+                      </div>
+                      <div class="form-check" style="margin-right: 30px;">
+                        <input type="checkbox" name="addCustomerStatus" id="Singapore" class="form-check-input">
+                        <label for="Singapore" class="form-check-label">Singapore </label>
+                      </div>
+                      <div class="form-check" style="margin-right: 30px;">
+                        <input type="checkbox" name="addCustomerStatus" id="Thailand " class="form-check-input">
+                        <label for="Thailand " class="form-check-label">Thailand </label>
+                      </div>
+                      <div class="form-check" style="margin-right: 30px;">
+                        <input type="checkbox" name="addCustomerStatus" id="Malasiya " class="form-check-input">
+                        <label for="Malasiya " class="form-check-label">Malasiya </label>
+                      </div>
+                      <div class="form-check" style="margin-right: 30px;">
+                        <input type="checkbox" name="addCustomerStatus" id="Vietnam " class="form-check-input">
+                        <label for="Vietnam " class="form-check-label">Vietnam </label>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-footer">
+
+
+        <button type="button " class="btn btn-primary" (click)="update(this.editId)">Update</button>
+        <button type="button " class="btn btn-dark" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-----------------vignesh edit - customer ends------------------------------->
+
+<!-----------------vignesh --special edit/customer master starts--------->
+
+
+<div class="modal fade" id="specialEditCustomerFormId" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myLargeModalLabel ">
+          Update Customer Details(Special Edit)
+        </h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="specialEditCustomerForm">
+          <div class="row">
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="spedit_Email" class="col-lg-12 col-form-label">Email</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="spedit_Email" id="email" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="finance_email " class="col-lg-12 col-form-label">Finance Email</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="spedit_FinanceEmail" id="finance_email" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="defaultBillerName" class="col-lg-12 col-form-label">Terms Condition</label>
+                <div class="col-lg-12">
+                  <select name="termcondition" id="termcondition" class="form-control"
+                    formControlName="termconditionDD">
+                    <option *ngFor="let term of termList" value="{{term}}">
+                      {{term}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="creditlimit " class="col-lg-12  col-form-label">credit limit</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="spedit_creditlimit" id="creditlimit" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="C3CXResellerId " class="col-lg-12 col-form-label">3CX reseller Id</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="spedit_C3CXResellerId" id="C3CXResellerId" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="stripe_customer_id" class="col-lg-12 col-form-label">Stripe
+                  Customer-Id</label>
+                <div class="col-lg-12">
+                  <input type="text" id="stripe_customer_id" class="form-control"
+                    formControlName="spedit_stripe_customer_id" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label class="col-lg-12 col-form-label">Stripe recurring payment
+                  <input type="checkbox" formControlName="spedit_stripe_recurr_payment"
+                    (change)="eventCheck_spedit_SRP($event)" />
+                </label>
+              </div>
+            </div>
+
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label class="col-lg-12 col-form-label">3CX System Discount
+                  <input type="checkbox" formControlName="spedit_c3cx_system_discount"
+                    (change)="eventCheck_spedit_systemDiscount($event)" />
+                </label>
+              </div>
+            </div>
+
+
+
+
+            <div class="col-lg-12">
+              <div class="form-group row">
+                <label class="col-lg-12 col-form-label">3CX Buy Special Option
+                  <input type="checkbox" formControlName="spedit_3cx_BuySpecial"
+                    (change)="eventCheck_spedit_3cxspecialOption($event)" />
+                </label>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="discount_percentage" class="col-lg-12 col-form-label">Discount
+                  Percentage</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="spedit_discount_percentage"
+                    id="discount_percentage " />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="C3CXLicencepurchase " class="col-lg-12 col-form-label">
+                  3CX Licence purchase</label>
+                <div class="col-lg-12">
+                  <input type="text" class="form-control" formControlName="spedit_C3CXLicencepurchase" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+
+
+        <button type="button " class="btn btn-primary" (click)="specialUpdate(this.specialEditId)">Update
+        </button>
+        <button type="button " class="btn btn-dark" data-dismiss="modal">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!------------vignesh --special edit/customer master ends-------------------------------------------->
+<!-- -------------------Modal-mconnect Partner details begins----------------------------------- -->
+<div class="modal fade" id="mconnectPartnerDetailsFormId" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLongTitle">Mconnect Partner Details</h2>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="mconnectCustomerForm">
+          <div class="row">
+
+            <div class="col-lg-12">
+              <div class="form-group row">
+                <div class="col-lg-6">
+                  <label class=" col-form-label">Mconnect Address Show</label>
+                </div>
+                <div class="col-lg-6">
+                  <input type="checkbox" formControlName="a_mconnectAddressShow" id="check_mconn"
+                    (change)="eventCheckmconnectAddressShow($event)" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-12">
+              <div class="form-group row">
+                <div class="col-lg-6">
+                  <label for="partnerEmail" class="col-form-label">Partner Email</label>
+                </div>
+                <div class="col-lg-6">
+                  <input type="text" class="form-control" formControlName="a_mconnectPartnerEmail" id="partnerEmail" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="form-group row">
+                <div class="col-lg-6">
+                  <label for="partnerPhone" class="col-form-label">Partner Phone No</label>
+                </div>
+                <div class="col-lg-6">
+                  <input type="text" class="form-control" formControlName="a_mconnectPartnerPhoneNum"
+                    id="partnerPhone" />
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="col-lg-12">
+              <div class="form-group row">
+                <div class="col-lg-6">
+                  <label for="customer_status1" class="col-form-label">Mconnect Partner
+                    Type</label>
+                </div>
+
+                <div class="col-lg-6" *ngFor='let item of radioDynamic;let i=index' style="display: flex;">
+                  <input type="radio" id="{{i}}" formControlName="a_mconnectPartnerType" value="{{item.values}}"
+                    (change)="partnerTypehandleChange($event)" />
+                  <label for="mconnect_partnerType_{{i}}" class="col-lg-6 col-form-label">{{item.name}}</label>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="col-lg-12">
+              <div class="form-group row">
+                <div class="col-lg-6">
+                  <label for="logo_mconnect" class="col-form-label">Select Logo</label>
+                </div>
+
+
+                <div class="col-lg-6">
+                  <input required type="file" name="uploaded-mconnect" id="uploaded-mconnect" class="form-control"
+                    formControlName="a_selectLogo_mconnect" (change)="fileAttachmentEvent($event)">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="col-lg-6">
+                <img src="{{this.mconnect_Logo_Image}}" alt="No Logo to display " height="200px" width="200px">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-primary"
+          (click)="mconnect_address_add(this.mconnectParameter)">Save</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="gotoCustomerMasterList()">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-------------------------- Modal-mconnect Partner Details-ends-------------------------------------- -->
+
+<!-- -----------------------Modal-MrVoip Partner Details-begins---------------------------------------- -->
+<div class="modal fade" id="MrvoipPartnerDetailsFormId" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLongTitle">Mrvoip Partner Details</h2>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="mrvoipCustomerForm">
+          <div class="row">
+
+            <div class="col-lg-12">
+              <div class="form-group row">
+                <div class="col-lg-6">
+                  <label class="col-form-label">Mrvoip Address Show </label>
+                </div>
+                <div class="col-lg-6">
+                  <input type="checkbox" formControlName="a_MrvoipAddressShow"
+                    (change)="eventCheckMrvoipAddressShow($event)" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-12">
+              <div class="form-group row">
+                <div class="col-lg-6">
+                  <label for="partnerEmail" class="col-form-label">Partner Email</label>
+                </div>
+
+                <div class="col-lg-6">
+                  <input type="text" class="form-control" formControlName="a_MrvoipPartnerEmail" id="mv_partnerEmail" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="form-group row">
+                <div class="col-lg-6">
+                  <label for="partnerPhone" class="col-form-label">Partner Phone No</label>
+                </div>
+
+                <div class="col-lg-6">
+                  <input type="text" class="form-control" formControlName="a_MrvoipPartnerPhoneNum"
+                    id="mv_partnerPhone" />
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-lg-12">
+              <div class="form-group row">
+
+                <div class="col-lg-6">
+                  <label for="customer_status1" class="col-form-label">Mrvoip Partner
+                    Type</label>
+                </div>
+                <div class="col-lg-6" *ngFor='let item of radioDynamic;let d=index'>
+                  <input type="radio" id="{{item.values}}" formControlName="a_MrvoipPartnerType" value="{{item.values}}"
+                    (change)="handleChange($event)" />
+                  <label for="premiumPartner_id1{{d}}" class="col-lg-6 col-form-label">{{item.name}}</label>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="col-lg-12">
+              <div class="form-group row">
+                <div class="col-lg-6">
+                  <label for="logo_MrVoip" class="col-form-label">Select Logo</label>
+                </div>
+
+                <div class="col-lg-6">
+                  <input required type="file" name="uploaded-mrvoip" id="uploaded-mrvoip" class="form-control"
+                    (change)="fileAttachmentEvent($event)">
+
+                  <!-- <input type="file" class="form-control" formControlName="a_selectLogo_MrVoip" id="logo_MrVoip" /> -->
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="col-lg-6">
+                <img src="{{this.mrvoip_Logo_Image}}" alt="No Logo to display " height="200px" width="200px">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-primary" (click)=" mrvoip_address_add(this.mrvoipParameter)">Save</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="gotoCustomerMasterList()">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-------------------------- Modal-MrVoip Partner Details-ends-------------------------------------- -->
+<!-- Modal-Call4tel Partner Details-begins -->
+<div class="modal fade" id="call4tellPartnerDetailsFormId" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLongTitle">Call4tel Partner Details</h2>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="Call4telCustomerForm">
+          <div class="row">
+
+            <div class="col-lg-12">
+              <div class="form-group row">
+                <div class="col-lg-6">
+                  <label class="col-form-label">Call4tel Address Show </label>
+                </div>
+                <div class="col-lg-6">
+                  <input type="checkbox" formControlName="a_C4TAddressShow"
+                    (change)="eventCheckC4TAddressShow($event)" />
+                </div>
+
+              </div>
+            </div>
+
+            <div class="col-lg-12">
+              <div class="form-group row">
+                <div class="col-lg-6">
+                  <label for="partnerEmail" class="col-form-label">Partner Email</label>
+                </div>
+
+                <div class="col-lg-6">
+                  <input type="text" class="form-control" formControlName="a_C4TPartnerEmail" id="C4T_partnerEmail" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="form-group row">
+                <div class="col-lg-6">
+                  <label for="partnerPhone" class="col-form-label">Partner Phone No</label>
+                </div>
+
+                <div class="col-lg-6">
+                  <input type="text" class="form-control" formControlName="a_C4TPartnerPhoneNum"
+                    id="C4T_partnerPhone" />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-12">
+              <div class="form-group row">
+                <div class="col-lg-6">
+                  <label for="customer_status1" class="col-form-label">Call4tel Partner
+                    Type</label>
+                </div>
+
+                <div class="col-lg-6" *ngFor='let item of radioDynamic;let c=index'>
+                  <input type="radio" id="{{item.values}}" formControlName="a_C4TPartnerType" value="{{item.values}}"
+                    (change)="Radio_Partnertype_C4T($event)" />
+                  <label for="premiumPartner_id{{c}}" class="col-lg-6 col-form-label">{{item.name}}</label>
+                </div>
+
+              </div>
+            </div>
+
+
+
+            <div class="col-lg-12">
+              <div class="form-group row">
+                <div class="col-lg-6">
+                  <label for="logo_C4T" class="col-form-label">Select Logo</label>
+                </div>
+
+                <div class="col-lg-6">
+                  <input required type="file" name="uploaded-C4T" id="uploaded-C4T" class="form-control"
+                    (change)="fileAttachmentEvent($event)">
+
+                </div>
+
+
+              </div>
+            </div>
+
+            <div class="col-lg-12">
+              <div class="col-lg-6">
+                <img src="{{this.C4T_Logo_Image}}" alt="No Logo to display " height="200px" width="200px">
+              </div>
+            </div>
+
+
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-primary"
+          (click)="call4tel_address_add(this.Call4telParameter)">Save</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="gotoCustomerMasterList()">
+          Cancel
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal-Call4tel Partner Details-ends -->
+<!-- -----------------------Modal-invoice shared---------------begins---------------------------------------- -->
+<div class="modal fade" id="invoiceSharedCustomerFormId" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLongTitle">Select Invoice Shared </h2>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="invoiceSharedCustomerForm">
+          <div class="col-lg-12" *ngFor="let ins of Invoice_SharedCustomerPermission_List;let i=index">
+            <div class="row">
+              <label class="col-lg-4">{{ins.firstName}}</label>
+
+
+              <div class="col-lg-4">
+                <input type="checkbox" id="{{ ins.userId }}" [value]="ins.userId"
+                checked="{{ins.chk_val==1 ? 'checked':''}}"
+                  (change)="CheckboxValueChanges_invoice_shareCustomerPermission(ins.userId,$event)">
+
+              </div>
+
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-primary" (click)="invoiceShare_update()">Update</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-------------------------- ------Modal-invoice shared-- -ends-------------------------------------- -->
+
+<!-- -----------------------Modal-customer share permission begins-------------------------------- -->
+<div class="modal fade" id="SharedCustomerPermissionFormId" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLongTitle">
+          Select Shared Person</h2>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="ShareCustomerPermissionForm">
+          <div class="col-lg-12" *ngFor="let item of SharedCustomerPermission_List;let i=index">
+            <div class="row">
+              <label class="col-lg-4">{{item.firstName}}</label>
+
+              <div class="col-lg-4">
+                <input type="checkbox" id="{{ item.userId }}" [value]="item.userId"
+                  checked="{{item.chk_val==1 ? 'checked':''}}"
+                  (change)="CheckboxValueChanges_shareCustomerPermission(item.userId,$event)">
+
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-primary"
+          (click)="shareCustomerPermission_update(this.shareCustomerPermissionParameter)">Update</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-------------------------- ------Modal-customer share permission ends-------------------------------------- -->
+
+
+
+<!-- -----------------------Modal-Customer NX32 Share permission begins-------------------------------- -->
+<div class="modal fade" id="customer_NX32PermissionFormId" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLongTitle">
+          NX32 Permission Update</h2>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="customerNX32SharePermissionForm">
+          <div class="col-lg-6">
+            <div class="form-group row">
+              <label for="nx32Permiss" class="col-lg-12 col-form-label">NX32 Permisson
+                <input type="checkbox" formControlName="nx32CustomerPermission_checklist"
+                  (change)="eventCheckNX32Permission($event)" id="nx32Permiss">
+              </label>
+            </div>
+          </div>
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-primary"
+          (click)="customer_NX32PermissionUpdate(this.NX32SharePermissionParameter)">Save</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-------------------------- ------Modal-Customer NX32 Share permission ends-------------------------------------- -->
+
+
+<!-- -----------------------Modal-Customer File Attachment begins-------------------------------- -->
+<div class="modal fade" id="fileAttachmentFormId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLongTitle">
+          File Attachment</h2>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="myForm">
+
+          <div class="modal-body contractFileAttachmentCSS">
+            <div>
+              <label>
+                Attached Files</label>
+            </div>
+
+            <div *ngFor="let i =index;let display1 of  getResult;" style="padding-left: 30px;">
+
+              {{display1.attach_file_name}}
+              <button type="button" class="btn btn-link" (click)="fileAttachmentDelete(display1.credit_attach_id)">
+                <span class="bi bi-trash"></span>
+
+              </button>
+
+
+            </div>
+            <br>
+            <br>
+            <div class="col-lg-12">
+              <div class="form-group row">
+                <div class="col-lg-4">
+                  <label>
+                    Select New Attachment</label>
+                </div>
+                <div class="col-lg-8" style="padding-left: 30px;">
+
+                  <!-- <label for="file">File</label> -->
+                  <input formControlName="file" id="file1" type="file" multiple class="form-control"
+                    (change)="onFileChange($event)">
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="fileAttachmentUpdate()">
+          Save
+        </button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">
+          Cancel
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-------------------------- ------Modal-Customer File Attachment ends-------------------------------------- -->
+
+<!-- -----------------------Modal-Customer Bill Code-Display begins-------------------------------- -->
+<div class="modal fade" id="billCodeFormId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLongTitle">
+          Bill Code</h2>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card-header color-dark fw-500">
+          Bill Code Edit
+        </div>
+        <div class="card-body">
+          <div class="row">
+
+            <form [formGroup]="popupBillCodeForm3">
+              <label for="companyCode" class="col-lg-12 col-form-label">Bill Code*</label>
+              <div class="userDatatable global-shadow border-0 bg-white w-100">
+                <div class="table-responsive">
+                  <table class="table mb-0 table-borderless">
+                    <thead>
+                      <tr class="userDatatable-header">
+                        <th>Bill Code Name</th>
+                        <th>Server-VS1</th>
+                        <th>Server-VSKL</th>
+                        <th>Server-VS2(32)(TH,JP)</th>
+                        <th>Server-VS2(8)(Special Account)</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody formArrayName="popupBillCode1"
+                      *ngFor="let address of popupaddressControls.controls; let i = index;">
+
+                      <tr class="userDatatable-header" [formGroupName]="i">
+
+                        <td style="padding-right: 10px!important">
+                          <input type="text" class="form-control" formControlName="popup_billCodeName"
+                            id="popup_billCodeName_{{i}}" />
+                        </td>
+                       
+                        <td style="padding-right: 10px!important">
+                          <input type="text" class="form-control" formControlName="popup_bill_code_740"
+                            id="popup_bill_code_740_{{i}}" />
+                        </td>
+                        <td style="padding-right: 10px!important">
+                          <input type="text" class="form-control" formControlName="popup_bill_code_kl"
+                            id="popup_bill_code_kl_{{i}}" />
+                        </td>
+                        <td style="padding-right: 10px!important">
+                          <input type="text" class="form-control" formControlName="popup_bill_code_750"
+                            id="popup_bill_code_750_{{i}}" />
+                        </td>
+                        <td style="padding-right: 10px!important">
+                          <input type="text" class="form-control" formControlName="popup_bill_code_750_8"
+                            id="popup_bill_code_750_8_{{i}}" />
+                        </td>
+                        <td>
+                          <div class="userDatatable-content d-inline-block">
+                            <button type="button" class="btn btn-danger btn-sm" [disabled]="!billCodeEditForm3.valid"
+                              (click)="removeAddress2(i)">X</button>
+
+                          </div>
+                        </td>
+                        <td style="padding-right: 10px!important">
+
+                          <input type="hidden" class="form-control" formControlName="popup_customer_bill_code_id"
+                            id="popup_customer_bill_code_id{{i}}" />
+
+                        </td>
+                        <td style="padding-right: 10px!important">
+                          <input type="hidden" class="form-control" formControlName="popup_customer_id"
+                            id="popup_customer_id{{i}}" />
+                        </td>
+
+                        <td style="padding-right: 10px!important">
+                          <input type="hidden" class="form-control" formControlName="popup_conn_state"
+                            id="popup_conn_state{{i}}" />
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="text-left">
+                <button type="button" class="btn btn-dark btn-default btn-squared mt-2 mb-2" (click)="popupBillCode()"
+                  style="margin-right: 10px;"><i class="fas fa-plus" style="margin-right:0;"> Add More</i>
+                </button>
+              </div>
+            </form>
+
+          </div>
+
+
+          <div class="row">
+            <div class="col-lg-12">
+              <form [formGroup]="popupBillCodeForm2">
+                <label for="companyCode" class="col-lg-12 col-form-label">Primary Code*</label>
+                <div class="userDatatable global-shadow border-0 bg-white w-100">
+
+                  <div class="table-responsive">
+                    <table class="table mb-0 table-borderless">
+                      <thead>
+                        <tr class="userDatatable-header">
+                          <th>Servers</th>
+                          <th>Pbx Code</th>
+                          <th>Retail Code</th>
+                          <th>PBX Low</th>
+                          <th>PBX High</th>
+                          <th>Retail Low</th>
+                          <th>Retail High</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="userDatatable-header">
+                          <td>
+                            <span><strong>VS 740 server</strong></span>
+                          </td>
+                          <td>
+                            
+                            <input type="text" class="form-control" 
+                              formControlName="popup_primary_code_740" id="popup_primary_code_740" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" 
+                              formControlName="popu_primary_code_retail_750" id="popu_primary_code_retail_750" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="popup_low_credit_740"
+                              id="popup_low_credit_740" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="popup_high_credit_740"
+                              id="popup_high_credit_740" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="popup_retail_low_credit_740"
+                              id="popup_retail_low_credit_740" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="popup_retail_high_credit_740"
+                              id="popup_retail_high_credit_740" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span><strong>VS 750 server</strong></span>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" 
+                              formControlName="popup_primary_code_750" id="popup_primary_code_750" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" 
+                              formControlName="popup_primary_code_retail_750" id="popup_primary_code_retail_750" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="popup_low_credit_750"
+                              id="popup_low_credit_750" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="popup_high_credit_750"
+                              id="popup_high_credit_750" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="popup_retail_low_credit_750"
+                              id="popup_retail_low_credit_750" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="popup_retail_high_credit_750"
+                              id="popup_retail_high_credit_750" />
+                          </td>
+
+                        </tr>
+
+
+                        <tr class="userDatatable-header">
+                          <td>
+                            <span><strong>VS KL server</strong></span>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" 
+                              formControlName="popup_primary_code_kl" id="popup_primary_code_kl" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" 
+                              formControlName="popup_primary_code_retail_kl" id="popup_primary_code_retail_kl" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="popup_low_credit_kl"
+                              id="popup_low_credit_kl" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="popup_high_credit_kl"
+                              id="popup_high_credit_kl" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="popup_retail_low_credit_kl"
+                              id="popup_retail_low_credit_kl" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="popup_retail_high_credit_kl"
+                              id="popup_retail_high_credit_kl" />
+                          </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                  <label class="col-lg-12 col-form-label">Auto Credit
+                    <input type="checkbox" formControlName="popup_primary_code_auto_credit"
+                      (change)="autoCreditPermission($event)" id="popup_primary_code_auto_credit">
+                  </label>
+                </div>
+
+                <div class="userDatatable global-shadow border-0 bg-white w-100">
+
+                  <div class="table-responsive">
+                    <table class="table mb-0 table-borderless">
+                      <thead>
+                        <tr class="userDatatable-header">
+                          <th>Servers</th>
+                          <th>Servers Name for Customer</th>
+                          <th>Pbx Threshold Low</th>
+                          <th>Retail Pbx Threshold Low</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="userDatatable-header">
+                          <td>
+                            <span><strong>VS 740 server</strong></span>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="popup_server_name_740"
+                              id="popup_server_name_740" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="popup_pbx_threshold_limit_740"
+                              id="popup_pbx_threshold_limit_740" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="popup_retail_threshold_limit_740"
+                              id="popup_retail_threshold_limit_740" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span><strong>VS 750 server</strong></span>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="popup_server_name_750"
+                              id="popup_server_name_750" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="popup_pbx_threshold_limit_750"
+                              id="popup_pbx_threshold_limit_750" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="popup_retail_threshold_limit_750"
+                              id="popup_retail_threshold_limit_750" />
+                          </td>
+
+                        </tr>
+                        <tr class="userDatatable-header">
+                          <td>
+                            <span><strong>VS KL server</strong></span>
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="popup_server_name_kl"
+                              id="popup_server_name_kl" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="popup_pbx_threshold_limit_kl"
+                              id="popup_pbx_threshold_limit_kl" />
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" formControlName="popup_retail_threshold_limit_kl"
+                              id="popup_retail_threshold_limit_kl" />
+                          </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                  <label class="col-lg-12 col-form-label">Manual Credit
+                    <input type="checkbox" formControlName="popup_manual_credit"
+                      (change)="manualCreditPermission($event)" id="popup_manual_credit">
+                  </label>
+                  <label class="col-lg-12 col-form-label">Add Credit Amount
+                    <input type="checkbox">
+                    <input type="hidden" formControlName="popup_customerId" id="popup_customerId" />
+                  </label>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="billCodeAttachmentUpdate()">
+          Update
+        </button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">
+          Cancel
+        </button>
+  
+    </div>
+    </div>
+  </div>
+</div>
+
+
+<!-------------------------- ------Modal-Customer Bill Code Display ends-------------------------------------- -->
+
+<!-- --------------------------Modal-Quick Email begins------------------------------------------ -->
+<div class="modal fade" id="landscapeEmailFormId" tabindex="-1" role="dialog" aria-labelledby="landscapeEmailTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="quickEmailTitle">
+          Landscape Email</h2>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="landscapeEmailForm">
+
+          <div class="col-lg-12">
+            <div class="form-group row">
+              <label for="emailFromLandscape" class="col-lg-12 col-form-label">From</label>
+
+              <select name="From_name_1" id="emailFromLandscape" class="form-control"
+                aria-label="Default select example" formControlName="landscapeEmail_From">
+                <option [ngValue]="null" selected disabled>Select From Address</option>
+                <option *ngFor="let fromValue of From_List" value="{{fromValue.from_email}}">
+                  {{ fromValue.from_email }}
+                </option>
+              </select>
+
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="form-group row">
+
+              <label for="emailToLandscape" class="col-lg-12 col-form-label">To</label>
+              <input type="email" id="emailToLandscape" class="form-control" formControlName="landscapeEmail_To">
+
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="form-group row">
+              <label for="templateLandscape" class="col-lg-12 col-form-label">Select Template</label>
+
+              <select name="Template_name_1" id="templateLandscape" class="form-control"
+                (change)=" LandscapeEmailContentDropdown($event)" formControlName="landscapeEmail_Template">
+                <option [ngValue]="null" selected disabled>Select Template</option>
+                <option *ngFor="let templateValue of Template_List" value="{{templateValue.crm_template_id}}">
+                  {{templateValue.crm_template_name}}
+                </option>
+              </select>
+
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="form-group row">
+
+              <label for="subjLandscape" class="col-lg-12 col-form-label">Subject</label>
+              <input type="email" id="subjLandscape" class="form-control" formControlName="landscapeEmail_Subject">
+
+            </div>
+          </div>
+
+          <!-- <div class="col-lg-6">
+            <div class="form-group row">
+              <label for="templateLandscape" class="col-lg-12 col-form-label">Select Template</label>
+              
+                <select name="Template_name_1" 
+                id="templateLandscape" 
+                class="form-control"
+                
+                  aria-label="Default select example" formControlName="landscapeEmail_Template">
+                  <option [ngValue]="null" selected disabled>Select Template</option>
+                  <option  
+                  *ngFor="let templateValue of Template_List"
+                  (change)="LandscapeEmailContentDropdown(templateValue.crm_template_id)"
+                  value="{{templateValue.crm_template_id}}">
+                    {{templateValue.crm_template_name}}
+                  </option>
+                </select>
+             
+            </div>
+          </div> -->
+
+
+
+
+          <div class="col-lg-12">
+            <div class="form-group row">
+
+              <label for="message" class="col-lg-12 col-form-label">Message</label>
+              <editor id="tinyLandscapeEmailID" formControlName='landscapeEmail_Message' [init]="{
+                    base_url: '/tinymce', 
+                    suffix: '.min',
+                    branding: false
+                           
+                }"></editor>
+
+            </div>
+          </div>
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-primary" (click)="sendLandscapeMail()">Send</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">
+          Cancel
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-------------------------- ------Modal-Quick Email  ends-------------------------------------- -->
+
+
+<!----------Modal Pop Up (BEGIN)  for Quotation Shared Attachment in customer Contract------------------>
+<div class="modal fade" id="searchCustomerFormId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="invoiceAttachModalLongTitle">Advanced Search</h2>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="searchCustomerForm">
+          <div class="row">
+            <!-- <div class="col-lg-6">
+              <label>
+                Search Text
+              </label>
+              <input type="text" class="form-control" formControlName="searchtext" (keyup)="CustomerSearchtext($event)">
+
+            </div> -->
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <div class="ng-autocomplete">
+                  <label for="companyName" class="col-lg-12 col-form-label">Search Text</label>
+                  <ng-autocomplete [data]="searchResult" [searchKeyword]="keywordCompanyName"
+                    (selected)='selectEventCustomer($event)' (inputChanged)='searchCustomerData($event)'
+                    (inputFocused)='onFocusedCustomer($event)' [itemTemplate]="itemTemplateCustomer"
+                    [notFoundTemplate]="notFoundTemplate">
+                  </ng-autocomplete>
+
+                  <ng-template #itemTemplateCustomer let-item>
+                    <a [innerHTML]="item.customerName"></a>
+                  </ng-template>
+
+                  <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                  </ng-template>
+
+                </div>
+
+
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="form-group row">
+                <label for="biller_name_1" class="col-lg-12 col-form-label"> Revenue Type Wise Show</label>
+                <div class="col-lg-12">
+                  <select name="biller_name_1" id="biller_name_1" class="form-control"
+                    aria-label="Default select example" formControlName="RevenueTypeWiseShow">
+                    <option [ngValue]="null" selected disabled>Select Revenue Type Wise Show</option>
+                    <option *ngFor="let revenue of revenue_list" value="{{ revenue.revenue_type_id}}">
+                      {{ revenue.revenue_type_name }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-primary" (click)="searchCustomerList()" (click)="customerslist({})">
+          Search
+        </button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!----------Modal Pop Up (END)  for Quotation Shared  Attachment in customer Contract------------------>
+
+<!----------Modal Pop Up (BEGIN)  for Assign Account Manager in customer Contract------------------>
+<div class="modal fade" id="AssignAccountManager" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="AssignAccountManagerModalLongTitle">Assign Account Manager</h2>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="AssignAccountManagerForm">
+          <div class="col-lg-12" *ngFor="let aml of AssignAccountManager_List;let i=index">
+            <div class="row">
+              <label class="col-lg-4">{{aml.firstName}}</label>
+
+              <div class="col-lg-4">
+                <input type="radio" name="radio_AssignAccountManager" id="{{aml.userId}}"
+                  checked="{{aml.userId==AssignAccountManager_SelectedUserID ? 'checked':''}}"
+                  (change)="handle_radioChange_AccountManager($event)" />
+
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-primary" (click)="AssignAccountManagerUpdate()">
+          Update
+        </button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!----------Modal Pop Up (END)  for Quotation Shared  Attachment in customer Contract------------------>
+
+<!----------Modal Pop Up (BEGIN)  for Google Authentication in customer Contract------------------>
+<div class="modal fade" id="GoogleAuthentication" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="GoogleAuthenticationModalLongTitle">Google Authenticator</h2>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="GoogleAuthenticationForm">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group row">
+                <div class="col-lg-6">
+                  <label>
+                    Google Authentication Code
+                  </label>
+                </div>
+                <div class="col-lg-6">
+                  <input type="text" class="form-control" formControlName="google_AuthenticationCode" />
+                </div>
+
+              </div>
+
+            </div>
+            
+            
+            
+<div class="col-lg-12 mb-4 mt-2" *ngIf="(googleAuthentication_status==true)">
+  <label style="color:rgb(220, 43, 20) !important;">
+    Customer Details
+  </label>
+</div>
+            <div class="col-lg-12" *ngIf="(googleAuthentication_status==true)">
+              <div class="form-group row">
+                <div class="col-lg-6">
+                  <label>
+                    Customer Name
+                  </label>
+                </div>
+                <div class="col-lg-6">
+                  <label style="color:crimson !important;">{{googleAuthentication_customerName}}</label>
+                  <!-- <input type="text" [readonly]="isReadOnly" class="form-control" formControlName="GA_customerName" /> -->
+                </div>
+
+              </div>
+
+            </div>
+            <div class="col-lg-12" *ngIf="(googleAuthentication_status==true)">
+              <div class="form-group row">
+                <div class="col-lg-6">
+                  <label>
+                    User details
+                  </label>
+                </div>
+                <div class="col-lg-6" *ngIf="(googleAuthentication_status==true)">
+                  <label style="color:crimson !important;">{{googleAuthentication_userDetails}}</label>
+                  <!-- <input type="text" [readonly]="isReadOnly" class="form-control" formControlName="GA_userDetails" /> -->
+                </div>
+
+              </div>
+
+            </div>
+            <div class="col-lg-12" *ngIf="(googleAuthentication_status==true)">
+              <div class="form-group row">
+                <div class="col-lg-6">
+                  <label>
+                    Password
+                  </label>
+                </div>
+                <div class="col-lg-6">
+                  <label style="color:crimson !important;">  {{googleAuthentication_password}}</label>
+                  <!-- <input type="text" [readonly]="isReadOnly"  class="form-control" formControlName="GA_password" /> -->
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-primary" (click)=" GoogleAuthenticationValidation()">
+          Validate
+        </button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!----------Modal Pop Up (END)  for Google Authentication in customer master------------------>

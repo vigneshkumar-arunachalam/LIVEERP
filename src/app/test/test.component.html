@@ -1,0 +1,39 @@
+<p>hr</p>
+<form [formGroup]="addressForm" class="container mt-3" (ngSubmit)="logValue()">
+    <div class="row justify-content-center">
+      <div class="col-6">
+          <button type="button" class="btn btn-primary mb-2" (click)="addAddress()">Add File</button>
+        <section class="container border mb-4 p-3" formArrayName="addresses" 
+          *ngFor="let address of addressControls.controls; let i = index;">
+          <div [formGroupName]="i">
+            <div class="row">
+              <div class="col-6">
+                  <h4>File  {{i + 1}}</h4>
+              </div>
+              <div class="col-6 text-right">
+                  <button type="button" class="btn btn-danger btn-sm" (click)="removeAddress(i)">Remove</button>
+              </div>
+            </div>
+            <div class="row">
+              
+              <div class="col-6">
+                  <div class="form-group">
+                      <label>Select New Attachment</label>
+                      <input type="file" class="form-control" formControlName="street" />
+                    </div>
+              </div>
+            </div>
+            
+            
+          </div>
+      
+        </section>
+  
+        <div class="text-right">
+            <input type="submit" class="btn btn-success" value="Submit"/>
+        </div>
+        
+      </div>
+    </div>
+  
+  </form>

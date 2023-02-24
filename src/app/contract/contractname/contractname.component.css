@@ -1,0 +1,229 @@
+.userDatatable table td{padding:4px 0px 0px!important;}
+  .userDatatable  table tr td span{display: block;  white-space: nowrap; width: 120px; overflow: hidden;text-overflow: ellipsis; }
+  /* .userDatatable  table tr th:first-child, .userDatatable  table tr td:first-child{width: 50px;} */
+  .userDatatable__imgWrapper.d-flex.align-items-center{justify-content: center;}
+  .userDatatable .d-flex{justify-content: center;margin-right: 0;}
+  .userDatatable tbody .custom-checkbox input[type="checkbox"] + label{margin-right: 0px!important;}
+  
+
+
+
+  
+
+  /* .dropdown {
+    position: relative;
+  }
+  .dropdown__list {
+    z-index:2;
+    position: absolute;
+    display: none;
+    padding: 10px;
+    min-width: 100%;
+    background: #fff;
+    cursor: pointer;
+    border: 1px solid;
+    text-align: center;
+  }
+  .dropdown__item {
+    list-style-type: none;
+  }
+  .dropdown__link {
+    display: block;
+    padding: 0.3em 1em;
+    background: white;
+    color: var(--dropdown__link_clr);
+    text-decoration: none;
+  }
+  .dropdown__link:hover {
+    opacity: 0.9;
+  }
+  .dropdown:hover .button {
+    opacity: 0.9;
+  }
+  .dropdown:hover .dropdown__list {
+    display: block;
+  }
+  
+  .button {
+    padding: 0.6em 1.5em;
+  
+  }
+  .btn1 {
+    background-color: 	 #20c997;
+    border: none;
+    color: white;
+    padding: 0;
+    font-size: 16px;
+    width: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    border-radius: 50%;
+  }
+  .btn1:hover {
+    background-color: rgb(221, 109, 152);
+  }
+  i.fa.fa-bars {
+    color: #fff!important;
+} */
+
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown__list {
+  z-index: 2;
+  position: absolute;
+  display: none;
+  padding: 10px;
+  min-width: 100%;
+  background: #fff;
+  cursor: pointer;
+  border: 1px solid;
+  text-align: center;
+}
+
+.dropdown__item {
+  list-style-type: none;
+}
+
+.dropdown__link {
+  display: block;
+  padding: 0.3em 1em;
+  background: white;
+  color: var(--dropdown__link_clr);
+  text-decoration: none;
+}
+
+.dropdown__link:hover {
+  opacity: 0.9;
+}
+
+.dropdown:hover .button {
+  opacity: 0.9;
+}
+
+.dropdown:hover .dropdown__list {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 31px;
+
+}
+
+.view:hover {
+  background: rgba(224, 71, 166, 0.1);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.remove:hover {
+
+  background: rgba(10, 41, 2, 0.1);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.dropdown a {
+  font-size: 14px;
+  /* margin: 5px 8px!important; */
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 37px;
+  width: 37px;
+}
+
+/* .dropdown:hover .dropdown__list {
+    display: block;
+  }
+  .view:hover{background-color: rgb(52, 74, 172);} */
+
+.button {
+  padding: 0.6em 1.5em;
+
+}
+
+.btn1 {
+  background-color: #20c997;
+  border: none;
+  color: white;
+  padding: 0;
+  font-size: 16px;
+  width: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.btn1:hover {
+  background-color: rgb(221, 109, 152);
+}
+
+i.fa.fa-bars {
+  color: #fff !important;
+}
+
+
+tr:nth-child(even) {background: rgb(239, 241, 238)}
+tr:nth-child(odd) {background: #FFF}
+.view:hover{background-color: rgb(182, 13, 117);}
+.remove:hover{background-color: rgb(226, 65, 16);}
+
+.modal-content label{
+  font-weight:500;
+  color: black;
+}
+.alertdangerCustomCSS{
+color: #ff4d4f;
+background-color: #ffe5e5;
+border-color: #ffe5e5;
+width: 100% !important;
+margin: 10px 15px !important;
+}
+.alertdangerCustomCSS1 {
+  /* color: #ff4d4f; */
+  color: white!important;
+  background-color: #ffe5e5;
+  border-color: #ffe5e5;
+  width: 100% !important;
+
+  outline: none;
+  border: 2px solid transparent;
+  background-image: linear-gradient(rgb(226, 19, 19), rgb(223, 11, 11)), linear-gradient(315deg, rgb(235, 10, 10), rgb(228, 15, 26), rgb(211, 27, 27));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  animation: bg-hue 2s linear infinite;
+}
+
+
+.form-control{
+  border: 1px solid #e1e1e1;
+  background: transparent;}
+ .form-control:focus {
+  outline: none;
+  border: 2px solid transparent;
+  background-image: linear-gradient(white, white), linear-gradient(315deg, rgb(236, 160, 255), rgb(170, 178, 255), rgb(132, 255, 201));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  animation: bg-hue 2s linear infinite;
+}
+
+/* @keyframes for the gradient animation */
+@keyframes bg-hue {
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+label {
+  font-weight: 600;
+  color: #009688!important;
+}

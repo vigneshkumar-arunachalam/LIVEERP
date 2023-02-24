@@ -1,0 +1,37 @@
+<!-- <app-header></app-header> -->
+<!-- changed below for login after change -->
+<!-- <app-navbar></app-navbar>
+<app-sidebar2></app-sidebar2>
+
+<router-outlet></router-outlet>
+
+<app-footer></app-footer> -->
+
+
+<div class="loader"></div>
+<div class="main-body-content">
+
+    <div id="app">
+        <div class="main-wrapper main-wrapper-1 main_container" *ngIf="templateAuthView == false">
+            <app-navbar></app-navbar>
+            <app-sidebar2></app-sidebar2>
+            <app-footer></app-footer>
+            <div class="main-content" *ngIf="templateAuthView == false">
+                <section class="section">
+                    <div class="contents expanded">
+                        <router-outlet (activate)="onActivate($event)"></router-outlet>
+                    </div>
+                </section>
+                <!-- //<app-setting-menu></app-setting-menu> -->
+
+            </div>
+            
+           
+        </div>
+
+        <div class="main-body-auth" *ngIf="templateAuthView == true">
+            <router-outlet (activate)="onActivate($event)"></router-outlet>
+        </div>
+
+    </div>
+</div>

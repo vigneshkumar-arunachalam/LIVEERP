@@ -1,0 +1,1456 @@
+
+<div class="contents-section">
+    <div class="col-lg-12 mb-30">
+        <div class="card">
+          <div class="card-header color-dark fw-500">
+    <h1 style="text-align: left;">Edit DID Invoice </h1>
+          </div>
+        </div>
+    </div>
+    <h2 style="text-align: center;">Enter Proforma Invoice Details</h2>
+    <form [formGroup]="addDid_section1">
+        <div class="row">
+            <div class="col-lg-6">
+
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="cmp_name" class="col-lg-12 col-form-label">Company Name</label>
+                        <div class="col-lg-12">
+                            <select name="enqFormValue" id="cmp_name" class="form-control" 
+                            formControlName="companyName"
+                                (change)="getCustomerInvoiceDetails($event)"
+                                (change)="getProformaBillerDetails()">
+                                <option [ngValue]="null" selected disabled>Select Company Name</option>
+                                <option *ngFor="let comp_name of companyNameList" value="{{comp_name.billerId}}">
+                                    {{comp_name.billerName}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="customerName" class="col-lg-12 col-form-label">Bill To*</label>
+                        <div class="ng-autocomplete">
+
+                            <ng-autocomplete [data]="searchResult" [searchKeyword]="keywordCustomerName"
+                                formControlName="BillTo"
+                                (selected)='searchCustomer_selectDropdownData($event)'
+                                    (inputChanged)='searchCustomerData($event)'
+                                (inputFocused)='onFocusedCustomer($event)' [itemTemplate]="itemTemplateCustomer"
+                                [notFoundTemplate]="notFoundTemplate">
+                            </ng-autocomplete>
+
+                            <ng-template #itemTemplateCustomer let-item>
+                                <a [innerHTML]="item.customerName"></a>
+                            </ng-template>
+
+                            <ng-template #notFoundTemplate let-notFound>
+                                <div [innerHTML]="notFound"></div>
+                            </ng-template>
+                           
+                        </div>
+                        <input type="hidden" formControlName="customer_id_hd" />
+                        <input type="hidden" formControlName="billId_edit" />
+                    </div>
+                </div>
+               
+                 <div class="col-lg-12">
+                  <!--  <div class="form-group row">
+                        <label for="add" class="col-lg-12 col-form-label">Address</label>
+                        <div class="col-lg-12">
+                            <input type="text " class="form-control mt-2" formControlName="address_1" />
+                            <input type="text " class="form-control mt-2" formControlName="address_2" />
+                            <input type="text " class="form-control mt-2" formControlName="address_3" />
+                        </div>
+                    </div>-->
+                </div> 
+
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="attn1" class="col-lg-12 col-form-label">Address 1</label>
+                        <div class="col-lg-12">
+                            <input type="text" class="form-control" formControlName="address_1"  />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="attn1" class="col-lg-12 col-form-label">Address 2</label>
+                        <div class="col-lg-12">
+                            <input type="text" class="form-control" formControlName="address_2"  />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="attn1" class="col-lg-12 col-form-label">Address 3</label>
+                        <div class="col-lg-12">
+                            <input type="text" class="form-control" formControlName="address_3"  />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="attn1" class="col-lg-12 col-form-label">Attn</label>
+                        <div class="col-lg-12">
+                            <input type="text" class="form-control" formControlName="Attn_1" id="attn1" />
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="ship" class="col-lg-12 col-form-label">Ship To</label>
+                        <div class="col-lg-12">
+                            <input type="text" class="form-control mt-2" formControlName="ship_to" />
+                            <!-- <input type="text" class="form-control mt-2" formControlName="ship_address_1" />
+                            <input type="text" class="form-control mt-2" formControlName="ship_address_2" />
+                            <input type="text" class="form-control mt-2" formControlName="ship_address_3" /> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="attn1" class="col-lg-12 col-form-label">Ship Address 1</label>
+                        <div class="col-lg-12">
+                            <input type="text" class="form-control" formControlName="ship_address_1"  />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="attn1" class="col-lg-12 col-form-label">Ship Address 2</label>
+                        <div class="col-lg-12">
+                            <input type="text" class="form-control" formControlName="ship_address_2"  />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="attn1" class="col-lg-12 col-form-label">Ship Address 3</label>
+                        <div class="col-lg-12">
+                            <input type="text" class="form-control" formControlName="ship_address_3"  />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="attn2" class="col-lg-12 col-form-label">Attn</label>
+                        <div class="col-lg-12">
+                            <input type="text" class="form-control" formControlName="ship_attn" id="attn2" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="Ship_By" class="col-lg-12 col-form-label">Bill Code</label>
+                        <div class="col-lg-12">
+
+                            <select id="Ship_By" class="form-control" formControlName="ShipBy">
+                                <option [ngValue]="null" selected disabled>Select Bill Code</option>
+                                <option *ngFor="let bill of BillCodeList" value="{{bill.billCode}}">
+                                    {{bill.billCode}}
+                                </option> 
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="form-group">
+                            <label for="refResellerDetails" class=" col-form-label">Reference Reseller Name</label>
+                            <textarea class="form-control" formControlName="ReferenceResellerName" style="height: 70px;"
+                                row="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label for="Payment" class="col-lg-12 col-form-label">Select Extra Logo</label>
+                        <div class="col-lg-12">
+                            <div class="form-check form-check-inline">
+    
+                                <input class="form-check-input radioType" type="radio" formControlName="extraLogo"
+                                    name="extraLogo" (change)="handleChangeExtraLogo($event)" id="exampleRadios1" value="1">
+                                <label class="form-check-label" for="exampleRadios1">
+                                    IT Care
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="extraLogo" formControlName="extraLogo"
+                                    (change)="handleChangeExtraLogo($event)" id="exampleRadios2" value="2">
+                                <label class="form-check-label" for="exampleRadios2">
+                                    Calncall
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="extraLogo" formControlName="extraLogo"
+                                    (change)="handleChangeExtraLogo($event)" id="exampleRadios3" value="3">
+                                <label class="form-check-label" for="exampleRadios3">
+                                    DID Sg
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="extraLogo" formControlName="extraLogo"
+                                    (change)="handleChangeExtraLogo($event)" id="exampleRadios3" value="4">
+                                <label class="form-check-label" for="exampleRadios3">
+                                    Callcloud
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="extraLogo" formControlName="extraLogo"
+                                    (change)="handleChangeExtraLogo($event)" id="exampleRadios3" value="5">
+                                <label class="form-check-label" for="exampleRadios3">
+                                    Mrvoip
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <div class="col-lg-2">
+                         <label  class="col-form-label">JomPAY Logo</label>
+                        </div>
+                        
+                        <div class="col-lg-2 mt-2">
+                            <input type="checkbox"  formControlName="Jompay_logo"  />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-6">
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="inv_no" class="col-lg-12 col-form-label">Invoice No</label>
+                        <div class="col-lg-12">
+                            <input type="text " class="form-control" formControlName="invoiceNo"  [attr.readonly]="isReadOnly" id="inv_no" />
+                              
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="attn1" class="col-lg-12 col-form-label">Cus Invoice No.</label>
+                        <div class="col-lg-12">
+                            <input type="text" class="form-control" formControlName="cusInvoiceNo"  />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                     <div class="form-group row">
+                       <label for="regg"
+                            class="col-lg-12 col-form-label">{{this.getProformaBillerDetails_tinName}}</label>
+                        <div class="col-lg-12">
+                            <input type="text " class="form-control" formControlName="tin" [attr.readonly]="isReadOnly"
+                                id="regg" />
+                        </div>
+                        </div> 
+                    </div>
+                    <div class="col-lg-12">
+                    <div class="form-group row">
+
+                        <label for="regg"
+                            class="col-lg-12 col-form-label">{{this.getProformaBillerDetails_cstName}}</label>
+                        <div class="col-lg-12">
+                            <input type="text " class="form-control" formControlName="cst" [attr.readonly]="isReadOnly"
+                                id="regg1" />
+                        </div> 
+                    </div>
+                    </div>
+                
+
+                        <div class="col-lg-12">
+                            <div class="form-group row">
+                                <label for="datee" class="col-lg-12 col-form-label">Date *</label>
+                                <div class="col-lg-12">
+                                    <input type="date" class="form-control" formControlName="Date" id="datee" />
+                                </div>
+                                <label for="po" class="col-lg-12 col-form-label">PO.No</label>
+                                <div class="col-lg-12">
+                                    <input type="text " class="form-control" formControlName="PoNo" id="po" />
+        
+                                </div>
+        
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group row">
+                                <label for="podatee" class="col-lg-12 col-form-label">PO.Date</label>
+                                <div class="col-lg-12">
+                                    <input type="date" class="form-control" formControlName="PoDate" id="podatee" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group row">
+                                <label for="sales_r" class="col-lg-12 col-form-label">Sales Rep</label>
+                                <div class="col-lg-12">
+                                    
+                                </div>
+                               <div class="col-lg-12" *ngIf="(salesRepDropDown_Textbox_Status==1)">
+                                     <select name="enqFormValue" id="sales_r" class="form-control" formControlName="salesRep">
+                                        <option [ngValue]="null" selected disabled>Sales Rep</option>
+                                        <option *ngFor="let rep of SalesRepList" value="{{rep.userId}}">
+                                            {{rep.firstName}}
+                                        </option>
+                                    </select> 
+                                </div>
+                               <div class="col-lg-12" *ngIf="(salesRepDropDown_Textbox_Status==0)">
+                                    <input type="text" class="form-control" formControlName="salesRep_id" id="saleStatus" />
+                                    <input type="hidden" class="form-control" formControlName="salesRep"
+                                        id="saleStatus_hd_id" />
+        
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group row">
+                                <label for="Ship_By" class="col-lg-12 col-form-label">Ship By</label>
+                                <div class="col-lg-12">
+        
+                                    <select id="Ship_By" class="form-control" formControlName="ShipBy">
+                                        <option [ngValue]="null" selected disabled>Default Ship By</option>
+                                        <option *ngFor="let ship of ShipByList" value="{{ship.shipById}}">
+                                            {{ship.ship_name}}
+                                        </option> 
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="col-lg-12">
+                            <div class="form-group row">
+                                <label for="Ship_Date" class="col-lg-12 col-form-label">Ship Date</label>
+                                <div class="col-lg-12">
+                                    <input type="date" class="form-control" formControlName="ShipDate" id="Ship_Date" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group row">
+                                <label for="term" class="col-lg-12 col-form-label">Terms</label>
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" formControlName="terms" id="term" />
+                                </div>
+                            </div>
+                        </div>
+        
+        
+        
+                        <div class="col-lg-12">
+                            <div class="form-group row">
+                                <label for="curren" class="col-lg-12 col-form-label">Currency</label>
+                                <div class="col-lg-12">
+                                    
+                                    <select id="curren" class="form-control" formControlName="Currency"
+                                        (change)="getCurrencyValues($event)">
+                                        <option [ngValue]="null" selected disabled>Select Currency</option>
+                                        <option *ngFor="let comp_name of currencyNameList" value="{{comp_name.currencyId}}">
+                                            {{comp_name.currency_name}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group row">
+                                <label for="ccr" class="col-lg-12 col-form-label">Currency Conversion Rate</label>
+                                 <div class="col-lg-12">
+                                    
+                                   <input type="text" class="form-control" formControlName="CurrencyConversionRate"
+                                        [(ngModel)]="CurrencyConversionRateDefault" id="ccr" />
+                                </div> 
+                            </div>
+                        </div>
+        
+                        <div class="col-lg-12">
+                            <div class="form-group row">
+                                <label for="Payment" class="col-lg-12 col-form-label">Payment Via</label>
+                                <div class="col-lg-12">
+                                    
+                                    <select id="Payment" class="form-control" formControlName="PaymentVia">
+                                        <option [ngValue]="null" selected disabled>Select Payment Via</option>
+                                        <option *ngFor="let payment of paymentviaList" value="{{payment.paymentvia_id}}">
+                                            {{payment.paymentvia_name}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-lg-12">
+
+                    <div class="form-check form-check-inline">
+
+                        <input class="form-check-input" type="radio" name="export_state" (change)="handleChange($event)"
+                            id="exampleRadios1" value="Local" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Local
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="export_state" (change)="handleChange($event)"
+                            id="exampleRadios2" value="Export">
+                        <label class="form-check-label" for="exampleRadios2">
+                            Export
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="export_state" (change)="handleChange($event)"
+                            id="exampleRadios3" value="Zero Valid">
+                        <label class="form-check-label" for="exampleRadios3">
+                            Zero Valid
+                        </label>
+                    </div>
+
+                </div>
+
+                       
+                    </div>
+                    
+            </div>
+    </form>
+
+    <!-- --------------------------------- -->
+    <form [formGroup]="did_Invice_fixed_charges" >
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group row">
+                    <h2 style="color: black;background-color: #EFF0F3;font-size: larger;text-align: center;"
+                            class="col-lg-12 col-form-label">Product Details</h2>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="add-did-table-section">
+                        <thead>
+                            <tr class="userDatatable_header">
+                                <th><span class="userDatatable-title">Product Name</span></th>
+                                            <th><span class="userDatatable-title">	From</span></th>
+                                            <th><span class="userDatatable-title">To</span></th>
+                                            <th ><span class="userDatatable-title" > Me</span></th>
+                                            <th><span class="userDatatable-title"> Date Dur</span></th>
+                                            <th><span class="userDatatable-title">Description</span></th>
+                                            <th><span class="userDatatable-title">Amount</span></th>
+                                            <th><span class="userDatatable-title">C Dur</span></th>
+                                            <!-- <th> <span class="userDatatable-title">Action</span></th> -->
+                            </tr>
+                            <tr>
+                                <td colspan="9">
+                                    <div class="col-lg-12">
+                                        <div class="form-group row">              
+                                              <h2 style="color: black;background-color: #EFF0F3;font-size: larger;text-align: left;"
+                                        class="col-lg-12 col-form-label">Monthly Fixed Charges</h2>
+                                    </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody formArrayName="fixedAddresses" *ngFor="let address of addressControls.controls; let i = index;">
+                          
+                            <tr [formGroupName]="i">
+                                <td>
+                                    <div class="userDatatable-content" >
+                                    <input type="text" class="form-control mt-2 mb-2" formControlName="particular1" id="particular_1_{{i}}" />
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="userDatatable-content"  >
+                                    <input type="date" class="form-control" formControlName="fromdt1" id="fromdt_1_{{i}}" />
+                                    </div>
+                                </td>
+                                
+                                <td>
+                                    <div class="userDatatable-content" >
+                                        <br>
+                                    <input type="date" class="form-control" formControlName="todt1" id="todt_1_{{i}}" />
+                                    <button  type="button"  class=" btn-primary">Computer
+                                 </button>
+    
+                                     </div>
+                                </td>
+
+                                <td style="text-align: center;">
+                                    <div class="userDatatable-content">
+                                    <input type="checkbox" formControlName="md_chk1" id="md_chk_1_{{i}}" />
+                                    </div>
+                                </td>
+                                
+
+                                <td class="date-duration-section">
+                                    <div class="userDatatable-content">
+                                        <button type="button"  class="btn-info" (click)="minus()"
+                                         ><i class="fas fa-minus" ></i>
+                                      </button>
+                                      <!--   -->
+                                    <input type="text" [value]="qunatity" class="form-control" 
+                                    formControlName="did_diff_date1" id="did_diff_date_1_{{i}}" />
+                                    <button type="button"  class="btn-primary" (click)="plus()"
+                                         ><i class="fas fa-plus" ></i>
+                                      </button>
+                                    </div>
+                                </td>
+                                
+                                <td>
+                                    <div class="userDatatable-content">
+                                    <textarea col="3" row="3" class="form-control" formControlName="productDesc1" 
+                                     style="height: 120px;width: 100%;text-align: left;padding-left: 8px" id="productDesc1_{{i}}" ></textarea>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="userDatatable-content">
+                                    <input type="text" class="form-control" formControlName="amt1" id="amt_1_{{i}}"
+                                     (change)="totalCalculate_1();totalCalculate_2();totalCalculate_3()"(keyup)="totalCalculate_1();totalCalculate_2();totalCalculate_3()"  />
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="userDatatable-content lalign">
+                                    <input type="checkbox" formControlName="call_duration1" id="call_duration_1_{{i}}" />
+                                    </div>
+                                </td>
+
+                                <td *ngIf="i>0">
+                                    <div class="userDatatable-content d-inline-block">
+                                        <button type="button" class="btn btn-danger btn-sm"
+                                            (click)="removeDid1(i)">X</button>
+                                    </div>
+                                </td>
+                            
+                            </tr>
+                        </tbody>
+                        <br>
+                        <tbody>
+                            <tr >
+
+                                <td colspan="3">
+                                </td>
+                                <td colspan="2">
+
+                                    <div class="userDatable-content">
+                
+                                        <button type="button"
+                                        class="btn btn-primary btn-default btn-squaredbuttoncssDiscount"
+                                        data-toggle="modal" 
+                                        data-target="#fixedDiscountFormId" id="didDiscount_btn">Discount(-) 
+                                        </button>
+                                    </div>
+                                </td>
+
+                               
+
+                                <td colspan="1">
+                                    <div class="userDatable-content">
+                
+                                        <button type="button"
+                                        class="btn btn-primary btn-default btn-squaredbuttoncssDiscount"
+                                        data-toggle="modal"
+                                        data-target="#didCommissionFormId" id="didDiscount_btn">Commission  
+                                        </button>
+                                    </div>
+                                </td>
+
+                              
+                                <td  colspan="3" class="sub-total-list">
+                                    <div class="userDatable-content">
+                
+                                        <label  class="col-form-label" >Sub Total(Rs.) </label>
+                                       
+                                    </div>
+                                    <input type="text" class="form-control"  id="sub_total_1"
+                                    />
+                                </td>
+                                <td colspan="1">
+
+                                    <input type="hidden" class="form-control" style="text-align: right;"
+                                         id="sub_discount_1" />
+                                        <input type="hidden" class="form-control" style="text-align: right;"
+                                         id="sub_discount_type_1" />
+                                    <input type="hidden" class="form-control" style="text-align: right;"
+                                        id="sub_discount_val_1" />
+                                   </td>
+
+                            </tr>
+                        </tbody>
+                        <div class="text-left"> 
+                            <button type="button" class="btn btn-dark btn-default btn-squared mt-2 mb-2" (click)="addInvoice()"
+                                style="margin-right: 10px;"><i class="fas fa-plus" style="margin-right:0;"> Add Product</i>
+                            </button>
+                        </div>
+                    </table>
+                </div>
+            </div>
+        </div>
+                </form>
+            
+
+                  <!-- ------------------------------usage charges-------------------------------------------- -->
+                  
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <form [formGroup]="did_Invice_usage_Charges" >
+                            <table>
+                                <thead>
+                                <tr>
+                                    <td colspan="9">
+                                        <div class="col-lg-12">
+                                            <div class="form-group row">              
+                                                  <h2 style="color: black;background-color: #EFF0F3;font-size: larger;text-align: left;"
+                                            class="col-lg-12 col-form-label">Usage Charges</h2>
+                                        </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </thead>
+                        
+                            <tbody formArrayName="usageAddress" *ngFor="let usage of usageAddressControls.controls; let i = index;">
+                              
+                                <tr [formGroupName]="i">
+                                    <td>
+                                        <div class="userDatatable-content" >
+                                        <input type="text" class="form-control mt-2 mb-2" formControlName="particular2" id="particular2_{{i}}"  />
+                                        </div>
+                                    </td>
+        
+                                    <td>
+                                        <div class="userDatatable-content"  >
+                                        <input type="date" class="form-control" formControlName="fromdt2"   id="fromdt2_{{i}}"/>
+                                        </div>
+                                    </td>
+                                    
+                                    <td>
+                                        <div class="userDatatable-content" >
+                                            <br>
+                                        <input type="date" class="form-control" formControlName="todt2" id="todt2_{{i}}"  />
+                                        <button type="button"  class=" btn-primary">Computer
+                                     </button>
+        
+                                         </div>
+                                    </td>
+        
+                                    <td>
+                                        <div class="userDatatable-content lalign">
+                                        <input type="checkbox" formControlName="md_chk2" id="md_chk2_{{i}}" />
+                                        </div>
+                                    </td>
+                                    
+        
+                                    <td class="date-duration-section">
+                                        <div class="userDatatable-content">
+                                            <button type="button"  class="btn-info" (click)="minus2()"
+                                             ><i class="fas fa-minus" ></i>
+                                          </button>
+                                          <!--  formControlName="did_diff_date2" id="did_diff_date2_{{i}}" -->
+                                        <input type="text" [value]="qunatity2" class="form-control"  />
+                                        <button type="button"  class="btn-primary" (click)="plus2()"
+                                             ><i class="fas fa-plus" ></i>
+                                          </button>
+                                        </div>
+                                    </td>
+                                    
+                                    <td>
+                                        <div class="userDatatable-content">
+                                        <textarea col="3" row="3" class="form-control" formControlName="productDesc2" 
+                                         style="height: 120px;width: 100%;text-align: left;padding-left: 8px" id="productDesc2_{{i}}"  ></textarea>
+                                        </div>
+                                    </td>
+        
+                                    <td>
+                                        <div class="userDatatable-content">
+                                        <input type="text" class="form-control" formControlName="amt2" id="amt2_{{i}}"
+                                        (change)="totalCalculate_1();totalCalculate_2();totalCalculate_3()"(keyup)="totalCalculate_1();totalCalculate_2();totalCalculate_3()" />
+                                        </div>
+                                    </td>
+        
+                                    <td>
+                                        <div class="userDatatable-content lalign">
+                                        <input type="checkbox" formControlName="call_duration2" id="call_duration2_{{i}}"  />
+                                        </div>
+                                    </td>
+        
+                                    <td *ngIf="i>0">
+                                        <div class="userDatatable-content d-inline-block">
+                                            <button type="button" class="btn btn-danger btn-sm"
+                                                (click)="removeDid2(i)">X</button>
+                                        </div>
+                                    </td>
+                                
+                                </tr>
+                            </tbody>
+                            <br>
+                            <tbody>
+                                <tr >
+        
+                                    <td colspan="3">
+                                    </td>
+                                    <td colspan="2">
+        
+                                        <div class="userDatable-content">
+                    
+                                            <button type="button"
+                                            class="btn btn-primary btn-default btn-squaredbuttoncssDiscount"
+                                            data-toggle="modal" 
+                                            data-target="#usageDiscountFormId" id="didDiscount_btn">Discount(-) 
+                                            </button>
+                                        </div>
+                                    </td>
+        
+        
+                                    <td colspan="1">
+                                        <div class="userDatable-content">
+                    
+                                            <button type="button"
+                                            class="btn btn-primary btn-default btn-squaredbuttoncssDiscount"
+                                            data-toggle="modal" 
+                                            data-target="#didCommissionFormId" id="didDiscount_btn">Commission  
+                                            </button>
+                                        </div>
+                                    </td>
+        
+                                  
+                                    <td  colspan="3" class="sub-total-list">
+                                        <div class="userDatable-content">
+                    
+                                            <label  class="col-form-label">Sub Total(Rs.) </label>
+                                           
+                                        </div>
+                                        <input type="text" class="form-control"  id="sub_total_2">
+                                    </td>
+                                    <td>
+                                    <input type="hidden" class="form-control" style="text-align: right;"
+                                         id="sub_discount_2" />
+                                        <input type="hidden" class="form-control" style="text-align: right;"
+                                       id="sub_discount_type_2" />
+                                    <input type="hidden" class="form-control" style="text-align: right;"
+                                        id="sub_discount_val_2" />
+                                   </td>
+                                </tr>
+                            </tbody>
+                            <div class="text-left"> 
+                                <button type="button" class="btn btn-dark btn-default btn-squared mt-2 mb-2" (click)="usageCharges()"
+                                    style="margin-right: 10px;"><i class="fas fa-plus" style="margin-right:0;"> Add Product</i>
+                                </button>
+                            </div>
+                        </table>
+                    </form>
+                        </div>
+                    </div>
+                    
+<!-- -------------------------------------------other Chareges----------------------------------------------------------- -->
+                        <div class="col-12">
+                            <div class="table-responsive">
+                                <form [formGroup]="did_Invice_other_charges">
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td colspan="9">
+                                            <div class="col-lg-12">
+                                                <div class="form-group row">              
+                                                      <h2 style="color: black;background-color: #EFF0F3;font-size: larger;text-align: left;"
+                                                class="col-lg-12 col-form-label">Other Charges</h2>
+                                            </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody formArrayName="otherAddress" *ngFor="let other of otherAddressControls.controls; let i = index;">
+                                  
+                                    <tr  [formGroupName]="i">
+                                        <td>
+                                            <div class="userDatatable-content" >
+                                            <input type="text" class="form-control mt-2 mb-2" formControlName="particular3" id="particular3_{{i}}" />
+                                            </div>
+                                        </td>
+            
+                                        <td>
+                                            <div class="userDatatable-content"  >
+                                            <input type="date" class="form-control" formControlName="fromdt3" id="fromdt3_{{i}}" />
+                                            </div>
+                                        </td>
+                                        
+                                        <td>
+                                            <div class="userDatatable-content" >
+                                                <br>
+                                            <input type="date" class="form-control" formControlName="todt3" id="todt3_{{i}}"  />
+                                            <button  type="button"  class=" btn-primary">Computer
+                                         </button>
+            
+                                             </div>
+                                        </td>
+            
+                                        <td>
+                                            <div class="userDatatable-content lalign">
+                                            <input type="checkbox" formControlName="md_chk3" id="md_chk3_{{i}}" >
+                                            </div>
+                                        </td>
+                                        
+            
+                                        <td class="date-duration-section">
+                                            <div class="userDatatable-content">
+                                                <button type="button"  class="btn-info" (click)="minus3()"
+                                                 ><i class="fas fa-minus" ></i>
+                                              </button>
+                                              <!--  -->
+                                            <input type="text" [value]="qunatity3" class="form-control"
+                                            formControlName="did_diff_date3"  id="did_diff_date3_{{i}}"  />
+                                            <button type="button"  class="btn-primary" (click)="plus3()"
+                                                 ><i class="fas fa-plus" ></i>
+                                              </button>
+                                            </div>
+                                        </td>
+                                        
+                                        <td>
+                                            <div class="userDatatable-content">
+                                            <textarea col="3" row="3" class="form-control" formControlName="productDesc3" 
+                                             style="height: 120px;width: 100%;text-align: left;padding-left: 8px"  id="productDesc3_{{i}}"  ></textarea>
+                                            </div>
+                                        </td>
+            
+                                        <td>
+                                            <div class="userDatatable-content">
+                                            <input type="text" class="form-control" formControlName="amt3" id="amt3_{{i}}"
+                                            (change)="totalCalculate_1();totalCalculate_2();totalCalculate_3()"(keyup)="totalCalculate_1();totalCalculate_2();totalCalculate_3()" />
+                                            </div>
+                                        </td>
+            
+                                        <td>
+                                            <div class="userDatatable-content lalign">
+                                            <input type="checkbox" formControlName="call_duration3" id="call_duration3_{{i}}" />
+                                            </div>
+                                        </td>
+            
+                                        <td *ngIf="i>0">
+                                            <div class="userDatatable-content d-inline-block">
+                                                <button type="button" class="btn btn-danger btn-sm"
+                                                    (click)="removeDid3(i)">X</button>
+                                            </div>
+                                        </td>
+                                    
+                                    </tr>
+                                </tbody>
+                                <br>
+                                <tbody>
+                                    <tr >
+            
+                                        <td colspan="3">
+                                        </td>
+                                        <td colspan="2">
+            
+                                            <div class="userDatable-content">
+                        
+                                                <button type="button"
+                                                class="btn btn-primary btn-default btn-squaredbuttoncssDiscount"
+                                                data-toggle="modal" 
+                                                data-target="#otherDiscountFormId" id="didDiscount_btn">Discount(-) 
+                                                </button>
+                                            </div>
+                                        </td>
+            
+            
+                                        <td colspan="1">
+                                            <div class="userDatable-content">
+                        
+                                                <button type="button"
+                                                class="btn btn-primary btn-default btn-squaredbuttoncssDiscount"
+                                                data-toggle="modal"
+                                                data-target="#didCommissionFormId" id="didDiscount_btn">Commission  
+                                                </button>
+                                            </div>
+                                        </td>
+            
+                                       
+                                        <td colspan="3" class="sub-total-list">
+                                            <div class="userDatable-content">
+                        
+                                                <label  class="col-form-label" >Sub Total(Rs.) </label>
+                                               
+                                            </div>
+                                            <input type="text" class="form-control" id="sub_total_3">
+                                        </td>
+
+                                        <td>
+                                            <input type="hidden" class="form-control" style="text-align: right;"
+                                                 id="sub_discount_3" />
+                                                <input type="hidden" class="form-control" style="text-align: right;"
+                                               id="sub_discount_type_3" />
+                                            <input type="hidden" class="form-control" style="text-align: right;"
+                                                id="sub_discount_val_3" />
+                                           </td>
+                                    </tr>
+                                </tbody>
+                                <div class="text-left"> 
+                                    <button type="button" class="btn btn-dark btn-default btn-squared mt-2 mb-2" (click)="otherCharges()"
+                                        style="margin-right: 10px;"><i class="fas fa-plus" style="margin-right:0;"> Add Product</i>
+                                    </button>
+                                </div>
+                            </table>
+                        </form> 
+                        </div>
+                    </div>
+                </div>
+                    <div class="content-section">
+                    <form [formGroup]="addDid_section3">
+                        <section class="overall">
+                            <!-- <section class="left_section">
+                
+                            </section> -->
+                
+                            <div class="right_section">
+                
+                
+                             
+                
+                
+                                    <div class="row">
+                
+                
+                
+                                        <div class="col-lg-12">
+                
+                                            <div class="row d-flex">
+                                                <div class="col-lg-6">
+                                                    <label class="col-form-label">Gross
+                                                        Total(Rs.)</label>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <!--   -->
+                                                    <input type="text" class="form-control mt-2"
+                                                        formControlName="section3_gross_total" id="section3_gross_total" [(ngModel)]="grossTotal" />
+                                                </div>
+                                            </div>
+                                        </div>
+                
+                
+                
+                                        <div class="col-lg-6">
+                                            <!-- (click)="calFinalDiscount()" -->
+                                            <button class="btn btn-primary mr-2 mt-2" data-toggle="modal"
+                                                data-target="#discountFormFinal" 
+                                                style="padding: 0px;width:120px;margin-right: 0px!important;float: right;height: 42px;">Discount
+                                                (-)</button>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="d-flex justify-content-center">
+                
+                
+                                                <input type="text" class="form-control  mt-2" [(ngModel)]="finalDiscount"
+                                                    formControlName="section3_discount_txtbox" id="finalDiscount_amt" />
+                                                <input type="hidden" class="form-control" style="text-align: right;"
+                                                    formControlName="final_dis_type" id="final_discount_type"
+                                                    [(ngModel)]="finalDiscountType" />
+                                                <input type="hidden" class="form-control" style="text-align: right;"
+                                                    formControlName="final_dis_val" id="final_discount_val"
+                                                    [(ngModel)]="finalDiscountVal" />
+                                            </div>
+                                        </div>
+                
+                
+                                        <div class="col-lg-6">
+                                            <div class="form-group ml-2 mt-2">
+                
+                
+                                                <select name="billerID" id="billerIDs" class="form-control"
+                                                    aria-label="Default select example" formControlName="section3_gst_dropdown"
+                                                    (change)="getTaxCals()">
+                                                    <option [ngValue]="null" selected disabled>Select Tax</option>
+                
+                
+                
+                                                    <option *ngFor="let tax of TaxDropdownList" value="{{tax.taxId}}">
+                                                        {{tax.combine_val}}
+                                                    </option>
+                                                </select>
+                                                <input type="hidden" formControlName="section3_tax_per_hd" id="tax_per_hd_id" />
+                                            </div>
+                                        </div>
+                
+                
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <!--  -->
+                                                <input type="text" formControlName="section3_taxAmt_txtbox" id="tax_amt_id" [(ngModel)]="finalTax"
+                                                     class="form-control mt-2" />
+                
+                                            </div>
+                                        </div>
+                
+                
+                                        <div class="col-lg-6">
+                                            <div class="d-flex justify-content-center">
+                                                <input type="text" class="form-control ml-2 mt-2" placeholder="Shipping"
+                                                    formControlName="section3_shipping_amt_name_txtbox" />
+                
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <!--  -->
+                                                <input type="text" formControlName="section3_shipping_amt_txtbox" (keyup)="extraFees()"
+                                                    id="shipping_amt_id" class="form-control mt-2" />
+                                            </div>
+                                        </div>
+                
+                
+                                        <div class="col-lg-6">
+                                            <div class="d-flex justify-content-center">
+                                                <input type="text" class="form-control ml-2 mt-2" placeholder="Banking Charge"
+                                                    formControlName="section3_bankingCharge_amt_name_txtbox" />
+                
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <!--  -->
+                                                <input type="text" formControlName="section3_bankingCharge_amt_txtbox" (keyup)="extraFees()"
+                                                     id="bankingCharge_amt_id" class="form-control mt-2" />
+                                            </div>
+                                        </div>
+                
+                
+                                        <div class="col-lg-12">
+                                            <div class="form-group row">
+                
+                                                <div class="col-lg-6">
+                                                    <label>Net Total (Rs.)</label>
+                                                </div>
+                
+                                                <div class="col-lg-6">
+                                                    <!-- (change)="totalCalculate()" -->
+                                                    <input type="text" class="form-control" [(ngModel)]="grandTotal"
+                                                        formControlName="section3_grand_total" id="section3_grand_total" />
+                                                </div>
+                
+                
+                                            </div>
+                                        </div>
+                
+                
+                                        <div class="col-lg-12">
+                                            <div class="form-group row">
+                
+                                                <div class="col-lg-6">
+                                                    <label>Remarks</label>
+                                                </div>
+                
+                                                <div class="col-lg-6">
+                                                    <input type="text" class="form-control" formControlName="section3_remarks" />
+                                                </div>
+                
+                
+                                            </div>
+                                        </div>
+                
+                
+                
+                
+                                        <div class="col-lg-12">
+                                            <div class="form-group row">
+                
+                                                <div class="col-lg-6">
+                                                    <label>Previous Due</label>
+                                                </div>
+                
+                                                <div class="col-lg-6">
+                                                    <!-- [(ngModel)]="previousDue" -->
+                                                    <input type="checkbox" 
+                                                        formControlName="section3_previousDue"
+                                                         />
+                                                </div>
+                
+                
+                                            </div>
+                                        </div>
+                
+                                        <div class="col-lg-12">
+                                            <div class="form-group row">
+                
+                                                <div class="col-lg-6">
+                                                    <label>Add to terms and condition</label>
+                                                </div>
+                
+                                                <!-- <div class="col-lg-6">
+                                                    <input type="checkbox" [(ngModel)]="chkTermsandcondition"
+                                                        formControlName="section3_termCondition"
+                                                        (change)="chkTermsandconditionEvent($event)" />
+                                                </div> -->
+                
+                
+                                            </div>
+                                        </div>
+                
+                                        <div class="col-lg-12">
+                                            <div class="form-group row">
+                
+                                                <div class="col-lg-6">
+                                                    <label>Add to Received and Authorized Signature/stamp</label>
+                                                </div>
+                
+                                                <!-- <div class="col-lg-6">
+                                                    <input type="checkbox" [(ngModel)]="chkReceivedAuthorizedSignature"
+                                                        formControlName="section3_receivedAuthorizedSignature"
+                                                        (change)="chkReceivedAuthorizedSignatureEvent($event)" />
+                                                </div> -->
+                
+                
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label style="font-style: italic;color:#009688">
+                                                    (Signature not available. Ask your administrator to upload your
+                                                    signature if required)
+                                                </label>
+                
+                                            </div>
+                                        </div>
+                
+                                        <div class="col-lg-12">
+                                            <div class="form-group row">
+                
+                                                <div class="col-lg-6">
+                                                    <label>Add Logo, Address, Signature in PDF</label>
+                                                </div>
+                
+                                                <!-- <div class="col-lg-6">
+                                                    <input type="checkbox" [(ngModel)]="chklogoAddressSignature"
+                                                        formControlName="section3_logo"
+                                                        (change)="chklogoAddressSignatureEvent($event)" />
+                                                </div> -->
+                
+                
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateDidInvoice()">
+                                                Update
+                                            </button>
+                                            <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="goBack()">
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                
+                                </div>
+                        </section>
+                    </form> 
+                </div>
+                
+
+    <!------------------------- fixed Discount popup start ------------------>
+
+    <div class="modal fade" id="fixedDiscountFormId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="addModalLongTitle">Discount</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 style="text-align:center;color:rgb(97, 72, 9)">Set Discount</h2>
+                <form [formGroup]="FixedDiscountForm">
+                    <div class="row">
+
+                        <div class="col-lg-12">
+                            <div class="form-group row">
+                                <label for="enq_subject" class="col-lg-12 col-form-label"></label>
+                                <div class="col-lg-6">
+                                    <input type="radio" name="fix_DiscountTYpe" id="fix_DiscountTYpe_per" value="per">
+                                    <label for="per" class="ml-2 discountCSS1"> % Price</label><br>
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" id="enablePerFinal_1" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="enq_subject" class="col-lg-12 col-form-label"></label>
+                                <div class="col-lg-6">
+                                    <input type="radio" name="fix_DiscountTYpe" id="fix_DiscountTYpe_amt" value="amt">
+                                    <label for="html" class="ml-2 discountCSS2">Direct Price Reduction</label><br>
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" id="enablePriceFinal_1" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary" (click)="fixedSaveDiscount()">Save</button>
+                <button type="button" class="btn btn-dark" data-dismiss="modal">
+                    Cancel
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-------------------------- end of discount popup  ----------------------->
+<!-------------------------- Commission popup start ----------------------->
+<div class="modal fade" id="didCommissionFormId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title" id="addModalLongTitle">Reseller Commission Details-Edit</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="DidCommissionForm">
+                <div class="row">
+                    <div class="col-lg-12">
+                    <div class="col-lg-12" style="display: flex;">
+                      <div class="col-lg-4">
+                        <label>Reseller Name</label>
+                      </div>
+                      <div class="col-lg-6">
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+
+
+                    <div class="col-lg-12" style="display: flex;">
+                        <div class="col-lg-4">
+                          <label>Commission Type</label>
+                        </div>
+                        <div class="col-lg-2">
+                            <input mdbRadio class="form-check-input" type="radio" name="fixedDidInvoiceStatus" id="Fixed" />
+                          <label class="form-check-label" for="Fixed">Fixed
+                          </label>
+                        </div>
+                        <div class="col-lg-4">
+                          <input mdbRadio class="form-check-input" type="radio" name="PercentageDidInvoiceStatus" id="Percentage" />
+                          <label class="form-check-label" for="Percentage">Percentage(%)
+                          </label>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-12" style="display: flex;">
+                        <div class="col-lg-4">
+                          <label>Commission Value</label>
+                        </div>
+                        <div class="col-lg-6">
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+
+                      <div class="col-lg-12" style="display: flex;">
+                        <div class="col-lg-4">
+                          <label>Commission Amount</label>
+                        </div>
+                        <div class="col-lg-6">
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+                      </div>
+
+
+                  </div>
+
+                  <div class="text-left"> 
+                    <button type="button" class="btn btn-dark btn-default btn-squared mt-2 mb-2" (click)="addCommission()"
+                        style="margin-right: 10px;"><i class="fas fa-plus" style="margin-right:0;"> Add Product</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="addCustomerSave" >
+              Save
+            </button>
+    
+          </div>
+    </div>
+</div>
+</div>
+
+
+ <!------------------------- Usage Discount popup start ------------------>
+
+ <div class="modal fade" id="usageDiscountFormId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+ aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered" role="document">
+     <div class="modal-content">
+         <div class="modal-header">
+             <h2 class="modal-title" id="addModalLongTitle">Discount</h2>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+             </button>
+         </div>
+         <div class="modal-body">
+             <h2 style="text-align:center;color:rgb(97, 72, 9)">Set Discount</h2>
+             <form [formGroup]="UsageDiscountForm">
+                 <div class="row">
+
+                     <div class="col-lg-12">
+                         <div class="form-group row">
+                             <label for="enq_subject" class="col-lg-12 col-form-label"></label>
+                             <div class="col-lg-6">
+                                 <input type="radio" name="use_DiscountTYpe" id="use_DiscountTYpe_per" value="per">
+                                 <label for="per" class="ml-2 discountCSS1"> % Price</label><br>
+                             </div>
+                             <div class="col-lg-6">
+                                 <input type="text" class="form-control" id="enablePerFinal_2" />
+                             </div>
+                         </div>
+                         <div class="form-group row">
+                             <label for="enq_subject" class="col-lg-12 col-form-label"></label>
+                             <div class="col-lg-6">
+                                 <input type="radio" name="use_DiscountTYpe" id="use_DiscountTYpe_amt" value="amt">
+                                 <label for="html" class="ml-2 discountCSS2">Direct Price Reduction</label><br>
+                             </div>
+                             <div class="col-lg-6">
+                                 <input type="text" class="form-control" id="enablePriceFinal_2" />
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+
+             </form>
+
+         </div>
+         <div class="modal-footer">
+
+             <button type="button" class="btn btn-primary" (click)="usageSaveDiscount()">Save</button>
+             <button type="button" class="btn btn-dark" data-dismiss="modal">
+                 Cancel
+             </button>
+
+         </div>
+     </div>
+ </div>
+</div>
+<!-------------------------- end of discount popup  ----------------------->
+ <!------------------------- other Discount popup start ------------------>
+
+ <div class="modal fade" id="otherDiscountFormId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+ aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered" role="document">
+     <div class="modal-content">
+         <div class="modal-header">
+             <h2 class="modal-title" id="addModalLongTitle">Discount</h2>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+             </button>
+         </div>
+         <div class="modal-body">
+             <h2 style="text-align:center;color:rgb(97, 72, 9)">Set Discount</h2>
+             <form [formGroup]="OtherDiscountForm">
+                 <div class="row">
+
+                     <div class="col-lg-12">
+                         <div class="form-group row">
+                             <label for="enq_subject" class="col-lg-12 col-form-label"></label>
+                             <div class="col-lg-6">
+                                 <input type="radio" name="oth_DiscountTYpe" id="oth_DiscountTYpe_per" value="per">
+                                 <label for="per" class="ml-2 discountCSS1"> % Price</label><br>
+                             </div>
+                             <div class="col-lg-6">
+                                 <input type="text" class="form-control" id="enablePerFinal_3" />
+                             </div>
+                         </div>
+                         <div class="form-group row">
+                             <label for="enq_subject" class="col-lg-12 col-form-label"></label>
+                             <div class="col-lg-6">
+                                 <input type="radio" name="oth_DiscountTYpe" id="oth_DiscountTYpe_amt" value="amt">
+                                 <label for="html" class="ml-2 discountCSS2">Direct Price Reduction</label><br>
+                             </div>
+                             <div class="col-lg-6">
+                                 <input type="text" class="form-control" id="enablePriceFinal_3" />
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+
+             </form>
+
+         </div>
+         <div class="modal-footer">
+
+             <button type="button" class="btn btn-primary" (click)="otherSaveDiscount()">Save</button>
+             <button type="button" class="btn btn-dark" data-dismiss="modal">
+                 Cancel
+             </button>
+
+         </div>
+     </div>
+ </div>
+</div>
+<!-------------------------- end of discount popup  ----------------------->
+
+
+<!------------------------- Final Discount popup start ------------------>
+
+<div class="modal fade" id="discountFormFinal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title" id="addModalLongTitle">Discount</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <h2 style="text-align:center;color:rgb(97, 72, 9)">Set Discount</h2>
+            <form [formGroup]="FinalDiscountForm">
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="form-group row">
+                            <label for="enq_subject" class="col-lg-12 col-form-label"></label>
+                            <div class="col-lg-6">
+                                <input type="radio" name="final_DiscountTYpe" id="final_DiscountTYpe_per" value="per">
+                                <label for="per" class="ml-2 discountCSS1"> % Price</label><br>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="enablePerFinal_4" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="enq_subject" class="col-lg-12 col-form-label"></label>
+                            <div class="col-lg-6">
+                                <input type="radio" name="final_DiscountTYpe" id="final_DiscountTYpe_amt" value="amt">
+                                <label for="html" class="ml-2 discountCSS2">Direct Price Reduction</label><br>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="enablePriceFinal_4" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+        <div class="modal-footer">
+
+            <button type="button" class="btn btn-primary" (click)="finalSaveDiscount()">Save</button>
+            <button type="button" class="btn btn-dark" data-dismiss="modal">
+                Cancel
+            </button>
+
+        </div>
+    </div>
+</div>
+</div>
+<!-------------------------- end of discount popup  ----------------------->
+

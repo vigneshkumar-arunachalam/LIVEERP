@@ -1,0 +1,376 @@
+<div class="contents-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 mb-30">
+                <div class="card">
+                    <div class="card-header color-dark fw-500">
+                        <h3 style="margin-bottom: 0;">Contract Classification</h3>
+                        <div class="quotation-btn-section">
+                            <button type="button"  title="Add New Customer Classification"
+                                class="btn btn-primary btn-default btn-squared" data-toggle="modal"
+                                data-target="#addContractClassificationId"
+                                (click)="clearContractClassification()"
+                                style="margin-right: 100px;"><i class="fas fa-plus" style="margin-right:0;"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="userDatatable global-shadow border-0 bg-white w-100">
+                            <div class="table-responsive ">
+                                <table class="table mb-0 table-borderless">
+                                    <thead>
+                                        <tr class="userDatatable-header">
+                                           
+
+                                            <th>
+                                                <span class="userDatatable-title">Classification Name</span>
+                                            </th>
+                                            <th>
+                                                <span class="userDatatable-title">Desc</span>
+                                            </th>
+                                            <th>
+                                                <span class="userDatatable-title">Color Code</span>
+                                            </th>
+                                           
+
+                                            <th>
+                                                <span class="userDatatable-title">Action</span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr *ngFor="let list of result ; let i = index">
+                                           
+
+
+                                            <td>
+                                               <span> {{ list.classification_name}}</span>
+                                            </td>
+                                            <td>
+                                                <span>{{ list.classification_desc}}</span>
+                                            </td>
+                                            <td>
+                                                <span>  <input type="color" [(ngModel)]="'#'+list.color" name="color_{{i}}"  />{{ list.color}}</span> 
+                                               
+                                            </td>
+                                         
+
+
+                                            <td>
+
+                                                <div class="page">
+
+                                                    <div class="dropdown">
+                                                      <button class="btn1"><i class="fa fa-bars"></i></button>
+                                                      
+                                                    
+                                                      <ul class="dropdown__list">
+                                                        
+                                                        
+                                                        <li class="dropdown__item">
+                                                            <a class="hover1" title="Delete Contract Classification"
+                                                                (click)="deleteContractClassif(list.contract_classification_id)">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+    
+                                                            </a>
+    
+                                                        </li>
+                                                        <li class="dropdown__item">
+                                                            <a  class="hover2" title="Edit Contract Classification"
+                                                            data-toggle="modal" data-target="#editContractClassificationId"
+                                                                (click)="editContractClassification(list.contract_classification_id)">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                                                            </a>
+                                                        </li>
+                                                        <li class="dropdown__item">
+                                                            <a  class="hover3" title="View Contract Classification"
+                                                            data-toggle="modal" data-target="#viewContractClassificationId"
+                                                              (click)=" viewContractClassification(list.contract_classification_id)"  >
+                                                              <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+    
+                                                            </a>
+                                                        </li>
+    
+                                                      </ul>
+                                                    </div>
+                          
+                                                  </div>
+                          
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-----------------Modal Pop Up (BEGIN) for Add Pop Up & Save in customer Contract Classification------------------>
+<div class="modal fade" id="addContractClassificationId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content addcontractmastercss">
+        <div class="modal-header">
+            <h2 class="modal-title" id="addModalLongTitle">Add Contract Classification</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <h2 style="text-align:center;color:rgb(97, 72, 9)">Add Contract Classification</h2>
+            <form [formGroup]="addContractClassificationForm">
+                <div class="row">
+ 
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="contractclassifiName" class="col-lg-12 col-form-label">Name</label>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" 
+                                formControlName="cont_classification_name"
+                                    id="contractclassifiName" />
+                                    <div *ngIf="addContractClassificationForm.controls['cont_classification_name'].invalid && (addContractClassificationForm.controls['cont_classification_name'].dirty || addContractClassificationForm.controls['cont_classification_name'].touched)"
+                                    class="alert alert-danger alertdangerCustomCSS1 mt-2">
+                                    Name is Required
+                                </div>
+                            </div>
+                           
+                           
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="colorName" class="col-lg-12 col-form-label">Color</label>
+                            <div class="col-lg-12">
+                                <input type="color" class="form-control" formControlName="color_name"
+                                    id="colorName" />
+                                    <div *ngIf="addContractClassificationForm.controls['color_name'].invalid && (addContractClassificationForm.controls['color_name'].dirty || addContractClassificationForm.controls['color_name'].touched)"
+                                    class="alert alert-danger alertdangerCustomCSS1 mt-2">
+                                    Color is Required
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                  
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="descrip" class="col-lg-12 col-form-label">Description</label>
+                            <div class="col-lg-12">
+                                <textarea class="form-control" formControlName="description_name" id="descrip" rows="3"></textarea>
+                                <div *ngIf="addContractClassificationForm.controls['description_name'].invalid && (addContractClassificationForm.controls['description_name'].dirty || addContractClassificationForm.controls['description_name'].touched)"
+                                class="alert alert-danger alertdangerCustomCSS1 mt-2">
+                                Description is Required
+                            </div>
+                            </div>
+                          
+                        </div>
+                    </div>
+
+                  
+                                      
+                </div>
+            
+            </form>
+        
+        </div>
+        <div class="modal-footer">
+          
+            <button type="button" class="btn btn-primary" (click)="saveContractClassification()" >
+               Save
+            </button>
+            <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="clearContractClassification()">
+                Close
+            </button>
+        </div>
+    </div>
+</div>
+</div> 
+<!-----------------Modal Pop Up (END) for Add Pop Up & Save in customer Contract Classification------------------>
+
+
+<!-----------------Modal Pop Up (BEGIN) for Edit Pop Up & Update in customer Contract Classification------------------>
+<div class="modal fade" id="editContractClassificationId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content addcontractmastercss">
+        <div class="modal-header">
+            <h2 class="modal-title" id="addModalLongTitle">Update Contract Classification</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <h2 style="text-align:center;color:rgb(97, 72, 9)">Update Contract Classification</h2>
+            <form [formGroup]="editContractClassificationForm">
+                <div class="row">
+ 
+                    <div class="col-lg-12">
+                        <div class="form-group row">
+                            <label for="contractclassifiName" class="col-lg-12 col-form-label">Name</label>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" 
+                                formControlName="e_cont_classification_name"
+                                    id="contractclassifiName" />
+                                    <div *ngIf="editContractClassificationForm.controls['e_cont_classification_name'].invalid && (editContractClassificationForm.controls['e_cont_classification_name'].dirty || editContractClassificationForm.controls['e_cont_classification_name'].touched)"
+                                    class="alert alert-danger alertdangerCustomCSS1 mt-2">
+                                    Name is Required
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                    
+                  
+                    <div class="col-lg-12">
+                        <div class="form-group row">
+                            <label for="descrip" class="col-lg-12 col-form-label">Description</label>
+                            <div class="col-lg-12">
+                                <textarea class="form-control" formControlName="e_description_name" id="descrip" rows="3"></textarea>
+                                <div *ngIf="editContractClassificationForm.controls['e_description_name'].invalid && (editContractClassificationForm.controls['e_description_name'].dirty || editContractClassificationForm.controls['e_description_name'].touched)"
+                                class="alert alert-danger alertdangerCustomCSS1 mt-2">
+                                Description is Required
+                            </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="form-group row">
+                            <label for="colorName" class="col-lg-12 col-form-label">Color</label>
+                            <div class="col-lg-12">
+                                <input type="color" class="form-control" formControlName="e_color_name"
+                                    id="colorName" />
+                                    <div *ngIf="editContractClassificationForm.controls['e_color_name'].invalid && (editContractClassificationForm.controls['e_color_name'].dirty || editContractClassificationForm.controls['e_color_name'].touched)"
+                                    class="alert alert-danger alertdangerCustomCSS1 mt-2">
+                                    Color is Required
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                                      
+                </div>
+            
+            </form>
+        
+        </div>
+        <div class="modal-footer">
+           
+            <button type="button" class="btn btn-primary" (click)="updateContractClassification()" >
+               Update
+            </button>
+            <button type="button" class="btn btn-dark" data-dismiss="modal">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>
+</div> 
+<!-----------------Modal Pop Up (BEGIN) for Edit Pop Up & Update in customer Contract Classification------------------>
+
+
+<!-----------------Modal Pop Up (BEGIN) for View Pop Up  in customer Contract Classification------------------>
+<div class="modal fade" id="viewContractClassificationId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content addcontractmastercss">
+        <div class="modal-header">
+            <h2 class="modal-title" id="addModalLongTitle">View Contract Classification</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <h2 style="text-align:center;color:rgb(97, 72, 9)">View Contract Classification</h2>
+            <form [formGroup]="viewContractClassificationForm">
+                <div class="row">
+ 
+                    <div class="col-lg-12">
+                        <div class="form-group row">
+                            <label for="contractclassifiName" class="col-lg-12 col-form-label">Name</label>
+                            <div class="col-lg-12">
+                                <input type="text" class="form-control" 
+                                formControlName="v_cont_classification_name" 
+                                [attr.readonly]= "isReadOnly"
+                               
+                                    id="contractclassifiName" />
+                            </div>
+                            
+                           
+                        </div>
+                    </div>
+                    
+                  
+                    <div class="col-lg-12">
+                        <div class="form-group row">
+                            <label for="descrip" class="col-lg-12 col-form-label">Description</label>
+                            <div class="col-lg-12">
+                                <textarea class="form-control" formControlName="v_description_name" 
+                                [attr.readonly]= "isReadOnly"
+                                id="descrip" rows="3"></textarea>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="form-group row">
+                            <label for="colorName" class="col-lg-12 col-form-label">Color</label>
+                            <div class="col-lg-12">
+                                <input type="color" class="form-control" 
+                                formControlName="v_color_name"
+                                [attr.readonly]= "isReadOnly"
+                                    id="colorName" />
+                            </div>
+                           
+                        </div>
+                    </div>
+                                      
+                </div>
+            
+            </form>
+        
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-dark" data-dismiss="modal">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>
+</div> 
+<!-----------------Modal Pop Up (BEGIN) for View Pop Up  in customer Contract Classification------------------>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

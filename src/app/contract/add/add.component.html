@@ -1,0 +1,183 @@
+<div class="contents-section">
+
+<h2 style="text-align:center;color:rgb(97, 72, 9)">Add Contract Group </h2>
+<form [formGroup]="addressForm"  (ngSubmit)="logValue()">
+    <div class="row">
+      <div class="col-12">
+  
+         
+        <section  formArrayName="addresses" 
+          *ngFor="let address of addressControls.controls; let i = index;">
+          <div [formGroupName]="i">
+            <div class="row">
+              <div class="col-12">
+               
+               <span>   <h6 style="text-align:left;color:rgb(141, 87, 129)"> Contract Group {{i + 1}}</h6></span>&nbsp;&nbsp;
+              </div>
+              
+            </div>
+           
+                <!-- \ -->
+                <table>
+        
+                    <tbody>
+                
+                        <tr>
+                            <th>
+                                <span class="userDatatable-title">Customer Name</span>
+                            </th>
+                            <td>
+                                
+                                    <!-- <input type="text" class="form-control" formControlName="customerName" /> -->
+                                    <div class="userDatatable-content">
+                                        
+                                        <ng-autocomplete 
+                                        [data]="searchResult" 
+                                        [searchKeyword]="keywordCompanyName" 
+                                        formControlName="company_Name"
+                                        (selected)='selectEventCustomer($event)'
+                                            (inputChanged)='searchCustomerData($event)' 
+                                            (inputFocused)='onFocusedCustomer($event)' 
+                                           
+                                            [itemTemplate]="itemTemplateCustomer"
+                                            [notFoundTemplate]="notFoundTemplate">
+                                        </ng-autocomplete>
+                                    
+                                        <ng-template #itemTemplateCustomer let-item>
+                                            <a [innerHTML]="item.customerName"></a>
+                                        </ng-template>
+                                       
+                                        <ng-template #notFoundTemplate let-notFound>
+                                            <div [innerHTML]="notFound"></div>
+                                        </ng-template>
+                                    </div>
+                                
+                
+                
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span class="userDatatable-title">Contract Name</span>
+                            </th>
+                            <td>
+                                <div class="userDatatable-content">
+                                    <select name="contractNameID" id="contractNameID" class="form-control" aria-label="Default select example"
+                                formControlName="contractName">
+                                <option value="0">Select Contract</option>
+                                
+                                <option *ngFor="let display of contractDetails" value="{{display.contract_id}}">
+                                    {{display.contract_name}}
+                                </option>
+                            </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span class="userDatatable-title">Classification </span>
+                            </th>
+                            <td>
+                                <div class="userDatatable-content">
+                                    <select name="classificationID" id="classificationID" class="form-control" aria-label="Default select example"
+                                    formControlName="classificationName">
+                                    <option value="0">Select Contract</option>
+                                
+                                    <option *ngFor="let classif of contractClassification" value="{{classif.contract_classification_id}}">
+                                        {{classif.classification_name}}
+                                    </option>
+                                </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span class="userDatatable-title">From Date</span>
+                            </th>
+                            <td>
+                                <div class="userDatatable-content d-inline-block">
+                                    <input type="date" class="form-control" formControlName="fromDate" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span class="userDatatable-title">To Date</span>
+                            </th>
+                            <td>
+                                <div class="userDatatable-content d-inline-block">
+                                    <input type="date" class="form-control" formControlName="toDate" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span class="userDatatable-title">Remarks</span>
+                            </th>
+                            <td>
+                                <div class="userDatatable-content d-inline-block">
+                                    <input type="text" class="form-control" formControlName="remarks" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span class="userDatatable-title">Attachment</span>
+                            </th>
+                            <td>
+                                <div class="userDatatable-content d-inline-block">
+                                    <input type="file"  multiple="multiple" class="form-control" formControlName="attachment" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span class="userDatatable-title">Biller</span>
+                            </th>
+                           
+                            <td>
+                                <div class="userDatatable-content">
+                                    <select name="billerID" id="billerID" class="form-control" aria-label="Default select example"
+                                    formControlName="billerName">
+                                    <option value="0">Select Biller</option>
+                                    
+                                    <option *ngFor="let e_billname of billDetails" value="{{e_billname.billerId}}">
+                                        {{e_billname.billerName}}
+                                    </option>
+                                </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <span class="userDatatable-title">Action</span>
+                            </th>
+                            <td>
+                                <div class="userDatatable-content d-inline-block">
+                                    <button type="button" class="btn btn-danger btn-sm" (click)="removeAddress(i)">Remove</button>
+                
+                                </div>
+                            </td>
+                        </tr>
+                        &nbsp;&nbsp;
+                    </tbody>
+                </table>
+                            
+            
+            
+            <!-- <div class="col-12">
+                <button type="button" class="btn btn-danger" (click)="removeAddress(i)">Remove</button>
+            </div> -->
+        </div>
+    </section>
+    
+    <div class="text-right">
+            <button type="button" class="btn btn-primary" style="margin-right: 10px; ;" (click)="addAddress()">Add File</button>
+            <input type="submit" class="btn btn-success" value="Submit"/>
+        </div>
+        
+      </div>
+    </div>
+  
+  </form>
+</div>

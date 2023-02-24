@@ -1,0 +1,1268 @@
+<div class="contents-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 mb-30">
+                <div class="card">
+                    <div class="card-header color-dark fw-500">
+                        Contract Details
+
+                        <!-- <div class="quotation-btn-section">
+                           
+                        </div>    -->
+                        <div class="quotation-btn-section">
+                            <button type="button" title="Add New Customer Contract"
+                                class="btn btn-primary btn-default btn-squared " data-toggle="modal"
+                                data-target="#addCustomerContractId" (click)="addContractOpen()"><i class="fas fa-plus"
+                                    style="margin-right: 10px;"></i>
+                            </button>
+                            <button type="button" title="Edit Customer Contract"
+                                class="ml-2 btn btn-primary btn-default btn-squared " (click)="contractEditGroup()"
+                                style="margin-right: 10px;">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button type="button" title="Delete  Contract"
+                                class="btn btn-primary btn-default btn-squared " data-toggle="modal"
+                                data-target="#deleteCustomerContractId" (click)="contractDeleteGroup()"><i
+                                    class="fas fa-window-close" style="margin-right: 10px;"></i>
+
+                            </button>
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+
+
+                        <div class="userDatatable global-shadow border-0 bg-white w-100">
+                            <div class="table-responsive ">
+                                <table class="table mb-0 table-borderless">
+                                    <thead>
+                                        <tr class="userDatatable-header">
+                                            <th>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="custom-checkbox  check-all">
+                                                        <input class="checkbox" type="checkbox" id="check-3"
+                                                            (change)="selectAll($event)">
+                                                        <label for="check-3">
+
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </th>
+
+                                            <th>
+                                                <span class="userDatatable-title">Customer Name</span>
+                                            </th>
+                                            <th>
+                                                <span class="userDatatable-title">Contract Name</span>
+                                            </th>
+                                            <th>
+                                                <span class="userDatatable-title">Created Date & Time</span>
+                                            </th>
+                                            <th>
+                                                <span class="userDatatable-title">From Date</span>
+                                            </th>
+                                            <th>
+                                                <span class="userDatatable-title">To Date</span>
+                                            </th>
+
+                                            <th>
+                                                <span class="userDatatable-title">action</span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr *ngFor="let list of result ; let i = index">
+                                            <td>
+                                                <div class="d-flex">
+                                                    <div class="userDatatable__imgWrapper d-flex align-items-center">
+                                                        <div class="checkbox-group-wrapper">
+                                                            <div class="checkbox-group d-flex">
+                                                                <div
+                                                                    class="checkbox-theme-default custom-checkbox checkbox-group__single d-flex">
+                                                                    <input class="checkbox" type="checkbox"
+                                                                        id="check-grp-{{i}}"
+                                                                        (change)="EditCHK(list.customer_contract_id,$event)">
+                                                                    <label for="check-grp-{{i}}"></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </td>
+
+
+                                            <td>
+                                                <span> {{ list.customerName}}</span>
+                                            </td>
+                                            <td>
+                                                <span>{{ list.contract_name}}</span>
+                                            </td>
+                                            <td>
+                                                <span>{{ list.create_dt}}</span>
+                                            </td>
+                                            <td>
+                                                <span>{{ list.from_dt}}</span>
+                                            </td>
+                                            <td>
+                                                <span>{{ list.to_dt}}</span>
+                                            </td>
+
+
+                                            <td>
+
+                                                <div class="page">
+
+                                                    <div class="dropdown">
+                                                        <button class="btn1"><i class="fa fa-bars"></i></button>
+
+
+                                                        <ul class="dropdown__list">
+                                                            <li class="dropdown__item">
+                                                                <a class="hover1" title="Delete Contract"
+                                                                    (click)="deleteContract(list.customer_contract_id)">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="100"
+                                                                        height="100" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="#009688" stroke-width="3"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-x-square">
+                                                                        <rect x="3" y="3" width="18" height="18" rx="2"
+                                                                            ry="2"></rect>
+                                                                        <line x1="9" y1="9" x2="15" y2="15"></line>
+                                                                        <line x1="15" y1="9" x2="9" y2="15"></line>
+                                                                    </svg>
+
+                                                                </a>
+
+                                                            </li>
+                                                            <li class="dropdown__item">
+                                                                <a class="hover2" title="Contract File Attachment"
+                                                                    data-toggle="modal"
+                                                                    data-target="#fileAttachmentCustomerContractId"
+                                                                    (click)="contractfileAttachment(list.customer_contract_id,list.customer_id)">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="100"
+                                                                        height="100" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="#009688" stroke-width="3"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-file">
+                                                                        <path
+                                                                            d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z">
+                                                                        </path>
+                                                                        <polyline points="13 2 13 9 20 9"></polyline>
+                                                                    </svg>
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown__item">
+                                                                <a class="hover3" title="Invoice Attachment"
+                                                                    data-toggle="modal"
+                                                                    data-target="#invoiceAttachmentId"
+                                                                    (click)="invoiceAttachment(list.customer_contract_id,list.customer_id)">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="100"
+                                                                        height="100" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="#009688" stroke-width="3"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-upload">
+                                                                        <path
+                                                                            d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4">
+                                                                        </path>
+                                                                        <polyline points="17 8 12 3 7 8"></polyline>
+                                                                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                                                                    </svg>
+
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown__item">
+                                                                <a class="hover4" title="Contract Remarks"
+                                                                    data-toggle="modal" data-target="#contractRemarksId"
+                                                                    (click)="contractRemarksEdit(list.customer_contract_id)">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="100"
+                                                                        height="100" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="#009688" stroke-width="3"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-twitch">
+                                                                        <path
+                                                                            d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7">
+                                                                        </path>
+                                                                    </svg>
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown__item">
+                                                                <a class="hover5" title="File Generate"
+                                                                    data-toggle="modal"
+                                                                    data-target="#fileContractGenerateId"
+                                                                    (click)="fileContractGenerateRowID(list.customer_contract_id)">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="100"
+                                                                        height="100" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="#009688" stroke-width="3"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-folder-plus">
+                                                                        <path
+                                                                            d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
+                                                                        </path>
+                                                                        <line x1="12" y1="11" x2="12" y2="17"></line>
+                                                                        <line x1="9" y1="14" x2="15" y2="14"></line>
+                                                                    </svg>
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown__item">
+                                                                <a class="hover6" title="File Temporary"
+                                                                    data-toggle="modal"
+                                                                    data-target="#fileContractTemporaryId"
+                                                                    (click)="dropdownGenerateTemporaryMasterFile(list.customer_contract_id)">
+
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="100"
+                                                                        height="100" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="#009688" stroke-width="3"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-file-minus">
+                                                                        <path
+                                                                            d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z">
+                                                                        </path>
+                                                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                                                        <line x1="9" y1="15" x2="15" y2="15"></line>
+                                                                    </svg>
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown__item">
+                                                                <a class="hover7" title="Email"
+                                                                    (click)="Email(list.customer_contract_id)"
+                                                                    data-toggle="modal" data-target="#TextEditorId">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="100"
+                                                                        height="100" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="#009688" stroke-width="3"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-at-sign">
+                                                                        <circle cx="12" cy="12" r="4"></circle>
+                                                                        <path
+                                                                            d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94">
+                                                                        </path>
+                                                                    </svg>
+
+                                                                </a>
+
+                                                            </li>
+                                                            <li class="dropdown__item">
+                                                                <a class="hover8" title="Bizz File"
+                                                                    (click)="bizzFileContractEdit(list.customer_contract_id)"
+                                                                    data-toggle="modal"
+                                                                    data-target="#BizzFileTextEditorId">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="100"
+                                                                        height="100" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="#009688" stroke-width="3"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-database">
+                                                                        <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                                                        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3">
+                                                                        </path>
+                                                                        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5">
+                                                                        </path>
+                                                                    </svg>
+                                                                </a>
+
+                                                            </li>
+
+                                                            <li class="dropdown__item">
+                                                                <a class="hover9" title="Customer Contract Approve Status"
+                                                                    (click)="customerContractApproveStatus(list.customer_contract_id)"
+                                                                    data-toggle="modal" data-target="#ApproveStatusId">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="100"
+                                                                        height="100" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="#009688" stroke-width="3"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-plus-circle">
+                                                                        <circle cx="12" cy="12" r="10"></circle>
+                                                                        <line x1="12" y1="8" x2="12" y2="16"></line>
+                                                                        <line x1="8" y1="12" x2="16" y2="12"></line>
+                                                                    </svg>
+                                                                </a>
+
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <nav class="atbd-page ">
+                            <ul class="atbd-pagination d-flex">
+                                <li class="atbd-pagination__item">
+                                    <a href="#" class="atbd-pagination__link pagination-control"><span
+                                            class="la la-angle-left"></span></a>
+                                    <a href="#" class="atbd-pagination__link"><span class="page-number">1</span></a>
+                                    <a href="#" class="atbd-pagination__link active"><span
+                                            class="page-number">2</span></a>
+                                    <a href="#" class="atbd-pagination__link"><span class="page-number">3</span></a>
+                                    <a href="#" class="atbd-pagination__link pagination-control"><span
+                                            class="page-number">...</span></a>
+                                    <a href="#" class="atbd-pagination__link"><span class="page-number">12</span></a>
+                                    <a href="#" class="atbd-pagination__link pagination-control"><span
+                                            class="la la-angle-right"></span></a>
+                                    <a href="#" class="atbd-pagination__option">
+                                    </a>
+                                </li>
+                                <li class="atbd-pagination__item">
+                                    <div class="paging-option">
+                                        <select name="page-number" class="page-selection">
+                                            <option value="20">20/page</option>
+                                            <option value="40">40/page</option>
+                                            <option value="60">60/page</option>
+                                        </select>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-----------------Modal Pop Up (BEGIN) for Add & Save in customer Contract------------------>
+<div class="modal fade" id="addCustomerContractId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="addModalLongTitle">Add Customer Contract</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 style="text-align:center;color:rgb(97, 72, 9);">Add Contract Group </h2>
+                <form [formGroup]="addressForm">
+                    <div class="row">
+                        <div class="col-12">
+                            <section formArrayName="addresses"
+                                *ngFor="let address of addressControls.controls; let i = index;">
+                                <div [formGroupName]="i">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h3 style="text-align:left;color:rgb(141, 87, 129);font-weight: 500;">
+                                                Contract {{i +
+                                                1}}</h3>&nbsp;&nbsp;
+                                        </div>
+
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="add-contact-table-section">
+
+                                            <tbody>
+
+                                                <tr>
+                                                    <th>
+                                                        <span class="userDatatable-title">Customer Name</span>
+                                                    </th>
+                                                    <td>
+
+                                                        <!-- <input type="text" class="form-control" formControlName="customerName" /> -->
+                                                        <div class="userDatatable-content">
+
+                                                            <ng-autocomplete [data]="searchResult"
+                                                                [searchKeyword]="keywordCompanyName"
+                                                                formControlName="company_Name"
+                                                                (selected)='selectEventCustomer($event)'
+                                                                (inputChanged)='searchCustomerData($event)'
+                                                                (inputFocused)='onFocusedCustomer($event)'
+                                                                [itemTemplate]="itemTemplateCustomer"
+                                                                [notFoundTemplate]="notFoundTemplate">
+                                                            </ng-autocomplete>
+
+                                                            <ng-template #itemTemplateCustomer let-item>
+                                                                <a [innerHTML]="item.customerName"></a>
+                                                            </ng-template>
+
+                                                            <ng-template #notFoundTemplate let-notFound>
+                                                                <div [innerHTML]="notFound"></div>
+                                                            </ng-template>
+                                                        </div>
+
+
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <span class="userDatatable-title">Contract Name</span>
+                                                    </th>
+                                                    <td>
+                                                        <div class="userDatatable-content">
+                                                            <select name="contractNameID" id="contractNameID"
+                                                                class="form-control" aria-label="Default select example"
+                                                                formControlName="contractName">
+
+                                                                <option value="0">Select Contract</option>
+
+                                                                <option *ngFor="let display of contractDetails"
+                                                                    value="{{display.contract_id}}">
+                                                                    {{display.contract_name}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+
+
+                                                <tr>
+                                                    <th>
+                                                        <span class="userDatatable-title">Classification </span>
+                                                    </th>
+                                                    <td>
+                                                        <div class="userDatatable-content">
+                                                            <select name="classificationID" id="classificationID"
+                                                                class="form-control" aria-label="Default select example"
+                                                                formControlName="classificationName">
+                                                                <option value="0">Select Contract</option>
+
+                                                                <option *ngFor="let classif of contractClassification"
+                                                                    value="{{classif.contract_classification_id}}">
+                                                                    {{classif.classification_name}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <span class="userDatatable-title">From Date</span>
+                                                    </th>
+                                                    <td>
+                                                        <div class="userDatatable-content">
+                                                            <input type="date" class="form-control"
+                                                                formControlName="fromDate" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <span class="userDatatable-title">To Date</span>
+                                                    </th>
+                                                    <td>
+                                                        <div class="userDatatable-content">
+                                                            <input type="date" class="form-control"
+                                                                formControlName="toDate" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <span class="userDatatable-title">Remarks</span>
+                                                    </th>
+                                                    <td>
+                                                        <div class="userDatatable-content">
+                                                            <input type="text" class="form-control"
+                                                                formControlName="remarks" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <span class="userDatatable-title">Attachment</span>
+                                                    </th>
+                                                    <td>
+                                                        <div class="userDatatable-content">
+                                                            <input type="file" multiple="multiple" class="form-control"
+                                                                formControlName="attachment" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <span class="userDatatable-title">Biller</span>
+                                                    </th>
+
+                                                    <td>
+                                                        <div class="userDatatable-content">
+                                                            <select name="billerID" id="billerID" class="form-control"
+                                                                aria-label="Default select example"
+                                                                formControlName="billerName">
+                                                                <option value="0">Select Biller</option>
+
+                                                                <option *ngFor="let e_billname of billDetails"
+                                                                    value="{{e_billname.billerId}}">
+                                                                    {{e_billname.billerName}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr *ngIf="i>0">
+                                                    <th>
+                                                        <span class="userDatatable-title">Action</span>
+                                                    </th>
+                                                    <td *ngIf="i>0">
+                                                        <div class="userDatatable-content d-inline-block">
+                                                            <button type="button" class="btn btn-danger btn-sm"
+                                                                (click)="removeAddress(i)">Remove Group</button>
+
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                &nbsp;&nbsp;
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+
+                                </div>
+                            </section>
+
+                            <div class="text-right">
+                                <button type="button" class="btn btn-success" style="margin-right: 10px; ;"
+                                    (click)="addAddress()">Add Group </button>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary" (click)="contractSave()">
+                    Save
+                </button>
+                <button type="button" class="btn btn-dark" data-dismiss="modal">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-----------------Modal Pop Up (END) for Add & Save in customer Contract--------------->
+
+<!-----------------Modal Pop Up (BEGIN) for Edit & Update in customer Contract-------------------->
+<div class="modal fade" id="editCustomerContractId" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="editModalLongTitle">Edit Customer Contract</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2 style="text-align:center;color:rgb(97, 72, 9)">Update Contract Group </h2>
+                <form [formGroup]="editContractGroupForm">
+                    <div class="row">
+                        <div class="col-12">
+                            <section formArrayName="edit_addresses"
+                                *ngFor="let address of editaddressControls.controls; let i = index;">
+                                <div [formGroupName]="i">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h3 style="text-align:left;color:rgb(141, 87, 129)"> Contract {{i +
+                                                1}}</h3>&nbsp;&nbsp;
+                                        </div>
+
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="add-contact-table-section">
+
+                                            <tbody>
+
+                                                <tr>
+                                                    <th>
+                                                        <span class="userDatatable-title">Customer Name</span>
+                                                    </th>
+                                                    <td>
+
+
+                                                        <div class="userDatatable-content">
+
+                                                            <ng-autocomplete [data]="searchResult"
+                                                                [searchKeyword]="keywordCompanyName"
+                                                                formControlName="e_company_Name"
+                                                                (selected)='selectEventCustomer($event)'
+                                                                (inputChanged)='searchCustomerData($event)'
+                                                                (inputFocused)='onFocusedCustomer($event)'
+                                                                [itemTemplate]="itemTemplateCustomer"
+                                                                [notFoundTemplate]="notFoundTemplate">
+                                                            </ng-autocomplete>
+
+                                                            <ng-template #itemTemplateCustomer let-item>
+                                                                <a [innerHTML]="item.customerName"></a>
+                                                            </ng-template>
+
+                                                            <ng-template #notFoundTemplate let-notFound>
+                                                                <div [innerHTML]="notFound"></div>
+                                                            </ng-template>
+                                                        </div>
+
+
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th>
+                                                        <span class="userDatatable-title">Contract Name</span>
+                                                    </th>
+                                                    <td>
+                                                        <div class="userDatatable-content">
+                                                            <select name="contractNameID" id="contractNameID"
+                                                                class="form-control" aria-label="Default select example"
+                                                                formControlName="e_contractName">
+                                                                <option value="0">Select Contract</option>
+
+                                                                <option *ngFor="let display of contractDetails"
+                                                                    value="{{display.contract_id}}">
+                                                                    {{display.contract_name}}
+                                                                </option>
+                                                            </select>
+                                                            <input type="hidden" formControlName="e_contractID">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <span class="userDatatable-title">Classification </span>
+                                                    </th>
+                                                    <td>
+                                                        <div class="userDatatable-content">
+                                                            <select name="classificationID" id="classificationID"
+                                                                class="form-control" aria-label="Default select example"
+                                                                formControlName="e_classificationName">
+                                                                <option value="0">Select Contract</option>
+
+                                                                <option *ngFor="let classif of contractClassification"
+                                                                    value="{{classif.contract_classification_id}}">
+                                                                    {{classif.classification_name}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th>
+                                                        <span class="userDatatable-title">From Date</span>
+                                                    </th>
+                                                    <td>
+                                                        <div class="userDatatable-content ">
+                                                            <input type="date" class="form-control"
+                                                                formControlName="e_fromDate" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <span class="userDatatable-title">To Date</span>
+                                                    </th>
+                                                    <td>
+                                                        <div class="userDatatable-content ">
+                                                            <input type="date" class="form-control"
+                                                                formControlName="e_toDate" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <span class="userDatatable-title">Remarks</span>
+                                                    </th>
+                                                    <td>
+                                                        <div class="userDatatable-content">
+                                                            <input type="text" class="form-control"
+                                                                formControlName="e_remarks" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <th>
+                                                        <span class="userDatatable-title">Biller</span>
+                                                    </th>
+                                                    <td>
+                                                        <div class="userDatatable-content">
+                                                            <select name="billerID" id="billerID" class="form-control"
+                                                                aria-label="Default select example"
+                                                                formControlName="e_billerName">
+                                                                <option value="0">Select Biller</option>
+
+                                                                <option *ngFor="let e_billname of billDetails"
+                                                                    value="{{e_billname.billerId}}">
+                                                                    {{e_billname.billerName}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                &nbsp;&nbsp;
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+
+                                </div>
+                            </section>
+
+
+
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary" (click)="contractUpdate()">
+                    Update
+                </button>
+                <button type="button" class="btn btn-dark" data-dismiss="modal">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-----------------Modal Pop Up (END) for Edit & Update in customer Contract------------------>
+
+
+<!----Modal Pop Up (BEGIN) for Contract File Attachment in customer Contract-->
+<div class="modal fade" id="fileAttachmentCustomerContractId" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" id="att" role="document">
+        <div class="modal-content contractcss">
+            <div class="modal-header">
+                <h2 class="modal-title" id="fileAttachModalLongTitle">Contract File Attachment</h2>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form FormGroup="contractFileAttachmentForm">
+                <div class="modal-body contractFileAttachmentCSS">
+                    <div>
+                        <label for="contr" class="col-lg-12 col-form-label">
+                            <strong>Select Vs Provision Attachment</strong></label>
+                    </div>
+                    <label style="padding-left: 30px;font-weight:500;color: rgb(194, 19, 135)!important;">Contract Attachment</label>
+                    <div *ngFor="let i =index;let display1 of  secondResult;" style="padding-left: 30px;">
+
+                        {{display1.uploaded_file_name}}
+                        <button type="button" (click)="contractAttachmentDelete(display1.contract_attachment_file_id)"
+                            class="btn btn-link"><span class="bi bi-trash"></span></button>
+                 
+                    </div>
+                 
+                    <label style="padding-left: 30px;font-weight:500;padding-top:10px;color: rgb(194, 19, 135)!important">Provision Attachment</label>
+                    <div *ngFor="let display of firstResult;let i =index;" style="padding-left: 30px;">
+
+                        <input class="checkbox" type="checkbox" id="check-grp-{{i}}"
+                            (change)="contractFileCHK(display.attachment_file_id,$event)">
+                        {{display.uploaded_file_name}}
+                    </div>
+                    <div>
+                        <label for="contr1" class="col-lg-12 col-form-label">
+                            <strong>Select New Attachment</strong></label>
+                    </div>
+                    <div style="padding-left: 30px;">
+                        <input required type="file" name="uploaded-img" id="uploaded-img"
+                            formControlName="contract_file" (change)="showPreviewImage($event)">
+                    </div>
+                </div>
+            </form>
+
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary" (click)="contractFileUpdate()">
+                    Save
+                </button>
+                <button type="button" class="btn btn-dark" data-dismiss="modal">
+                    Cancel
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!----------Modal Pop Up (END)  for File Attachment in customer Contract------------------>
+
+<!----------Modal Pop Up (BEGIN)  for Invoice Attachment in customer Contract------------------>
+<div class="modal fade" id="invoiceAttachmentId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content invoicecss">
+            <div class="modal-header">
+                <h2 class="modal-title" id="invoiceAttachModalLongTitle">Invoice Attachment</h2>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="editInvoiceGroupForm">
+                    <table class="demoTable">
+
+                        <tr>
+                            <td><strong>Select Invoice </strong>
+                            </td>
+                            <td>
+                                <table class="demoTable">
+                                    <tr *ngFor="let inv of invoiceResult;let i =index">
+
+                                        <td>
+
+                                            <input type="checkbox" value="{{inv.inv_checked}}"
+                                                checked="{{inv.inv_checked == 'true' ? 'checked' : ''}}"
+                                                (change)="InvoiceCHK(inv.billId,$event)">
+
+                                        </td>
+                                        <td>{{inv.invoice_no}}</td>
+                                    </tr>
+
+                                </table>
+
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary" (click)="invoiceUpdate()">
+                    Update
+                </button>
+                <button type="button" class="btn btn-dark" data-dismiss="modal">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!----------Modal Pop Up (END)  for Invoice Attachment in customer Contract------------------>
+
+<!----------Modal Pop Up (BEGIN)  for File Attachment(last) in customer Contract------------------>
+<!-- <div class="modal fade" id="contractRemarksId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title" id="contractRemarkModalLongTitle">Contract Remark</h2>
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="contractRemarkForm">
+            <div class="form-group">
+                <label for="user" class="col-lg-12 col-form-label">Customer</label>
+                <div class="col-lg-12">
+                    <input type="text" class="form-control"
+                        formControlName="cust_name" id="user" />
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="userDate" class="col-lg-12 col-form-label">Date:</label>
+                <div class="col-lg-12">
+                    <input type="datetime" class="form-control"
+                        formControlName="cust_Date" id="userDate" />
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1" class="col-lg-12 col-form-label">Contract Remarks</label>
+                <textarea class="form-control" 
+                formControlName="cust_remark" 
+                id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">
+                Close
+            </button>
+            <button type="button" class="btn btn-secondary" (click)="contractRemarksUpdate()" >
+                Save
+            </button>
+        </div>
+    </div>
+</div>
+</div>  -->
+
+
+<div class="modal fade" id="contractRemarksId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content contractcss">
+            <div class="modal-header">
+                <h2>Contract Remarks</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="editContractRemarkForm">
+                    <div class="customer_remarks_data">
+                        <div *ngFor="let item of add_address;let i = index">
+                            <div>
+                                <div>
+                                    <label for="remark_desc" class="headingLabel"> Name : </label>
+                                    <span class="ml-2 remarkcss">{{item.firstName}}</span><br>
+                                    <label for="remark_dt" class="headingLabel"> Remark {{i+1}} Date :</label>
+                                    <span class="ml-2 remarkcss">{{item.remark_dt}}</span><br>
+                                    <label for="remark_dt" class="headingLabel"> Remark {{i+1}} Description :</label>
+                                    <span class="ml-2 remarkcss">{{item.remark_desc}}</span>
+                                    <br>
+                                    <br>
+                                </div>
+
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div *ngFor="let item of add_address;">
+                            <div>
+                                <div> Name :<span class="firstNameCSS">{{item.firstName}}</span>
+                                    Remark Date :<span class="ml-2 remarkcss">{{item.remark_dt}}</span><br>
+                                    Remark Description :<span class="desccss">{{item.remark_desc}}</span>
+                                </div>
+
+                                <div>
+
+                                </div>
+                            </div>
+                        </div> -->
+                        <div>
+                            <div class="form-group">
+                                <label for="remark_desc" style="color:rgb(218, 68, 8)!important ; font-weight:800;
+                                font-size:medium;">Add New Remark</label>
+                                <textarea class="form-control" formControlName="cust_remark" id="remark_desc"
+                                    rows="3"></textarea>
+
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-primary" (click)="contractRemarksUpdate()">
+                                Save
+                            </button>
+                            <button type="button" class="btn btn-dark" data-dismiss="modal">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!----------Modal Pop Up (END)  for File Attachment(last) in customer Contract------------------>
+
+
+<!----------Modal Pop Up (BEGIN)  for Contract Generate in customer Contract------------------>
+<div class="modal fade" id="fileContractGenerateId" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content contractgeneratecss">
+            <div class="modal-header">
+                <h2 class="modal-title" id="contractGenerateModalLongTitle">Contract File Generate </h2>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="editContractGenerateForm">
+                    <div class="form-group row">
+                        <div class="col-lg-6">
+
+                            <label for="contract_name_1" class="col-lg-12 col-form-label"><strong>
+
+                                    Select Contract Name </strong></label>
+                            <div class="col-lg-12">
+                                <select name="contract_name_1" id="contract_name_1" class="form-control"
+                                    aria-label="Default select example" formControlName="contractselect">
+                                    <option [ngValue]="null" selected disabled>Select Contract</option>
+                                    <option *ngFor="let classifi of listDisplay"
+                                        value="{{classifi.contract_master_file_id}}">
+                                        {{classifi.master_file_name}}
+                                    </option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-lg-6">
+                   
+                        <button type="button" class="btn btn-success" 
+                        (click)="dropdownGenerate()">Generate
+                        Contract
+                    </button>
+                    
+                </div> -->
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" (click)="dropdowncontractfileGenerate()">Generate
+                    Contract
+                </button>
+                <button type="button" class="btn btn-dark" data-dismiss="modal">
+                    Close
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!----------Modal Pop Up (END)  for Contract Generate in customer Contract------------------>
+
+<!----------Modal Pop Up (BEGIN)  for Temporary Contract Generate in customer Contract------>
+<div class="modal fade" id="fileContractTemporaryId" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content temporaryFileGenerateCSS">
+            <div class="modal-header">
+                <h2 class="modal-title" id="contractGenerateModalLongTitle">Contract File Generate[Temporary] </h2>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <iframe [src]="urlSafe" style="height: 100%;width:100%;"></iframe>
+                <!-- <iframe src="{{this.FileURLDisplay}}" style="height: 100%;width:100%;"></iframe> -->
+                <!-- https://api.office-integrator.com/writer/officeapi/v1/documents/364644536f7a7c231740e8243a7b7028dcb2757924754d53d3f89e5b57fd84e6439ca3d3864dd1219b8b1ec7ab3f58165d97b3ecd0021f1047a63a98f025b82f3c4cb93d3771afd5e87ea59a34f4f6d2/edit -->
+                <!-- <iframe src="{{this.FileURLDisplay}}"></iframe> -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">
+                    Cancel
+                </button>
+                <!-- <button type="button" class="btn btn-secondary" 
+            (click)="dropdownGenerateTemporary()">Generate
+            Contract
+        </button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!----------Modal Pop Up (END)  for Temporary Contract Generate in customer Contract------>
+
+<!----------Modal Pop Up (BEGIN)  for Text Editor in customer Contract------>
+<div class="modal fade" id="TextEditorId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="contractGenerateModalLongTitle">Contract-Email </h2>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="emailForm" (ngSubmit)="testdatas()">
+                    <!-- <a href="mailto:{{email}}">Contact via E-mail</a> -->
+                    <div>
+                        <div class="form-group">
+
+                            <!-- <input formControlName="primaryEmail" email >
+                        <input formControlName="primaryEmail" email="true" >  -->
+                            <label for="emailto" class="col-lg-12 col-form-label">To</label>
+                            <input type="email" id="emailto" class="form-control" formControlName="email_to">
+                        </div>
+                        <!-- <div *ngIf="emailForm.controls['email_to'].invalid && (emailForm.controls['email_to'].dirty || emailForm.controls['email_to'].touched)"
+                            class="alert alert-danger">
+                            Email 'To' is Required
+                        </div> -->
+                        <div class="alert alert-danger alertdangerCustomCSS1 "
+                            *ngIf="emailForm.controls['email_to'].invalid && emailForm.controls['email_to'].touched">
+                            Please
+                            enter To Address</div>
+
+
+                    </div>
+                    <div >
+                        <div class="form-group">
+                            <label for="subject" class="col-lg-12 col-form-label">Subject</label>
+                            <input type="text" id="subject" class="form-control" formControlName="Subject_Content">
+                        </div>
+                        <div *ngIf="emailForm.controls['Subject_Content'].invalid && (emailForm.controls['Subject_Content'].dirty || emailForm.controls['Subject_Content'].touched)"
+                            class="alert alert-danger alertdangerCustomCSS1 ">
+                            Name is Required
+                        </div>
+                    </div>
+                    <div >
+                        <div class="form-group">
+                            <label for="subject" class="col-lg-12 col-form-label">Description</label>
+                            <!-- <textarea class="richTextArea"></textarea> -->
+                        </div>
+                    </div>
+                    <!-- <editor
+                [init]="{ plugins: 'lists link image table code help wordcount' }"
+                ></editor> -->
+                    <editor id="tinyID" [init]="{
+                    base_url: '/tinymce', 
+                    branding: false,
+                    suffix: '.min'
+                           
+                }"></editor>
+
+                    <!-- <textarea id="richTextAreacreated"></textarea> -->
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" [disabled]="!emailForm.valid" (click)="testdatas()">Send
+                    Mail
+
+                </button>
+                <button type="button" class="btn btn-dark" data-dismiss="modal">
+                    Close
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!----------Modal Pop Up (END)  for Text Editor in customer Contract------>
+
+
+
+<!----------Modal Pop Up (BEGIN)  for Bizz File Text Editor in customer Contract------>
+<div class="modal fade" id="BizzFileTextEditorId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="contractGenerateModalLongTitle">Bizz File-Email </h2>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="emailBizzFileForm">
+
+                    <div>
+                        <div class="form-group">
+
+
+                            <label for="emailto" class="col-lg-12 col-form-label">To</label>
+                            <input type="email" id="emailto_bizz" class="form-control" formControlName="bizz_email_to">
+                        </div>
+
+                        <div class="alert alert-danger alertdangerCustomCSS1"
+                            *ngIf="emailBizzFileForm.controls['bizz_email_to'].invalid && emailBizzFileForm.controls['bizz_email_to'].touched">
+                            Please
+                            enter To Address</div>
+
+
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <label for="subject" class="col-lg-12 col-form-label">Subject</label>
+                            <input type="text" id="subject_bizz" class="form-control"
+                                formControlName="bizz_Subject_Content">
+                        </div>
+                        <div *ngIf="emailBizzFileForm.controls['bizz_Subject_Content'].invalid && (emailBizzFileForm.controls['bizz_Subject_Content'].dirty || emailBizzFileForm.controls['bizz_Subject_Content'].touched)"
+                            class="alert alert-danger alertdangerCustomCSS1">
+                            Subject is Required
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <label for="subject" class="col-lg-12 col-form-label">Description</label>
+
+                        </div>
+                    </div>
+
+                    <editor id="tinyBizzFileID" formControlName='bizzFileMailContent' [init]="{
+                    base_url: '/tinymce', 
+                    branding: false,
+                    suffix: '.min'
+                           
+                }"></editor>
+
+
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" [disabled]="!emailBizzFileForm.valid"
+                    (click)="bizzFileContractEmail()">Send Mail
+
+                </button>
+                <button type="button" class="btn btn-dark" data-dismiss="modal">
+                    Cancel
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!----------Modal Pop Up (END)  for Bizz File Text Editor in customer Contract------>
+
+<!----------Modal Pop Up (BEGIN)  for customer contract Approve Status in customer Contract------>
+<div class="modal fade" id="ApproveStatusId" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <h2 style="color: rgb(15, 20, 88);" class="modal-title" id="ApproveStatusModalLongTitle">Customer
+                    Contract Approve Status</h2>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="approveStatusForm">
+                    <div class="col-lg-12">
+                        <div class="form-group row">
+                            <label class="col-lg-12 col-form-label">Approve Status
+                                <input type="checkbox" formControlName="cust_contract_status_approve"
+                                    (change)="eventCheckApproveStatus($event)" />
+
+                            </label>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="customerContractApproveStatusUpdate()">Update
+                </button>
+                <button type="button" class="btn btn-dark" data-dismiss="modal">
+                    Cancel
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!----------Modal Pop Up (END)  for customer contract Approve Status in customer Contract------>

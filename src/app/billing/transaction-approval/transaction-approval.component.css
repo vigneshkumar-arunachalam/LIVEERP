@@ -1,0 +1,381 @@
+/* Styles for tab labels */
+.mat-tab-label {
+    min-width: 25px !important;
+    padding: 5px;
+    background-color: white;
+    color: red;
+    font-weight: 700;
+}
+
+/* Styles for the active tab label */
+.mat-tab-label.mat-tab-label-active {
+    min-width: 25px !important;
+    padding: 3px;
+    background-color: #363535;
+    color: #5f63f2;
+    font-weight: 700;
+    border:2px solid white;
+  
+    border-radius: 15px;
+}
+
+/* Styles for the ink bar */
+.mat-ink-bar {
+    background-color: green;
+}
+
+p {
+  font-family: Lato;
+}
+
+.specific{
+    padding: 5px !important;
+    background-color: #272b41 !important;
+    height: 140px;
+}
+.btn.btn-white {
+    /* change this for backgroundlist displayu */
+    background: #e3e0d1; 
+    color: rebeccapurple;
+    box-shadow: 0 3px 5px rgb(146 153 184 / 5%);
+}
+.notification-alert {
+    /* background: #c4d197; */
+    color: #fff;
+    background-color: #ff4d4f;
+    width: 38px;
+    height: 30px;
+    position: absolute;
+    top: -44px;
+    border-radius: 50% 50% 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+
+/* .userDatatable table td{padding:2px 0px 2px!important;} */
+  .userDatatable  table tr td span{display: block;  white-space: nowrap; width: 70px; overflow: hidden;text-overflow: ellipsis; }
+  /* .userDatatable  table tr th:first-child, .userDatatable  table tr td:first-child{width: 50px;} */
+  .userDatatable__imgWrapper.d-flex.align-items-center{justify-content: center;}
+  .userDatatable .d-flex{justify-content: center;margin-right: 0;}
+  .userDatatable tbody .custom-checkbox input[type="checkbox"] + label{margin-right: 0px!important;}
+  
+
+
+
+  
+
+  .dropdown {
+    position: relative;
+  }
+ 
+  .dropdown__list {
+    z-index:2;
+    position: absolute;
+    display: none;
+    padding: 10px;
+    min-width: 100%;
+    background: #fff;
+    cursor: pointer;
+    border: 1px solid;
+    text-align: center;
+  }
+  .dropdown__item {
+    list-style-type: none;
+  }
+  .dropdown__link {
+    display: block;
+    padding: 0.3em 1em;
+    background: white;
+    color: var(--dropdown__link_clr);
+    text-decoration: none;
+  }
+  .dropdown__link:hover {
+    opacity: 0.9;
+  }
+  .dropdown:hover .button {
+    opacity: 0.9;
+  }
+  /* changes made by aashiq starts */
+  .dropdown:hover .dropdown__list {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 31px;
+  }
+  .hover1:hover {
+   
+      background: rgba(255, 77, 79, 0.5);
+      -webkit-border-radius: 50%;
+      border-radius: 50%;
+  }
+  .hover2:hover {
+   
+    background: rgba(118, 177, 103, 0.5);
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+  .hover3:hover {
+   
+  background: rgba(5, 58, 71, 0.5);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+.hover4:hover {
+   
+  background: rgba(91, 114, 7, 0.5);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+.hover5:hover {
+   
+  background: rgba(12, 1, 39, 0.973);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+  .dropdown a {
+    font-size: 14px;
+    /* margin: 5px 8px!important; */
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 37px;
+    width: 37px;
+  }
+    
+    /* changes made by aashiq ends */
+
+ 
+  .button {
+    padding: 0.6em 1.5em;
+  
+  }
+  .btn1 {
+    background-color: 	 #20c997;
+    border: none;
+    color: white;
+    padding: 0;
+    font-size: 16px;
+    width: 30px;
+    cursor: pointer!important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    border-radius: 50%;
+  }
+  .btn1:hover {
+    background-color: rgb(221, 109, 152);
+  }
+  i.fa.fa-bars {
+    color: #fff!important;
+}
+
+tr:nth-child(even) {background: rgb(239, 241, 238)}
+tr:nth-child(odd) {background: #FFF}
+
+
+.buttonClass {
+    width: 80%;
+    border-radius: 25px;
+  }
+
+  /* .buttonClass2 {
+    width: 180%;
+  } */
+
+  input.switch {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    height: 1em;
+    width: 2em;
+    border-radius: 1em;
+    box-shadow: inset -1em 0px 0px 0px rgba(192, 192, 192, 1);
+    background-color: white;
+    border: 1px solid rgba(192, 192, 192, 1);
+    outline: none;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+  }
+  input.switch:checked {
+    box-shadow: inset 1em 0px 0px 0px rgba(33, 150, 243, 0.5);
+    border: 1px solid rgba(33, 150, 243, 1);
+  }
+  .commentCSS{
+    font-weight: 600;
+    background-color: #f3f7bf;
+    color: #d61d73;
+  }
+  .tiltleCSS{
+   
+    color: rgb(20, 158, 66);
+  }
+  .modelHeaderCSS{
+    background-color: #009688;
+    color: rebeccapurple !important;
+  }
+  .modelHeaderCSS h2{
+    /* color: rebeccapurple !important; */
+    color: white !important;
+  }
+  .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    /* border-color: #5f63f2!important; */
+    /* border-color: #3D0096!important; blue correct color*/
+    /* border-color: #313949!important; */
+    /* border-color: #009688!important; */
+      border-color:   #3d0096!important;
+    outline: 0;
+    box-shadow: 0 0, 0 5px 20px #5f63f21a;
+    /* padding: 0.375rem 1.2rem; */
+    padding-left: 4px !important;
+  }
+  .form-control {
+    /* border: 1px solid   #5a5f7d !important; */
+    border: 1px solid   #10a538!important;
+  }
+.transaction-approval-panel .check-box-table .userDatatable-header th:first-child{width: 50px;}
+
+
+.transaction-approval-panel .check-box-table .userDatatable-header th, .transaction-approval-panel .check-box-table  td {
+  padding: 12px 5px!important;
+}
+.transaction-approval-panel .check-box-table .userDatatable  th:first-child .d-flex{
+  height: 12px;
+}
+.transaction-approval-panel .check-box-table .userDatatable-header th:nth-child(5), .transaction-approval-panel .check-box-table td:nth-child(5),
+.transaction-approval-panel .check-box-table .userDatatable-header th:nth-child(6), .transaction-approval-panel .check-box-table td:nth-child(6){
+  width: 90px;
+}
+.transaction-approval-panel .check-box-table .userDatatable-header th:nth-child(4), .transaction-approval-panel .check-box-table  td:nth-child(4),
+.transaction-approval-panel .check-box-table .userDatatable-header th:nth-child(4) span, .transaction-approval-panel .check-box-table   td:nth-child(4) span{
+ width: 120px;
+}
+.transaction-approval-panel .check-box-table .userDatatable-header th:nth-child(9), .transaction-approval-panel .check-box-table  td:nth-child(9),
+.transaction-approval-panel .check-box-table .userDatatable-header th:nth-child(10), .transaction-approval-panel .check-box-table  td:nth-child(10){
+  width: 70px;
+}
+.transaction-approval-panel .check-box-table .userDatatable-header th:nth-child(7), .transaction-approval-panel .check-box-table  td:nth-child(7)
+{
+ width: 250px;
+}
+.transaction-approval-panel .check-box-table .userDatatable-header th:nth-child(7) span, .transaction-approval-panel .check-box-table  td:nth-child(7) span{
+  width: 75%;
+    text-overflow: initial;
+    overflow: unset;
+    white-space: normal;
+    font-size: 14px;
+}
+
+
+
+.transaction-approval-panel .normal-table .userDatatable-header th:first-child{width: 80px;}
+
+
+.transaction-approval-panel .normal-table .userDatatable-header th, .transaction-approval-panel .normal-table  td {
+  padding: 12px 5px!important;
+}
+.transaction-approval-panel .normal-table .userDatatable  th:first-child .d-flex{
+  height: 12px;
+}
+.transaction-approval-panel .normal-table .userDatatable-header th:nth-child(4), .transaction-approval-panel .normal-table td:nth-child(4),
+.transaction-approval-panel .normal-table .userDatatable-header th:nth-child(5), .transaction-approval-panel .normal-table td:nth-child(5){
+  width: 80px;
+}
+.transaction-approval-panel .normal-table .userDatatable-header th:nth-child(3), .transaction-approval-panel .normal-table  td:nth-child(3),
+.transaction-approval-panel .normal-table .userDatatable-header th:nth-child(3) span, .transaction-approval-panel .normal-table   td:nth-child(3) span{
+ width: 120px;
+}
+.transaction-approval-panel .normal-table .userDatatable-header th:nth-child(8), .transaction-approval-panel .normal-table  td:nth-child(8),
+.transaction-approval-panel .normal-table .userDatatable-header th:nth-child(9), .transaction-approval-panel .normal-table  td:nth-child(9){
+  width: 70px;
+}
+.transaction-approval-panel .normal-table .userDatatable-header th:nth-child(6), .transaction-approval-panel .normal-table  td:nth-child(6)
+{
+ width: 100px;
+}
+.transaction-approval-panel .normal-table .userDatatable-header th:nth-child(6) span, .transaction-approval-panel .normal-table  td:nth-child(6) span{
+  width: 75%;
+    text-overflow: initial;
+    overflow: unset;
+    white-space: normal;
+    font-size: 14px;
+}
+
+.dropdown button{padding: 0!important;height: 30px!important;}
+
+.custom-checkbox input[type="checkbox"] + label{
+  padding-left: 0!important;
+}
+.userDatatable table tr td:nth-child(2) span{
+  width: 70px;
+}
+
+
+
+/* .transaction-approval-panel .check-box-table td:nth-child(4), 
+.transaction-approval-panel .check-box-table td:nth-child(4) span{
+  width: auto
+} */
+.transaction-approval-panel .check-box-table td:nth-child(5){width: auto;}
+.transaction-approval-panel .check-box-table td:nth-child(5) span{
+  width: 100px;
+}
+.check-box-table td, .check-box-table th, .normal-table  td, .normal-table th
+{border:1px solid rgb(221 221 221 / 35%)!important}
+
+.check-box-table th, .normal-table th{
+  padding: 10px 0px!important;
+  text-align: center;
+}
+.transaction-approval-panel .check-box-table td:nth-child(7){
+  width: 70px;
+}
+.transaction-approval-panel .check-box-table td:nth-child(7) span{width: 100%;}
+th {
+  white-space: normal!important;
+}
+.transaction-approval-panel .check-box-table th:nth-child(5) span {
+  word-break: break-word;
+  width: 66px;
+  display: block;
+  margin: 0 auto;
+}
+.transaction-approval-panel .check-box-table td:nth-child(9) span:first-child{
+  width: 140px;
+}
+.transaction-approval-panel .check-box-table td:nth-child(9) span:last-child{
+  width: 160px;
+  white-space: break-spaces;
+}
+
+.transaction-approval-panel .check-box-table td:nth-child(7) span {
+  width: 100%;
+}
+.transaction-approval-panel .normal-table .userDatatable-header th:nth-child(4) span {
+  word-break: break-word;
+  width: 66px;
+  display: block;
+  margin: 0 auto;
+}
+.transaction-approval-panel .normal-table .userDatatable-header th:nth-child(4), .transaction-approval-panel .normal-table td:nth-child(4){
+  width: 120px;
+}
+.transaction-approval-panel .normal-table td:nth-child(4) span{
+  width: 100px;
+}
+.transaction-approval-panel .normal-table td:nth-child(8) span:last-child {
+  width: 160px;
+  white-space: break-spaces;
+}
+.transaction-approval-panel .normal-table td:nth-child(8) span:first-child {
+  width: 140px;
+}

@@ -1,0 +1,151 @@
+[
+    {
+    "name": "Billing",
+    "icon": "aperture",
+    "isActive": false,
+    "menuId":2,
+    "IDs": [7043, 7044, 1201, 1202, 1203, 1204, 3001, 3002, 3003, 3004, 3005, 3101, 3102, 3103, 3104, 3105, 9501, 9502, 9503, 9504, 9505, 9521, 9522, 9523, 9524, 9525, 9601, 9602, 9603, 9604, 9605, 9701, 9702, 9703, 9704, 9705, 9711, 9712, 9713, 9714, 9715, 7043, 7044, 1201, 1202, 1203, 1204, 3001, 3002, 3003, 3004, 3005, 3101, 3102, 3103, 3104, 3105, 9501, 9502, 9503, 9504, 9505, 9521, 9522, 9523, 9524, 9525, 9601, 9602, 9603, 9604, 9605, 9701, 9702, 9703, 9704, 9705, 9711, 9712, 9713, 9714, 9715],
+    "Type": "Main Menu",
+    "children": [{
+            "name": "Transaction Approval ",
+            "icon": "film",
+            "IDs": [1201, 1202, 1203, 1204, 2018],
+            "Type": "Sub Menu",
+            "subchild": [],
+            "isVisible": true,
+            "value": "/TransactionApproval"
+        }, {
+            "name": "Quotation New",
+            "icon": "message-square",
+            "IDs": [9501, 9502, 9503, 9504, 9505],
+            "Type": "Sub Menu",
+            "subchild": [],
+            "isVisible": true,
+            "value": "/quotationnew"
+        }, {
+            "name": "Proforma Invoice",
+            "icon": "save",
+            "IDs": [3101, 3102, 3103, 3104, 3105],
+            "Type": "Sub Menu",
+            "subchild": [],
+            "isVisible": true,
+            "value": "/ProformaInvoice"
+        },{
+            "name": "Invoice",
+            "icon": "layers",
+            "IDs": [3001, 3002, 3003, 3004, 3005],
+            "Type": "Sub Menu",
+            "subchild": [],
+            "isVisible": true,
+            "value": "/invoice"
+        },{
+            "name": "DID Invoice",
+            "icon": "triangle",
+            "IDs": [2036],
+            "Type": "Sub Menu",
+            "subchild": [],
+            "isVisible": true,
+            "value": "/didInvoice"
+        }
+       
+        
+      
+    ],
+    "isVisible": true,
+    "value": "/billing"
+},   {
+    "name": "Masters",
+    "icon":"sunrise",
+    "isActive": false,
+    "menuId":5,
+    "IDs": [5001, 5002, 5003, 5004, 5005, 6001, 6002, 6003, 6004, 6005, 9801, 9802, 9803, 9804, 9805, 9901, 9902, 9903, 9904, 9905, 5621, 5622, 5623, 5624, 5625, 5011, 5012, 5013, 5014, 5015],
+    "Type": "Main Menu",
+    "children": [{
+            "name": "Customer",
+            "icon": "grid",
+            "IDs": [5001, 5002, 5003, 5004, 5005],
+            "Type": "Sub Menu",
+            "subchild": [{
+                "name": "Customer New All",
+                "icon": "users",
+                "IDs": [5001, 5002, 5003, 5004, 5005],
+                "Type": "Sub - Sub Menu",
+                "isVisible": true,
+                "value": "/customernewall"
+            }],
+            "isVisible": true,
+            "value": "/customernewall"
+        }
+       
+
+    ],
+    "isVisible": true,
+    "value": "/customernewall"
+}, {
+    "name": "Contract",
+    "icon": "slack",
+    "isActive": false,
+    "menuId":6,
+    "IDs": [5011, 5012, 5013, 5014, 5015],
+    "Type": "Main Menu",
+    "children": [{
+            "name": "Customer Contract",
+            "icon": "box",
+            "IDs": [5011, 5012, 5013, 5014, 5015],
+            "Type": "Sub Menu",
+            "subchild": [],
+            "isVisible": true,
+            "value": "/contract"
+        },
+        {
+            "name": "Contract Master File",
+            "icon": "file-text",
+            "IDs": [5031, 5032, 5033, 5035],
+            "Type": "Sub Menu",
+            "subchild": [],
+            "isVisible": true,
+            "value": "/contractmasterfile"
+        },
+        {
+            "name": "Contract Name",
+            "icon": "clipboard",
+            "IDs": [5031, 5032, 5033, 5035],
+            "Type": "Sub Menu",
+            "subchild": [],
+            "isVisible": true,
+            "value": "/contractname"
+        },
+        {
+            "name": "Contract Classification",
+            "icon": "check-square",
+            "IDs": [5041, 5042, 5043, 5044, 5045],
+            "Type": "Sub Menu",
+            "subchild": [],
+            "isVisible": true,
+            "value": "/Contractclassification"
+        }
+    ],
+    "isVisible": true,
+    "value": "/contract"
+},   {
+    "name": "Settings",
+    "icon":"settings",
+    "isActive": false,
+    "menuId":5,
+    "IDs": [6071, 6072, 6073, 6074, 6075],
+    "Type": "Main Menu",
+    "children": [{
+            "name": "Profile Details",
+            "icon": "grid",
+            "IDs": [6071, 6072, 6073, 6074, 6075],
+            "Type": "Sub Menu",
+            "subchild": [],
+            "isVisible": true,
+            "value": "/profiledetails"
+        }
+       
+
+    ],
+    "isVisible": true,
+    "value": "/profiledetails"
+}]
