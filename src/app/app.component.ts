@@ -90,6 +90,7 @@ export class AppComponent {
       this.templateAuthView = false;
 
     } else if (this.code_val != '' && this.code_val != undefined && this.code_val != 'undefined' && this.code_val != 'null' && this.code_val != null && this.uscode != '' && this.uscode != 'undefined' && this.uscode != undefined && this.uscode != 'null' && this.uscode != null) {
+      this.templateAuthView = false;
       let api_req: any = new Object();
       let addAPI: any = new Object();
       api_req.moduleType = "login";
@@ -110,7 +111,7 @@ export class AppComponent {
         localStorage.setItem('role', response.role)
         localStorage.setItem('profile_image', response.profile_image)
         console.log(response)
-
+        this.templateAuthView = true;
         if (response.userId != '') {
           setTimeout(()=>{
             this.router.navigate(['/'],{ queryParams: { ids: btoa(response.userId)}});

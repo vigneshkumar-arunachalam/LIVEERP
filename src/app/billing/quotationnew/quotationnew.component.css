@@ -477,6 +477,11 @@ input.form-control {
   width: 80%;
 }
 
+#pdfFormId .modal-dialog {
+  max-width: 65%;
+  min-height: 80%;
+  height: fit-content!important;
+}
 #TextEditorId .modal-dialog {
   max-width: 65%;
 }

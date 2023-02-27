@@ -307,7 +307,7 @@
                                                             </li> -->
                                                             <li class="dropdown__item">
                                                                 <a class="hover1" title="Proforma Invoice"
-                                                                    *ngIf="(list.pi_convert_status!='0')"
+                                                                    *ngIf="(list.pi_convert_status=='0')"
                                                                     data-toggle="modal" data-target="#PIId"
                                                                     (click)="PIEdit(list.quotationId)">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="100"
@@ -1757,7 +1757,7 @@
         <div class="modal-content invoicecss">
             <div class="modal-header">
                 <h2 class="modal-title" id="invoiceAttachModalLongTitle">
-                    PI Convertion With Small Task</h2>
+                    PI Convertion </h2>
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -1793,6 +1793,36 @@
     </div>
 </div>
 <!----------Modal Pop Up (END)  for PI(performa) in customer Contract------------------>
+
+
+<!----------Modal Pop Up (BEGIN) PDF------>
+<div class="modal fade" id="pdfFormId" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content temporaryFileGenerateCSS">
+            <div class="modal-header">
+                <h2 class="modal-title" >PDF </h2>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <iframe [src]="urlSafe" style="width: 800px; height: 500px"></iframe>
+              
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">
+                    Cancel
+                </button>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!----------Modal Pop Up (END)PDF------>
 
 
 
