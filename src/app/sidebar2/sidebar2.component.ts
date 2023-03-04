@@ -25,7 +25,7 @@ export class Sidebar2Component implements OnInit {
     this.loadScript('../../assets/js/script.js');
     feather.replace();
     // console.log("menu list details", this.overallmenulist);
-    this.roles = localStorage.getItem("role");
+    this.roles = sessionStorage.getItem("role");
     this.loadMenus()
 
   }

@@ -15,10 +15,10 @@ import { interval, Subscription } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
   loginForm: any = FormGroup;
-  userID:any;
-  userName:any;
-  loginDetails:any;
-  role:any= [];
+  userID: any;
+  userName: any;
+  loginDetails: any;
+  role: any = [];
   otpstatus = false;
 
   expired = false;
@@ -31,44 +31,46 @@ export class LoginComponent implements OnInit {
   typess: any;
   websocket: any;
   getdatas: any;
-  
 
-  constructor(private router: Router, private serverService: ServerService,private bnIdle: BnNgIdleService) {
+
+  constructor(private router: Router, private serverService: ServerService, private bnIdle: BnNgIdleService) {
     this.websocket = new WebSocket('wss://myscoket.mconnectapps.com:4006');
     var s = this;
-    this.websocket.onopen = function (event:any) {
+    this.websocket.onopen = function (event: any) {
       console.log('socket connected');
     };
-    this.websocket.onmessage = function (event:any) {
+    this.websocket.onmessage = function (event: any) {
       s.getdatas = JSON.parse(event.data);
-      console.log('socket detail'+localStorage.getItem('user_id'));
-      if(s.getdatas['0'].userId){
-        if(localStorage.getItem('user_id')==null){
+      console.log('socket detail' + sessionStorage.getItem('erp_c4c_user_id'));
+      if (s.getdatas['0'].userId) {
+        if (sessionStorage.getItem('erp_c4c_user_id') == null) {
           s.qrLogin();
-        }      
+        }
         this.websocket.onclose;
       }
-     
+
     };
 
-    this.websocket.onerror = function (event:any) {
+    this.websocket.onerror = function (event: any) {
       console.log('error');
       console.log(event.message);
     };
-    this.websocket.onclose = function(event:any){
-			console.log('close');
-		}; 
+    this.websocket.onclose = function (event: any) {
+      console.log('close');
+    };
 
-   }
+  }
+  //  code_val=WXpSalgyOXNaR1Z5Y0E9PQ==&uscode=TXprPQ==
+
 
   ngOnInit(): void {
 
-  
+
     this.loginForm = new FormGroup({
       username: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required),
       verify_otp_ctrl: new FormControl(null),
-      
+
     });
     this.subscribes('');
 
@@ -76,7 +78,7 @@ export class LoginComponent implements OnInit {
 
 
 
-  subscribes(val:any) {
+  subscribes(val: any) {
     this.expired = false;
     if (val != '') this.count = 1;
     this.qrcodes();
@@ -86,7 +88,7 @@ export class LoginComponent implements OnInit {
   unsubscribe() {
     this.subscription.unsubscribe();
   }
-  qrLogin(){
+  qrLogin() {
 
 
     let api_req: any = new Object();
@@ -100,31 +102,32 @@ export class LoginComponent implements OnInit {
 
     addAPI.code_val = 'YzRjX2VycA==';
     api_req.element_data = addAPI;
-  
+
     this.serverService.sendServer(api_req).subscribe((response: any) => {
 
 
-      this.loginDetails=response;
-      this.userID=response.userId;
-      this.userName=response.firstName;
-      this.role=response.role;
-      
+      this.loginDetails = response;
+      this.userID = response.userId;
+      this.userName = response.firstName;
+      this.role = response.role;
 
 
-      localStorage.setItem('access_token','test')
-      localStorage.setItem('login_status','1')
-      localStorage.setItem('user_id',response.userId)
-      localStorage.setItem('user_name',response.firstName)
-      localStorage.setItem('role',response.role)
-      localStorage.setItem('profile_image',response.profile_image)
 
-      if(this.userID!=''){
-          this.router.navigate(['/']);
+      sessionStorage.setItem('access_token', 'test')
+      sessionStorage.setItem('login_status', '1')
+      sessionStorage.setItem('erp_c4c_user_id', response.userId)
+      sessionStorage.setItem('user_name', response.firstName)
+      sessionStorage.setItem('role', response.role)
+      sessionStorage.setItem('profile_image', response.profile_image)
+
+
+      if (this.userID != '') {
+        this.router.navigate(['/']);
       }
-      if(this.userID=='undefined'){
+      if (this.userID == 'undefined') {
         this.router.navigate(['/logout']);
       }
- 
+
     });
 
 
@@ -138,18 +141,18 @@ export class LoginComponent implements OnInit {
       this.width = 256;
       this.datas = uuidv4();
       this.typess = btoa('erp');
- 
+
       const data = [
         {
           type: this.typess,
           address: this.datas,
         },
       ];
-     
-   
+
+
 
       this.qrdata = JSON.stringify(data);
-  
+
     } else {
       this.expired = true;
       this.unsubscribe();
@@ -171,19 +174,19 @@ export class LoginComponent implements OnInit {
   userLogin() {
     Swal.fire('Authenticating');
     Swal.showLoading();
-   
+
     let api_req: any = new Object();
     let loginFormapi_req: any = new Object();
     api_req.moduleType = 'login';
 
 
     let button_val = $('#send_otp_id').val();
-    if(button_val=='Send OTP'){
-        api_req.api_url = 'login_otp';
-    }else{
-        api_req.api_url = 'login';
-        loginFormapi_req.auth_id = $('#auth_id').val();
-        loginFormapi_req.verify_otp_code = this.loginForm.value.verify_otp_ctrl;
+    if (button_val == 'Send OTP') {
+      api_req.api_url = 'login_otp';
+    } else {
+      api_req.api_url = 'login';
+      loginFormapi_req.auth_id = $('#auth_id').val();
+      loginFormapi_req.verify_otp_code = this.loginForm.value.verify_otp_ctrl;
     }
 
     api_req.api_type = "web";
@@ -194,7 +197,7 @@ export class LoginComponent implements OnInit {
     loginFormapi_req.password = this.loginForm.value.password;
     api_req.element_data = loginFormapi_req;
     console.log("api req", api_req)
-    console.log("loginFormapi_req",loginFormapi_req)
+    console.log("loginFormapi_req", loginFormapi_req)
     // return false;
 
     this.serverService.sendServer(api_req).subscribe((response: any) => {
@@ -212,39 +215,41 @@ export class LoginComponent implements OnInit {
         $('#send_otp_id').val("Login");
         $('#auth_id').val(response.auth_id);
 
-      }else if (response.opt_status == 'false') {
+      } else if (response.opt_status == 'false') {
         Swal.close();
         iziToast.error({
           message: 'Invalid OTP',
           position: 'topRight',
         });
 
-      }else if (response.status == 'true') {
+      } else if (response.status == 'true') {
+        Swal.close();
+        this.loginDetails = response;
+        this.userID = response.userId;
+        this.userName = response.firstName;
+        this.role = response.role;
 
-        this.loginDetails=response;
-        this.userID=response.userId;
-        this.userName=response.firstName;
-        this.role=response.role;
-
-        localStorage.setItem('access_token','test')
-        localStorage.setItem('login_status','1')
-        localStorage.setItem('user_id',response.userId)
-        localStorage.setItem('user_name',response.firstName)
-        localStorage.setItem('role',response.role)
-        localStorage.setItem('profile_image',response.profile_image)
+        sessionStorage.setItem('access_token', 'test')
+        sessionStorage.setItem('login_status', '1')
+        sessionStorage.setItem('erp_c4c_user_id', response.userId)
+        sessionStorage.setItem('user_name', response.firstName)
+        sessionStorage.setItem('role', response.role)
+        sessionStorage.setItem('profile_image', response.profile_image)
 
 
-        if(this.userID!=''){
-            this.router.navigate(['/']);
+        if (this.userID != '') {
+          Swal.close();
+          this.router.navigate(['/']);
         }
-      
+
+
         Swal.close();
         iziToast.success({
           message: 'Logged In Successfully',
           position: 'topRight',
         });
 
-       
+
       } else {
         Swal.close();
         iziToast.error({
@@ -254,7 +259,8 @@ export class LoginComponent implements OnInit {
       }
 
     }),
-      (error:any) => {
+      (error: any) => {
+        Swal.close();
         console.log(error);
       }
 

@@ -4109,7 +4109,7 @@ ul {
 .contents {
     /* padding: 105px 15px 72px 295px; */
     /* padding: 40px 15px 72px 295px; */
-     padding: 40px 15px 72px 235px; 
+     padding: 90px 15px 72px 235px; 
     -webkit-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
@@ -5074,7 +5074,8 @@ ul {
     }
 
     .navbar-right__menu .nav-author img {
-        width: 34px;
+        width: 45px;
+        height: 45px;
     }
 
     .navbar-right__menu .nav-item-toggle {

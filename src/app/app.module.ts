@@ -10,7 +10,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatChipsModule } from '@angular/material/chips'; 
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { BnNgIdleService } from 'bn-ng-idle'; // import bn-ng-idle service
-
+import { DatePipe } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MastersComponent } from './masters/masters.component';
@@ -18,6 +18,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
+
+import { NgxSpinnerModule } from 'ngx-spinner';
+import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -114,14 +117,14 @@ import { EditInvoiceComponent } from './billing/invoice/edit-invoice/edit-invoic
   ],
   imports: [
     BrowserModule,
-    FormsModule,MatTabsModule,
+    FormsModule,MatTabsModule,NgxSpinnerModule,
     ReactiveFormsModule,QRCodeModule,
     AppRoutingModule,MatChipsModule,EditorModule, DragDropModule,
     HttpClientModule,MatIconModule, NgMultiSelectDropDownModule.forRoot(),
     BrowserAnimationsModule,MatFormFieldModule,MatAutocompleteModule,MatInputModule,MatSliderModule,
     AutocompleteLibModule,PdfViewerModule
-  ],
-  providers: [   [BnNgIdleService], { provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' }
+  ], schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [    [DatePipe],  [BnNgIdleService], { provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' }
 ],
   bootstrap: [AppComponent]
 })

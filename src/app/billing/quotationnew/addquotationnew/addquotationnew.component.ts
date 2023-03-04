@@ -333,7 +333,7 @@ quotationAddSignature_filename:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_dynamicDropdown_req.action = "get_customercbo_quat_no";
-    api_dynamicDropdown_req.user_id = localStorage.getItem('user_id');
+    api_dynamicDropdown_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_dynamicDropdown_req.billerId = this.billerID;
     api_req.element_data = api_dynamicDropdown_req;
    
@@ -384,7 +384,7 @@ quotationAddSignature_filename:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_dynamicDropdown_req.action = "get_customercbo_quat_no";
-    api_dynamicDropdown_req.user_id = localStorage.getItem('user_id');
+    api_dynamicDropdown_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_dynamicDropdown_req.billerId = this.billerID;
     api_req.element_data = api_dynamicDropdown_req;
 
@@ -432,7 +432,7 @@ quotationAddSignature_filename:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     add_newQuotationNextPage_req.action = "add_quotation";
-    add_newQuotationNextPage_req.user_id = localStorage.getItem('user_id');
+    add_newQuotationNextPage_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_req.element_data = add_newQuotationNextPage_req;
     this.serverService.sendServer(api_req).subscribe((response: any) => {
       console.log(response);
@@ -460,7 +460,7 @@ quotationAddSignature_filename:any;
         }
         this.addQuotationInvoice_section1.patchValue({
           'companyName': response.defaults_biller_id,
-          'salesRep': localStorage.getItem('user_id'),
+          'salesRep': sessionStorage.getItem('erp_c4c_user_id'),
 
         });
 
@@ -513,7 +513,7 @@ quotationAddSignature_filename:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_quotationTemplateDropdown_req.action = "get_template_maincontent";
-    api_quotationTemplateDropdown_req.user_id = localStorage.getItem('user_id');
+    api_quotationTemplateDropdown_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_quotationTemplateDropdown_req.quotation_template_id = this.quotation_template_id;
     api_req.element_data = api_quotationTemplateDropdown_req;
 
@@ -548,7 +548,7 @@ quotationAddSignature_filename:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_quotationAddSignature_req.action = "quotation_add_signature";
-    api_quotationAddSignature_req.user_id = localStorage.getItem('user_id');
+    api_quotationAddSignature_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_quotationAddSignature_req.billerId = this.billerID ;
     api_req.element_data = api_quotationAddSignature_req;
 
@@ -583,7 +583,7 @@ quotationAddSignature_filename:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_quotationTemplateDropdown_req.action = "get_quotation_terms_condition";
-    api_quotationTemplateDropdown_req.user_id = localStorage.getItem('user_id');
+    api_quotationTemplateDropdown_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_quotationTemplateDropdown_req.terms_condition_id = this.terms_condition_id;
     api_req.element_data = api_quotationTemplateDropdown_req;
 
@@ -621,7 +621,7 @@ quotationAddSignature_filename:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_TaxDropdown_req.action = "quot_tax_dropdown";
-    api_TaxDropdown_req.user_id = localStorage.getItem('user_id');
+    api_TaxDropdown_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_TaxDropdown_req.billerId = this.billerID;
     api_req.element_data = api_TaxDropdown_req;
 
@@ -630,27 +630,11 @@ quotationAddSignature_filename:any;
 
       if (response.status == true) {
         this.TaxDropdownList = response.tax_list;
-       // this.addQuotationInvoice_section3.setValue=response.default_tax_id;
-
-        this.addQuotationInvoice_section3.patchValue({
-               'section3_gst_dropdown': response.default_tax_id,
-  
-           });
-
-        //console.log("default_tax_id", response.default_tax_id);
-        //alert(response.default_tax_id)
-
-        //   if(response.default_tax_id!='null'&&response.default_tax_id!=null){
-        //   $("#billerIDs").val(response.default_tax_id)
-        //   this.addQuotationInvoice_section3.patchValue({
-        //     'section3_gst_dropdown': response,
-
-        //   });
-
-        //   this.addQuotationInvoice_section3.setValue=response.default_tax_id;
-
-
-        // }
+        this.tax_per_mod = response.percent_val;
+        $('#tax_per_hd_id').val(response.percent_val);          
+          setTimeout(()=>{this.settaxId(response.default_tax_id); },1000);
+ 
+        this.totalCalculate()
 
       }
 
@@ -658,6 +642,12 @@ quotationAddSignature_filename:any;
 
     });
   }
+
+
+  settaxId(default_tax_id:any){
+    this.addQuotationInvoice_section3.get('section3_gst_dropdown').setValue(default_tax_id);
+  }
+  
   currencyQuotationTermChange() {
 
     let api_req: any = new Object();
@@ -694,7 +684,7 @@ quotationAddSignature_filename:any;
     });
 
   }
-  saveQuotationEnquiry() {
+  saveQuotationEnquiry($event: MouseEvent) {
     
     console.log("this.checkbox_termsCondition_DontShow",this.checkbox_termsCondition_DontShow);
     console.log("this.checkbox_descriptionDetails_DontShow",this.checkbox_descriptionDetails_DontShow);
@@ -711,7 +701,7 @@ quotationAddSignature_filename:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_saveEnquiry_req.action = "insert_quotation";
-    api_saveEnquiry_req.user_id = localStorage.getItem('user_id');
+    api_saveEnquiry_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
 
 
     api_saveEnquiry_req.enquiry_from_id = this.FormID_enquiryFromDetails;
@@ -854,8 +844,11 @@ quotationAddSignature_filename:any;
     console.log(api_req);
 
 
-    
+    ($event.target as HTMLButtonElement).disabled = true;
     this.serverService.sendServer(api_req).subscribe((response: any) => {
+
+      
+      ($event.target as HTMLButtonElement).disabled = false;
 
       console.log("add quotation new save", response);
       if (response.status == true) {
@@ -908,7 +901,7 @@ quotationAddSignature_filename:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_SearchCUST_req.action = "quot_customer_details";
-    api_SearchCUST_req.user_id = localStorage.getItem('user_id');
+    api_SearchCUST_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_SearchCUST_req.customerId = this.customerName_Data
     api_req.element_data = api_SearchCUST_req;
     this.serverService.sendServer(api_req).subscribe((response: any) => {
@@ -954,7 +947,7 @@ quotationAddSignature_filename:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_Search_req.action = "quot_customer_name";
-    api_Search_req.user_id = localStorage.getItem('user_id');
+    api_Search_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_Search_req.billerId = this.billerIDUpdate;
     api_Search_req.key_word = data;
     api_req.element_data = api_Search_req;
@@ -982,7 +975,7 @@ quotationAddSignature_filename:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_SearchProd_req.action = "product_name_auto";
-    api_SearchProd_req.user_id = localStorage.getItem('user_id');
+    api_SearchProd_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
 
     api_SearchProd_req.part_no = data;
     api_req.element_data = api_SearchProd_req;
@@ -1009,7 +1002,7 @@ quotationAddSignature_filename:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_ProdAutoFill_req.action = "product_name_auto_fill";
-    api_ProdAutoFill_req.user_id = localStorage.getItem('user_id');
+    api_ProdAutoFill_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_ProdAutoFill_req.product_name = this.product_name_AutoComplete;
     api_req.element_data = api_ProdAutoFill_req;
 

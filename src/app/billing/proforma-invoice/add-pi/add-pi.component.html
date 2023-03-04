@@ -2,66 +2,65 @@
     <h2 style="text-align: center;">Enter Proforma Invoice Details</h2>
     <form [formGroup]="addPI_section1">
         <div class="row">
-           <div class="col-lg-6">  
-            
-            <div class="col-lg-12">
-                <div class="form-group row">
-                    <label for="cmp_name" class="col-lg-12 col-form-label">Company Name</label>
-                    <div class="col-lg-12">
-                        <select name="enqFormValue" id="cmp_name" class="form-control" formControlName="companyName"
-                            (change)="getProformaBillerDetails();getCustomerInvoiceDetails();TaxDropdown()">                         
-                            <option [ngValue]="null" selected disabled>Select Company Name</option>
-                            <option *ngFor="let comp_name of companyNameList" value="{{comp_name.billerId}}">
-                                {{comp_name.billerName}}
-                            </option>
-                        </select>
+            <div class="col-lg-6">
+
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="cmp_name" class="col-lg-12 col-form-label">Company Name</label>
+                        <div class="col-lg-12">
+                            <select name="enqFormValue" id="cmp_name" class="form-control" formControlName="companyName"
+                                (change)="getProformaBillerDetails();getCustomerInvoiceDetails();TaxDropdown()">
+                                <option [ngValue]="null" selected disabled>Select Company Name</option>
+                                <option *ngFor="let comp_name of companyNameList" value="{{comp_name.billerId}}">
+                                    {{comp_name.billerName}}
+                                </option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-12">
-                <div class="form-group row">
-                    <label for="customerName" class="col-lg-12 col-form-label">Bill To*</label>
-                    <div class="ng-autocomplete">
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="customerName" class="col-lg-12 col-form-label">Bill To*</label>
+                        <div class="ng-autocomplete">
 
-                        <ng-autocomplete [data]="searchResult" [searchKeyword]="keywordCustomerName"
-                            formControlName="BillTo"
-                            (selected)='searchCustomer_selectDropdownData($event)'
-                             (inputChanged)='searchCustomerData($event)'
-                            (inputFocused)='onFocusedCustomer($event)' 
-                            [itemTemplate]="itemTemplateCustomer"
-                            [notFoundTemplate]="notFoundTemplate">
-                        </ng-autocomplete>
+                            <ng-autocomplete [data]="searchResult" [searchKeyword]="keywordCustomerName"
+                                formControlName="BillTo" (selected)='searchCustomer_selectDropdownData($event)'
+                                (inputChanged)='searchCustomerData($event)' 
+								(inputFocused)='onFocusedCustomer($event)'
+								 [itemTemplate]="itemTemplateCustomer" 
+								[notFoundTemplate]="notFoundTemplate">
+                            </ng-autocomplete>
 
-                        <ng-template #itemTemplateCustomer let-item>
-                            <a [innerHTML]="item.customerName"></a>
-                        </ng-template>
+                            <ng-template #itemTemplateCustomer let-item>
+                                <a [innerHTML]="item.customerName"></a>
+                            </ng-template>
 
-                        <ng-template #notFoundTemplate let-notFound>
-                            <div [innerHTML]="notFound"></div>
-                        </ng-template>
-                        <!-- <div *ngIf="addQuotationInvoice_section1.controls['customerName'].invalid && (addQuotationInvoice_section1.controls['customerName'].dirty || addQuotationInvoice_section1.controls['customerName'].touched)"
+                            <ng-template #notFoundTemplate let-notFound>
+                                <div [innerHTML]="notFound"></div>
+                            </ng-template>
+                            <!-- <div *ngIf="addQuotationInvoice_section1.controls['customerName'].invalid && (addQuotationInvoice_section1.controls['customerName'].dirty || addQuotationInvoice_section1.controls['customerName'].touched)"
                             class=" mt-2 ml-2 mr-2 alert alert-danger">
                             Customer Name is Required
                         </div> -->
-                    </div>
+                        </div>
 
-                </div>
-            </div>
-
-            <div class="col-lg-12">
-                <div class="form-group row">
-                    <label for="add" class="col-lg-12 col-form-label">Address</label>
-                    <div class="col-lg-12">
-                        <input type="text " class="form-control mt-2" formControlName="address_1" />
-                        <input type="text " class="form-control mt-2" formControlName="address_2" />
-                        <input type="text " class="form-control mt-2" formControlName="address_3" />
                     </div>
                 </div>
-            </div>
 
-           
-            <!-- <div class="col-lg-6">
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="add" class="col-lg-12 col-form-label">Address</label>
+                        <div class="col-lg-12">
+                            <input type="text " class="form-control mt-2" formControlName="address_1" />
+                            <input type="text " class="form-control mt-2" formControlName="address_2" />
+                            <input type="text " class="form-control mt-2" formControlName="address_3" />
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- <div class="col-lg-6">
                 <div class="form-group row">
                     <label for="gstt" class="col-lg-12 col-form-label">GST #</label>
                     <div class="col-lg-12">
@@ -70,57 +69,57 @@
                     </div>
                 </div>
             </div> -->
-            <!-- <div class="col-lg-6">
+                <!-- <div class="col-lg-6">
                 <div class="form-group row">
                   
                 </div>
             </div> -->
-            <div class="col-lg-12">
-                <div class="form-group row">
-                    <label for="attn1" class="col-lg-12 col-form-label">Attn</label>
-                    <div class="col-lg-12">
-                        <input type="text" class="form-control" formControlName="Attn_1" id="attn1" />
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="attn1" class="col-lg-12 col-form-label">Attn</label>
+                        <div class="col-lg-12">
+                            <input type="text" class="form-control" formControlName="Attn_1" id="attn1" />
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="form-group row">
-                    <label for="ship" class="col-lg-12 col-form-label">Ship To</label>
-                    <div class="col-lg-12">
-                        <input type="text" class="form-control mt-2" formControlName="ship_to" />
-                        <input type="text" class="form-control mt-2" formControlName="ship_address_1" />
-                        <input type="text" class="form-control mt-2" formControlName="ship_address_2" />
-                        <input type="text" class="form-control mt-2" formControlName="ship_address_3" />
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="ship" class="col-lg-12 col-form-label">Ship To</label>
+                        <div class="col-lg-12">
+                            <input type="text" class="form-control mt-2" formControlName="ship_to" />
+                            <input type="text" class="form-control mt-2" formControlName="ship_address_1" />
+                            <input type="text" class="form-control mt-2" formControlName="ship_address_2" />
+                            <input type="text" class="form-control mt-2" formControlName="ship_address_3" />
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- <div class="col-lg-6">
+                <!-- <div class="col-lg-6">
                 <div class="form-group row">
                  
                 </div>
             </div> -->
-            
-            
-            <div class="col-lg-12">
-                <div class="form-group row">
-                    <label for="attn2" class="col-lg-12 col-form-label">Attn</label>
-                    <div class="col-lg-12">
-                        <input type="text" class="form-control" formControlName="ship_attn" id="attn2" />
+
+
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="attn2" class="col-lg-12 col-form-label">Attn</label>
+                        <div class="col-lg-12">
+                            <input type="text" class="form-control" formControlName="ship_attn" id="attn2" />
+                        </div>
                     </div>
                 </div>
-            </div>
 
-           
 
-            <div class="col-lg-12">
-                <div class="form-group">
-                    <label for="refDetails" class="form-label">Ref</label>
-                    <textarea class="form-control" formControlName="Ref" style="height: 70px;" row="2"></textarea>
+
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label for="refDetails" class="form-label">Ref</label>
+                        <textarea class="form-control" formControlName="Ref" style="height: 70px;" row="2"></textarea>
+                    </div>
                 </div>
-            </div>
 
-          
-        </div> 
+
+            </div>
             <div class="col-lg-6">
                 <div class="col-lg-12">
                     <div class="form-group row">
@@ -131,25 +130,27 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="col-lg-12">
                     <div class="form-group row">
-                        <label for="regg" class="col-lg-12 col-form-label">{{this.getProformaBillerDetails_tinName}}</label>
+                        <label for="regg"
+                            class="col-lg-12 col-form-label">{{this.getProformaBillerDetails_tinName}}</label>
                         <div class="col-lg-12">
                             <input type="text " class="form-control" formControlName="tin" [attr.readonly]="isReadOnly"
                                 id="regg" />
                         </div>
-    
-    
+
+
                     </div>
                     <div class="form-group row">
-    
-                        <label for="regg" class="col-lg-12 col-form-label">{{this.getProformaBillerDetails_cstName}}</label>
+
+                        <label for="regg"
+                            class="col-lg-12 col-form-label">{{this.getProformaBillerDetails_cstName}}</label>
                         <div class="col-lg-12">
                             <input type="text " class="form-control" formControlName="cst" [attr.readonly]="isReadOnly"
                                 id="regg1" />
                         </div>
-    
+
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -161,9 +162,9 @@
                         <label for="po" class="col-lg-12 col-form-label">PO.No</label>
                         <div class="col-lg-12">
                             <input type="text " class="form-control" formControlName="PoNo" id="po" />
-    
+
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -176,24 +177,24 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="form-group row">
-                             <label for="sales_r" class="col-lg-12 col-form-label">Sales Rep</label>
-                             <div class="col-lg-12" *ngIf="(salesRepDropDown_Textbox_Status==1)">
-                                 <select name="enqFormValue" id="sales_r" class="form-control" formControlName="salesRep">
-                                     <option [ngValue]="null" selected disabled>Sales Rep</option>
-                                     <option *ngFor="let rep of SalesRepList" value="{{rep.userId}}">
-                                         {{rep.firstName}}
-                                     </option>
-                                 </select>
-                             </div>
-                             <div class="col-lg-12" *ngIf="(salesRepDropDown_Textbox_Status==0)">
-                                 <input type="text" class="form-control" formControlName="salesRep_id" id="saleStatus" />
-                                 <input type="hidden" class="form-control" formControlName="salesRep"
-                                     id="saleStatus_hd_id" />
-     
-                             </div>
-                         </div>
-                 </div>
-                 <div class="col-lg-12">
+                        <label for="sales_r" class="col-lg-12 col-form-label">Sales Rep</label>
+                        <div class="col-lg-12" *ngIf="(salesRepDropDown_Textbox_Status==1)">
+                            <select name="enqFormValue" id="sales_r" class="form-control" formControlName="salesRep">
+                                <option [ngValue]="null" selected disabled>Sales Rep</option>
+                                <option *ngFor="let rep of SalesRepList" value="{{rep.userId}}">
+                                    {{rep.firstName}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12" *ngIf="(salesRepDropDown_Textbox_Status==0)">
+                            <input type="text" class="form-control" formControlName="salesRep_id" id="saleStatus" />
+                            <input type="hidden" class="form-control" formControlName="salesRep"
+                                id="saleStatus_hd_id" />
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
                     <div class="form-group row">
                         <label for="Ship_By" class="col-lg-12 col-form-label">Ship By</label>
                         <div class="col-lg-12">
@@ -206,7 +207,7 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="col-lg-12">
                     <div class="form-group row">
                         <label for="Ship_Date" class="col-lg-12 col-form-label">Ship Date</label>
@@ -223,98 +224,98 @@
                         </div>
                     </div>
                 </div>
-            
-            
 
-            <div class="col-lg-12">
-                <div class="form-group row">
-                    <label for="curren" class="col-lg-12 col-form-label">Currency</label>
-                    <div class="col-lg-12">
-                        <select id="curren" class="form-control" formControlName="Currency"
-                            (change)="getCurrencyValues($event)">
-                            <option [ngValue]="null" selected disabled>Select Currency</option>
-                            <option *ngFor="let comp_name of currencyNameList" value="{{comp_name.currencyId}}">
-                                {{comp_name.currency_name}}
-                            </option>
-                        </select>
+
+
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="curren" class="col-lg-12 col-form-label">Currency</label>
+                        <div class="col-lg-12">
+                            <select id="curren" class="form-control" formControlName="Currency"
+                                (change)="getCurrencyValues($event)">
+                                <option [ngValue]="null" selected disabled>Select Currency</option>
+                                <option *ngFor="let comp_name of currencyNameList" value="{{comp_name.currencyId}}">
+                                    {{comp_name.currency_name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="ccr" class="col-lg-12 col-form-label">Currency Conversion Rate</label>
+                        <div class="col-lg-12">
+                            <input type="text" class="form-control" formControlName="CurrencyConversionRate"
+                                [(ngModel)]="CurrencyConversionRateDefault" [attr.readonly]="isReadOnly" id="ccr" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="Payment" class="col-lg-12 col-form-label">Payment Via</label>
+                        <div class="col-lg-12">
+                            <select id="Payment" class="form-control" formControlName="PaymentVia">
+                                <option [ngValue]="null" selected disabled>Select Payment Via</option>
+                                <option *ngFor="let payment of paymentviaList" value="{{payment.paymentvia_id}}">
+                                    {{payment.paymentvia_name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+
+                    <div class="form-check form-check-inline">
+
+                        <input class="form-check-input" type="radio" name="export_state" (change)="handleChange($event)"
+                            id="exampleRadios1" value="1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Local
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="export_state" (change)="handleChange($event)"
+                            id="exampleRadios2" value="2">
+                        <label class="form-check-label" for="exampleRadios2">
+                            Export
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="export_state" (change)="handleChange($event)"
+                            id="exampleRadios3" value="3">
+                        <label class="form-check-label" for="exampleRadios3">
+                            Zero Valid
+                        </label>
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-12">
+                    <div class="form-group">
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" checked name="select" id="inlineCheckbox2"
+                                value="mile Discount" (change)="mile($event)">
+                            <label class="form-check-label" for="inlineCheckbox2"> mile Discount</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="select" id="inlineCheckbox2"
+                                value="Mile Stone" (change)="mile($event)">
+                            <label class="form-check-label" for="inlineCheckbox2"> Mile Stone</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" checked
+                                value="M S Display" (change)="handleChange_MSDisplay($event)">
+                            <label class="form-check-label" for="inlineCheckbox3">M S Display </label>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-12">
-                <div class="form-group row">
-                    <label for="ccr" class="col-lg-12 col-form-label">Currency Conversion Rate</label>
-                    <div class="col-lg-12">
-                        <input type="text" class="form-control" formControlName="CurrencyConversionRate"
-                            [(ngModel)]="CurrencyConversionRateDefault" [attr.readonly]="isReadOnly" id="ccr" />
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-lg-12">
-                <div class="form-group row">
-                    <label for="Payment" class="col-lg-12 col-form-label">Payment Via</label>
-                    <div class="col-lg-12">
-                        <select id="Payment" class="form-control" formControlName="PaymentVia">
-                            <option [ngValue]="null" selected disabled>Select Payment Via</option>
-                            <option *ngFor="let payment of paymentviaList" value="{{payment.paymentvia_id}}">
-                                {{payment.paymentvia_name}}
-                            </option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-           
-                <div class="form-check form-check-inline">
-    
-                    <input class="form-check-input" type="radio" name="export_state" (change)="handleChange($event)"
-                        id="exampleRadios1" value="1" checked>
-                    <label class="form-check-label" for="exampleRadios1">
-                        Local
-                    </label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="export_state" (change)="handleChange($event)"
-                        id="exampleRadios2" value="2">
-                    <label class="form-check-label" for="exampleRadios2">
-                        Export
-                    </label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="export_state" (change)="handleChange($event)"
-                        id="exampleRadios3" value="3">
-                    <label class="form-check-label" for="exampleRadios3">
-                        Zero Valid
-                    </label>
-                </div>
-            </div>
-        
-          
-       
-            <div class="col-lg-12">
-                <div class="form-group">
-                  
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio"  checked name="select"
-                        id="inlineCheckbox2" value="mile Discount" (change)="mile($event)">
-                        <label class="form-check-label" for="inlineCheckbox2"> mile Discount</label>
-                      </div>
-                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="select"
-                        id="inlineCheckbox2" value="Mile Stone" (change)="mile($event)">
-                        <label class="form-check-label" for="inlineCheckbox2"> Mile Stone</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" checked
-                        value="M S Display" (change)="handleChange_MSDisplay($event)">
-                        <label class="form-check-label" for="inlineCheckbox3">M S Display </label>
-                      </div> 
-                </div>
-            </div>
-        </div>
-          
 
-              
+
             <div class="col-lg-6">
                 <div class="form-group">
                     <label for="refResellerDetails" class="form-label">Reference Reseller Name</label>
@@ -328,43 +329,38 @@
                     <div class="col-lg-12">
                         <div class="form-check form-check-inline">
 
-                            <input class="form-check-input radioType" type="radio" 
-                            formControlName="extraLogo" name="extraLogo" (change)="handleChangeExtraLogo($event)"
-                                id="exampleRadios1" value="1" >
+                            <input class="form-check-input radioType" type="radio" formControlName="extraLogo"
+                                name="extraLogo" (change)="handleChangeExtraLogo($event)" id="exampleRadios1" value="1">
                             <label class="form-check-label" for="exampleRadios1">
                                 IT Care
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="extraLogo" 
-                            formControlName="extraLogo" (change)="handleChangeExtraLogo($event)"
-                                id="exampleRadios2" value="2">
+                            <input class="form-check-input" type="radio" name="extraLogo" formControlName="extraLogo"
+                                (change)="handleChangeExtraLogo($event)" id="exampleRadios2" value="2">
                             <label class="form-check-label" for="exampleRadios2">
-                                Calncall 
+                                Calncall
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="extraLogo" 
-                            formControlName="extraLogo" (change)="handleChangeExtraLogo($event)"
-                                id="exampleRadios3" value="3">
+                            <input class="form-check-input" type="radio" name="extraLogo" formControlName="extraLogo"
+                                (change)="handleChangeExtraLogo($event)" id="exampleRadios3" value="3">
                             <label class="form-check-label" for="exampleRadios3">
-                                DID Sg 
+                                DID Sg
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="extraLogo" 
-                            formControlName="extraLogo" (change)="handleChangeExtraLogo($event)"
-                                id="exampleRadios3" value="4">
+                            <input class="form-check-input" type="radio" name="extraLogo" formControlName="extraLogo"
+                                (change)="handleChangeExtraLogo($event)" id="exampleRadios3" value="4">
                             <label class="form-check-label" for="exampleRadios3">
                                 Callcloud
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="extraLogo"
-                            formControlName="extraLogo"  (change)="handleChangeExtraLogo($event)"
-                                id="exampleRadios3" value="5">
+                            <input class="form-check-input" type="radio" name="extraLogo" formControlName="extraLogo"
+                                (change)="handleChangeExtraLogo($event)" id="exampleRadios3" value="5">
                             <label class="form-check-label" for="exampleRadios3">
-                                Mrvoip    
+                                Mrvoip
                             </label>
                         </div>
                     </div>
@@ -386,10 +382,10 @@
             </div>
             <div class="col-12">
 
-                <section formArrayName="addresses" *ngFor="let address of addressControls.controls; let i = index;">
+                <section>
 
-                    <div [formGroupName]="i">
-                       
+                    <div>
+
                         <div class="table-responsive">
                             <table class="add-contact-table-section">
                                 <thead>
@@ -418,10 +414,11 @@
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody formArrayName="addresses"
+                                    *ngFor="let address of addressControls.controls; let i = index;">
 
 
-                                    <tr>
+                                    <tr [formGroupName]="i">
                                         <td>
                                             <div class="userDatatable-content lalign">
                                                 <input type="checkbox" formControlName="pd_nextPage_checkbox">
@@ -441,11 +438,11 @@
                                             </div>
 
                                         </td>
-                                        
+
                                         <td>
                                             <div class="userDatatable-content">
                                                 <input type="text" class="form-control" style="text-align: right;"
-                                                    formControlName="pd_quantity_txtbox1" id="pd_qty_{{i}}" 
+                                                    formControlName="pd_quantity_txtbox1" id="pd_qty_{{i}}"
                                                     (change)="totalCalculate();saveDiscount()"
                                                     (blur)="totalCalculate();saveDiscount()"
                                                     (keyup)="totalCalculate();saveDiscount()" />
@@ -455,7 +452,7 @@
                                             <div class="userDatatable-content">
 
                                                 <input type="text" class="form-control" style="text-align: left;"
-                                                    formControlName="pd_unit" id="pd_unit_{{i}}"  />
+                                                    formControlName="pd_unit" id="pd_unit_{{i}}" />
 
                                             </div>
                                         </td>
@@ -465,13 +462,13 @@
                                                     formControlName="pd_sellingPrice" id="pd_SP_{{i}}"
                                                     (change)="totalCalculate();saveDiscount()"
                                                     (blur)="totalCalculate();saveDiscount()"
-                                                    (keyup)="totalCalculate();saveDiscount()"  />
+                                                    (keyup)="totalCalculate();saveDiscount()" />
                                             </div>
                                         </td>
                                         <td>
                                             <div class="userDatatable-content">
                                                 <input type="text" class="form-control" formControlName="pd_Total"
-                                                    style="text-align: right;" id="pd_Total_{{i}}"   />
+                                                    style="text-align: right;" id="pd_Total_{{i}}" />
                                             </div>
                                         </td>
                                         <td>
@@ -499,12 +496,12 @@
                                         <td>
                                             <div class="userDatatable-content">
 
-                                                <input type="checkbox" style="text-align: right;" id="pd_selectTax_{{i}}"
-                                                    formControlName="pd_selectTax" (change)="totalCalculate();">
+                                                <input type="checkbox" style="text-align: right;"  [ngModel]="test[i]" id="pd_selectTax_{{i}}"
+                                                    formControlName="pd_selectTax" checked='checked' (change)="totalCalculate();">
 
                                             </div>
                                         </td>
-                                        <td>
+                                        <td *ngIf="i>0">
                                             <div class="userDatatable-content d-inline-block">
                                                 <button type="button" class="btn btn-danger btn-sm"
                                                     (click)="removeAddress(i)">X</button>
@@ -526,25 +523,25 @@
                                         <td colspan="1">
                                             <div class="userDatatable-content">
                                                 <button type="button"
-                                                class="btn btn-primary btn-default btn-squaredbuttoncssDiscount"
-                                                data-toggle="modal" (click)="calculateDiscount(i)"
-                                                data-target="#discountFormId" id="discount_btn_{{i}}" >Discount(-) 
+                                                    class="btn btn-primary btn-default btn-squaredbuttoncssDiscount"
+                                                    data-toggle="modal" (click)="calculateDiscount(i)"
+                                                    data-target="#discountFormId" id="discount_btn_{{i}}">Discount(-)
                                                 </button>
 
-                                               
+
                                                 <input type="hidden" class="form-control" style="text-align: right;"
-                                                formControlName="sub_dis_type" id="sub_discount_type_{{i}}" />
-                                            <input type="hidden" class="form-control" style="text-align: right;"
-                                                formControlName="sub_dis_val" id="sub_discount_val_{{i}}" />
+                                                    formControlName="sub_dis_type" id="sub_discount_type_{{i}}" />
+                                                <input type="hidden" class="form-control" style="text-align: right;"
+                                                    formControlName="sub_dis_val" id="sub_discount_val_{{i}}" />
 
                                                 <!-- <button>Discount</button> -->
                                             </div>
                                         </td>
                                         <td colspan="1">
-    <input type="text" class="form-control" style="text-align: right;"
-    formControlName="sub_dis_amt" id="sub_discount_{{i}}" />
+                                            <input type="text" class="form-control" style="text-align: right;"
+                                                formControlName="sub_dis_amt" id="sub_discount_{{i}}" />
                                         </td>
-                                        
+
                                     </tr>
                                 </tbody>
 
@@ -558,7 +555,7 @@
 
                 <div class="text-right">
 
-                
+
                     <button type="button" class="btn btn-dark btn-default btn-squared mt-2 mb-2" (click)="addAddress()"
                         style="margin-right: 10px;"><i class="fas fa-plus" style="margin-right:0;"> Add Product</i>
                     </button>
@@ -572,7 +569,7 @@
     <form [formGroup]="addPI_section3">
         <section class="overall">
             <section class="left_section">
-             
+
             </section>
 
             <section class="right_section">
@@ -620,7 +617,7 @@
                             </div>
                         </div>
 
-                       
+
                         <div class="col-lg-6">
                             <div class="form-group ml-2 mt-2">
 
@@ -643,7 +640,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <input type="text" formControlName="section3_taxAmt_txtbox" id="tax_amt_id"
-                                [(ngModel)]="finalTax" class="form-control mt-2" />
+                                    [(ngModel)]="finalTax" class="form-control mt-2" />
 
                             </div>
                         </div>
@@ -666,7 +663,7 @@
 
                         <div class="col-lg-6">
                             <div class="d-flex justify-content-center">
-                                <input type="text" class="form-control ml-2 mt-2"  placeholder="Banking Charge"
+                                <input type="text" class="form-control ml-2 mt-2" placeholder="Banking Charge"
                                     formControlName="section3_bankingCharge_amt_name_txtbox" />
 
                             </div>
@@ -774,9 +771,10 @@
                             </div>
                         </div>
                         <div class="buttonAlign">
-                            <button type="button" class="btn btn-success ">Back</button>
-                            <button type="button" class="btn btn-danger" (click)=" save()">Submit</button>
-                            <button type="button" class="btn btn-dark ">Submit & Send Email</button>
+
+                            <button type="button" class="btn btn-primary" (click)=" save($event)">Submit</button>
+                            <button type="button" class="btn btn-dark ">Cancel</button>
+
                         </div>
 
 

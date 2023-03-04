@@ -151,7 +151,7 @@
                               </li>
                               <li class="dropdown__item">
                                 <a class="hover4" title="Delete" data-toggle="modal" data-target="#DeleteInvoice"
-                                  (click)="deleteInvoice(list.billId)">
+                                  (click)="deleteProformaInvoice(list.billId)">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
                                     fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
                                     stroke-linejoin="round" class="feather feather-x-square">
@@ -162,33 +162,20 @@
                                 </a>
                               </li>
                               <li class="dropdown__item">
+                                <a href="#" class="hover3" title="PI to Invoice Conversion" data-toggle="modal"
+                                  data-target="#PItoInvoiceConversionFormId">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-move"><polyline points="5 9 2 12 5 15"></polyline><polyline points="9 5 12 2 15 5"></polyline><polyline points="15 19 12 22 9 19"></polyline><polyline points="19 9 22 12 19 15"></polyline><line x1="2" y1="12" x2="22" y2="12"></line><line x1="12" y1="2" x2="12" y2="22"></line></svg>
+                                </a>
+                              </li>
+                           
+                              <li class="dropdown__item">
                                 <a class="hover3" title="Email-Landscape" data-toggle="modal"
                                   data-target="#emailFormId" (click)="getEmailDetails(list.billId)">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-at-sign"><circle cx="12" cy="12" r="4"></circle><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"></path></svg>
                                 </a>
                               </li>
-                              <li class="dropdown__item">
-                                <a href="#" class="hover4" title="Coupon Assign" data-toggle="modal"
-                                  data-target="#couponAssignFormId">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
-                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
-                                    stroke-linejoin="round" class="feather feather-edit-3">
-                                    <path d="M12 20h9"></path>
-                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                                  </svg>
-                                </a>
-                              </li>
-                              <li class="dropdown__item">
-                                <a href="#" class="hover3" title="PI to Invoice Conversion" data-toggle="modal"
-                                  data-target="#PItoInvoiceConversionFormId">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
-                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
-                                    stroke-linejoin="round" class="feather feather-at-sign">
-                                    <circle cx="12" cy="12" r="4"></circle>
-                                    <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"></path>
-                                  </svg>
-                                </a>
-                              </li>
+
+                            
                               <li class="dropdown__item">
                                 <a class="hover4" title="PDF" data-toggle="modal" data-target="#pdfFormId"
                                   (click)="pdf(list.billId)">
@@ -210,6 +197,30 @@
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                     <circle cx="12" cy="12" r="3"></circle>
                                     <polyline points="13 2 13 9 20 9"></polyline>
+                                  </svg>
+                                </a>
+                              </li>
+                              <li class="dropdown__item">
+                                <a class="hover3" title="Convert to DID Invoice" data-toggle="modal"
+                                  >
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chrome"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="21.17" y1="8" x2="12" y2="8"></line><line x1="3.95" y1="6.06" x2="8.54" y2="14"></line><line x1="10.88" y1="21.94" x2="15.46" y2="14"></line></svg>
+                                </a>
+                              </li>
+                              <li class="dropdown__item">
+                                <a class="hover3" title="Payment" data-toggle="modal"
+                                  >
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye-off"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                                </a>
+                              </li>
+
+                              <li class="dropdown__item">
+                                <a href="#" class="hover4" title="Coupon Assign" data-toggle="modal"
+                                  data-target="#couponAssignFormId">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"
+                                    fill="none" stroke="#009688" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-edit-3">
+                                    <path d="M12 20h9"></path>
+                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
                                   </svg>
                                 </a>
                               </li>
@@ -547,7 +558,7 @@
                             <div class="col-md-9 col-9" style="display: flex;">
                                 <div class="form-check" style="margin-right: 10px;">
                                     <input mdbRadio class="form-check-input" type="radio" name="radio_ApprovalBy"
-                                      formControlName="radio_ApprovalBy"  id="company" [checked]="true" (change)="handle_radioChange_email($event)" />
+                                       id="company"  (change)="handle_radioChange_email($event)" />
                                        
                                     <label class="form-check-label" for="company"> Company
                                     </label>
@@ -555,7 +566,7 @@
 
                                 <div class="form-check">
                                     <input mdbRadio class="form-check-input" type="radio" name="radio_ApprovalBy"
-                                    formControlName="radio_ApprovalBy"    id="finance" (change)="handle_radioChange_email($event)" />
+                                       id="finance" [checked]="true" (change)="handle_radioChange_email($event)" />
                                     <label class="form-check-label" for="finance">Finance
                                     </label>
                                 </div>
@@ -579,41 +590,43 @@
                     </div>
                     <div class="col-md-12 col-12">
                         <div class="form-group row">
-
+                         
                             <label for="emailto" class="col-lg-2 col-form-label"><span>CC Group</span> :</label>
-                            <div class="email-cc-template">
-                                <div class="col-lg-10" *ngFor="let i =index;let display1 of email_cc_userList;">
+                       
+                            <div class="col-lg-10 email-cc-template">
+                                <div class="" *ngFor="let i =index;let display1 of email_groupMailList;">
                                     <input class="checkbox" type="checkbox" id="check-grp-{{i}}"
                                         formControlName="email_cc"
-                                        (change)=" EditCHK_emailCC(display1.userId,$event)" />{{display1.firstName}}
+                                        (change)=" EditCHK_emailCC(display1.userId,$event)" />{{display1.group_name}}
                                 </div>
-                            </div>
+                              </div>
                         </div>
                     </div>
-                
                     <div class="col-md-12 col-12">
-                        <div class="form-group row">
-                            <label for="template" class="col-lg-2 col-form-label"><span>Template</span> :</label>
-                            <div class="col-lg-10">
-                                <select name="templat" id="template" class="form-control"
-                                    formControlName="email_template" (change)="templateContentEmailDropdown($event)">
-                                    <option [ngValue]="null" selected disabled>Select Template</option>
-                                    <!-- <option *ngFor="let template of email_crmTemplateList"
-                                        value="{{ template.crm_template_id }}">
-                                        {{template.crm_template_name}}
-                                    </option> -->
-                                </select>
-                                <br>
+                      <div class="form-group row">
+                          <label for="emailPDFType" class="col-lg-2 col-form-label"><span> PDF Type</span> :</label>
+                          <div class="col-lg-10 mt-2">
 
-                                <div  *ngIf="emailForm.controls['email_template'].invalid && (emailForm.controls['email_template'].dirty || emailForm.controls['email_template'].touched)"
-                                class="alert alert-danger alertdangerCustomCSS1 ">
-                                Template is Required
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="PDF Link" value="option1"
+                              (change)="CBF_PDFLink($event)">
+                              <label class="form-check-label" for="PDF Link">PDF Link</label>
                             </div>
+                            <div class="form-check form-check-inline" >
+                              <input class="form-check-input" type="checkbox" id="Template Selection" value="option2"
+                              (change)="CBF_TemplateSelection($event)">
+                              <label class="form-check-label" for="Template Selection"> Template Selection</label>
                             </div>
-                        
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="checkbox" id="Payment Link" value="option3" 
+                              (change)="CBF_PaymentLink($event)">
+                              <label class="form-check-label" for="Payment Link">Payment Link</label>
+                            </div>
 
-                        </div>
-                    </div>
+                          </div>
+                      </div>
+                  </div>
+                 
                     <div class="col-md-12 col-12">
                         <div class="form-group row">
                             <label for="subject" class="col-lg-2 col-form-label"><span>Subject</span> :</label>
@@ -627,17 +640,29 @@
                         </div>
 
                     </div>
-                    <!-- <div class="col-md-12 col-12">
-                        <div class="form-group row">
-                            <label for="emailPDFType" class="col-lg-2 col-form-label"><span>Select PDF Type</span> :</label>
-                            <div class="col-lg-10">
+                    <div class="col-md-12 col-12" *ngIf="(CBV_TemplateSelection==true)">
+                      <div class="form-group row">
+                          <label for="template" class="col-lg-2 col-form-label"><span>Template</span> :</label>
+                          <div class="col-lg-10">
+                              <select name="templat" id="template" class="form-control"
+                                  formControlName="email_template" (change)="templateContentEmailDropdown($event)">
+                                  <option [ngValue]="null" selected disabled>Select Template</option>
+                                  <option *ngFor="let template of email_crmTemplateList"
+                                      value="{{ template.crm_template_id }}">
+                                      {{template.crm_template_name}}
+                                  </option>
+                              </select>
+                              <br>
 
-                                <input type="checkbox" formControlName="email_pdfType" id="emailPDFType"
-                                    (change)="eventCheck_PDFType($event)" checked />
+                              <div  *ngIf="emailForm.controls['email_template'].invalid && (emailForm.controls['email_template'].dirty || emailForm.controls['email_template'].touched)"
+                              class="alert alert-danger alertdangerCustomCSS1 ">
+                              Template is Required
+                          </div>
+                          </div>
+                      
 
-                            </div>
-                        </div>
-                    </div> -->
+                      </div>
+                  </div>
                     <div class="col-md-12 col-12">
                         <div class="form-group row">
                             <label for="subject" class="col-lg-2 col-form-label"><span>Message</span> :</label>

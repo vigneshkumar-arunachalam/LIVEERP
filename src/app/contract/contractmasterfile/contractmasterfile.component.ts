@@ -84,7 +84,7 @@ export class ContractmasterfileComponent implements OnInit {
  
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     get_req.action = "contract_master_file_lis";
-    get_req.user_id = localStorage.getItem('user_id');
+    get_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_req.element_data =get_req;
     
     this.serverService.sendServer(api_req).subscribe((response: any) => {
@@ -108,7 +108,7 @@ export class ContractmasterfileComponent implements OnInit {
 //   api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
 //   delete_file_req.action = "contract_master_file_delete";
 //   delete_file_req.contract_master_file_id=id;
-//   delete_file_req.user_id = localStorage.getItem('user_id');
+//   delete_file_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
 //   api_req.element_data = delete_file_req;
 //   this.serverService.sendServer(api_req).subscribe((response: any) => {
 //     console.log(response)
@@ -166,7 +166,7 @@ export class ContractmasterfileComponent implements OnInit {
       api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
       delete_file_req.action = "contract_master_file_delete";
       delete_file_req.contract_master_file_id=id;
-      delete_file_req.user_id = localStorage.getItem('user_id');
+      delete_file_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
       api_req.element_data = delete_file_req;
 
       this.serverService.sendServer(api_req).subscribe((response: any) => {

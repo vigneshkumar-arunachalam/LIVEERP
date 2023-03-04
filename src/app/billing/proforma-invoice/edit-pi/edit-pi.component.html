@@ -446,9 +446,9 @@
             </div>
             <div class="col-12">
 
-                <section formArrayName="addresses" *ngFor="let address of addressControls.controls; let i = index;">
+                <section >
 
-                    <div [formGroupName]="i">
+                    <div >
                         <div class="row">
                             <div class="col-12">
                                 <!-- <h3 style="text-align:center;color:rgb(141, 87, 129);font-weight: 500;">
@@ -482,10 +482,10 @@
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody formArrayName="addresses" *ngFor="let address of addressControls.controls; let i = index;">
 
 
-                                    <tr>
+                                    <tr [formGroupName]="i">
 
                                         <!-- NEXT PAGE -->
                                         <td>
@@ -853,15 +853,23 @@
                         </div>
 
                         <div class="col-lg-12">
-                            <div class="form-group row">
+                            <div class="form-group row" *ngIf="(quotationAddSignature_state==1)">
 
                                 <div class="col-lg-6">
-                                    <label>Add to Received and Authorized Signature/stamp</label>
+                                    <label>Add to Received and Authorized Signature/stamp
+                                        {{checkbox_selectAdditionalSignature}}
+                                    </label>
                                 </div>
 
                                 <div class="col-lg-6">
-                                    <input type="checkbox"  formControlName="section3_receivedAuthorizedSignature"
-                                    [(ngModel)]="chkReceivedAuthorizedSignature" (chenge)="chkReceivedAuthorizedSignatureEvent($event)" />
+                                    <input type="checkbox" [(ngModel)]="selectAdditionalSign"
+                                        formControlName="section3_select_additional_signature"
+                                        (change)="eventCheckSelectAdditionalSignature($event)" /><br>
+                                    <div *ngIf="this.checkbox_selectAdditionalSignature==true">
+                                        <img src="{{this.quotationAddSignature_filename}}"
+                                            alt="No image to display " height="80px" width="100px">
+                                    </div>
+
                                 </div>
 
 

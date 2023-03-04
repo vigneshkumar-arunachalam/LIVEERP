@@ -178,8 +178,39 @@ input.form-control {
     animation: bg-hue 2s linear infinite;
   }
   
-  .add-contact-table-section th:first-child{width: 110px;}
+  /* .add-contact-table-section th:first-child{width: 110px;}
   .add-contact-table-section td:nth-child(4) .userDatatable-content,  .add-contact-table-section td:nth-child(5) .userDatatable-content,
   .add-contact-table-section td:nth-child(6) .userDatatable-content,  .add-contact-table-section td:nth-child(7) .userDatatable-content,
   .add-contact-table-section td:nth-child(8) .userDatatable-content
-  {width: 178px;}
+  {width: 178px;} */
+
+
+  /* form array css for space */
+
+  hr{
+    margin-top: 0;
+    margin-bottom: 0;
+    border: 0;
+    border-top: 1px solid #102268;
+    width:2500%;
+  }
+
+  .marginSpace{
+    margin-top:2rem !important;
+  }
+
+  
+
+.userDatatable-content{
+  line-height: 3.42857 !important;
+}
+
+  /* form array css for space #fcf6fc */
+
+  .add-contact-table-section tbody:nth-child(even) {background: #fcf6fc}
+
+  .add-contact-table-section tbody:nth-child(odd) {background: #f5f5f5}
+
+  .scrollcontrol{
+    overflow:scroll;
+  }

@@ -395,7 +395,7 @@ datavalue:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_dynamicDropdown_req.action = "get_customercbo_quat_no";
-    api_dynamicDropdown_req.user_id = localStorage.getItem('user_id');
+    api_dynamicDropdown_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_dynamicDropdown_req.billerId = this.billerID;
     api_req.element_data = api_dynamicDropdown_req;
 
@@ -411,7 +411,7 @@ datavalue:any;
         this.billerIDUpdate = response.footer_details[index].billerId;
         if (response.status == true) {
           this.editQuotationInvoice_section1.patchValue({
-            'e_quotationNumber': response.quotation_no,
+            // 'e_quotationNumber': response.quotation_no,
             'e_selectFooter': this.selected_pdf_footer,
             'e_selectCurrency': response.currency_id,
             'e_termConditionContentChange': response.quotation_terms_cond,
@@ -453,7 +453,7 @@ datavalue:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     edit_Quotation_req.action = "edit_quotation";
-    edit_Quotation_req.user_id = localStorage.getItem('user_id');
+    edit_Quotation_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     edit_Quotation_req.quotation_id = this.editQuotationID;
     api_req.element_data = edit_Quotation_req;
     this.serverService.sendServer(api_req).subscribe((response: any) => {
@@ -679,7 +679,7 @@ datavalue:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_quotationTemplateDropdown_req.action = "get_template_maincontent";
-    api_quotationTemplateDropdown_req.user_id = localStorage.getItem('user_id');
+    api_quotationTemplateDropdown_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_quotationTemplateDropdown_req.quotation_template_id = this.quotation_template_id;
     api_req.element_data = api_quotationTemplateDropdown_req;
 
@@ -715,7 +715,7 @@ datavalue:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_quotationAddSignatureEdit_req.action = "quotation_add_signature_edit";
-    //api_quotationAddSignatureEdit_req.user_id = localStorage.getItem('user_id');
+    //api_quotationAddSignatureEdit_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_quotationAddSignatureEdit_req.user_id = this.editQuotationInvoice_section1.value.e_salesRep;
    // api_quotationAddSignatureEdit_req.billerId = this.billerID ;
     api_quotationAddSignatureEdit_req.billerId = this.editQuotationInvoice_section1.value.e_companyName;
@@ -763,7 +763,7 @@ datavalue:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_quotationTemplateDropdown_req.action = "get_quotation_terms_condition";
-    api_quotationTemplateDropdown_req.user_id = localStorage.getItem('user_id');
+    api_quotationTemplateDropdown_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_quotationTemplateDropdown_req.terms_condition_id = this.terms_condition_id;
     api_req.element_data = api_quotationTemplateDropdown_req;
 
@@ -801,7 +801,7 @@ datavalue:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_TaxDropdown_req.action = "quot_tax_dropdown";
-    api_TaxDropdown_req.user_id = localStorage.getItem('user_id');
+    api_TaxDropdown_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_TaxDropdown_req.billerId = this.billerID;
     api_req.element_data = api_TaxDropdown_req;
 
@@ -853,7 +853,7 @@ datavalue:any;
     });
 
   }
-  updateQuotationEnquiry() {
+  updateQuotationEnquiry($event: MouseEvent) {
     
     let api_req: any = new Object();
     let api_UpdateEnquiry_req: any = new Object();
@@ -862,7 +862,7 @@ datavalue:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_UpdateEnquiry_req.action = "update_quotation";
-    api_UpdateEnquiry_req.user_id = localStorage.getItem('user_id');
+    api_UpdateEnquiry_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
 
     api_UpdateEnquiry_req.enquiry_from_id = this.FormID_enquiryFromDetails;
     api_UpdateEnquiry_req.enquiry_subject = this.subject_enquiryFromDetails;
@@ -966,7 +966,9 @@ datavalue:any;
     }
    api_UpdateEnquiry_req.values = addr;
 	console.log(api_req);
+  ($event.target as HTMLButtonElement).disabled = true;
     this.serverService.sendServer(api_req).subscribe((response: any) => {
+      ($event.target as HTMLButtonElement).disabled = false;
 
       console.log("add quotation new save", response);
       if (response.status == true) {
@@ -1011,7 +1013,7 @@ datavalue:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_SearchCUST_req.action = "quot_customer_details";
-    api_SearchCUST_req.user_id = localStorage.getItem('user_id');
+    api_SearchCUST_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_SearchCUST_req.customerId = this.customerName_Data
     api_req.element_data = api_SearchCUST_req;
     this.serverService.sendServer(api_req).subscribe((response: any) => {
@@ -1062,7 +1064,7 @@ datavalue:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_Search_req.action = "quot_customer_name";
-    api_Search_req.user_id = localStorage.getItem('user_id');
+    api_Search_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_Search_req.billerId = this.billerIDUpdate;
     api_Search_req.key_word = data;
     api_req.element_data = api_Search_req;
@@ -1088,7 +1090,7 @@ datavalue:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_SearchProd_req.action = "product_name_auto";
-    api_SearchProd_req.user_id = localStorage.getItem('user_id');
+    api_SearchProd_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
 
     api_SearchProd_req.part_no = data;
     api_req.element_data = api_SearchProd_req;
@@ -1116,7 +1118,7 @@ datavalue:any;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_ProdAutoFill_req.action = "product_name_auto_fill";
-    api_ProdAutoFill_req.user_id = localStorage.getItem('user_id');
+    api_ProdAutoFill_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_ProdAutoFill_req.product_name = this.product_name_AutoComplete;
     api_req.element_data = api_ProdAutoFill_req;
 
@@ -1546,7 +1548,7 @@ removeAddress(i: number) {
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_ProdAutoFill_req.action = "delete_quotation_child";
-    api_ProdAutoFill_req.user_id = localStorage.getItem('user_id');
+    api_ProdAutoFill_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_ProdAutoFill_req.quotationChildId = quotationChildId;
     api_req.element_data = api_ProdAutoFill_req;
 

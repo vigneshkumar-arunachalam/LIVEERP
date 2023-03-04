@@ -57,14 +57,14 @@
                 </div>
                
                  <div class="col-lg-12">
-                  <!--  <div class="form-group row">
+                   <div class="form-group row">
                         <label for="add" class="col-lg-12 col-form-label">Address</label>
                         <div class="col-lg-12">
                             <input type="text " class="form-control mt-2" formControlName="address_1" />
                             <input type="text " class="form-control mt-2" formControlName="address_2" />
                             <input type="text " class="form-control mt-2" formControlName="address_3" />
                         </div>
-                    </div>-->
+                    </div>
                 </div> 
 
                 <div class="col-lg-12">
@@ -105,9 +105,9 @@
                         <label for="ship" class="col-lg-12 col-form-label">Ship To</label>
                         <div class="col-lg-12">
                             <input type="text" class="form-control mt-2" formControlName="ship_to" />
-                            <!-- <input type="text" class="form-control mt-2" formControlName="ship_address_1" />
+                            <input type="text" class="form-control mt-2" formControlName="ship_address_1" />
                             <input type="text" class="form-control mt-2" formControlName="ship_address_2" />
-                            <input type="text" class="form-control mt-2" formControlName="ship_address_3" /> -->
+                            <input type="text" class="form-control mt-2" formControlName="ship_address_3" />
                         </div>
                     </div>
                 </div>
@@ -146,12 +146,12 @@
                     </div>
                 </div>
 
-                <div class="col-lg-12">
+                 <div class="col-lg-12">
                     <div class="form-group row">
                         <label for="Ship_By" class="col-lg-12 col-form-label">Bill Code</label>
                         <div class="col-lg-12">
 
-                            <select id="Ship_By" class="form-control" formControlName="ShipBy">
+                            <select id="billCode" class="form-control" formControlName="billCode">
                                 <option [ngValue]="null" selected disabled>Select Bill Code</option>
                                 <option *ngFor="let bill of BillCodeList" value="{{bill.billCode}}">
                                     {{bill.billCode}}
@@ -160,6 +160,7 @@
                         </div>
                     </div>
                 </div>
+
 
                 <div class="col-lg-12">
                     <div class="form-group">
@@ -239,7 +240,7 @@
                     <div class="form-group row">
                         <label for="attn1" class="col-lg-12 col-form-label">Cus Invoice No.</label>
                         <div class="col-lg-12">
-                            <input type="text" class="form-control" formControlName="cusInvoiceNo"  />
+                            <input type="text" class="form-control" formControlName="cusInvoiceNo" [attr.readonly]="isReadOnly" />
                         </div>
                     </div>
                 </div>
@@ -271,7 +272,7 @@
                             <div class="form-group row">
                                 <label for="datee" class="col-lg-12 col-form-label">Date *</label>
                                 <div class="col-lg-12">
-                                    <input type="date" class="form-control" formControlName="Date" id="datee" />
+                                    <input type="date" class="form-control" formControlName="Date" id="datee" [attr.readonly]="isReadOnly" />
                                 </div>
                                 <label for="po" class="col-lg-12 col-form-label">PO.No</label>
                                 <div class="col-lg-12">
@@ -285,7 +286,7 @@
                             <div class="form-group row">
                                 <label for="podatee" class="col-lg-12 col-form-label">PO.Date</label>
                                 <div class="col-lg-12">
-                                    <input type="date" class="form-control" formControlName="PoDate" id="podatee" />
+                                    <input type="date" class="form-control" formControlName="PoDate" id="podatee" [attr.readonly]="isReadOnly" />
                                 </div>
                             </div>
                         </div>
@@ -330,7 +331,7 @@
                             <div class="form-group row">
                                 <label for="Ship_Date" class="col-lg-12 col-form-label">Ship Date</label>
                                 <div class="col-lg-12">
-                                    <input type="date" class="form-control" formControlName="ShipDate" id="Ship_Date" />
+                                    <input type="date" class="form-control" formControlName="ShipDate" id="Ship_Date" [attr.readonly]="isReadOnly" />
                                 </div>
                             </div>
                         </div>
@@ -388,30 +389,29 @@
     
                         <div class="col-lg-12">
 
-                    <div class="form-check form-check-inline">
-
-                        <input class="form-check-input" type="radio" name="export_state" (change)="handleChange($event)"
-                            id="exampleRadios1" value="Local" checked>
-                        <label class="form-check-label" for="exampleRadios1">
-                            Local
-                        </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="export_state" (change)="handleChange($event)"
-                            id="exampleRadios2" value="Export">
-                        <label class="form-check-label" for="exampleRadios2">
-                            Export
-                        </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="export_state" (change)="handleChange($event)"
-                            id="exampleRadios3" value="Zero Valid">
-                        <label class="form-check-label" for="exampleRadios3">
-                            Zero Valid
-                        </label>
-                    </div>
-
-                </div>
+                            <div class="form-check form-check-inline">
+        
+                                <input class="form-check-input" type="radio" name="export_state" (change)="handleChange($event)"
+                                    id="exampleRadios1" value="1" checked>
+                                <label class="form-check-label" for="exampleRadios1">
+                                    Local
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="export_state" (change)="handleChange($event)"
+                                    id="exampleRadios2" value="2">
+                                <label class="form-check-label" for="exampleRadios2">
+                                    Export
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="export_state" (change)="handleChange($event)"
+                                    id="exampleRadios3" value="3">
+                                <label class="form-check-label" for="exampleRadios3">
+                                    Zero Valid
+                                </label>
+                            </div>
+                        </div>
 
                        
                     </div>
@@ -470,10 +470,10 @@
                                 </td>
                                 
                                 <td>
-                                    <div class="userDatatable-content" >
-                                        <br>
+                                    <div class="userDatatable-content">
+                                        <br *ngIf="i>0">
                                     <input type="date" class="form-control" formControlName="todt1" id="todt_1_{{i}}" />
-                                    <button  type="button"  class=" btn-primary">Computer
+                                    <button *ngIf="i>0" type="button"  class=" btn-primary">Compute
                                  </button>
     
                                      </div>
@@ -488,13 +488,13 @@
 
                                 <td class="date-duration-section">
                                     <div class="userDatatable-content">
-                                        <button type="button"  class="btn-info" (click)="minus()"
+                                        <button type="button"  class="btn-info" (click)="minus(i)"
                                          ><i class="fas fa-minus" ></i>
                                       </button>
                                       <!--   -->
-                                    <input type="text" [value]="qunatity" class="form-control" 
-                                    formControlName="did_diff_date1" id="did_diff_date_1_{{i}}" />
-                                    <button type="button"  class="btn-primary" (click)="plus()"
+                                    <input type="text" class="form-control" 
+                                    formControlName="did_diff_date1" id="did_diff_date_1_{{i}}"  [attr.readonly]="isReadOnly" />
+                                    <button type="button"  class="btn-primary" (click)="plus(i)"
                                          ><i class="fas fa-plus" ></i>
                                       </button>
                                     </div>
@@ -567,7 +567,7 @@
                                         <label  class="col-form-label" >Sub Total(Rs.) </label>
                                        
                                     </div>
-                                    <input type="text" class="form-control"  id="sub_total_1"
+                                    <input type="text" class="form-control"  id="sub_total_1" [attr.readonly]="isReadOnly"
                                     />
                                 </td>
                                 <td colspan="1">
@@ -632,7 +632,7 @@
                                         <div class="userDatatable-content" >
                                             <br>
                                         <input type="date" class="form-control" formControlName="todt2" id="todt2_{{i}}"  />
-                                        <button type="button"  class=" btn-primary">Computer
+                                        <button type="button"  class=" btn-primary">Compute
                                      </button>
         
                                          </div>
@@ -647,12 +647,13 @@
         
                                     <td class="date-duration-section">
                                         <div class="userDatatable-content">
-                                            <button type="button"  class="btn-info" (click)="minus2()"
+                                            <button type="button"  class="btn-info" (click)="minus2(i)"
                                              ><i class="fas fa-minus" ></i>
                                           </button>
                                           <!--  formControlName="did_diff_date2" id="did_diff_date2_{{i}}" -->
-                                        <input type="text" [value]="qunatity2" class="form-control"  />
-                                        <button type="button"  class="btn-primary" (click)="plus2()"
+                                        <input type="text"  class="form-control" 
+                                        formControlName="did_diff_date2" id="did_diff_date2_{{i}}"  [attr.readonly]="isReadOnly" />
+                                        <button type="button"  class="btn-primary" (click)="plus2(i)"
                                              ><i class="fas fa-plus" ></i>
                                           </button>
                                         </div>
@@ -724,7 +725,7 @@
                                             <label  class="col-form-label">Sub Total(Rs.) </label>
                                            
                                         </div>
-                                        <input type="text" class="form-control"  id="sub_total_2">
+                                        <input type="text" class="form-control"  id="sub_total_2" [attr.readonly]="isReadOnly">
                                     </td>
                                     <td>
                                     <input type="hidden" class="form-control" style="text-align: right;"
@@ -782,7 +783,7 @@
                                             <div class="userDatatable-content" >
                                                 <br>
                                             <input type="date" class="form-control" formControlName="todt3" id="todt3_{{i}}"  />
-                                            <button  type="button"  class=" btn-primary">Computer
+                                            <button  type="button"  class=" btn-primary">Compute
                                          </button>
             
                                              </div>
@@ -797,13 +798,13 @@
             
                                         <td class="date-duration-section">
                                             <div class="userDatatable-content">
-                                                <button type="button"  class="btn-info" (click)="minus3()"
+                                                <button type="button"  class="btn-info" (click)="minus3(i)"
                                                  ><i class="fas fa-minus" ></i>
                                               </button>
                                               <!--  -->
-                                            <input type="text" [value]="qunatity3" class="form-control"
-                                            formControlName="did_diff_date3"  id="did_diff_date3_{{i}}"  />
-                                            <button type="button"  class="btn-primary" (click)="plus3()"
+                                            <input type="text" class="form-control"
+                                            formControlName="did_diff_date3"  id="did_diff_date3_{{i}}"  [attr.readonly]="isReadOnly" />
+                                            <button type="button"  class="btn-primary" (click)="plus3(i)"
                                                  ><i class="fas fa-plus" ></i>
                                               </button>
                                             </div>
@@ -875,7 +876,7 @@
                                                 <label  class="col-form-label" >Sub Total(Rs.) </label>
                                                
                                             </div>
-                                            <input type="text" class="form-control" id="sub_total_3">
+                                            <input type="text" class="form-control" id="sub_total_3" [attr.readonly]="isReadOnly">
                                         </td>
 
                                         <td>
@@ -925,7 +926,7 @@
                                                 <div class="col-lg-6">
                                                     <!--   -->
                                                     <input type="text" class="form-control mt-2"
-                                                        formControlName="section3_gross_total" id="section3_gross_total" [(ngModel)]="grossTotal" />
+                                                        formControlName="section3_gross_total" id="section3_gross_total" [(ngModel)]="grossTotal" [attr.readonly]="isReadOnly" />
                                                 </div>
                                             </div>
                                         </div>
@@ -979,7 +980,7 @@
                                             <div class="form-group">
                                                 <!--  -->
                                                 <input type="text" formControlName="section3_taxAmt_txtbox" id="tax_amt_id" [(ngModel)]="finalTax"
-                                                     class="form-control mt-2" />
+                                                     class="form-control mt-2" [attr.readonly]="isReadOnly" />
                 
                                             </div>
                                         </div>
@@ -1027,7 +1028,7 @@
                                                 <div class="col-lg-6">
                                                     <!-- (change)="totalCalculate()" -->
                                                     <input type="text" class="form-control" [(ngModel)]="grandTotal"
-                                                        formControlName="section3_grand_total" id="section3_grand_total" />
+                                                        formControlName="section3_grand_total" id="section3_grand_total" [attr.readonly]="isReadOnly" />
                                                 </div>
                 
                 
@@ -1078,30 +1079,26 @@
                                                     <label>Add to terms and condition</label>
                                                 </div>
                 
-                                                <!-- <div class="col-lg-6">
-                                                    <input type="checkbox" [(ngModel)]="chkTermsandcondition"
-                                                        formControlName="section3_termCondition"
-                                                        (change)="chkTermsandconditionEvent($event)" />
-                                                </div> -->
-                
-                
                                             </div>
                                         </div>
                 
                                         <div class="col-lg-12">
-                                            <div class="form-group row">
+                                            <div class="form-group row" *ngIf="(quotationAddSignature_state==1)">
                 
                                                 <div class="col-lg-6">
-                                                    <label>Add to Received and Authorized Signature/stamp</label>
+                                                    <label>Add to Received and Authorized Signature/stamp
+                                                        {{checkbox_selectAdditionalSignature}}
+                                                    </label>
                                                 </div>
-                
-                                                <!-- <div class="col-lg-6">
-                                                    <input type="checkbox" [(ngModel)]="chkReceivedAuthorizedSignature"
-                                                        formControlName="section3_receivedAuthorizedSignature"
-                                                        (change)="chkReceivedAuthorizedSignatureEvent($event)" />
-                                                </div> -->
-                
-                
+                                                <div class="col-lg-6">
+                                                    <input type="checkbox" [(ngModel)]="selectAdditionalSign"
+                                                        formControlName="section3_select_additional_signature"
+                                                        (change)="eventCheckSelectAdditionalSignature($event)" /><br>
+                                                    <div *ngIf="this.checkbox_selectAdditionalSignature==true">
+                                                        <img src="{{this.quotationAddSignature_filename}}"
+                                                            alt="No image to display " height="80px" width="100px">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
@@ -1214,53 +1211,92 @@ aria-hidden="true">
             </button>
         </div>
         <div class="modal-body">
+            <h2 style="text-align:center;color:rgb(97, 72, 9)">Reseller Commission Details-add
+            </h2>
             <form [formGroup]="DidCommissionForm">
                 <div class="row">
                     <div class="col-lg-12">
-                    <div class="col-lg-12" style="display: flex;">
-                      <div class="col-lg-4">
-                        <label>Reseller Name</label>
-                      </div>
-                      <div class="col-lg-6">
-                        <input type="text" class="form-control">
-                      </div>
+                        <div class="form-group row">
+                            <label for="enq_subject" class="col-lg-12 col-form-label"></label>
+                            <div class="col-lg-6">
+
+                                <label for="per" class="ml-2 discountCSS1">Reseller Name</label><br>
+                            </div>
+                            <div class="col-lg-6">
+                               
+
+                                <div class="ng-autocomplete">
+
+                                    <ng-autocomplete [data]="usersearchResult" 
+                                    [searchKeyword]="keywordUserName"
+                                        formControlName="ResellerName" 
+                                        (selected)='searchUser_selectDropdownData($event)'
+                                        (inputChanged)='searchUserData($event)' 
+                                        (inputFocused)='onFocusedUser($event)'
+                                        [itemTemplate]="itemTemplateUser" [notFoundTemplate]="notFoundTemplate">
+                                    </ng-autocomplete>
+        
+                                    <ng-template #itemTemplateUser let-item>
+                                        <a [innerHTML]="item.reseller_name"></a>
+                                    </ng-template>
+        
+                                    <ng-template #notFoundTemplate let-notFound>
+                                        <div [innerHTML]="notFound"></div>
+                                    </ng-template>
+        
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="enq_subject" class="col-lg-12 col-form-label"></label>
+                            <div class="col-lg-6">
+
+                                <label for="per" class="ml-2 discountCSS2"> Commission Type</label><br>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+        
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" checked name="selectCommission" id="selectCommissionID"
+                                        formControlName="selectCommission"      value="Fixed" (change)="radioSelectCommissionType($event)">
+                                        <label class="form-check-label" for="inlineCheckbox7">Fixed</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="selectCommission" id="selectCommissionID"
+                                        formControlName="selectCommission"     value="Percentage"  (change)="radioSelectCommissionType($event)">
+                                        <label class="form-check-label" for="inlineCheckbox7"> Percentage(%)</label>
+                                    </div>
+                                   
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                      
+                        <div class="form-group row">
+                            <label for="enq_subject" class="col-lg-12 col-form-label"></label>
+                            <div class="col-lg-6">
+                                <label for="html" class="ml-2 discountCSS1">Commission Value</label><br>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="CommissionValue" formControlName="CommissionValue"
+                              
+                               
+                                
+                                 />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="enq_subject" class="col-lg-12 col-form-label"></label>
+                            <div class="col-lg-6">
+                                <label for="html" class="ml-2 discountCSS2">Commission Amount</label><br>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" id="CommissionAmount" formControlName="CommissionAmount"/>
+                            </div>
+                        </div>
                     </div>
-
-
-                    <div class="col-lg-12" style="display: flex;">
-                        <div class="col-lg-4">
-                          <label>Commission Type</label>
-                        </div>
-                        <div class="col-lg-2">
-                            <input mdbRadio class="form-check-input" type="radio" name="fixedDidInvoiceStatus" id="Fixed" />
-                          <label class="form-check-label" for="Fixed">Fixed
-                          </label>
-                        </div>
-                        <div class="col-lg-4">
-                          <input mdbRadio class="form-check-input" type="radio" name="PercentageDidInvoiceStatus" id="Percentage" />
-                          <label class="form-check-label" for="Percentage">Percentage(%)
-                          </label>
-                        </div>
-                      </div>
-
-                      <div class="col-lg-12" style="display: flex;">
-                        <div class="col-lg-4">
-                          <label>Commission Value</label>
-                        </div>
-                        <div class="col-lg-6">
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-
-                      <div class="col-lg-12" style="display: flex;">
-                        <div class="col-lg-4">
-                          <label>Commission Amount</label>
-                        </div>
-                        <div class="col-lg-6">
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                      </div>
 
 
                   </div>

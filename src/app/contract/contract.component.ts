@@ -105,8 +105,8 @@ export class ContractComponent implements OnInit {
 
     // this.urlSafe= this.sanitizer.bypassSecurityTrustResourceUrl(this.FileURLDisplay);
 
-    if(localStorage.getItem('login_status')=='1'){
-      localStorage.setItem('login_status','0');
+    if(sessionStorage.getItem('login_status')=='1'){
+      sessionStorage.setItem('login_status','0');
       window.location.reload();
     }
 
@@ -263,7 +263,7 @@ export class ContractComponent implements OnInit {
 
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     add_req.action = "customer_contract_add";
-    add_req.user_id = localStorage.getItem('user_id');
+    add_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_req.element_data = add_req;
 
     this.serverService.sendServer(api_req).subscribe((response: any) => {
@@ -295,7 +295,7 @@ export class ContractComponent implements OnInit {
 
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     save_req.action = "customer_contract_save";
-    save_req.user_id = localStorage.getItem('user_id');
+    save_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     if (this.addressForm.value.addresses.length <= 1) {
       save_req.values = this.addressForm.value.addresses;
 
@@ -358,7 +358,7 @@ export class ContractComponent implements OnInit {
 
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     edit_req.action = "customer_contract_edit_group";
-    edit_req.user_id = localStorage.getItem('user_id');
+    edit_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     edit_req.contract_ids = this.edit_array;
     api_req.element_data = edit_req;
     console.log("check for edit api", api_req)
@@ -429,7 +429,7 @@ export class ContractComponent implements OnInit {
 
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     update_req.action = "customer_contract_group_update";
-    update_req.user_id = localStorage.getItem('user_id');
+    update_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     // update_req.e_company_Name=this.customerIDJoin;
     update_req.values = this.editContractGroupForm.value.edit_addresses;
     api_req.element_data = update_req;
@@ -479,7 +479,7 @@ export class ContractComponent implements OnInit {
         api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
         delete_contract_req.action = "delete_individual";
         delete_contract_req.contract_id = id;
-        delete_contract_req.user_id = localStorage.getItem('user_id');
+        delete_contract_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
         api_req.element_data = delete_contract_req;
         this.serverService.sendServer(api_req).subscribe((response: any) => {
           if (response.status == true) {
@@ -531,7 +531,7 @@ export class ContractComponent implements OnInit {
         api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
         GrpDelete_contract_req.action = "group_delete";
         GrpDelete_contract_req.contract_id = this.edit_array.join(',');
-        GrpDelete_contract_req.user_id = localStorage.getItem('user_id');
+        GrpDelete_contract_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
         api_req.element_data = GrpDelete_contract_req;
         this.serverService.sendServer(api_req).subscribe((response: any) => {
 
@@ -601,7 +601,7 @@ export class ContractComponent implements OnInit {
         api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
         delete_contractAttach_req.action = "customer_contract_attachment_delete";
         delete_contractAttach_req.contract_attachment_file_id = id;
-        delete_contractAttach_req.user_id = localStorage.getItem('user_id');
+        delete_contractAttach_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
         api_req.element_data = delete_contractAttach_req;
         this.serverService.sendServer(api_req).subscribe((response: any) => {
           if (response.status == true) {
@@ -633,7 +633,7 @@ export class ContractComponent implements OnInit {
   //   api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
   //   delete_contractAttach_req.action = "customer_contract_attachment_delete";
   //   delete_contractAttach_req.contract_attachment_file_id = id;
-  //   delete_contractAttach_req.user_id = localStorage.getItem('user_id');
+  //   delete_contractAttach_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
   //   api_req.element_data = delete_contractAttach_req;
   //   console.log(api_req)
   //   this.serverService.sendServer(api_req).subscribe((response: any) => {
@@ -805,7 +805,7 @@ export class ContractComponent implements OnInit {
     fileGenerate_req.action = "customer_contract_generate_file";
     fileGenerate_req.customer_contract_id = this.fileContractGenerate_row_id;
     fileGenerate_req.contract_master_file_id = this.editContractGenerateForm.value.contractselect;
-    fileGenerate_req.user_id = localStorage.getItem('user_id');
+    fileGenerate_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_req.element_data = fileGenerate_req;
     this.serverService.sendServer(api_req).subscribe((response: any) => {
 
@@ -837,7 +837,7 @@ export class ContractComponent implements OnInit {
 
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     get_req.action = "contract_master_file_lis";
-    get_req.user_id = localStorage.getItem('user_id');
+    get_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_req.element_data = get_req;
 
     this.serverService.sendServer(api_req).subscribe((response: any) => {
@@ -858,7 +858,7 @@ export class ContractComponent implements OnInit {
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     fileGenerate1_req.action = "customer_contract_get_master_file";
     fileGenerate1_req.customer_contract_id = id;
-    fileGenerate1_req.user_id = localStorage.getItem('user_id');
+    fileGenerate1_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_req.element_data = fileGenerate1_req;
     console.log(api_req)
     this.serverService.sendServer(api_req).subscribe((response: any) => {
@@ -897,7 +897,7 @@ export class ContractComponent implements OnInit {
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     editCR_req.action = "customer_contract_remarks";
     editCR_req.contract_id = this.contractRemarksEditId;
-    editCR_req.user_id = localStorage.getItem('user_id');
+    editCR_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_req.element_data = editCR_req;
     this.serverService.sendServer(api_req).subscribe((response: any) => {
       // if(response.contract_remarks==''){
@@ -944,7 +944,7 @@ export class ContractComponent implements OnInit {
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     updateCR_req.action = "contract_comments_save";
     updateCR_req.contract_id = this.contractRemarksEditId;
-    updateCR_req.user_id = localStorage.getItem('user_id');
+    updateCR_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     //updateCR_req.comments = this.contractRemarkForm.value.remark_desc;
     updateCR_req.comments = $('#remark_desc').val();
     api_req.element_data = updateCR_req;
@@ -978,7 +978,7 @@ export class ContractComponent implements OnInit {
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_Search_req.action = "customer_name_search";
-    api_Search_req.user_id = localStorage.getItem('user_id');
+    api_Search_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_Search_req.customerName = data;
     api_req.element_data = api_Search_req;
 
@@ -1136,7 +1136,7 @@ export class ContractComponent implements OnInit {
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_email_req.action = "email";
-    api_email_req.user_id = localStorage.getItem('user_id');
+    api_email_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     // api_email_req.customer_contract_id = id;
     api_req.element_data = api_email_req;
 
@@ -1181,7 +1181,7 @@ export class ContractComponent implements OnInit {
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_email_req.action = "customer_contract_mail";
-    api_email_req.user_id = localStorage.getItem('user_id');
+    api_email_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_email_req.customer_contract_id = this.EmailCustomerContractID;
     api_email_req.emailToCustomer = this.emailTo;
     api_email_req.emailSubject = this.subjectValue;
@@ -1246,7 +1246,7 @@ export class ContractComponent implements OnInit {
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_email_req.action = "contract_biz_file_send_form";
-    api_email_req.user_id = localStorage.getItem('user_id');
+    api_email_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_email_req.customer_contract_id = this.EmailBizzFileID;
     api_email_req.emailToCustomer = this.emailTo;
     api_email_req.emailSubject = this.subjectValue;
@@ -1317,7 +1317,7 @@ export class ContractComponent implements OnInit {
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_buzzemail_req.action = "customer_contract_biz_mail";
-    api_buzzemail_req.user_id = localStorage.getItem('user_id');
+    api_buzzemail_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_buzzemail_req.customer_contract_id = this.EmailBizzFileID;
     api_buzzemail_req.emailToCustomer = this.emailToBizz;
     api_buzzemail_req.emailSubject = this.subjectValueBizz;
@@ -1373,7 +1373,7 @@ export class ContractComponent implements OnInit {
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_ApproveStatus_req.action = "customer_contract_approve_status";
-    api_ApproveStatus_req.user_id = localStorage.getItem('user_id');
+    api_ApproveStatus_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_ApproveStatus_req.customer_contract_id = this.customerContractIDApproveStatus;
     api_req.element_data = api_ApproveStatus_req;
     this.serverService.sendServer(api_req).subscribe((response: any) => {
@@ -1399,7 +1399,7 @@ export class ContractComponent implements OnInit {
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_ApproveStatusUpdate_req.action = "customer_contract_approve_update";
-    api_ApproveStatusUpdate_req.user_id = localStorage.getItem('user_id');
+    api_ApproveStatusUpdate_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_ApproveStatusUpdate_req.customer_contract_id = this.customerContractIDApproveStatus;
     api_ApproveStatusUpdate_req.approve_status = this.checkbox_ApproveStatus;
     api_req.element_data = api_ApproveStatusUpdate_req;
@@ -1495,7 +1495,7 @@ export class ContractComponent implements OnInit {
     api_req.offset = list_data.offset;
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     get_req.action = "customer_contract_list";
-    get_req.user_id = localStorage.getItem('user_id');
+    get_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_req.element_data = get_req;
     this.serverService.sendServer(api_req).subscribe((response: any) => {
       if (response.status == true) {

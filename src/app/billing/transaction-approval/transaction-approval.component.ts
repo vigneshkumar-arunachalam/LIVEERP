@@ -167,7 +167,7 @@ export class TransactionApprovalComponent implements OnInit {
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_transactionList.action = "main_approval";
-    api_transactionList.user_id = localStorage.getItem('user_id');
+    api_transactionList.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_transactionList.off_set = list_data.offset;
     api_transactionList.limit_val = list_data.limit;
     api_transactionList.current_page = "";
@@ -202,7 +202,7 @@ export class TransactionApprovalComponent implements OnInit {
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_transactionList.action = "main_approval";
-    api_transactionList.user_id = localStorage.getItem('user_id');
+    api_transactionList.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_transactionList.off_set = list_data.offset;
     api_transactionList.limit_val = list_data.limit;
     api_transactionList.current_page = "";
@@ -238,7 +238,7 @@ export class TransactionApprovalComponent implements OnInit {
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_transactionList.action = "quotation_approval";
-    api_transactionList.user_id = localStorage.getItem('user_id');
+    api_transactionList.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_transactionList.off_set = list_data.offset;
     api_transactionList.limit_val = list_data.limit;
     api_transactionList.current_page = "";
@@ -288,7 +288,7 @@ export class TransactionApprovalComponent implements OnInit {
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_transactionList.action = "quotation_approval";
-    api_transactionList.user_id = localStorage.getItem('user_id');
+    api_transactionList.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_transactionList.off_set = list_data.offset;
     api_transactionList.limit_val = list_data.limit;
     api_transactionList.current_page = "";
@@ -391,7 +391,7 @@ this.BeforeApprovalTransactionAproveView_TransactionApproveID=id;
       api_req.api_type = "web";
       api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
       BeforeApprovalTransactionAproveViewFn_req.action = "quotation_approved";
-      BeforeApprovalTransactionAproveViewFn_req.user_id = localStorage.getItem('user_id');
+      BeforeApprovalTransactionAproveViewFn_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
       BeforeApprovalTransactionAproveViewFn_req.transaction_approval_id = this.BeforeApprovalTransactionAproveView_TransactionApproveID;
       api_req.element_data = BeforeApprovalTransactionAproveViewFn_req;
   
@@ -426,7 +426,7 @@ this.BeforeApprovalTransactionAproveView_TransactionApproveID=id;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     transAproveComment_edit_req.action = "get_quotation_comments";
-    transAproveComment_edit_req.user_id = localStorage.getItem('user_id');
+    transAproveComment_edit_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     transAproveComment_edit_req.transaction_approval_id = this.TransactionApprovalID;
     api_req.element_data = transAproveComment_edit_req;
 
@@ -467,7 +467,7 @@ this.BeforeApprovalTransactionAproveView_TransactionApproveID=id;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     transAproveComment_edit_req.action = "get_main_comments";
-    transAproveComment_edit_req.user_id = localStorage.getItem('user_id');
+    transAproveComment_edit_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     transAproveComment_edit_req.transaction_approval_id = this.TransactionApprovalID;
     api_req.element_data = transAproveComment_edit_req;
 
@@ -508,7 +508,7 @@ this.BeforeApprovalTransactionAproveView_TransactionApproveID=id;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     transAproveComment_update_req.action = "update_quotation_comments";
-    transAproveComment_update_req.user_id = localStorage.getItem('user_id');
+    transAproveComment_update_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     transAproveComment_update_req.transaction_approval_id = this.TransactionApprovalID;
     transAproveComment_update_req.comments = this.BeforeApprovaltransactionApprovalCommentsForm.value.BeforeApprovalComments;
     api_req.element_data = transAproveComment_update_req;
@@ -545,7 +545,7 @@ this.BeforeApprovalTransactionAproveView_TransactionApproveID=id;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     transAproveComment_update_req.action = "update_main_comments";
-    transAproveComment_update_req.user_id = localStorage.getItem('user_id');
+    transAproveComment_update_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     transAproveComment_update_req.transaction_approval_id = this.TransactionApprovalID;
     transAproveComment_update_req.comments = this.BeforeApprovaltransactionApprovalCommentsForm_main.value.BeforeApprovalComments;
     api_req.element_data = transAproveComment_update_req;
@@ -580,7 +580,7 @@ this.BeforeApprovalTransactionAproveView_TransactionApproveID=id;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     transAproveCommentAP_update_req.action = "update_quotation_comments";
-    transAproveCommentAP_update_req.user_id = localStorage.getItem('user_id');
+    transAproveCommentAP_update_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     transAproveCommentAP_update_req.transaction_approval_id = this.TransactionApprovalID;
     transAproveCommentAP_update_req.comments =
       this.transactionApprovalCommentsForm.value.Comments;
@@ -612,7 +612,7 @@ this.BeforeApprovalTransactionAproveView_TransactionApproveID=id;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     transAproveCommentAP_update_req.action = "update_quotation_comments";
-    transAproveCommentAP_update_req.user_id = localStorage.getItem('user_id');
+    transAproveCommentAP_update_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     transAproveCommentAP_update_req.transaction_approval_id = this.TransactionApprovalID;
     transAproveCommentAP_update_req.comments =
       this.transactionApprovalCommentsForm_main.value.Comments;
@@ -656,7 +656,7 @@ this.BeforeApprovalTransactionAproveView_TransactionApproveID=id;
         api_req.api_type = "web";
         api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
         transAproveQuotAprove_req.action = "quotation_approved";
-        transAproveQuotAprove_req.user_id = localStorage.getItem('user_id');
+        transAproveQuotAprove_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
         transAproveQuotAprove_req.transaction_approval_id = id;
         api_req.element_data = transAproveQuotAprove_req;
 
@@ -701,7 +701,7 @@ this.BeforeApprovalTransactionAproveView_TransactionApproveID=id;
         api_req.api_type = "web";
         api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
         transAproveQuotAprove_req.action = "main_approved";
-        transAproveQuotAprove_req.user_id = localStorage.getItem('user_id');
+        transAproveQuotAprove_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
         transAproveQuotAprove_req.transaction_approval_id = id;
         api_req.element_data = transAproveQuotAprove_req;
 
@@ -748,7 +748,7 @@ this.BeforeApprovalTransactionAproveView_TransactionApproveID=id;
         api_req.api_type = "web";
         api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
         transAproveQuotReject_req.action = "quotation_rejected";
-        transAproveQuotReject_req.user_id = localStorage.getItem('user_id');
+        transAproveQuotReject_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
         transAproveQuotReject_req.transaction_approval_id = id;
         api_req.element_data = transAproveQuotReject_req;
   
@@ -793,7 +793,7 @@ this.BeforeApprovalTransactionAproveView_TransactionApproveID=id;
         api_req.api_type = "web";
         api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
         transAproveQuotReject_req.action = "main_rejected";
-        transAproveQuotReject_req.user_id = localStorage.getItem('user_id');
+        transAproveQuotReject_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
         transAproveQuotReject_req.transaction_approval_id = id;
         api_req.element_data = transAproveQuotReject_req;
   
@@ -839,7 +839,7 @@ this.BeforeApprovalTransactionAproveView_TransactionApproveID=id;
         api_req.api_type = "web";
         api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
         mainappr.action = "main_approval";
-        mainappr.user_id = localStorage.getItem('user_id');
+        mainappr.user_id = sessionStorage.getItem('erp_c4c_user_id');
   
         mainappr.off_set = list_data.offset;
         mainappr.current_page ="";

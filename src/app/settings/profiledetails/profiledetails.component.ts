@@ -47,7 +47,7 @@ export class ProfiledetailsComponent implements OnInit {
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_profDetails.action = "profile_details";
-    api_profDetails.user_id = localStorage.getItem('user_id');
+    api_profDetails.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_req.element_data = api_profDetails;
 
     this.serverService.sendServer(api_req).subscribe((response: any) => {
@@ -187,9 +187,9 @@ export class ProfiledetailsComponent implements OnInit {
       api_req.api_type = "web";
       api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
       api_googleAuthVali.action = "google_auth_check";
-      api_googleAuthVali.user_id = localStorage.getItem('user_id');
-      api_googleAuthVali.customerId = localStorage.getItem('user_id');
-      api_googleAuthVali.auth_code = localStorage.getItem('user_id');
+      api_googleAuthVali.user_id = sessionStorage.getItem('erp_c4c_user_id');
+      api_googleAuthVali.customerId = sessionStorage.getItem('erp_c4c_user_id');
+      api_googleAuthVali.auth_code = sessionStorage.getItem('erp_c4c_user_id');
       api_req.element_data = api_googleAuthVali;
   
       this.serverService.sendServer(api_req).subscribe((response: any) => {

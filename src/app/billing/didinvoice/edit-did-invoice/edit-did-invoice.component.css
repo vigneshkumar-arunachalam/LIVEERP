@@ -153,3 +153,11 @@ table th, table td{padding: 10px;}
   text-align: right;
   width: 100%;
 }
+
+.form-control:disabled,
+.form-control[readonly] {
+    background-color: #f3d2f0 !important;
+    opacity: 0.6;
+    color: black!important;
+    cursor:  no-drop;
+}

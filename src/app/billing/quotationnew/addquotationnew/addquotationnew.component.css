@@ -127,15 +127,19 @@ i.fa.fa-bars {
   color: #fff !important;
 }
 
-tr:nth-child(even) {
-  /* background: rgb(239, 241, 238) */
+/* tr:nth-child(even) {
+ 
   background-color: #fff;
-}
+} */
 table.add-contact-table-section{background-color: #fff;}
-tr:nth-child(odd) {
+/* tr:nth-child(odd) {
   background: #FFF
-}
+} */
 
+/* .changeBackground{
+  background: #5e2929;
+
+} */
 #AddQuotationPopUpFormId {
   padding-right: 0px !important;
 }
@@ -495,4 +499,34 @@ select{
   background-origin: border-box;
   background-clip: padding-box, border-box;
   animation: bg-hue 2s linear infinite;
+}
+
+ /* form array css for space */
+
+ hr{
+  margin-top: 0;
+  margin-bottom: 0;
+  border: 0;
+  border-top: 1px solid #102268;
+  width:465%;
+}
+
+.marginSpace{
+  margin-top:2rem !important;
+}
+
+
+
+.userDatatable-content{
+line-height: 3.42857 !important;
+}
+
+/* form array css for space #fcf6fc */
+
+.add-contact-table-section tbody:nth-child(even) {background: #fcf6fc}
+
+.add-contact-table-section tbody:nth-child(odd) {background: #f5f5f5}
+
+.scrollcontrol{
+  overflow:scroll;
 }

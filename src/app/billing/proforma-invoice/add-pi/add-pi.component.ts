@@ -2,6 +2,8 @@ import { E } from '@angular/cdk/keycodes';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { ServerService } from 'src/app/services/server.service';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 declare var $: any;
 declare var iziToast: any;
 @Component({
@@ -20,7 +22,7 @@ export class AddPIComponent implements OnInit {
 
   //load add 
   companyNameList: any;
-  companyNameVal:any;
+  companyNameVal: any;
   currencyNameList: any;
   ShipByList: any;
   salesRepList: any;
@@ -35,9 +37,9 @@ export class AddPIComponent implements OnInit {
   //auto complete
   searchResult: any;
   TaxDropdownList: any;
-//search textbox
-customer_ID: any;
-customer_NAME: any;
+  //search textbox
+  customer_ID: any;
+  customer_NAME: any;
   //checkbox
   mile_check_value: any;
   dynamicCheckboxwithKey: any;
@@ -50,8 +52,8 @@ customer_NAME: any;
   //checkbox group select-logo
   groupSelectCommonId_ExtraLogo: any;
   checkbox_value_ExtraLogo: any;
-  salesRepDropDown_Textbox_Status:any;
-  SalesRepList:any;
+  salesRepDropDown_Textbox_Status: any;
+  SalesRepList: any;
   grossTotal: any;
   grandTotal: any;
   finalTax: any;
@@ -59,7 +61,7 @@ customer_NAME: any;
   finalDiscountType: any;
   finalDiscountVal: any;
   extraCharge = 0;
- // bankingCharge=0;
+  // bankingCharge=0;
   shipping_amt: any;
   bankingCharge: any;
   tax_per_mod: any;
@@ -78,7 +80,7 @@ customer_NAME: any;
   invoicePriceKey: any;
   row_cnt_mod: any;
   //autocomplete
-  customerName_Data :any;
+  customerName_Data: any;
   //getProformaBillerDetails
   getProformaBillerDetails_BillerID: any;
   getProformaBillerDetails_tinName: any;
@@ -89,16 +91,16 @@ customer_NAME: any;
   chkTermsandcondition: boolean = false;
   chkReceivedAuthorizedSignature: boolean = true;
   chklogoAddressSignature: boolean = true;
-//export state-check box
-export_state: any;
-radioSelectFooter:any='1';
-export_state_Local: boolean = true;
-export_state_Export:any;
-export_state_ZeroValid: boolean = true;
-MSDisplay_Value: boolean = true;
+  //export state-check box
+  export_state: any;
+  radioSelectFooter: any = '1';
+  export_state_Local: boolean = true;
+  export_state_Export: any;
+  export_state_ZeroValid: boolean = true;
+  MSDisplay_Value: boolean = true;
 
 
-  constructor(private serverService: ServerService, private fb: FormBuilder) {
+  constructor(private serverService: ServerService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
 
     this.addPI_section2 = this.fb.group({
       addresses: this.fb.array([this.createAddress()])
@@ -210,7 +212,7 @@ MSDisplay_Value: boolean = true;
 
     });
 
-    this.DiscountForm = new FormGroup({      
+    this.DiscountForm = new FormGroup({
       'section3_gross_total': new FormControl(null),
     });
 
@@ -259,22 +261,22 @@ MSDisplay_Value: boolean = true;
 
   }
 
-  handleChangeLocal(event:any){
+  handleChangeLocal(event: any) {
     this.export_state_Local = event.target.value;
-    this.export_state='Local';
-    console.log( this.export_state_Local);
+    this.export_state = 'Local';
+    console.log(this.export_state_Local);
 
   }
-  handleChangeExport(event:any){
+  handleChangeExport(event: any) {
     this.export_state_Export = event.target.value;
-    this.export_state='Export';
+    this.export_state = 'Export';
     console.log(this.export_state_Export);
 
   }
-  handleChangeZeroValid(event:any){
+  handleChangeZeroValid(event: any) {
     this.export_state_ZeroValid = event.target.value;
-    this.export_state='Zero Valid';
-    console.log(this.export_state_ZeroValid );
+    this.export_state = 'Zero Valid';
+    console.log(this.export_state_ZeroValid);
 
   }
   handleChange_initial(id: any, evt: any) {
@@ -289,8 +291,8 @@ MSDisplay_Value: boolean = true;
     console.log("radio button value", this.radioSelectFooter);
     // console.log("radio button id value", xyz);
   }
-  handleChangeExtraLogo(event:any){
-     this.ExtralogoValue = event.target.value;
+  handleChangeExtraLogo(event: any) {
+    this.ExtralogoValue = event.target.value;
     // var xyz = id;
     console.log("radio button value for Extra logo", this.ExtralogoValue);
 
@@ -299,9 +301,9 @@ MSDisplay_Value: boolean = true;
     this.mile_check_value = e.target.value;
     console.log(this.mile_check_value);
   }
-  handleChange_MSDisplay(event:any){
-this.MSDisplay_Value=event.target.value;
-console.log(this.MSDisplay_Value);
+  handleChange_MSDisplay(event: any) {
+    this.MSDisplay_Value = event.target.value;
+    console.log(this.MSDisplay_Value);
   }
   // EditCHK_MileDiscount(data: any, event: any) {
   //   console.log("List - CheckBox ID", data);
@@ -385,45 +387,45 @@ console.log(this.MSDisplay_Value);
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     addAPI.action = "add_proforma_invoice";
-    addAPI.user_id = localStorage.getItem('user_id');
+    addAPI.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_req.element_data = addAPI;
     this.serverService.sendServer(api_req).subscribe((response: any) => {
-          if( response.status==true){
-              this.companyNameList = response.biller_details;
-              this.currencyNameList = response.currency_list;
-              this.ShipByList = response.ship_by;
-             // this.salesRepList = response.sales_rep;
-              this.paymentviaList = response.paymentvia;
-              this.salesRepDropDown_Textbox_Status = response.sales_rep_status.dropdown_status;
+      if (response.status == true) {
+        this.companyNameList = response.biller_details;
+        this.currencyNameList = response.currency_list;
+        this.ShipByList = response.ship_by;
+        // this.salesRepList = response.sales_rep;
+        this.paymentviaList = response.paymentvia;
+        this.salesRepDropDown_Textbox_Status = response.sales_rep_status.dropdown_status;
 
-              if (response.sales_rep_status.dropdown_status == 0) {
-                this.addPI_section1.patchValue({
-                  'salesRep_id': response.sales_rep.name,
-                  'salesRep': response.sales_rep.userid,
-                });
-      
-              }else{
-                this.SalesRepList = response.sales_rep;
-                this.addPI_section1.patchValue({
-                  'salesRep': localStorage.getItem('user_id'),
-                });
+        if (response.sales_rep_status.dropdown_status == 0) {
+          this.addPI_section1.patchValue({
+            'salesRep_id': response.sales_rep.name,
+            'salesRep': response.sales_rep.userid,
+          });
 
-                
-              }          
+        } else {
+          this.SalesRepList = response.sales_rep;
+          this.addPI_section1.patchValue({
+            'salesRep': sessionStorage.getItem('erp_c4c_user_id'),
+          });
 
 
-              this.addPI_section1.patchValue({
-                'companyName': response.defaults_biller_id,        
-              });
-
-             // alert('Test--00'+response.defaults_biller_id);
-           //   this.companyNameVal = response.defaults_biller_id;
-             this.tax_per_mod = response.percent_val;
-              this.getProformaBillerDetails();
-              this.TaxDropdown();
-              this.getCustomerInvoiceDetails()
-            // this.getCustomerInvoiceDetails(response.defaults_biller_id);
         }
+
+
+        this.addPI_section1.patchValue({
+          'companyName': response.defaults_biller_id,
+        });
+
+        // alert('Test--00'+response.defaults_biller_id);
+        //   this.companyNameVal = response.defaults_biller_id;
+        this.tax_per_mod = response.percent_val;
+        this.getProformaBillerDetails();
+        this.TaxDropdown();
+        this.getCustomerInvoiceDetails()
+        // this.getCustomerInvoiceDetails(response.defaults_biller_id);
+      }
     });
   }
 
@@ -437,27 +439,30 @@ console.log(this.MSDisplay_Value);
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_TaxDropdown_req.action = "tax_dropdown";
-    api_TaxDropdown_req.user_id = localStorage.getItem('user_id');
+    api_TaxDropdown_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_TaxDropdown_req.billerId = this.addPI_section1.value.companyName;
     api_req.element_data = api_TaxDropdown_req;
 
-    this.serverService.sendServer(api_req).subscribe((response: any) => {    
+    this.serverService.sendServer(api_req).subscribe((response: any) => {
 
       if (response.status == true) {
         this.TaxDropdownList = response.tax_list;
+        this.tax_per_mod = response.percent_val;
+        $('#tax_per_hd_id').val(response.percent_val);
         setTimeout(() => {
           this.addPI_section3.patchValue({
-            'section3_gst_dropdown':response.default_tax_id,  
+            'section3_gst_dropdown': response.default_tax_id,
           });
 
-        }, 500);
+        }, 1000);
        // this.addQuotationInvoice_section3.setValue=response.default_tax_id;
        console.log('response.default_tax_id'+response.default_tax_id);
 
-           
+
 
       }
 
+      this.totalCalculate();
 
 
     });
@@ -505,8 +510,8 @@ console.log(this.MSDisplay_Value);
       this.finalTax = parseFloat(tax);
     }
   }
-  
-  
+
+
 
 
   calculateDiscount(val: any) {
@@ -533,13 +538,13 @@ console.log(this.MSDisplay_Value);
       $('#enablePriceDiscont').val(sub_dis_val);
       //  console.log('33'+disType);
     } else {
-      
+
       $('#discountTYpe_per').prop('checked', false);
       $('#discountTYpe_amt').prop('checked', false);
     }
   }
 
-  
+
   searchCustomerData(data: any) {
 
     let api_req: any = new Object();
@@ -549,7 +554,7 @@ console.log(this.MSDisplay_Value);
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_Search_req.action = "quot_customer_name";
-    api_Search_req.user_id = localStorage.getItem('user_id');
+    api_Search_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_Search_req.billerId = this.addPI_section1.value.companyName;
     api_Search_req.key_word = data;
     api_req.element_data = api_Search_req;
@@ -565,8 +570,8 @@ console.log(this.MSDisplay_Value);
 
   }
   searchCustomer_selectDropdownData(data: any) {
-this.customer_ID=data.customerId;
-this.customer_NAME=data.customerName;
+    this.customer_ID = data.customerId;
+    this.customer_NAME = data.customerName;
     console.log("search data in dropdown", data)
     console.log("search data-customer Id", data.customerId)
     this.customerName_Data = data.customerId;
@@ -577,97 +582,117 @@ this.customer_NAME=data.customerName;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_SearchCUST_req.action = "quot_customer_details";
-    api_SearchCUST_req.user_id = localStorage.getItem('user_id');
+    api_SearchCUST_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_SearchCUST_req.customerId = this.customerName_Data
     api_req.element_data = api_SearchCUST_req;
     this.serverService.sendServer(api_req).subscribe((response: any) => {
 
       console.log("customer_address_details---response", response)
       if (response.status == true) {
-       // console.log('address'+response.customer_details[0].customerAddress1);
+        // console.log('address'+response.customer_details[0].customerAddress1);
 
 
-       var address_3;
-       var ship_to_str,ship_address_str1,ship_address_str2,ship_address_str3;
+        var address_3;
+        var ship_to_str, ship_address_str1, ship_address_str2, ship_address_str3;
 
-       if(response.customer_details[0].city!=''){
-        address_3=response.customer_details[0].city;
-       }
-       if(address_3!='' && response.customer_details[0].state!=''){
-        address_3=address_3+' ,'+response.customer_details[0].state;
-       }else{
-        address_3=response.customer_details[0].state;
-       }
-       if(address_3!='' && response.customer_details[0].country!=''){
-        address_3=address_3+' ,'+response.customer_details[0].country;
-       }else{
-        address_3=response.customer_details[0].country;
-       }
-
-       if(response.customer_details[0].city!=''){
-        ship_address_str3=response.customer_details[0].city;
-       }
-       if(ship_address_str3!='' && response.customer_details[0].state!=''){
-        ship_address_str3=ship_address_str3+' ,'+response.customer_details[0].state;
-       }else{
-        ship_address_str3=response.customer_details[0].state;
-       }
-       if(ship_address_str3!='' && response.customer_details[0].country!=''){
-        ship_address_str3=ship_address_str3+' ,'+response.customer_details[0].country;
-       }else{
-        ship_address_str3=response.customer_details[0].country;
-       }
-
-
-        if(response.customer_details[0].ship_to!=''){
-          ship_to_str =response.customer_details[0].ship_to;
-        }else{
-          ship_to_str =response.customer_details[0].customerName;
+        if (response.customer_details[0].city != '') {
+          address_3 = response.customer_details[0].city;
+        }
+        if (address_3 != '' && response.customer_details[0].state != '') {
+          address_3 = address_3 + ' ,' + response.customer_details[0].state;
+        } else if (address_3 != '' && response.customer_details[0].state == '') {
+          address_3 = address_3;
+        } else {
+          address_3 = response.customer_details[0].state;
+        }
+        if (address_3 != '' && response.customer_details[0].country != '') {
+          address_3 = address_3 + ' ,' + response.customer_details[0].country;
+        } else if (address_3 != '' && response.customer_details[0].country == '') {
+          address_3 = address_3;
+        } else {
+          address_3 = response.customer_details[0].country;
         }
 
-        if(response.customer_details[0].ship_customerAddress1!=''){
-          ship_address_str1 =response.customer_details[0].ship_customerAddress1;
-        }else{
-          ship_address_str1 =response.customer_details[0].customerAddress1;
+        if (response.customer_details[0].ship_city == '' || response.customer_details[0].ship_city == null) {
+          ship_address_str3 = response.customer_details[0].city;
+        } else {
+          ship_address_str3 = response.customer_details[0].ship_city;
+        }
+        if (ship_address_str3 == '' && (response.customer_details[0].ship_state == '' || response.customer_details[0].ship_state == null)) {
+          ship_address_str3 = response.customer_details[0].state;
+        } else if (ship_address_str3 != '' && (response.customer_details[0].ship_state == '' || response.customer_details[0].ship_state == null)) {
+          if (response.customer_details[0].state != '') {
+            ship_address_str3 = ship_address_str3 + ' ,' + response.customer_details[0].state;
+          }
+        } else {
+          ship_address_str3 = response.customer_details[0].state;
+        }
+        if (ship_address_str3 == '' && (response.customer_details[0].ship_country == '' || response.customer_details[0].ship_country == null)) {
+          ship_address_str3 = response.customer_details[0].country;
+        } else if (ship_address_str3 != '' && (response.customer_details[0].ship_country == '' || response.customer_details[0].ship_country == null)) {
+          if (response.customer_details[0].country != '') {
+            ship_address_str3 = ship_address_str3 + ' ,' + response.customer_details[0].country;
+          }
+
+        } else {
+          ship_address_str3 = response.customer_details[0].ship_country;
         }
 
-        if(response.customer_details[0].ship_customerAddress2!=''){
-          ship_address_str2 =response.customer_details[0].ship_customerAddress2;
-        }else{
-          ship_address_str2 =response.customer_details[0].customerAddress2;
+
+        if (response.customer_details[0].ship_to == '' || response.customer_details[0].ship_to == null) {
+
+          ship_to_str = response.customer_details[0].customerName;
+
+        } else {
+          ship_to_str = response.customer_details[0].ship_to;
+        }
+
+        if (response.customer_details[0].ship_customerAddress1 == '' || response.customer_details[0].ship_customerAddress1 == null) {
+          ship_address_str1 = response.customer_details[0].customerAddress1;
+        } else {
+          ship_address_str1 = response.customer_details[0].ship_customerAddress1;
+
+        }
+
+        if (response.customer_details[0].ship_customerAddress2 == '' || response.customer_details[0].ship_customerAddress2 == null) {
+          ship_address_str2 = response.customer_details[0].customerAddress2;
+        } else {
+
+
+          ship_address_str2 = response.customer_details[0].ship_customerAddress2;
         }
 
 
 
         this.addPI_section1.patchValue({
-            'address_1':response.customer_details[0].customerAddress1,
-            'address_2':response.customer_details[0].customerAddress2,
-            'address_3':address_3,
-            'Attn_1':response.customer_details[0].companyName,
-            'ship_to':ship_to_str,
-            'ship_address_1':ship_address_str1,
-            'ship_address_2':ship_address_str2,
-            'ship_address_3':ship_address_str3,
-            'ship_attn':response.customer_details[0].companyName,            
+          'address_1': response.customer_details[0].customerAddress1,
+          'address_2': response.customer_details[0].customerAddress2,
+          'address_3': address_3,
+          'Attn_1': response.customer_details[0].companyName,
+          'ship_to': ship_to_str,
+          'ship_address_1': ship_address_str1,
+          'ship_address_2': ship_address_str2,
+          'ship_address_3': ship_address_str3,
+          'ship_attn': response.customer_details[0].companyName,
         });
       }
       else {
         this.addPI_section1.patchValue({
-          'address_1':'',
-          'address_2':'',
-          'address_3':'',
-          'Attn_1':'',
-          'ship_to':'',
-          'ship_address_1':'',
-          'ship_address_2':'',
-          'ship_address_3':'',
-          'ship_attn':'',            
-      });
+          'address_1': '',
+          'address_2': '',
+          'address_3': '',
+          'Attn_1': '',
+          'ship_to': '',
+          'ship_address_1': '',
+          'ship_address_2': '',
+          'ship_address_3': '',
+          'ship_attn': '',
+        });
       }
 
     });
   }
-  save() {
+  save($event: MouseEvent) {
     let api_req: any = new Object();
     let api_savePI_req: any = new Object();
     api_req.moduleType = "proforma";
@@ -675,14 +700,14 @@ this.customer_NAME=data.customerName;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_savePI_req.action = "insert_proforma_invoice";
-    api_savePI_req.user_id = localStorage.getItem('user_id');
-//section-1
+    api_savePI_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
+    //section-1
     api_savePI_req.company = this.addPI_section1.value.companyName;
     api_savePI_req.invoice_no = this.addPI_section1.value.invoiceNo;
     api_savePI_req.customer_name = this.customerName_Data;
     api_savePI_req.tinNo = this.addPI_section1.value.tin;
-    api_savePI_req.BillTo_customer_ID=this.customer_ID;
-    api_savePI_req.BillTo_customer_NAME=this.customer_NAME;
+    api_savePI_req.BillTo_customer_ID = this.customer_ID;
+    api_savePI_req.BillTo_customer_NAME = this.customer_NAME;
 
     api_savePI_req.b_name = this.addPI_section1.value.BillTo;
     api_savePI_req.b_address1 = this.addPI_section1.value.address_1;
@@ -713,25 +738,25 @@ this.customer_NAME=data.customerName;
     api_savePI_req.mile_discount_state = this.mile_check_value;
     api_savePI_req.mile_discount_display_state = this.MSDisplay_Value;
     api_savePI_req.export_state = this.radioSelectFooter;
-    
+
     //section-2
-  //  api_savePI_req.values = this.addPI_section2.value.addresses;
+    //  api_savePI_req.values = this.addPI_section2.value.addresses;
 
 
-  var addr = this.addPI_section2.value.addresses;
-   
+    var addr = this.addPI_section2.value.addresses;
+
 
     for (let i = 0; i < addr.length; i++) {
 
-      if($('#pd_productName_txtbox_' + i).val()==''){
+      if ($('#pd_productName_txtbox_' + i).val() == '') {
         iziToast.warning({
           message: "Select Minimum 1 Product Details",
           position: 'topRight'
         });
         return false;
-        
+
       }
-     
+
       console.log(addr[i].pd_quantity_txtbox1)
       addr[i].pd_productName_txtbox1 = $('#pd_productName_txtbox_' + i).val();
       addr[i].pd_productName_txtArea = $('#pd_productName_txtArea_' + i).val();
@@ -744,44 +769,68 @@ this.customer_NAME=data.customerName;
       addr[i].sub_dis_val = $('#sub_discount_val_' + i).val();
       addr[i].sub_discount = $('#sub_discount_' + i).val();
       addr[i].pd_selectTax = $('#pd_selectTax_' + i).val();
-     
+
     }
 
-    
+
     api_savePI_req.values = addr;
 
 
-//section-3
+    //section-3
     api_savePI_req.grossTotal = this.addPI_section3.value.section3_gross_total;
     api_savePI_req.discountAmount = this.addPI_section3.value.final_dis_val;
     api_savePI_req.taxId = this.addPI_section3.value.section3_gst_dropdown;
     api_savePI_req.taxAmt = this.addPI_section3.value.section3_taxAmt_txtbox;
     api_savePI_req.shippingAmt = this.addPI_section3.value.section3_shipping_amt_txtbox;
-    api_savePI_req.addAmt = this.addPI_section3.value.section3_bankingCharge_amt_txtbox;
+    api_savePI_req.shippingName = this.addPI_section3.value.section3_shipping_amt_name_txtbox;
+    api_savePI_req.add_name = this.addPI_section3.value.section3_bankingCharge_amt_name_txtbox;
+    api_savePI_req.add_amt = this.addPI_section3.value.section3_bankingCharge_amt_txtbox;
     api_savePI_req.netTotal = this.addPI_section3.value.section3_grand_total;
     api_savePI_req.remarks = this.addPI_section3.value.section3_remarks;
     api_savePI_req.terms_cond_chk = this.addPI_section3.value.section3_termCondition;
     api_savePI_req.received_signature = this.addPI_section3.value.section3_receivedAuthorizedSignature;
     api_savePI_req.logo = this.addPI_section3.value.section3_logo;
-   
+
     api_req.element_data = api_savePI_req;
+    ($event.target as HTMLButtonElement).disabled = true;
 
     this.serverService.sendServer(api_req).subscribe((response: any) => {
-
+      ($event.target as HTMLButtonElement).disabled = false;
       if (response.status == true) {
+        iziToast.success({
+          message: "Proforma Invoice addedd Successfully",
+          position: 'topRight'
+        });
+        this.redirecttoQuotation();
 
-
+      }
+      else if (response.status == '500') {
+        iziToast.warning({
+          message: "Proforma Invoice not addedd Successfully",
+          position: 'topRight'
+        });
       }
       else {
+        iziToast.warning({
+          message: "Proforma Invoice not addedd Successfully",
+          position: 'topRight'
+        });
 
       }
 
-    });
+    }),
+      (error: any) => {
+        iziToast.error({
+          message: "Sorry, some server issue occur. Please contact admin",
+          position: 'topRight'
+        });
+        console.log(error);
+      }
 
   }
   getCustomerInvoiceDetails() {
-   // this.billerID = event.target.value;
-   // console.log("billerID check", this.billerID);
+    // this.billerID = event.target.value;
+    // console.log("billerID check", this.billerID);
 
     let api_req: any = new Object();
     let api_getInvoiceDetails_req: any = new Object();
@@ -790,8 +839,8 @@ this.customer_NAME=data.customerName;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_getInvoiceDetails_req.action = "get_customer_inv_details";
-    api_getInvoiceDetails_req.user_id = localStorage.getItem('user_id');
-    api_getInvoiceDetails_req.billerId = this.addPI_section1.value.companyName;    
+    api_getInvoiceDetails_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
+    api_getInvoiceDetails_req.billerId = this.addPI_section1.value.companyName;
     api_req.element_data = api_getInvoiceDetails_req;
 
 
@@ -816,7 +865,7 @@ this.customer_NAME=data.customerName;
   }
 
   getProformaBillerDetails() {
-    
+
     let api_req: any = new Object();
     let add_BillerDetails_req: any = new Object();
     api_req.moduleType = "proforma";
@@ -953,7 +1002,7 @@ this.customer_NAME=data.customerName;
         sub_total_amt = total_amt;
       }
 
-      if ($('#pd_selectTax_' + a).prop('checked') == true && this.tax_per_mod!=null)  {
+      if ($('#pd_selectTax_' + a).prop('checked') == true && this.tax_per_mod != null) {
         this.net_amt = $('#pd_netPrice_' + a).val();
 
         tax_amt = (parseFloat(this.tax_per_mod) * parseFloat(this.net_amt) / 100);
@@ -978,9 +1027,9 @@ this.customer_NAME=data.customerName;
     if (this.bankingCharge == '') {
       this.bankingCharge = 0;
     }
-    console.log('grs_amt'+grs_amt);
-    console.log('tax_per'+this.tax_per_mod+'grossTotal'+this.grossTotal+'this.finalTax'+this.finalTax+'shipping_amt'+this.shipping_amt+'finalDiscount'+this.finalDiscount);
-    this.grandTotal = ((parseFloat(this.grossTotal) + parseFloat(this.finalTax) + parseFloat(this.shipping_amt)+ parseFloat(this.bankingCharge)) - parseFloat(this.finalDiscount)).toFixed(2);
+    console.log('grs_amt' + grs_amt);
+    console.log('tax_per' + this.tax_per_mod + 'grossTotal' + this.grossTotal + 'this.finalTax' + this.finalTax + 'shipping_amt' + this.shipping_amt + 'finalDiscount' + this.finalDiscount);
+    this.grandTotal = ((parseFloat(this.grossTotal) + parseFloat(this.finalTax) + parseFloat(this.shipping_amt) + parseFloat(this.bankingCharge)) - parseFloat(this.finalDiscount)).toFixed(2);
   }
 
 
@@ -1045,7 +1094,7 @@ this.customer_NAME=data.customerName;
     //   this.grandTotal = this.grandTotal + this.bankingCharge;
     // }
 
-    
+
     $('#discountFormId').modal('hide');
     this.DiscountForm.reset();
     this.totalCalculate();
@@ -1103,6 +1152,7 @@ this.customer_NAME=data.customerName;
 
 
   getTaxCals() {
+   
     var tax_id = this.addPI_section3.value.section3_gst_dropdown;
     var tax: any;
     let api_req: any = new Object();
@@ -1136,11 +1186,11 @@ this.customer_NAME=data.customerName;
 
     });
 
-  
+
     setTimeout(() => {
       this.totalCalculate();
     }, 1000)
- 
+
 
   }
   extraFees() {
@@ -1152,7 +1202,7 @@ this.customer_NAME=data.customerName;
     // console.log('bankingCharge'+this.bankingCharge);
     this.totalCalculate();
   }
- 
+
 
 
   calFinalDiscount() {
@@ -1180,8 +1230,12 @@ this.customer_NAME=data.customerName;
 
 
   }
+  redirecttoQuotation() {
 
-  
-  
+    this.router.navigate(['/ProformaInvoice']);
+  }
+
+
+
 
 }

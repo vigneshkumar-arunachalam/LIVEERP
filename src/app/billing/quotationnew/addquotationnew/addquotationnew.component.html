@@ -1,9 +1,9 @@
 <!-----------------Modal Pop Up (BEGIN) for Add Quotation New Pop Up  in Quotation New------------------>
-<div class="contents-section" style="cursor:pointer;">
+<div class="contents-section" style="cursor:pointer;" id="abc">
     <div class="container-fluid">
 
         <h2 style="text-align:center;color:black;background-color: #fafafa;">Enter Quotation Details</h2>
-        <form [formGroup]="addQuotationInvoice_section1">
+        <form [formGroup]="addQuotationInvoice_section1" >
             <div class="row">
 
                 <div class="col-lg-6">
@@ -325,7 +325,7 @@
                 </div>
                 <div class="col-12" cdkDropList (cdkDropListDropped)="onDrop($event)">
 
-                    <section style="overflow: scroll;" >
+                    <section>
 
                         <div >
                             <div class="row">
@@ -350,13 +350,13 @@
                                             </th>
                                             <th><span class="userDatatable-title">Total</span></th>
                                             <th><span class="userDatatable-title">Net Price</span></th>
-                                            <th style="width:20px"><span class="userDatatable-title">Split</span></th>
-                                            <th style="width:20px"><span class="userDatatable-title">Gp.Total</span>
+                                            <th ><span class="userDatatable-title">Split</span></th>
+                                            <th ><span class="userDatatable-title">Gp.Total</span>
                                             </th>
-                                            <th style="width:20px"><span class="userDatatable-title">Select Tax</span>
+                                            <th ><span class="userDatatable-title">Select Tax</span>
                                             </th>
 
-                                            <th style="width:20px">
+                                            <th >
                                                 <span class="userDatatable-title">Action</span>
                                             </th>
                                         </tr>
@@ -364,10 +364,10 @@
                                     <tbody cdkDrag cdkDragLockAxis="y" formArrayName="addresses" *ngFor="let address of addressControls.controls; let i = index;">
 
 
-                                        <tr [formGroupName]="i">
-                                            <td style="width:370px;display:block;">
+                                        <tr [formGroupName]="i" class="changeBackground">
+                                            <td style="width:260px;display:block;">
                                                 <div class="userDatatable-content" style="top:0">
-                                                    <div class="alignFormArray" style="display:block;text-align: left;">
+                                                    <div class="alignFormArray" style="display:block;text-align: left;width: 240px;">
 
                                                         <div class="ng-autocomplete abc" style="display: flex;">
                                                             <!-- <label for="companyName" class="col-lg-12 "></label> -->
@@ -401,7 +401,7 @@
                                             <td>
                                                 <div class="userDatatable-content">
                                                     <input type="text" class="form-control"
-                                                        style="text-align: right;width: auto;"
+                                                        style="text-align: right;width: 70px;"
                                                         formControlName="pd_quantity_txtbox1" id="pd_qty_{{i}}"
                                                         (change)="totalCalculate();saveDiscount()"
                                                         (blur)="totalCalculate();saveDiscount()"
@@ -413,7 +413,7 @@
                                             <td>
                                                 <div class="userDatatable-content">
                                                     <input type="text" class="form-control"
-                                                        style="text-align: left;width: auto;" formControlName="pd_unit"
+                                                        style="text-align: left;" formControlName="pd_unit"
                                                         id="pd_unit_{{i}}" />
                                                 </div>
                                             </td>
@@ -421,7 +421,7 @@
                                                 <div class="userDatatable-content">
 
                                                     <input type="text" class="form-control"
-                                                        style="text-align: right;width: 200px;"
+                                                        style="text-align: right;width: 120px;"
                                                         formControlName="pd_sellingPrice" id="pd_SP_{{i}}"
                                                         onfocus="assignRowVal(i)"
                                                         (change)="totalCalculate();saveDiscount()"
@@ -435,7 +435,7 @@
                                             <td>
                                                 <div class="userDatatable-content">
                                                     <input type="text" class="form-control" formControlName="pd_Total"
-                                                        style="text-align: right;width: 200px;" id="pd_Total_{{i}}" />
+                                                        style="text-align: right;width: 120px;" id="pd_Total_{{i}}" />
 
 
                                                 </div>
@@ -443,7 +443,7 @@
                                             <td>
                                                 <div class="userDatatable-content">
                                                     <input type="text" class="form-control"
-                                                        style="text-align: right;width: 200px;"
+                                                        style="text-align: right;width: 120px;"
                                                         formControlName="pd_netPrice" id="pd_netPrice_{{i}}" />
                                                 </div>
                                             </td>
@@ -473,15 +473,16 @@
 
                                                 </div>
                                             </td>
-                                            <td *ngIf="i>0">
-                                                <div class="userDatatable-content d-inline-block">
+                                            <td >
+                                                <div *ngIf="i>0" class="userDatatable-content d-inline-block">
                                                     <button type="button" class="btn btn-danger btn-sm"
                                                         (click)=" removeAddress(i)">X</button>
 
                                                 </div>
+                                                </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td style="width:200px;">
                                                 <div class="userDatatable-content">
                                                     <input type="text" class="form-control"
                                                         formControlName="pd_productName_txtbox1"
@@ -514,26 +515,30 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
+                                            <td></td>
+                                            <td></td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td colspan="3">
                                                 <div class="userDatatable-content">
                                                     <textarea
                                                         style="height: 120px;width: 100%;text-align: left;padding-left: 8px"
-                                                        class="form-control mt-2 mb-2" row="4"
+                                                        class="form-control mt-2 mb-2 scrollcontrol" row="4"
                                                         formControlName="pd_productName_txtArea"
                                                         id="pd_productName_txtArea_{{i}}"></textarea>
                                                 </div>
                                             </td>
    <td></td>
                                     <td></td>
-                                    <td></td>
+                                    <!-- <td></td>
+                                    <td></td> -->
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                         </tr>
+                                        <hr>
                                     </tbody>
 
                                 </table>
@@ -823,7 +828,7 @@
         </form>
         <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal"
-            id="saveQuotationButton" (click)="saveQuotationEnquiry()">
+            id="saveQuotationButton" (click)="saveQuotationEnquiry($event)">
                 Save
             </button>
             <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="redirecttoQuotation()">

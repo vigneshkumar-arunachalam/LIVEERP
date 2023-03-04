@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 declare var $: any;
 declare var iziToast: any;
 declare var tinymce: any;
-
+import { NgxSpinnerService } from 'ngx-spinner';
 export interface EmailArray {
   emailParameterName: string;
 }
@@ -73,7 +73,7 @@ export class CustomernewallComponent implements OnInit {
   checked: boolean = true;
   isDisabled: boolean = true;
   customerStatus_radiobox_Value: any = '';
-  primary_billcode_array: any=[];
+  primary_billcode_array: any = [];
   // customerStatus_radiobox_Value: any = 'New';
 
   checkbox_EditShippingAddress: boolean = false;
@@ -109,7 +109,7 @@ export class CustomernewallComponent implements OnInit {
   QuickSearchResultList: any;
   //edit
   editCustomerForm: any;
-  customer_primary_code_arr:any;
+  customer_primary_code_arr: any;
 
   get_cust_type: any = [];
   geting_biller: any = [];
@@ -205,8 +205,8 @@ export class CustomernewallComponent implements OnInit {
   billCodeEditForm3: FormGroup;
   popupBillCodeForm3: FormGroup;
   popupBillCodeForm2: FormGroup;
-  billCodeEditForm4 : FormGroup;
-  public popupBillCode1:FormArray;
+  billCodeEditForm4: FormGroup;
+  public popupBillCode1: FormArray;
   public editBillCodeFormArray: FormGroup;
   public addresses: FormArray;
   public TestPrimary: FormArray;
@@ -235,7 +235,7 @@ export class CustomernewallComponent implements OnInit {
   addUser: any;
   addUserId: any;
   addUserId_array: any = [];
-  addCreditEditId:any;
+  addCreditEditId: any;
   //AssignAccountManagerForm
   AssignAccountManagerForm: FormGroup;
   radiobuttonValue_AccountManager: any;
@@ -271,7 +271,7 @@ export class CustomernewallComponent implements OnInit {
   selectedValues: any;
 
 
-  constructor(private serverService: ServerService, private fb: FormBuilder) {
+  constructor(private serverService: ServerService, private fb: FormBuilder,private spinner: NgxSpinnerService) {
 
     this.billCodeEditForm3 = this.fb.group({
       addresses: this.fb.array([this.editBillCode_FormControl()])
@@ -428,8 +428,8 @@ export class CustomernewallComponent implements OnInit {
     this.getDynamicList();
     this.initTiny();
     // this.edit_eventCheck_auto_deselect();
-    this.checkbox_EditShippingAddress=true;
-    this.checkbox_EdShippingAddress=true;
+    this.checkbox_EditShippingAddress = true;
+    this.checkbox_EdShippingAddress = true;
     this.radio = [{ "name": "New", "values": "N" }, { "name": "Permanent", "values": "P" }];
     this.allData = '[{ "bill_details": [ { "billerId": 3, "billerName": "Cal4Care Pte Ltd" }, { "billerId": 5, "billerName": "Marshal System Consultancy" }, { "billerId": 6, "billerName": "Cal4Care" }, { "billerId": 8, "billerName": "Dcare Technologies Pte Ltd" }, { "billerId": 9, "billerName": "DCARE Technologies India Pvt Ltd." }, { "billerId": 10, "billerName": "Cal4care Sdn.Bhd." }, { "billerId": 11, "billerName": "CalnCall" }, { "billerId": 12, "billerName": "IT Care - IT Solutions" }, { "billerId": 13, "billerName": "SeaTech Solutions International (S) Pte Ltd" }, { "billerId": 14, "billerName": "Cal4Care Japan Co., Ltd" }, { "billerId": 16, "billerName": "Callacloud" }, { "billerId": 17, "billerName": "HelpDesk.Guru" }, { "billerId": 18, "billerName": "Cal4care (Thailand) Co., Ltd." }, { "billerId": 19, "billerName": "1Msb IT Care Sdn. Bhd." }, { "billerId": 20, "billerName": "Mr VOIP" }, { "billerId": 21, "billerName": "Mconnects" }, { "billerId": 22, "billerName": "CloudNippon" }, { "billerId": 23, "billerName": "Callnclear" }, { "billerId": 24, "billerName": "Call4tel" }, { "billerId": 25, "billerName": "Cal4Care USA LLC" }, { "billerId": 26, "billerName": "Virdi" }, { "billerId": 27, "billerName": "Cal4care Telecommunication Services (I) PVT LTD" } ], "country_details": [ "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory", "Brunei Darussalam", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo", "Cook Islands", "Costa Rica", "Croatia (Hrvatska)", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands (Malvinas)", "Faroe Islands", "Fiji", "Finland", "France", "France, Metropolitan", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Heard and Mc Donald Islands", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran (Islamic Republic of)", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Ivory Coast", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libyan Arab Jamahiriya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia, Federated States of", "Moldova, Republic of", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russian Federation", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia South Sandwich Islands", "Spain", "Sri Lanka", "St. Helena", "St. Pierre and Miquelon", "Sudan", "Suriname", "Svalbard and Jan Mayen Islands", "Swaziland", "Sweden", "Switzerland", "Syrian Arab Republic", "Taiwan", "Tajikistan", "Tanzania, United Republic of", "Thailand", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "United States minor outlying islands", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City State", "Venezuela", "Vietnam", "Virgin Islands (British)", "Virgin Islands (U.S.)", "Wallis and Futuna Islands", "Western Sahara", "Yemen", "Zaire", "Zambia", "Zimbabwe" ], "terms_det": [ "100% Advance", "100% PT", "14 Days", "180 Days", "21 Days", "270 Days", "30 Days", "45 Days", "7 Days", "90 Days", "COD" ], "currency_det": [ { "currencyId": 11, "currency_name": "AUD" }, { "currencyId": 10, "currency_name": "BAHT" }, { "currencyId": 5, "currency_name": "EUR" }, { "currencyId": 4, "currency_name": "INR" }, { "currencyId": 9, "currency_name": "JPY" }, { "currencyId": 3, "currency_name": "MYR" }, { "currencyId": 8, "currency_name": "MYR-Marshal" }, { "currencyId": 1, "currency_name": "SGD" }, { "currencyId": 7, "currency_name": "SGD-Dcare" }, { "currencyId": 2, "currency_name": "USD" }, { "currencyId": 6, "currency_name": "USD-Paypal" } ], "payment_det": [ { "paymentvia_id": 1, "paymentvia_name": "SGD" }, { "paymentvia_id": 2, "paymentvia_name": "USD" }, { "paymentvia_id": 3, "paymentvia_name": "MYR" }, { "paymentvia_id": 4, "paymentvia_name": "INR" }, { "paymentvia_id": 5, "paymentvia_name": "EUR" }, { "paymentvia_id": 6, "paymentvia_name": "MYR-Marshal" }, { "paymentvia_id": 7, "paymentvia_name": "PayPal" }, { "paymentvia_id": 8, "paymentvia_name": "PayPal" }, { "paymentvia_id": 10, "paymentvia_name": "USD.I" }, { "paymentvia_id": 11, "paymentvia_name": "1MSB-MY" }, { "paymentvia_id": 12, "paymentvia_name": "BAHT" }, { "paymentvia_id": 13, "paymentvia_name": "SGD-DC" }, { "paymentvia_id": 14, "paymentvia_name": "USD-TH" }, { "paymentvia_id": 15, "paymentvia_name": "JPY" }, { "paymentvia_id": 16, "paymentvia_name": "TRANSFERWISE(USD)" }, { "paymentvia_id": 22, "paymentvia_name": "TRANSFERWISE(EUR)" }, { "paymentvia_id": 23, "paymentvia_name": "USD-u" } ] }]';
     this.displayDynamicData = JSON.parse(this.allData);
@@ -460,8 +460,8 @@ export class CustomernewallComponent implements OnInit {
       itemsShowLimit: 2,
       allowSearchFilter: false
     };
-    // if(localStorage.getItem('login_status')=='1'){
-    //   localStorage.setItem('login_status','0');
+    // if(sessionStorage.getItem('login_status')=='1'){
+    //   sessionStorage.setItem('login_status','0');
 
     //   window.location.reload();
 
@@ -592,14 +592,14 @@ export class CustomernewallComponent implements OnInit {
       'billingAddress_state': new FormControl(null),
       'billingAddress_zipcode': new FormControl(null),
       'edit_ship_address': new FormControl(null),
-      'ESA_cntPerson': new FormControl({value: '', disabled: true}, Validators.required),
-      'ESA_shipto': new FormControl({value: '', disabled: true}, Validators.required),
-      'ESA_address1': new FormControl({value: '', disabled: true}, Validators.required),
-      'ESA_address2': new FormControl({value: '', disabled: true}, Validators.required),
-      'ESA_city': new FormControl({value: '', disabled: true}, Validators.required),
-      'ESA_state':new FormControl({value: '', disabled: true}, Validators.required),
-      'ESA_zipcode': new FormControl({value: '', disabled: true}, Validators.required),
-      'ESA_countryname': new FormControl({value: '', disabled: true}, Validators.required),
+      'ESA_cntPerson': new FormControl({ value: '', disabled: true }, Validators.required),
+      'ESA_shipto': new FormControl({ value: '', disabled: true }, Validators.required),
+      'ESA_address1': new FormControl({ value: '', disabled: true }, Validators.required),
+      'ESA_address2': new FormControl({ value: '', disabled: true }, Validators.required),
+      'ESA_city': new FormControl({ value: '', disabled: true }, Validators.required),
+      'ESA_state': new FormControl({ value: '', disabled: true }, Validators.required),
+      'ESA_zipcode': new FormControl({ value: '', disabled: true }, Validators.required),
+      'ESA_countryname': new FormControl({ value: '', disabled: true }, Validators.required),
       'ESA_premium': new FormControl(null),
       'ESA_premiumStatus': new FormControl(null),
       'ESA_phone': new FormControl(null),
@@ -646,14 +646,14 @@ export class CustomernewallComponent implements OnInit {
       'e_billingAddress_zipcode': new FormControl(null),
       'Edit_BA_countryname': new FormControl(null),
       'e_edit_ship_address': new FormControl(null),
-      'e_ESA_cntPerson': new FormControl({value: '', disabled: true}, Validators.required),
-      'e_ESA_shipto':  new FormControl({value: '', disabled: true}, Validators.required),
-      'e_ESA_address1': new FormControl({value: '', disabled: true}, Validators.required),
-      'e_ESA_address2': new FormControl({value: '', disabled: true}, Validators.required),
-      'e_ESA_city': new FormControl({value: '', disabled: true}, Validators.required),
-      'e_ESA_state': new FormControl({value: '', disabled: true}, Validators.required),
-      'e_ESA_zipcode': new FormControl({value: '', disabled: true}, Validators.required),
-      'e_ESA_countryname': new FormControl({value: '', disabled: true}, Validators.required),
+      'e_ESA_cntPerson': new FormControl({ value: '', disabled: true }, Validators.required),
+      'e_ESA_shipto': new FormControl({ value: '', disabled: true }, Validators.required),
+      'e_ESA_address1': new FormControl({ value: '', disabled: true }, Validators.required),
+      'e_ESA_address2': new FormControl({ value: '', disabled: true }, Validators.required),
+      'e_ESA_city': new FormControl({ value: '', disabled: true }, Validators.required),
+      'e_ESA_state': new FormControl({ value: '', disabled: true }, Validators.required),
+      'e_ESA_zipcode': new FormControl({ value: '', disabled: true }, Validators.required),
+      'e_ESA_countryname': new FormControl({ value: '', disabled: true }, Validators.required),
       'e_ESA_premium': new FormControl(null),
       'e_ESA_premiumStatus': new FormControl(null),
       'e_ESA_phone': new FormControl(null),
@@ -797,7 +797,7 @@ export class CustomernewallComponent implements OnInit {
 
       'server_name_kl': new FormControl(null),
       'pbx_threshold_limit_kl': new FormControl(null),
-      'retail_threshold_limit_kl': new FormControl(null),     
+      'retail_threshold_limit_kl': new FormControl(null),
       'manual_credit': new FormControl(null),
 
     });
@@ -836,7 +836,7 @@ export class CustomernewallComponent implements OnInit {
       'popup_retail_threshold_limit_740': new FormControl(null),
 
       'popup_server_name_750': new FormControl(null),
-      'popup_primary_code_retail_750' : new FormControl(null),
+      'popup_primary_code_retail_750': new FormControl(null),
       'popup_pbx_threshold_limit_750': new FormControl(null),
       'popup_retail_threshold_limit_750': new FormControl(null),
 
@@ -848,8 +848,8 @@ export class CustomernewallComponent implements OnInit {
 
     });
 
-    this. billCodeEditForm4 = new FormGroup({
-      
+    this.billCodeEditForm4 = new FormGroup({
+
       'add_pbx_or_retail': new FormControl(null),
       'add_credit_value_for_740': new FormControl(null),
       'add_credit_value_for_750': new FormControl(null),
@@ -899,9 +899,9 @@ export class CustomernewallComponent implements OnInit {
       bill_code_kl: '',
       bill_code_750: '',
       bill_code_750_8: '',
-      customer_bill_code_id:'',
+      customer_bill_code_id: '',
       conn_state: '',
-      customer_id:'',
+      customer_id: '',
     });
 
   }
@@ -915,7 +915,7 @@ export class CustomernewallComponent implements OnInit {
   get popupaddressControls() {
     return this.popupBillCodeForm3.get('popupBillCode1') as FormArray
   }
- 
+
 
 
   popupBillCode(): void {
@@ -929,28 +929,28 @@ export class CustomernewallComponent implements OnInit {
     this.popupaddressControls.controls.forEach((elt, index) => {
       this.test[index] = true;
       console.log(this.test[index]);
-      
+
 
     });
   }
 
   popupBillCode_FormControl(): FormGroup {
     return this.fb.group({
-      
+
       popup_billCodeName: '',
       popup_bill_code_740: '',
       popup_bill_code_kl: '',
       popup_bill_code_750: '',
       popup_bill_code_750_8: '',
-      popup_customer_bill_code_id:'',
+      popup_customer_bill_code_id: '',
       popup_conn_state: '',
-      popup_customer_id:'',
+      popup_customer_id: '',
 
     });
 
   }
   removeAddress2(i: number) {
-    
+
     this.popupBillCode1.removeAt(i);
   }
 
@@ -976,9 +976,9 @@ export class CustomernewallComponent implements OnInit {
   }
 
 
-  autoCreditCheckList(){
-    
-    this.auto_credit_checkbox_list=!this.auto_credit_checkbox_list
+  autoCreditCheckList() {
+
+    this.auto_credit_checkbox_list = !this.auto_credit_checkbox_list
   }
 
   // checkbox_EditShippingAddress: any;
@@ -1044,38 +1044,38 @@ export class CustomernewallComponent implements OnInit {
     console.log(this.checkbox_EdShippingAddress)
 
   }
-    // checkbox_EdShippingAddress: any---default auto deselect;
-    edit_eventCheck_auto_deselect() {
-     
-      this.checkbox_EditShippingAddress=true;
-      if (this.checkbox_EdShippingAddress==true) {
-     
-        this.editCustomerForm.controls['e_ESA_cntPerson'].disable();
-        this.editCustomerForm.controls['e_ESA_address1'].disable();
-        this.editCustomerForm.controls['e_ESA_address2'].disable();
-        this.editCustomerForm.controls['e_ESA_city'].disable();
-        this.editCustomerForm.controls['e_ESA_state'].disable();
-        this.editCustomerForm.controls['e_ESA_shipto'].disable();
-        this.editCustomerForm.controls['e_ESA_zipcode'].disable();
-        this.editCustomerForm.controls['e_ESA_countryname'].disable();
-      }
-      else {
-        
-        this.editCustomerForm.controls['e_ESA_cntPerson'].enable();
-        this.editCustomerForm.controls['e_ESA_address1'].enable();
-        this.editCustomerForm.controls['e_ESA_address2'].enable();
-        this.editCustomerForm.controls['e_ESA_city'].enable();
-        this.editCustomerForm.controls['e_ESA_state'].enable();
-        this.editCustomerForm.controls['e_ESA_shipto'].enable();
-        this.editCustomerForm.controls['e_ESA_zipcode'].enable();
-        this.editCustomerForm.controls['e_ESA_countryname'].enable();
-      
-  
-      }
-      console.log(this.checkbox_EdShippingAddress)
-  
+  // checkbox_EdShippingAddress: any---default auto deselect;
+  edit_eventCheck_auto_deselect() {
+
+    this.checkbox_EditShippingAddress = true;
+    if (this.checkbox_EdShippingAddress == true) {
+
+      this.editCustomerForm.controls['e_ESA_cntPerson'].disable();
+      this.editCustomerForm.controls['e_ESA_address1'].disable();
+      this.editCustomerForm.controls['e_ESA_address2'].disable();
+      this.editCustomerForm.controls['e_ESA_city'].disable();
+      this.editCustomerForm.controls['e_ESA_state'].disable();
+      this.editCustomerForm.controls['e_ESA_shipto'].disable();
+      this.editCustomerForm.controls['e_ESA_zipcode'].disable();
+      this.editCustomerForm.controls['e_ESA_countryname'].disable();
     }
-  
+    else {
+
+      this.editCustomerForm.controls['e_ESA_cntPerson'].enable();
+      this.editCustomerForm.controls['e_ESA_address1'].enable();
+      this.editCustomerForm.controls['e_ESA_address2'].enable();
+      this.editCustomerForm.controls['e_ESA_city'].enable();
+      this.editCustomerForm.controls['e_ESA_state'].enable();
+      this.editCustomerForm.controls['e_ESA_shipto'].enable();
+      this.editCustomerForm.controls['e_ESA_zipcode'].enable();
+      this.editCustomerForm.controls['e_ESA_countryname'].enable();
+
+
+    }
+    console.log(this.checkbox_EdShippingAddress)
+
+  }
+
 
 
 
@@ -1529,7 +1529,7 @@ export class CustomernewallComponent implements OnInit {
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     quick_Search_req.action = "get_det";
-    quick_Search_req.user_id = localStorage.getItem('user_id');
+    quick_Search_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     quick_Search_req.off_set = list_data.offset;
     quick_Search_req.limit_val = list_data.limit;
     quick_Search_req.revenue_check = '';
@@ -1554,7 +1554,7 @@ export class CustomernewallComponent implements OnInit {
     });
   }
   customerslist(data: any) {
-
+    this.spinner.show();
     var list_data = this.listDataInfo(data);
     let api_req: any = new Object();
     let get_req: any = new Object();
@@ -1563,7 +1563,7 @@ export class CustomernewallComponent implements OnInit {
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     get_req.action = "get_det";
-    get_req.user_id = localStorage.getItem('user_id');
+    get_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     get_req.off_set = list_data.offset;
     get_req.limit_val = list_data.limit;
     get_req.revenue_check = this.revenueCheckListvalue;
@@ -1571,6 +1571,7 @@ export class CustomernewallComponent implements OnInit {
     api_req.element_data = get_req;
 
     this.serverService.sendServer(api_req).subscribe((response: any) => {
+      this.spinner.hide();
       if (response != '') {
         this.customer_list = response.customer_details;
         this.revenue_list = response.revenue_list;
@@ -1602,6 +1603,8 @@ export class CustomernewallComponent implements OnInit {
     return list_data;
   }
   searchCustomerData(data: any) {
+    Swal.fire("Fetching Company Name ");
+    Swal.showLoading();
 
     this.searchResultTest = data
     let api_req: any = new Object();
@@ -1612,16 +1615,17 @@ export class CustomernewallComponent implements OnInit {
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_Search_req.action = "customer_name_search";
-    api_Search_req.user_id = localStorage.getItem('user_id');
+    api_Search_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_Search_req.customerName = data;
     api_req.element_data = api_Search_req;
 
     this.serverService.sendServer(api_req).subscribe((response: any) => {
-
+      Swal.close();
       if (response != '') {
         this.searchResult = response.customer_names;
         console.log(" this.searchResult", this.searchResult)
       } else {
+        Swal.close();
         iziToast.warning({
           message: "Response Failed",
           position: 'topRight'
@@ -1648,7 +1652,7 @@ export class CustomernewallComponent implements OnInit {
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_reqs_addCustomer.action = "add_customer";
-    api_reqs_addCustomer.user_id = localStorage.getItem('user_id');
+    api_reqs_addCustomer.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_req.element_data = api_reqs_addCustomer;
 
 
@@ -1694,7 +1698,7 @@ export class CustomernewallComponent implements OnInit {
     this.editBillerNameBiller = event.target.checked;
     console.log('editBillerNameBiller' + this.editBillerNameBiller);
     console.log('editBillerNameBillerId' + this.editBillerNameBillerId);
-   
+
     if (this.editBillerNameBiller) {
 
       this.editBillerNameCheckboxID_array.push(Number(data));
@@ -1977,29 +1981,29 @@ export class CustomernewallComponent implements OnInit {
     this.checkbox_ID_SingleParameter_invoice_Value = data;
     this.Checkbox_value_invoice = event.target.checked;
     console.log(this.Checkbox_value_invoice)
-  
+
     if (this.Checkbox_value_invoice) {
-  
+
       this.CheckBox_DynamicArrayList_invoice_shareCustomerPermission.push(Number(data));
       this.CheckBox_DynamicArrayList_invoice_shareCustomerPermission.join(',');
       this.CheckBox_DynamicArrayList_invoice_shareCustomerPermission.sort();
       console.log("Final check After checkbox selected list", this.CheckBox_DynamicArrayList_invoice_shareCustomerPermission);
-  
+
     }
     else {
       const index: number = this.CheckBox_DynamicArrayList_invoice_shareCustomerPermission.indexOf(data);
-        console.log(index)
-        if (index == -1) {
-          this.CheckBox_DynamicArrayList_invoice_shareCustomerPermission.splice(index, 1);
-        } else {
-          this.CheckBox_DynamicArrayList_invoice_shareCustomerPermission.splice(index, 1);
-        }
-        console.log("Final check After  de-selected list", this.CheckBox_DynamicArrayList_invoice_shareCustomerPermission)
+      console.log(index)
+      if (index == -1) {
+        this.CheckBox_DynamicArrayList_invoice_shareCustomerPermission.splice(index, 1);
+      } else {
+        this.CheckBox_DynamicArrayList_invoice_shareCustomerPermission.splice(index, 1);
+      }
+      console.log("Final check After  de-selected list", this.CheckBox_DynamicArrayList_invoice_shareCustomerPermission)
     }
     this.typeConvertionString_invoice_Shared_Permission = this.CheckBox_DynamicArrayList_invoice_shareCustomerPermission.toString();
-  
+
     console.log("Final check After Selected/Deselected selected list", this.typeConvertionString_invoice_Shared_Permission)
-  
+
   }
   // CheckboxValueChanges_invoice_shareCustomerPermission(data: any, event: any) {
 
@@ -2014,7 +2018,7 @@ export class CustomernewallComponent implements OnInit {
   //       this.CheckBox_DynamicArrayList_invoice_shareCustomerPermission.push(data);
   //     }
   //     else {
-        
+
   //     }
   //     console.log("Final check After  selected list", this.CheckBox_DynamicArrayList_invoice_shareCustomerPermission)
 
@@ -2045,7 +2049,7 @@ export class CustomernewallComponent implements OnInit {
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     view_customer_req.action = "view_customer_details";
     view_customer_req.customerId = id;
-    view_customer_req.user_id = localStorage.getItem('user_id');
+    view_customer_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_req.element_data = view_customer_req;
 
     this.serverService.sendServer(api_req).subscribe((response: any) => {
@@ -2092,6 +2096,7 @@ export class CustomernewallComponent implements OnInit {
   }
 
   addCustomerown() {
+
     Swal.fire('Saving Customer Data');
     Swal.showLoading();
 
@@ -2112,33 +2117,39 @@ export class CustomernewallComponent implements OnInit {
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     add_customer_req.action = "customer_save";
-    add_customer_req.user_id = localStorage.getItem('user_id');
+    add_customer_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
 
 
     add_customer_req.customerCode = this.addCustomer.value.company_Code;
     if (this.addCustomer.value.company_Code === null) {
+      
       iziToast.warning({
         message: "Company Code Missing",
         position: 'topRight'
       });
+      Swal.close();
       return false;
     }
     add_customer_req.customerName = this.searchResultTest;
-    if (this.searchResultTest === null) {
+    if (this.searchResultTest === null || this.searchResultTest === undefined) {
+
       iziToast.warning({
         message: "Company Name Missing",
         position: 'topRight'
       });
+      Swal.close();
       return false;
     }
     add_customer_req.def_biller_id = this.addCustomer.value.defaultBillerName;
     add_customer_req.company_name = this.addBillerNameCheckboxID_array;
     add_customer_req.cus_type = this.addCustomerClassificationBillerCheckboxID_array;
-    if (this.addCustomerClassificationBillerCheckboxID_array === null) {
+    if (this.addCustomerClassificationBillerCheckboxID_array === null || this.addCustomerClassificationBillerCheckboxID_array == '' || this.addCustomerClassificationBillerCheckboxID_array === undefined) {
+
       iziToast.warning({
         message: "Customer Classification Missing",
         position: 'topRight'
       });
+      Swal.close();
       return false;
     }
 
@@ -2148,6 +2159,7 @@ export class CustomernewallComponent implements OnInit {
         message: "Contact Person(Billing Address) Missing",
         position: 'topRight'
       });
+      Swal.close();
       return false;
     }
     add_customer_req.customerAddress1 = this.addCustomer.value.billingAddress_address1;
@@ -2158,15 +2170,26 @@ export class CustomernewallComponent implements OnInit {
     add_customer_req.country = this.addCustomer.value.BA_countryname;
 
     // add_customer_req.e_shippping = this.addCustomer.value.edit_ship_address;
-    add_customer_req.ship_attn = this.checkbox_EditShippingAddress
+ 
 
     // add_customer_req.ship_attn = this.addCustomer.value.ESA_cntPerson;
-    if (!this.checkbox_EditShippingAddress) {
+    if (this.checkbox_EditShippingAddress==false && this.addCustomer.value.ESA_cntPerson===null ) {
+     
+     
       iziToast.warning({
         message: "Contact Person(Edit Shipping Address) Missing",
         position: 'topRight'
       });
+      Swal.close();
       return false;
+    }else{
+      
+      add_customer_req.ship_attn = this.addCustomer.value.ESA_cntPerson;
+    }
+
+    if(this.checkbox_EditShippingAddress==true){
+      add_customer_req.ship_attn = this.checkbox_EditShippingAddress;
+         
     }
     add_customer_req.ship_to = this.addCustomer.value.ESA_shipto;
     add_customer_req.ship_customerAddress1 = this.addCustomer.value.ESA_address1;
@@ -2188,6 +2211,7 @@ export class CustomernewallComponent implements OnInit {
         message: "Email Missing",
         position: 'topRight'
       });
+      Swal.close();
       return false;
     }
     add_customer_req.finance_email = result_FinanceEmail_Field;
@@ -2196,6 +2220,7 @@ export class CustomernewallComponent implements OnInit {
         message: "Finance Email Missing",
         position: 'topRight'
       });
+      Swal.close();
       return false;
     }
     // add_customer_req.cus_permission = this.addCustomer.value.permissionFCAdd;
@@ -2232,6 +2257,7 @@ export class CustomernewallComponent implements OnInit {
       $("#addCustomerSave").removeAttr("disabled");
 
       if (response.status == true) {
+        this.customerslist({});
         Swal.close();
         $('#addCustomerFormId').modal('hide');
 
@@ -2252,6 +2278,7 @@ export class CustomernewallComponent implements OnInit {
       }
     }),
       (error: any) => {
+        Swal.close();
         iziToast.error({
           message: "Sorry, some server issue occur. Please contact admin",
           position: 'topRight'
@@ -2259,7 +2286,7 @@ export class CustomernewallComponent implements OnInit {
         console.log("final error", error);
       };
   }
- 
+
   editCustomer(id: any) {
     console.log("id", id)
     this.get_cust_type = [];
@@ -2272,7 +2299,7 @@ export class CustomernewallComponent implements OnInit {
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     edit_customer_req.action = "customer_edit";
     edit_customer_req.customerId = id;
-    edit_customer_req.user_id = localStorage.getItem('user_id');
+    edit_customer_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_req.element_data = edit_customer_req;
 
     this.serverService.sendServer(api_req).subscribe((response: any) => {
@@ -2297,21 +2324,21 @@ export class CustomernewallComponent implements OnInit {
         this.geting_biller = response.result.bill_details;
         this.geting_biller_edit = response.result.billerId_det;
         this.geting_biller_edit = response.result.billerId_det;
-       // this.editBillerNameCheckboxID_array = response.result.billerId_det;
+        // this.editBillerNameCheckboxID_array = response.result.billerId_det;
         this.editBillerNameCheckboxID_array = response.result.customer_details[0].billerId.split(',').map(Number);
         this.editPermissionCheckboxID_array = response.result.customer_details[0].cus_permission.split(',').map(Number);
         this.get_PermissionallList = response.result.cus_permission;
         this.get_PermissionEdit = response.result.cus_permission_id;
-     //   this.cus_type_edit = response.result.customer_details[0].cus_type;
+        //   this.cus_type_edit = response.result.customer_details[0].cus_type;
         this.editCustomerClassificationBillerCheckboxID_array = response.result.customer_details[0].cus_type.split(',').map(Number);
         this.customerType_listEdit = response.result.cus_class_type;
-       // console.log('selected_biller', response.result.billerId_det);
-       // console.log('customer_bill_code_arr', response.result.customer_bill_code_arr[0].bill_code_name);
+        // console.log('selected_biller', response.result.billerId_det);
+        // console.log('customer_bill_code_arr', response.result.customer_bill_code_arr[0].bill_code_name);
 
         this.cmsDepartmentList = response.result.depart_data;
         this.editCustomerForm.patchValue({
 
-       
+
 
           'edit_company_Name': response.result.customer_details[0].customerName,
           'edit_defaultBillerName': response.result.customer_details[0].def_biller_id,
@@ -2376,7 +2403,7 @@ export class CustomernewallComponent implements OnInit {
         });
 
         const formArray = new FormArray([]);
-        var bill_code_length = response.result.customer_bill_code_arr.length<=1?1:response.result.customer_bill_code_arr.length;
+        var bill_code_length = response.result.customer_bill_code_arr.length <= 1 ? 1 : response.result.customer_bill_code_arr.length;
         for (let index = 0; index < bill_code_length; index++) {
 
           formArray.push(this.fb.group({
@@ -2417,7 +2444,7 @@ export class CustomernewallComponent implements OnInit {
           'retail_low_credit_750': response.result.customer_primary_code_arr[0].retail_low_credit_750,
           'retail_high_credit_750': response.result.customer_primary_code_arr[0].retail_high_credit_750,
 
-          
+
           'primary_code_kl': response.result.customer_primary_code_arr[0].bill_code_kl,
           'primary_code_retail_kl': response.result.customer_primary_code_arr[0].primary_code_retail_kl,
           'low_credit_kl': response.result.customer_primary_code_arr[0].low_credit_kl,
@@ -2453,7 +2480,7 @@ export class CustomernewallComponent implements OnInit {
           position: 'topRight'
         });
       }
-    
+
     }),
       (error: any) => {
         iziToast.error({
@@ -2480,7 +2507,7 @@ export class CustomernewallComponent implements OnInit {
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     update_customer_req.action = "customer_update";
-    update_customer_req.user_id = localStorage.getItem('user_id');
+    update_customer_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     update_customer_req.customerId = id;
     update_customer_req.customerName = this.editCustomerForm.value.edit_company_Name;
     update_customer_req.billerId = this.editBillerNameCheckboxID_array;
@@ -2546,29 +2573,29 @@ export class CustomernewallComponent implements OnInit {
     update_customer_req.def_payment_via = this.editCustomerForm.value.edit_payment_way;
     update_customer_req.vs_provisioning_command = this.editCustomerForm.value.e_vsProvisionAttachment;
     update_customer_req.dc_ip_country = this.editCustomerForm.value.DCIP_edit;
-    
+
     // section - 2
 
-var addr = this.billCodeEditForm3.value.addresses;
-for (let i = 0; i < addr.length; i++){
-  console.log(addr[i].bill_code_740)
+    var addr = this.billCodeEditForm3.value.addresses;
+    for (let i = 0; i < addr.length; i++) {
+      console.log(addr[i].bill_code_740)
 
-  addr[i].bill_code_name = $('#billCodeName' + i).val();
-  addr[i].bill_code_740 = $('#bill_code_740_' + i).val();
-  addr[i].bill_code_kl = $('#bill_code_kl_' + i).val();
-  addr[i].bill_code_750 = $('#bill_code_750_' + i).val();
-  addr[i].bill_code_750_8 = $('#bill_code_750_8_' + i).val();
-  addr[i].customer_bill_code_id = $('#customer_bill_code_id'+ i).val(); 
-  addr[i].conn_state = $('#conn_state' + i).val();
-  addr[i].customer_id = $('#customer_id'+ i).val();
-}
-update_customer_req.billcode_value = addr; 
+      addr[i].bill_code_name = $('#billCodeName' + i).val();
+      addr[i].bill_code_740 = $('#bill_code_740_' + i).val();
+      addr[i].bill_code_kl = $('#bill_code_kl_' + i).val();
+      addr[i].bill_code_750 = $('#bill_code_750_' + i).val();
+      addr[i].bill_code_750_8 = $('#bill_code_750_8_' + i).val();
+      addr[i].customer_bill_code_id = $('#customer_bill_code_id' + i).val();
+      addr[i].conn_state = $('#conn_state' + i).val();
+      addr[i].customer_id = $('#customer_id' + i).val();
+    }
+    update_customer_req.billcode_value = addr;
 
     // section - 3
-   var primary = this.billCodeEditForm2.value;
-   console.log(primary);
+    var primary = this.billCodeEditForm2.value;
+    console.log(primary);
 
-    update_customer_req.primary_billcode_details =primary
+    update_customer_req.primary_billcode_details = primary
     // update_customer_req.bill_code_740 = this.billCodeEditForm2.value.primary_code_740;
     // update_customer_req.primary_code_retail_740 = this.billCodeEditForm2.value.primary_code_retail_740;
     // update_customer_req.low_credit_740 = this.billCodeEditForm2.value.low_credit_740;
@@ -2617,25 +2644,25 @@ update_customer_req.billcode_value = addr;
 
     // section 2
 
-//     var addr = this.billCodeEditForm3.value.addresses;
-// for (let i = 0; i < addr.length; i++){
-//   console.log(addr[i].bill_code_740)
+    //     var addr = this.billCodeEditForm3.value.addresses;
+    // for (let i = 0; i < addr.length; i++){
+    //   console.log(addr[i].bill_code_740)
 
-//   addr[i].billCodeName = $('#bill_code_name_' + i).val();
-//   addr[i].bill_code_740 = $('#bill_code_740_' + i).val();
-//   addr[i].bill_code_kl = $('#bill_code_kl_' + i).val();
-//   addr[i].bill_code_750 = $('#bill_code_750_' + i).val();
-//   addr[i].bill_code_750_8 = $('#bill_code_750_8_' + i).val();
-//   addr[i].customer_bill_code_id = $('#customer_bill_code_id'+ i).val(); 
-//   addr[i].conn_state = $('#conn_state'+ i).val();
-//   addr[i].customer_id = $('#customer_id'+ i).val();
-   
-// }
-// update_customer_req.value = addr; 
-// console.log(api_req);
+    //   addr[i].billCodeName = $('#bill_code_name_' + i).val();
+    //   addr[i].bill_code_740 = $('#bill_code_740_' + i).val();
+    //   addr[i].bill_code_kl = $('#bill_code_kl_' + i).val();
+    //   addr[i].bill_code_750 = $('#bill_code_750_' + i).val();
+    //   addr[i].bill_code_750_8 = $('#bill_code_750_8_' + i).val();
+    //   addr[i].customer_bill_code_id = $('#customer_bill_code_id'+ i).val(); 
+    //   addr[i].conn_state = $('#conn_state'+ i).val();
+    //   addr[i].customer_id = $('#customer_id'+ i).val();
 
-    
-//     api_req.element_data = update_customer_req;
+    // }
+    // update_customer_req.value = addr; 
+    // console.log(api_req);
+
+
+    //     api_req.element_data = update_customer_req;
 
     console.log(this.editCustomerForm.value);
 
@@ -2643,7 +2670,7 @@ update_customer_req.billcode_value = addr;
       console.log(response);
       var update_result = response;
       console.log("update", update_result);
-     
+
       if (response.status == true) {
         iziToast.success({
           message: "Customer Updated successfully",
@@ -2668,10 +2695,10 @@ update_customer_req.billcode_value = addr;
         });
         console.log("final error", error);
       };
-      
+
   }
 
-  addCreditAmount(id: any){
+  addCreditAmount(id: any) {
     this.addCreditEditId = id;
     let api_req: any = new Object();
     let addCredit_customer_req: any = new Object();
@@ -2680,54 +2707,54 @@ update_customer_req.billcode_value = addr;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     addCredit_customer_req.action = "add_call_credit_amt";
-    addCredit_customer_req.user_id = localStorage.getItem('user_id');
+    addCredit_customer_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     addCredit_customer_req.customerId = id;
     api_req.element_data = addCredit_customer_req;
 
-    
-        addCredit_customer_req.primary_customer_bill_code_id = this.billCodeEditForm2.value.primary_customer_bill_code_id;
-        addCredit_customer_req.bill_code_740 = this.billCodeEditForm2.value.primary_code_740;
-        addCredit_customer_req.primary_code_retail_740 = this.billCodeEditForm2.value.primary_code_retail_740;
-        addCredit_customer_req.bill_code_750 = this.billCodeEditForm2.value.primary_code_750;
-        addCredit_customer_req.bill_code_retail_750 = this.billCodeEditForm2.value.primary_code_retail_750;
-        addCredit_customer_req.bill_code_kl = this.billCodeEditForm2.value.primary_code_kl;
-        addCredit_customer_req.bill_code_retail_kl = this.billCodeEditForm2.value.primary_code_retail_kl;
+
+    addCredit_customer_req.primary_customer_bill_code_id = this.billCodeEditForm2.value.primary_customer_bill_code_id;
+    addCredit_customer_req.bill_code_740 = this.billCodeEditForm2.value.primary_code_740;
+    addCredit_customer_req.primary_code_retail_740 = this.billCodeEditForm2.value.primary_code_retail_740;
+    addCredit_customer_req.bill_code_750 = this.billCodeEditForm2.value.primary_code_750;
+    addCredit_customer_req.bill_code_retail_750 = this.billCodeEditForm2.value.primary_code_retail_750;
+    addCredit_customer_req.bill_code_kl = this.billCodeEditForm2.value.primary_code_kl;
+    addCredit_customer_req.bill_code_retail_kl = this.billCodeEditForm2.value.primary_code_retail_kl;
 
 
-        addCredit_customer_req.add_pbx_or_retail = this.billCodeEditForm4.value.add_pbx_or_retail;
-        addCredit_customer_req.add_credit_value_for_740 = this.billCodeEditForm4.value.add_credit_value_for_740;
-        addCredit_customer_req.add_credit_value_for_750 = this.billCodeEditForm4.value.add_credit_value_for_750;
-        addCredit_customer_req.add_credit_value_for_KL = this.billCodeEditForm4.value.add_credit_value_for_KL;
+    addCredit_customer_req.add_pbx_or_retail = this.billCodeEditForm4.value.add_pbx_or_retail;
+    addCredit_customer_req.add_credit_value_for_740 = this.billCodeEditForm4.value.add_credit_value_for_740;
+    addCredit_customer_req.add_credit_value_for_750 = this.billCodeEditForm4.value.add_credit_value_for_750;
+    addCredit_customer_req.add_credit_value_for_KL = this.billCodeEditForm4.value.add_credit_value_for_KL;
 
-        api_req.element_data = addCredit_customer_req;
+    api_req.element_data = addCredit_customer_req;
 
-        this.serverService.sendServer(api_req).subscribe((response: any) => {
-          console.log(response);
-          var update_result = response;
-          console.log("update", update_result);
-    
-          if (response.status == true) {
-            iziToast.success({
-              message: "Customer Updated successfully",
-              position: 'topRight'
-            });
-            $('#editCustomerFormId').modal('hide');
-    
-          } else {
-            iziToast.warning({
-              message: "Customer not updated. Please try again",
-              position: 'topRight'
-            });
-            $('#editCustomerFormId').modal('hide');
-          }
-        }),
-          (error: any) => {
-            iziToast.error({
-              message: "Sorry, some server issue occur. Please contact admin",
-              position: 'topRight'
-            });
-            console.log("final error", error);
-          };
+    this.serverService.sendServer(api_req).subscribe((response: any) => {
+      console.log(response);
+      var update_result = response;
+      console.log("update", update_result);
+
+      if (response.status == true) {
+        iziToast.success({
+          message: "Customer Updated successfully",
+          position: 'topRight'
+        });
+        $('#editCustomerFormId').modal('hide');
+
+      } else {
+        iziToast.warning({
+          message: "Customer not updated. Please try again",
+          position: 'topRight'
+        });
+        $('#editCustomerFormId').modal('hide');
+      }
+    }),
+      (error: any) => {
+        iziToast.error({
+          message: "Sorry, some server issue occur. Please contact admin",
+          position: 'topRight'
+        });
+        console.log("final error", error);
+      };
   }
 
 
@@ -2741,7 +2768,7 @@ update_customer_req.billcode_value = addr;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     specialEdit_customer_req.action = "special_edit";
-    specialEdit_customer_req.user_id = localStorage.getItem('user_id');
+    specialEdit_customer_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     specialEdit_customer_req.customerId = id;
     api_req.element_data = specialEdit_customer_req;
 
@@ -2796,7 +2823,7 @@ update_customer_req.billcode_value = addr;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     specialUpdate_customer_req.action = "special_update";
-    specialUpdate_customer_req.user_id = localStorage.getItem('user_id');
+    specialUpdate_customer_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     specialUpdate_customer_req.customerId = id;
     specialUpdate_customer_req.email = this.specialEditCustomerForm.value.spedit_Email;
     specialUpdate_customer_req.finance_email = this.specialEditCustomerForm.value.spedit_FinanceEmail;
@@ -2856,7 +2883,7 @@ update_customer_req.billcode_value = addr;
         api_req.api_type = "web";
         api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
         delete_customer_req.action = "customer_delete";
-        delete_customer_req.user_id = localStorage.getItem('user_id');
+        delete_customer_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
         delete_customer_req.customerId = id;
         api_req.element_data = delete_customer_req;
 
@@ -2899,7 +2926,7 @@ update_customer_req.billcode_value = addr;
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     fileattach_req.action = "get_file_attachment_details";
     fileattach_req.customerId = ID;
-    fileattach_req.user_id = localStorage.getItem('user_id');
+    fileattach_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_req.element_data = fileattach_req;
 
     this.serverService.sendServer(api_req).subscribe((response: any) => {
@@ -2946,7 +2973,7 @@ update_customer_req.billcode_value = addr;
         api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
         fileattachDelete_req.action = "customer_file_attachment_delete";
         fileattachDelete_req.credit_attach_id = "" + credit_attament_id + "";
-        fileattachDelete_req.user_id = localStorage.getItem('user_id');
+        fileattachDelete_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
         api_req.element_data = fileattachDelete_req;
 
         this.serverService.sendServer(api_req).subscribe((response: any) => {
@@ -3061,7 +3088,7 @@ update_customer_req.billcode_value = addr;
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_mconnectList.action = "mconnect_address_details";
     api_mconnectList.customerId = id;
-    api_mconnectList.user_id = localStorage.getItem('user_id');
+    api_mconnectList.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_req.element_data = api_mconnectList;
 
     this.serverService.sendServer(api_req).subscribe((response: any) => {
@@ -3179,7 +3206,7 @@ update_customer_req.billcode_value = addr;
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_mrvoipList.action = "mrvoip_address_details";
     api_mrvoipList.customerId = id;
-    api_mrvoipList.user_id = localStorage.getItem('user_id');
+    api_mrvoipList.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_req.element_data = api_mrvoipList;
 
     this.serverService.sendServer(api_req).subscribe((response: any) => {
@@ -3290,7 +3317,7 @@ update_customer_req.billcode_value = addr;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_req.action = "call4tel_address_details";
-    api_call4telList.user_id = localStorage.getItem('user_id');
+    api_call4telList.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_call4telList.customerId = id;
     api_req.element_data = api_call4telList;
 
@@ -3412,7 +3439,7 @@ update_customer_req.billcode_value = addr;
         api_req.api_type = "web";
         api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
         nx32Create_req.action = "nx32_customer_create";
-        nx32Create_req.user_id = localStorage.getItem('user_id');
+        nx32Create_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
         nx32Create_req.customerId = id;
         api_req.element_data = nx32Create_req;
 
@@ -3456,7 +3483,7 @@ update_customer_req.billcode_value = addr;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     invoiceShare_edit_req.action = "invoice_share_edit";
-    invoiceShare_edit_req.user_id = localStorage.getItem('user_id');
+    invoiceShare_edit_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     invoiceShare_edit_req.customerId = id;
     api_req.element_data = invoiceShare_edit_req;
     this.serverService.sendServer(api_req).subscribe((response: any) => {
@@ -3492,7 +3519,7 @@ update_customer_req.billcode_value = addr;
   //   api_req.api_type = "web";
   //   api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
   //   invoiceShare_edit_req.action = "invoice_share_edit";
-  //   invoiceShare_edit_req.user_id = localStorage.getItem('user_id');
+  //   invoiceShare_edit_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
   //   invoiceShare_edit_req.customerId = id;
   //   api_req.element_data = invoiceShare_edit_req;
   //   this.serverService.sendServer(api_req).subscribe((response: any) => {
@@ -3525,7 +3552,7 @@ update_customer_req.billcode_value = addr;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     invoiceShare_update_req.action = "invoice_share_update";
-    invoiceShare_update_req.user_id = localStorage.getItem('user_id');
+    invoiceShare_update_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     invoiceShare_update_req.customerId = this.invoice_shareCustomerPermission_ID;
     invoiceShare_update_req.invoice_share_user = this.typeConvertionString_invoice_Shared_Permission;
     api_req.element_data = invoiceShare_update_req;
@@ -3566,7 +3593,7 @@ update_customer_req.billcode_value = addr;
   //   api_req.api_type = "web";
   //   api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
   //   invoiceShare_update_req.action = "invoice_share_update";
-  //   invoiceShare_update_req.user_id = localStorage.getItem('user_id');
+  //   invoiceShare_update_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
   //   invoiceShare_update_req.customerId = id;
   //   invoiceShare_update_req.firstName_salary = this.invoiceSharedCustomerForm.value.invShared_checklist;
   //   api_req.element_data = invoiceShare_update_req;
@@ -3614,7 +3641,7 @@ update_customer_req.billcode_value = addr;
         api_req.api_type = "web";
         api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
         qckMail_req.action = "customer_quick_mail";
-        qckMail_req.user_id = localStorage.getItem('user_id');
+        qckMail_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
         qckMail_req.customerId = id;
         api_req.element_data = qckMail_req;
 
@@ -3655,7 +3682,7 @@ update_customer_req.billcode_value = addr;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     shareCustomerPermission_edit.action = "customer_share";
-    shareCustomerPermission_edit.user_id = localStorage.getItem('user_id');
+    shareCustomerPermission_edit.user_id = sessionStorage.getItem('erp_c4c_user_id');
     shareCustomerPermission_edit.customerId = id;
     api_req.element_data = shareCustomerPermission_edit;
 
@@ -3666,7 +3693,7 @@ update_customer_req.billcode_value = addr;
         this.SharedCustomerPermission_List = response.user_details;
         this.CheckBox_DynamicArrayList_shareCustomerPermission = response.access_user[0].access_userid.split(',').map(Number);
         console.log("access_userid", this.CheckBox_DynamicArrayList_shareCustomerPermission);
-      
+
         //  this.CheckBox_DynamicArrayList_shareCustomerPermission =  response.access_user[0].access_userid.split(',');
         // const chk_arr = response.access_user[0].access_userid.split(',');
         // for (var i = 0; i < chk_arr.length; i++) {
@@ -3676,7 +3703,7 @@ update_customer_req.billcode_value = addr;
 
 
         //this.CheckBox_DynamicArrayList_shareCustomerPermission =   response.access_user[0].access_userid.split(',');
-        
+
 
       } else {
         iziToast.warning({
@@ -3704,7 +3731,7 @@ update_customer_req.billcode_value = addr;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     shareCustomerPermission_update_req.action = "customer_share_update";
-    shareCustomerPermission_update_req.user_id = localStorage.getItem('user_id');
+    shareCustomerPermission_update_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     shareCustomerPermission_update_req.customerId = this.shareCustomerPermission_ID;
     shareCustomerPermission_update_req.access_userid = this.CheckBox_DynamicArrayList_shareCustomerPermission;
     api_req.element_data = shareCustomerPermission_update_req;
@@ -3763,7 +3790,7 @@ update_customer_req.billcode_value = addr;
         api_req.api_type = "web";
         api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
         api_customerStatus_req.action = "customer_status_update";
-        api_customerStatus_req.user_id = localStorage.getItem('user_id');
+        api_customerStatus_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
         api_customerStatus_req.customerId = id;
         api_customerStatus_req.cust_status = status;
         api_req.element_data = api_customerStatus_req;
@@ -3817,7 +3844,7 @@ update_customer_req.billcode_value = addr;
         api_req.api_type = "web";
         api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
         api_empStatus_req.action = "emp_status_update";
-        api_empStatus_req.user_id = localStorage.getItem('user_id');
+        api_empStatus_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
         api_empStatus_req.customerId = id;
         api_req.element_data = api_empStatus_req;
 
@@ -3870,7 +3897,7 @@ update_customer_req.billcode_value = addr;
         api_req.api_type = "web";
         api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
         api_resellerStatus_req.action = "reseller_status_update";
-        api_resellerStatus_req.user_id = localStorage.getItem('user_id');
+        api_resellerStatus_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
         api_resellerStatus_req.customerId = id;
         api_req.element_data = api_resellerStatus_req;
 
@@ -3916,7 +3943,7 @@ update_customer_req.billcode_value = addr;
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_nx32Permission_req.action = "get_customer_nx32_permission";
     api_nx32Permission_req.customerId = id;
-    api_nx32Permission_req.user_id = localStorage.getItem('user_id');
+    api_nx32Permission_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
 
     api_req.element_data = api_nx32Permission_req;
 
@@ -3961,7 +3988,7 @@ update_customer_req.billcode_value = addr;
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_nx32PermissionUpdate_req.action = "customer_nx32_update";
     api_nx32PermissionUpdate_req.customerId = this.NX32SharePermissionParameter;
-    api_nx32PermissionUpdate_req.user_id = localStorage.getItem('user_id');
+    api_nx32PermissionUpdate_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_nx32PermissionUpdate_req.nx32_perm = this.checkbox_NX32Permission;
 
     api_req.element_data = api_nx32PermissionUpdate_req;
@@ -4005,12 +4032,12 @@ update_customer_req.billcode_value = addr;
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_billCodeEdit_req.action = "bill_code_details";
     api_billCodeEdit_req.customerId = id;
-    api_billCodeEdit_req.user_id = localStorage.getItem('user_id');
+    api_billCodeEdit_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
 
     this.popupBillCodeForm2.patchValue({
-      'popup_customerId':id,
+      'popup_customerId': id,
     });
-   
+
     api_req.element_data = api_billCodeEdit_req;
 
     this.serverService.sendServer(api_req).subscribe((response: any) => {
@@ -4024,77 +4051,77 @@ update_customer_req.billcode_value = addr;
         // this.edit_b = response.primary_bill_code;
 
         const formArray = new FormArray([]);
-        var bill_code_length = response.customer_bill_code_arr.length<=1?1:response.customer_bill_code_arr.length;
+        var bill_code_length = response.customer_bill_code_arr.length <= 1 ? 1 : response.customer_bill_code_arr.length;
         for (let index = 0; index < bill_code_length; index++) {
-        formArray.push(this.fb.group({
+          formArray.push(this.fb.group({
 
-          "popup_billCodeName": response.customer_bill_code_arr[index].bill_code_name,
-          "popup_bill_code_740": response.customer_bill_code_arr[index].bill_code_740,
-          "popup_bill_code_kl": response.customer_bill_code_arr[index].bill_code_kl,
-          "popup_bill_code_750": response.customer_bill_code_arr[index].bill_code_750,
-          "popup_bill_code_750_8": response.customer_bill_code_arr[index].bill_code_750_8,
-          "popup_conn_state": response.customer_bill_code_arr[index].conn_state,
-          "popup_customer_bill_code_id": response.customer_bill_code_arr[index].customer_bill_code_id,
-          "popup_customer_id": response.customer_bill_code_arr[index].customer_id,
-        })
-        );
+            "popup_billCodeName": response.customer_bill_code_arr[index].bill_code_name,
+            "popup_bill_code_740": response.customer_bill_code_arr[index].bill_code_740,
+            "popup_bill_code_kl": response.customer_bill_code_arr[index].bill_code_kl,
+            "popup_bill_code_750": response.customer_bill_code_arr[index].bill_code_750,
+            "popup_bill_code_750_8": response.customer_bill_code_arr[index].bill_code_750_8,
+            "popup_conn_state": response.customer_bill_code_arr[index].conn_state,
+            "popup_customer_bill_code_id": response.customer_bill_code_arr[index].customer_bill_code_id,
+            "popup_customer_id": response.customer_bill_code_arr[index].customer_id,
+          })
+          );
+        }
+        console.log(formArray)
+        this.popupBillCodeForm3.setControl('popupBillCode1', formArray);
+        console.log(this.popupBillCode1)
+
       }
-      console.log(formArray)
-      this.popupBillCodeForm3.setControl('popupBillCode1', formArray);
-      console.log(this.popupBillCode1)
-
-      }
-        // if (response.primary_bill_code != '') {
-        this.popupBillCodeForm2.patchValue({
+      // if (response.primary_bill_code != '') {
+      this.popupBillCodeForm2.patchValue({
 
 
-          'popup_primary_customer_bill_code_id': response.customer_primary_code_arr[0].customer_bill_code_id,
-          'popup_primary_code_740': response.customer_primary_code_arr[0].bill_code_740,
-          'popu_primary_code_retail_750': response.customer_primary_code_arr[0].primary_code_retail_740,
-          'popup_low_credit_740': response.customer_primary_code_arr[0].low_credit_740,
-          'popup_high_credit_740': response.customer_primary_code_arr[0].high_credit_740,
-          'popup_retail_low_credit_740': response.customer_primary_code_arr[0].retail_low_credit_740,
-          'popup_retail_high_credit_740': response.customer_primary_code_arr[0].retail_high_credit_740,
+        'popup_primary_customer_bill_code_id': response.customer_primary_code_arr[0].customer_bill_code_id,
+        'popup_primary_code_740': response.customer_primary_code_arr[0].bill_code_740,
+        'popu_primary_code_retail_750': response.customer_primary_code_arr[0].primary_code_retail_740,
+        'popup_low_credit_740': response.customer_primary_code_arr[0].low_credit_740,
+        'popup_high_credit_740': response.customer_primary_code_arr[0].high_credit_740,
+        'popup_retail_low_credit_740': response.customer_primary_code_arr[0].retail_low_credit_740,
+        'popup_retail_high_credit_740': response.customer_primary_code_arr[0].retail_high_credit_740,
 
 
-          'popup_primary_code_750': response.customer_primary_code_arr[0].bill_code_750,
-          'popup_primary_code_retail_750': response.customer_primary_code_arr[0].primary_code_retail_750,
-          'popup_low_credit_750': response.customer_primary_code_arr[0].low_credit_750,
-          'popup_high_credit_750': response.customer_primary_code_arr[0].high_credit_750,
-          'popup_retail_low_credit_750': response.customer_primary_code_arr[0].retail_low_credit_750,
-          'popup_retail_high_credit_750': response.customer_primary_code_arr[0].retail_high_credit_750,
+        'popup_primary_code_750': response.customer_primary_code_arr[0].bill_code_750,
+        'popup_primary_code_retail_750': response.customer_primary_code_arr[0].primary_code_retail_750,
+        'popup_low_credit_750': response.customer_primary_code_arr[0].low_credit_750,
+        'popup_high_credit_750': response.customer_primary_code_arr[0].high_credit_750,
+        'popup_retail_low_credit_750': response.customer_primary_code_arr[0].retail_low_credit_750,
+        'popup_retail_high_credit_750': response.customer_primary_code_arr[0].retail_high_credit_750,
 
-          
-          'popup_primary_code_kl': response.customer_primary_code_arr[0].bill_code_kl,
-          'popup_primary_code_retail_kl': response.customer_primary_code_arr[0].primary_code_retail_kl,
-          'popup_low_credit_kl': response.customer_primary_code_arr[0].low_credit_kl,
-          'popup_high_credit_kl': response.customer_primary_code_arr[0].high_credit_kl,
-          'popup_retail_low_credit_kl': response.customer_primary_code_arr[0].retail_low_credit_kl,
-          'popup_retail_high_credit_kl': response.customer_primary_code_arr[0].retail_high_credit_kl,
 
-          'popup_primary_code_auto_credit': response.customer_primary_code_arr[0].auto_credit,
+        'popup_primary_code_kl': response.customer_primary_code_arr[0].bill_code_kl,
+        'popup_primary_code_retail_kl': response.customer_primary_code_arr[0].primary_code_retail_kl,
+        'popup_low_credit_kl': response.customer_primary_code_arr[0].low_credit_kl,
+        'popup_high_credit_kl': response.customer_primary_code_arr[0].high_credit_kl,
+        'popup_retail_low_credit_kl': response.customer_primary_code_arr[0].retail_low_credit_kl,
+        'popup_retail_high_credit_kl': response.customer_primary_code_arr[0].retail_high_credit_kl,
 
-          'popup_server_name_740': response.customer_primary_code_arr[0].server_name_740,
-          'popup_pbx_threshold_limit_740': response.customer_primary_code_arr[0].pbx_threshold_limit_740,
-          'popup_retail_threshold_limit_740': response.customer_primary_code_arr[0].retail_threshold_limit_740,
+        'popup_primary_code_auto_credit': response.customer_primary_code_arr[0].auto_credit,
 
-          'popup_server_name_750': response.customer_primary_code_arr[0].server_name_750,
-          'popup_pbx_threshold_limit_750': response.customer_primary_code_arr[0].pbx_threshold_limit_750,
-          'popup_retail_threshold_limit_750': response.customer_primary_code_arr[0].retail_threshold_limit_750,
+        'popup_server_name_740': response.customer_primary_code_arr[0].server_name_740,
+        'popup_pbx_threshold_limit_740': response.customer_primary_code_arr[0].pbx_threshold_limit_740,
+        'popup_retail_threshold_limit_740': response.customer_primary_code_arr[0].retail_threshold_limit_740,
 
-          'popup_server_name_kl': response.customer_primary_code_arr[0].server_name_kl,
-          'popup_pbx_threshold_limit_kl': response.customer_primary_code_arr[0].pbx_threshold_limit_kl,
-          'popup_retail_threshold_limit_kl': response.customer_primary_code_arr[0].retail_threshold_limit_kl,
+        'popup_server_name_750': response.customer_primary_code_arr[0].server_name_750,
+        'popup_pbx_threshold_limit_750': response.customer_primary_code_arr[0].pbx_threshold_limit_750,
+        'popup_retail_threshold_limit_750': response.customer_primary_code_arr[0].retail_threshold_limit_750,
 
-          'manual_credit': response.customer_primary_code_arr[0].manual_credit,
+        'popup_server_name_kl': response.customer_primary_code_arr[0].server_name_kl,
+        'popup_pbx_threshold_limit_kl': response.customer_primary_code_arr[0].pbx_threshold_limit_kl,
+        'popup_retail_threshold_limit_kl': response.customer_primary_code_arr[0].retail_threshold_limit_kl,
 
-        });
+        'manual_credit': response.customer_primary_code_arr[0].manual_credit,
 
-        // }
-        console.log("bill code edit form 2", this.billCodeEditForm2.value);
+      });
 
       // }
-      
+      console.log("bill code edit form 2", this.billCodeEditForm2.value);
+
+      // }
+
     });
 
 
@@ -4112,38 +4139,38 @@ update_customer_req.billcode_value = addr;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     updateBillCode_req.action = "billcode_details_update";
-    updateBillCode_req.user_id = localStorage.getItem('user_id');
+    updateBillCode_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     updateBillCode_req.customer_bill_code = this.edit_a;
     updateBillCode_req.primary_bill_code = this.edit_b;
     // updateBillCode_req.values2 = this.billCodeEditForm1.value.edit_addresses;
 
-     // section - 2
-     updateBillCode_req.customerId = this.popupBillCodeForm2.value.popup_customerId;
-var addr = this.popupBillCodeForm3.value.popupBillCode1;
-for (let i = 0; i < addr.length; i++){
-  console.log(addr[i].bill_code_740)
+    // section - 2
+    updateBillCode_req.customerId = this.popupBillCodeForm2.value.popup_customerId;
+    var addr = this.popupBillCodeForm3.value.popupBillCode1;
+    for (let i = 0; i < addr.length; i++) {
+      console.log(addr[i].bill_code_740)
 
-  addr[i].billCodeName = $('#bill_code_name_' + i).val();
-  addr[i].bill_code_740 = $('#bill_code_740_' + i).val();
-  addr[i].bill_code_kl = $('#bill_code_kl_' + i).val();
-  addr[i].bill_code_750 = $('#bill_code_750_' + i).val();
-  addr[i].bill_code_750_8 = $('#bill_code_750_8_' + i).val();
-  addr[i].conn_state = $('#conn_state' + i).val();
-  addr[i].customer_bill_code_id = $('#customer_bill_code_id' + i).val();
-  addr[i].customer_id = $('#customer_id' + i).val();
-   
-}
-updateBillCode_req.billcode_value = addr;
+      addr[i].billCodeName = $('#bill_code_name_' + i).val();
+      addr[i].bill_code_740 = $('#bill_code_740_' + i).val();
+      addr[i].bill_code_kl = $('#bill_code_kl_' + i).val();
+      addr[i].bill_code_750 = $('#bill_code_750_' + i).val();
+      addr[i].bill_code_750_8 = $('#bill_code_750_8_' + i).val();
+      addr[i].conn_state = $('#conn_state' + i).val();
+      addr[i].customer_bill_code_id = $('#customer_bill_code_id' + i).val();
+      addr[i].customer_id = $('#customer_id' + i).val();
+
+    }
+    updateBillCode_req.billcode_value = addr;
 
     // section - 3  
-    
-   
+
+
 
     var popup_primary_code_arr = this.popupBillCodeForm2.value
     console.log(popup_primary_code_arr);
     updateBillCode_req.primary_billcode_details = popup_primary_code_arr;
-    
-    
+
+
     // updateBillCode_req.bill_code_740 = this.popupBillCodeForm2.value.primary_code_740;
     // updateBillCode_req.primary_code_retail_740 = this.popupBillCodeForm2.value.popup_primary_code_retail_740;
     // updateBillCode_req.low_credit_740 = this.popupBillCodeForm2.value.popup_low_credit_740;
@@ -4189,33 +4216,33 @@ updateBillCode_req.billcode_value = addr;
 
     api_req.element_data = updateBillCode_req;
 
-//     var addr = this.popupBillCodeForm3.value.popupBillCode1;
-// for (let i = 0; i < addr.length; i++){
-//   console.log(addr[i].bill_code_740)
+    //     var addr = this.popupBillCodeForm3.value.popupBillCode1;
+    // for (let i = 0; i < addr.length; i++){
+    //   console.log(addr[i].bill_code_740)
 
-//   addr[i].billCodeName = $('#bill_code_name_' + i).val();
-//   addr[i].bill_code_740 = $('#bill_code_740_' + i).val();
-//   addr[i].bill_code_kl = $('#bill_code_kl_' + i).val();
-//   addr[i].bill_code_750 = $('#bill_code_750_' + i).val();
-//   addr[i].bill_code_750_8 = $('#bill_code_750_8_' + i).val();
-//   addr[i].conn_state = $('#conn_state' + i).val();
-//   addr[i].customer_bill_code_id = $('#customer_bill_code_id' + i).val();
-//   addr[i].customer_id = $('#customer_id' + i).val();
-   
-// }
+    //   addr[i].billCodeName = $('#bill_code_name_' + i).val();
+    //   addr[i].bill_code_740 = $('#bill_code_740_' + i).val();
+    //   addr[i].bill_code_kl = $('#bill_code_kl_' + i).val();
+    //   addr[i].bill_code_750 = $('#bill_code_750_' + i).val();
+    //   addr[i].bill_code_750_8 = $('#bill_code_750_8_' + i).val();
+    //   addr[i].conn_state = $('#conn_state' + i).val();
+    //   addr[i].customer_bill_code_id = $('#customer_bill_code_id' + i).val();
+    //   addr[i].customer_id = $('#customer_id' + i).val();
 
-// updateBillCode_req.value =addr;
-// console.log(api_req);
+    // }
 
-//     api_req.element_data = updateBillCode_req;
+    // updateBillCode_req.value =addr;
+    // console.log(api_req);
+
+    //     api_req.element_data = updateBillCode_req;
 
 
     this.serverService.sendServer(api_req).subscribe((response: any) => {
 
       console.log("update response", response);
       var updateBillCode = response;
-      console.log('uadate',updateBillCode);
-      
+      console.log('uadate', updateBillCode);
+
 
       if (response != '') {
         Swal.fire({
@@ -4250,7 +4277,7 @@ updateBillCode_req.billcode_value = addr;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     accManager_edit.action = "account_manager_edit";
-    accManager_edit.user_id = localStorage.getItem('user_id');
+    accManager_edit.user_id = sessionStorage.getItem('erp_c4c_user_id');
     accManager_edit.customerId = id;
     api_req.element_data = accManager_edit;
 
@@ -4289,7 +4316,7 @@ updateBillCode_req.billcode_value = addr;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     accManager_update.action = "account_manager_update";
-    accManager_update.user_id = localStorage.getItem('user_id');
+    accManager_update.user_id = sessionStorage.getItem('erp_c4c_user_id');
     accManager_update.customerId = this.AssignAccountManager_CustomerID;
     accManager_update.account_manager_id = this.radiobuttonValue_AccountManager;
     api_req.element_data = accManager_update;
@@ -4329,7 +4356,7 @@ updateBillCode_req.billcode_value = addr;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_mail_req.action = "customer_email_template";
-    api_mail_req.user_id = localStorage.getItem('user_id');
+    api_mail_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_mail_req.customerId = this.landscapeEmail_Customer_ID;
     api_req.element_data = api_mail_req;
 
@@ -4380,7 +4407,7 @@ updateBillCode_req.billcode_value = addr;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_mailContentDropdown_req.action = "get_customer_authendication_details";
-    api_mailContentDropdown_req.user_id = localStorage.getItem('user_id');
+    api_mailContentDropdown_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_mailContentDropdown_req.customerId = this.landscapeEmail_Customer_ID;
     api_mailContentDropdown_req.template_id = this.CRMTemplateID;
     api_req.element_data = api_mailContentDropdown_req;
@@ -4427,7 +4454,7 @@ updateBillCode_req.billcode_value = addr;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_email_req.action = "customer_landscape_mail";
-    api_email_req.user_id = localStorage.getItem('user_id');
+    api_email_req.user_id = sessionStorage.getItem('erp_c4c_user_id');
     // api_email_req.customer_id = this.EmailCustomerContractID;
     api_email_req.emailFrom = this.emailFrom;
     if (this.emailFrom === null || this.emailFrom === '' || this.emailFrom === 'undefined' || this.emailFrom === undefined) {
@@ -4527,7 +4554,7 @@ updateBillCode_req.billcode_value = addr;
     api_req.api_type = "web";
     api_req.access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJhdWQiOiJ1cGRhdGVzLm1jb25uZWN0YXBwcy5jb20iLCJpYXQiOjE2NTQ2NjQ0MzksIm5iZiI6MTY1NDY2NDQzOSwiZXhwIjoxNjU0NjgyNDM5LCJhY2Nlc3NfZGF0YSI6eyJ0b2tlbl9hY2Nlc3NJZCI6IjIiLCJ0b2tlbl9hY2Nlc3NOYW1lIjoidGVzdGluZzA0MDYyMDIyIiwidG9rZW5fYWNjZXNzVHlwZSI6IjIifX0.NaymQDSiON2R3tKICGNpj6hsQfg9DGwEcZzrJcvsqbI";
     api_googleAuthVali.action = "google_auth_check";
-    api_googleAuthVali.user_id = localStorage.getItem('user_id');
+    api_googleAuthVali.user_id = sessionStorage.getItem('erp_c4c_user_id');
     api_googleAuthVali.customerId = this.googleAuthent_CustomerId;
     api_googleAuthVali.auth_code = this.GoogleAuthenticationForm.value.google_AuthenticationCode;
     api_req.element_data = api_googleAuthVali;
